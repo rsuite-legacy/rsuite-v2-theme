@@ -8,6 +8,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-csslint');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-csscomb');
+    grunt.loadNpmTasks('grunt-compile-handlebars');
 
     var READ_JSON_CONFIG = {encoding: 'utf8'}
     var gruntConfig = grunt.file.readJSON('grunt/config.json', READ_JSON_CONFIG)
@@ -28,6 +29,15 @@ module.exports = function(grunt) {
                     cwd: 'src/fonts',
                     src: ['**/*'],
                     dest: gruntConfig.output + '/fonts',
+                    flatten: false
+                }]
+            },
+            exampleResource: {
+                files: [{
+                    expand: true,
+                    cwd: 'src/example',
+                    src: ['**/*', '!fixtures', '!data', '!**/*.json', '!**/*.handlebars', '!**/*.hbs'],
+                    dest: gruntConfig.output + '/examples',
                     flatten: false
                 }]
             }
@@ -86,11 +96,31 @@ module.exports = function(grunt) {
                 src: 'src/less/suite.less',
                 dest: gruntConfig.output + '/css/<%= pkg.name %>.css'
             }
+        },
+        'compile-handlebars': {
+            example: {
+                partials: ['src/example/fixtures/*.handlebars', 'src/example/base.handlebars'],
+                files: [{
+                    expand: true,
+                    cwd: 'src/example/',
+                    src: '*.hbs',
+                    dest: 'dist/examples/',
+                    ext: '.html'
+                }],
+                templateData: 'example/data/index.json'
+            }
         }
     }
 
-    var task_default = ['clean', 'less:core', 'autoprefixer:core', 'csslint:dist', 'csscomb:dist', 'cssmin:minifyCore', 'copy:fonts'];
+    var task_default = ['clean:dist', 'less:core', 'autoprefixer:core', 'csslint:dist', 'csscomb:dist', 'cssmin:minifyCore', 'copy:fonts'];
+    var task_examples = ['compile-handlebars:example'];
 
     grunt.initConfig(options);
     grunt.registerTask('default', task_default);
+    grunt.registerTask('exampleSite', 'Generate Example Site', function() {
+        grunt.log.writeln('Site generating...');
+        grunt.task.run('default');
+        grunt.task.run('copy:exampleResource');
+        grunt.task.run('compile-handlebars:example');
+    });
 }
