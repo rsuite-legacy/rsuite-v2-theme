@@ -104,7 +104,7 @@ module.exports = function(grunt) {
                     expand: true,
                     cwd: 'src/example/',
                     src: '*.hbs',
-                    dest: 'dist/examples/',
+                    dest: gruntConfig.output + '/examples/',
                     ext: '.html'
                 }],
                 templateData: 'example/data/index.json'
