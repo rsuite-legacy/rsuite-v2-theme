@@ -1,0 +1,17 @@
+<nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix-top">
+    <ul class="nav bs-docs-sidenav">
+        {{#each completmentary}}
+            <li>
+                <a href="{{link}}">{{text}}</a>
+                <ul class="nav">
+                    {{#each children}}
+                        <li><a href="{{link}}">{{text}}</a></li>
+                    {{/each}}
+                </ul>
+            </li>
+        {{/each}}
+    </ul>
+    <a class="back-to-top" href="#top">
+        返回顶部
+    </a>
+</nav>

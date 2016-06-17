@@ -99,7 +99,7 @@ module.exports = function(grunt) {
         },
         'compile-handlebars': {
             example: {
-                partials: ['src/example/fixtures/*.handlebars', 'src/example/base.handlebars'],
+                partials: ['src/example/fixtures/**/*.handlebars', 'src/example/base.handlebars'],
                 files: [{
                     expand: true,
                     cwd: 'src/example/',
@@ -107,19 +107,22 @@ module.exports = function(grunt) {
                     dest: gruntConfig.output + '/examples/',
                     ext: '.html'
                 }],
-                templateData: 'example/data/index.json'
+                templateData: 'src/example/data/index.json'
             }
         }
     }
 
     var task_default = ['clean:dist', 'less:core', 'autoprefixer:core', 'csslint:dist', 'csscomb:dist', 'cssmin:minifyCore', 'copy:fonts'];
+    var task_dev = ['clean:dist', 'less:core', 'autoprefixer:core', 'csscomb:dist', 'cssmin:minifyCore', 'copy:fonts'];
     var task_examples = ['compile-handlebars:example'];
 
     grunt.initConfig(options);
     grunt.registerTask('default', task_default);
+    grunt.registerTask('dev',task_dev);
+
     grunt.registerTask('exampleSite', 'Generate Example Site', function() {
         grunt.log.writeln('Site generating...');
-        grunt.task.run('default');
+        grunt.task.run('dev');
         grunt.task.run('copy:exampleResource');
         grunt.task.run('compile-handlebars:example');
     });
