@@ -1298,11 +1298,17 @@ h1[id] {
     float: left
 }
 
-.bs-example>.dropdown>.dropdown-menu {
-    position: static;
-    display: block;
-    margin-bottom: 5px;
-    clear: left
+/*.bs-example>.dropdown>.dropdown-menu {*/
+    /*position: static;*/
+    /*display: block;*/
+    /*margin-bottom: 5px;*/
+    /*clear: left*/
+/*}*/
+
+
+.bs-example > .dropdown{
+    display: inline-block;
+    margin-right: 40px;
 }
 
 .bs-example-tabs .nav-tabs {

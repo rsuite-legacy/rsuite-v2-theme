@@ -43,16 +43,22 @@
 
     &.btn-group-sm {
         .btn {
-            &:hover {
+            &:hover, &:active, &.active {
                 padding-bottom: @padding-small-vertical;
+            }
+            &:active, &.active {
+                border-bottom-width: 1px;
             }
         }
     }
 
     &.btn-group-xs {
         .btn {
-            &:hover {
+            &:hover, &:active, &.active {
                 padding-bottom: @padding-xs-vertical;
+            }
+            &:active, &.active {
+                border-bottom-width: 1px;
             }
         }
     }
@@ -152,6 +158,24 @@
 
 // Split button dropdowns
 // ----------------------
+.btn-group.open {
+    .dropdown-toggle.btn {
+        z-index: (@zindex-dropdown+10);
+
+        &, &:active, &:focus, &:hover {
+            background: white;
+            border-bottom: 1px solid white;
+        }
+
+        &:hover {
+            padding-bottom: @padding-base-vertical;
+        }
+    }
+
+    .dropdown-menu {
+        z-index: @zindex-dropdown;
+    }
+}
 
 // Give the line between buttons some depth
 .btn-group > .btn + .dropdown-toggle {
@@ -167,7 +191,7 @@
 // The clickable button for toggling the menu
 // Remove the gradient and set the same inset shadow as the :active state
 .btn-group.open .dropdown-toggle {
-    .box-shadow(inset 0 3px 5px rgba(0, 0, 0, .125));
+    .box-shadow(none);
 
     // Show no shadow for `.btn-link` since it has no other button styles.
     &.btn-link {
