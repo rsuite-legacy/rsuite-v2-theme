@@ -85,6 +85,42 @@
                     "link": "#btn-groups-justified"
                 }
             ]
+        },
+        {
+            "text": "工具提示",
+            "link": "#tooltips",
+            "children": [
+                {
+                    "text": "实例",
+                    "link": "#tooltips-examples"
+                },
+                {
+                    "text": "静态工具实例",
+                    "link": "#static-tooltip"
+                },
+                {
+                    "text": "四个方向",
+                    "link": "#four-directions"
+                }
+            ]
+        },
+        {
+            "text": "弹出层",
+            "link": "#popovers",
+            "children": [
+                {
+                    "text": "实例",
+                    "link": "#popovers-examples"
+                },
+                {
+                    "text": "用法",
+                    "link": "#popovers-usage"
+                },
+                {
+                    "text": "参数",
+                    "link": "#popovers-options"
+                }
+            ]
         }
     ]
 }
