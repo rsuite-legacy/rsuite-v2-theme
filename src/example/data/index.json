@@ -147,6 +147,56 @@
                     "link": "#nav-dropdowns"
                 }
             ]
+        },
+        {
+            "text": "导航条",
+            "link": "#navbar",
+            "children": [
+                {
+                    "text": "默认样式的导航条",
+                    "link": "#navbar-default"
+                },
+                {
+                    "text": "品牌图标",
+                    "link": "#navbar-brand-image"
+                },
+                {
+                    "text": "表单",
+                    "link": "#navbar-forms"
+                },
+                {
+                    "text": "按钮",
+                    "link": "#navbar-buttons"
+                },
+                {
+                    "text": "文本",
+                    "link": "#navbar-text"
+                },
+                {
+                    "text": "非导航的链接",
+                    "link": "#navbar-links"
+                },
+                {
+                    "text": "组件排列",
+                    "link": "#navbar-component-alignment"
+                },
+                {
+                    "text": "固定在顶部",
+                    "link": "#navbar-fixed-top"
+                },
+                {
+                    "text": "固定在底部",
+                    "link": "#navbar-fixed-bottom"
+                },
+                {
+                    "text": "静止在顶部",
+                    "link": "#navbar-static-top"
+                },
+                {
+                    "text": "反色的导航条",
+                    "link": "#navbar-inverted"
+                }
+            ]
         }
     ]
 }

@@ -45,8 +45,9 @@
         &,
         &:hover,
         &:focus {
-            background-color: @nav-link-hover-bg;
-            border-color: @link-color;
+            //background-color: @nav-link-hover-bg;
+            //border-color: @link-color;
+            .nav-tabs-a-active;
         }
     }
 
@@ -92,18 +93,10 @@
 
         // Active state, and its :hover to override normal :hover
         &.active > a {
-            & {
-                padding-top: (@nav-link-padding-top - 1);
-            }
-
             &,
             &:hover,
             &:focus {
-                color: @nav-tabs-active-link-hover-color;
-                background-color: @nav-tabs-active-link-hover-bg;
-                border: 1px solid @nav-tabs-active-link-hover-border-color;
-                border-bottom-color: transparent;
-                border-top: 2px solid @nav-tabs-active-top-border-color;
+                .nav-tabs-a-active;
                 cursor: default;
             }
         }
@@ -118,25 +111,34 @@
 // Pills
 // -------------------------
 .nav-pills {
+    &.nav {
+        > li {
+            // Active state
+            &.active > a {
+                &,
+                &:hover,
+                &:focus {
+                    color: @nav-pills-active-link-hover-color;
+                    background-color: @nav-pills-active-link-hover-bg;
+                    padding: (@nav-link-padding-top - 2) @nav-link-padding-left (@nav-link-padding-top - 1);
+                }
+            }
+        }
+    }
+
     > li {
         float: left;
 
         // Links rendered as pills
         > a {
+            &.dropdown-toggle {
+                border-top: 2px solid white;
+                padding-top: (@nav-link-padding-top - 2);
+            }
             border-radius: @nav-pills-border-radius;
         }
         + li {
             margin-left: 2px;
-        }
-
-        // Active state
-        &.active > a {
-            &,
-            &:hover,
-            &:focus {
-                color: @nav-pills-active-link-hover-color;
-                background-color: @nav-pills-active-link-hover-bg;
-            }
         }
     }
 }
@@ -200,7 +202,7 @@
     > .active > a,
     > .active > a:hover,
     > .active > a:focus {
-        border: 1px solid @nav-tabs-justified-link-border-color;
+        //border: 1px solid @nav-tabs-justified-link-border-color;
     }
 
     @media (min-width: @screen-sm-min) {
@@ -239,4 +241,20 @@
     margin-top: -1px;
     // Remove the top rounded corners here since there is a hard edge above the menu
     .border-top-radius(0);
+    // rest top
+    top: inherit;
+}
+
+//Fix dropdown offset
+.nav-pills .dropdown-menu {
+    top: @nav-pills-drop-down-menu-top;
+}
+
+.nav-tabs-a-active() {
+    color: @nav-tabs-active-link-hover-color;
+    background-color: @nav-tabs-active-link-hover-bg;
+    border: 1px solid @nav-tabs-active-link-hover-border-color;
+    padding-top: (@nav-link-padding-top - 1);
+    border-bottom-color: transparent;
+    border-top: 2px solid @nav-tabs-active-top-border-color;
 }

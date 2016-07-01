@@ -1,0 +1,393 @@
+<div class="bs-docs-section">
+    <h1 id="navbar" class="page-header">导航条</h1>
+
+    <h2 id="navbar-default">默认样式的导航条</h2>
+    <p>导航条是在您的应用或网站中作为导航页头的响应式基础组件。它们在移动设备上可以折叠（并且可开可关），且在视口（viewport）宽度增加时逐渐变为水平展开模式。</p>
+    <p><strong class="text-danger">两端对齐的导航条导航链接已经被弃用了。</strong></p>
+
+    <div class="bs-callout bs-callout-warning" id="callout-navbar-overflow">
+        <h4>导航条内所包含元素溢出</h4>
+        <p>由于 Bootstrap 并不知道你在导航条内放置的元素需要占据多宽的空间，你可能会遇到导航条中的内容折行的情况（也就是导航条占据两行）。解决办法如下：</p>
+        <ol type="a">
+            <li>减少导航条内所有元素所占据的宽度。</li>
+            <li>在某些尺寸的屏幕上（利用 <a href="../css/#responsive-utilities">响应式工具类</a>）隐藏导航条内的一些元素。</li>
+            <li>修改导航条在水平排列和折叠排列互相转化时，触发这个转化的最小屏幕宽度值。可以通过修改 <code>@grid-float-breakpoint</code> 变量实现，或者自己重写相关的媒体查询代码，覆盖
+                Bootstrap 的默认值。
+            </li>
+        </ol>
+    </div>
+    <div class="bs-callout bs-callout-danger" id="callout-navbar-js">
+        <h4>依赖 JavaScript 插件</h4>
+        <p>如果 JavaScript 被禁用，并且视口（viewport）足够窄，致使导航条折叠起来，导航条将不能被打开，<code>.navbar-collapse</code> 内所包含的内容也将不可见。</p>
+        <p>响应式导航条依赖 <a href="../javascript/#collapse">collapse 插件</a>，定制 Bootstrap 的话时候必将其包含。</p>
+    </div>
+    <div class="bs-callout bs-callout-info" id="callout-navbar-breakpoint">
+        <h4>修改视口的阈值，从而影响导航条的排列模式</h4>
+        <p>当浏览器视口（viewport）的宽度小于 <code>@grid-float-breakpoint</code>
+            值时，导航条内部的元素变为折叠排列，也就是变现为移动设备展现模式；当浏览器视口（viewport）的宽度大于 <code>@grid-float-breakpoint</code>
+            值时，导航条内部的元素变为水平排列，也就是变现为非移动设备展现模式。通过调整源码中的这个值，就可以控制导航条何时堆叠排列，何时水平排列。默认值是 <code>768px</code> （小屏幕 -- 或者说是平板
+            --的最小值，或者说是平板）。</p>
+    </div>
+    <div class="bs-callout bs-callout-warning" id="callout-navbar-role">
+        <h4>导航条的可访问性</h4>
+        <p>务必使用 <code>&lt;nav&gt;</code> 元素，或者，如果使用的是通用的 <code>&lt;div&gt;</code> 元素的话，务必为导航条设置
+            <code>role="navigation"</code> 属性，这样能够让使用辅助设备的用户明确知道这是一个导航区域。</p>
+    </div>
+
+    <div class="bs-example" data-example-id="default-navbar">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Brand</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">Link</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">One more separated link</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">Link</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+    </div>
+
+    <h2 id="navbar-brand-image">品牌图标</h2>
+    <p>将导航条内放置品牌标志的地方替换为 <code>&lt;img&gt;</code> 元素即可展示自己的品牌图标。由于 <code>.navbar-brand</code>
+        已经被设置了内补（padding）和高度（height），你需要根据自己的情况添加一些 CSS 代码从而覆盖默认设置。</p>
+    <div class="bs-example">
+        <div class="bs-example" data-example-id="navbar-with-image-brand">
+            <nav class="navbar navbar-default">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                        <img alt="Brand" width="20" height="20"
+                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAA81BMVEX///9VPnxWPXxWPXxWPXxWPXxWPXxWPXz///9hSYT6+vuFc6BXPn37+vz8+/z9/f2LeqWMe6aOfqiTg6uXiK5bQ4BZQX9iS4VdRYFdRYJfSINuWI5vWY9xXJF0YJR3Y5Z4ZZd5ZZd6Z5h9apq0qcW1qsW1q8a6sMqpnLyrn76tocCvpMGwpMJoUoprVYxeRoJjS4abjLGilLemmbrDutDFvdLPx9nX0eDa1OLb1uPd1+Td2OXe2eXh3Ofj3+nk4Orl4evp5u7u7PLv7fPx7/T08vb08/f19Pf29Pj39vn6+fuEcZ9YP35aQn/8/P1ZQH5fR4PINAOdAAAAB3RSTlMAIWWOw/P002ipnAAAAPhJREFUeF6NldWOhEAUBRvtRsfdfd3d3e3/v2ZPmGSWZNPDqScqqaSBSy4CGJbtSi2ubRkiwXRkBo6ZdJIApeEwoWMIS1JYwuZCW7hc6ApJkgrr+T/eW1V9uKXS5I5GXAjW2VAV9KFfSfgJpk+w4yXhwoqwl5AIGwp4RPgdK3XNHD2ETYiwe6nUa18f5jYSxle4vulw7/EtoCdzvqkPv3bn7M0eYbc7xFPXzqCrRCgH0Hsm/IjgTSb04W0i7EGjz+xw+wR6oZ1MnJ9TWrtToEx+4QfcZJ5X6tnhw+nhvqebdVhZUJX/oFcKvaTotUcvUnY188ue/n38AunzPPE8yg7bAAAAAElFTkSuQmCC">
+                    </a>
+                </div>
+            </nav>
+        </div>
+
+    </div>
+
+    <h2 id="navbar-forms">表单</h2>
+    <p>将表单放置于 <code>.navbar-form</code> 之内可以呈现很好的垂直对齐，并在较窄的视口（viewport）中呈现折叠状态。 使用对齐选项可以规定其在导航条上出现的位置。</p>
+    <p>注意，<code>.navbar-form</code> 和 <code>.form-inline</code> 的大部分代码都一样，内部实现使用了 mixin。 <strong class="text-danger">某些表单组件，例如输入框组，可能需要设置一个固定宽度，从而在导航条内有合适的展现。</strong>
+    </p>
+    <div class="bs-example" data-example-id="navbar-form">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-2" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Brand</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="bs-callout bs-callout-warning" id="callout-navbar-mobile-caveats">
+        <h4>移动设备上的注意事项</h4>
+        <p>在移动设备上，对于在 fixed 定位的元素内使用表单控件的情况有一些注意事项。<a href="../getting-started/#support-fixed-position-keyboards">请参考我们提供的浏览器支持情况相关的文档</a>
+            。</p>
+    </div>
+
+    <div class="bs-callout bs-callout-warning" id="callout-navbar-form-labels">
+        <h4>为输入框添加 <code>label</code> 标签</h4>
+        <p>如果你没有为输入框添加 <code>label</code> 标签，屏幕阅读器将会遇到问题。对于导航条内的表单，可以通过添加 <code>.sr-only</code> 类隐藏 <code>label</code>
+            标签。</p>
+    </div>
+
+
+    <h2 id="navbar-buttons">按钮</h2>
+    <p>对于不包含在 <code>&lt;form&gt;</code> 中的 <code>&lt;button&gt;</code> 元素，加上 <code>.navbar-btn</code>
+        后，可以让它在导航条里垂直居中。有一些对于为辅助设备提供可识别标签的方法，例如， <code>aria-label</code>、<code>aria-labelledby</code> 或者
+        <code>title</code> 属性。如果这些方法都没有，屏幕阅读器将使用 <code>placeholder</code> 属性（如果这个属性存在的话），但是请注意，使用
+        <code>placeholder</code> 代替其他识别标签的方式是不推荐的。</p>
+    <div class="bs-example" data-example-id="navbar-button">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-3" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Brand</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-3">
+                    <button type="button" class="btn btn-default navbar-btn">Sign in</button>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="bs-callout bs-callout-warning" id="callout-navbar-btn-context">
+        <h4>基于情境的用法</h4>
+        <p>就像标准的 <a href="../css/#buttons">按钮类</a> 一样，<code>.navbar-btn</code> 可以被用在 <code>&lt;a&gt;</code> 和 <code>&lt;input&gt;</code>
+            元素上。然而，在 <code>.navbar-nav</code> 内，<code>.navbar-btn</code> 和标准的按钮类都不应该被用在 <code>&lt;a&gt;</code> 元素上。</p>
+    </div>
+
+    <h2 id="navbar-text">文本</h2>
+    <p>把文本包裹在 <code>.navbar-text</code>中时，为了有正确的行距和颜色，通常使用 <code>&lt;p&gt;</code> 标签。</p>
+    <div class="bs-example" data-example-id="navbar-text">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-4" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Brand</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-4">
+                    <p class="navbar-text">Signed in as Mark Otto</p>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+
+    <h2 id="navbar-links">非导航的链接</h2>
+    <p>或许你希望在标准的导航组件之外添加标准链接，那么，使用 <code>.navbar-link</code> 类可以让链接有正确的默认颜色和反色设置。</p>
+    <div class="bs-example" data-example-id="navbar-link">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-5" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Brand</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-5">
+                    <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+
+    <h2 id="navbar-component-alignment">组件排列</h2>
+    <p>通过添加 <code>.navbar-left</code> 和 <code>.navbar-right</code> 工具类让导航链接、表单、按钮或文本对齐。两个类都会通过 CSS
+        设置特定方向的浮动样式。例如，要对齐导航链接，就要把它们放在个分开的、应用了工具类的 <code>&lt;ul&gt;</code> 标签里。</p>
+    <p>这些类是 <code>.pull-left</code> 和 <code>.pull-right</code> 的 mixin 版本，但是他们被限定在了媒体查询（media
+        query）中，这样可以更容易的在各种尺寸的屏幕上处理导航条组件。</p>
+    <div class="bs-callout bs-callout-warning" id="callout-navbar-right-align">
+        <h4>向右侧对齐多个组件</h4>
+        <p>导航条目前不支持多个 <code>.navbar-right</code> 类。为了让内容之间有合适的空隙，我们为最后一个 <code>.navbar-right</code>
+            元素使用负边距（margin）。如果有多个元素使用这个类，它们的边距（margin）将不能按照你的预期正常展现。</p>
+        <p>我们将在 v4 版本中重写这个组件时重新审视这个功能。</p>
+    </div>
+
+    <h2 id="navbar-fixed-top">固定在顶部</h2>
+    <p>添加 <code>.navbar-fixed-top</code> 类可以让导航条固定在顶部，还可包含一个 <code>.container</code> 或 <code>.container-fluid</code>
+        容器，从而让导航条居中，并在两侧添加内补（padding）。</p>
+    <div class="bs-example bs-navbar-top-example" data-example-id="navbar-fixed-to-top">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-6" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Brand</a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div>
+        </nav>
+    </div><!-- /example -->
+
+    <div class="bs-callout bs-callout-danger" id="callout-navbar-fixed-top-padding">
+        <h4>需要为 <code>body</code> 元素设置内补（padding）</h4>
+        p&gt;这个固定的导航条会遮住页面上的其它内容，除非你给 <code>&lt;body&gt;</code> 元素底部设置了 <code>padding</code>。用你自己的值，或用下面给出的代码都可以。提示：导航条的默认高度是
+        50px。<p></p>
+        <div class="zero-clipboard"><span class="btn-clipboard">复制</span></div>
+        <div class="highlight">
+            <pre><code class="language-scss" data-lang="scss"><span class="nt">body</span> <span
+                    class="p">{</span> <span class="nl">padding-top</span><span class="p">:</span> <span
+                    class="m">70px</span><span class="p">;</span> <span class="p">}</span></code></pre>
+        </div>
+        <p>Make sure to include this <strong>after</strong> the core Bootstrap CSS.</p>
+    </div>
+
+
+    <h2 id="navbar-fixed-bottom">固定在底部</h2>
+    <p>添加 <code>.navbar-fixed-bottom</code> 类可以让导航条固定在底部，并且还可以包含一个 <code>.container</code> 或
+        <code>.container-fluid</code> 容器，从而让导航条居中，并在两侧添加内补（padding）。</p>
+    <div class="bs-example bs-navbar-bottom-example" data-example-id="navbar-fixed-to-bottom">
+        <nav class="navbar navbar-default navbar-fixed-bottom">
+            <!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-7" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Brand</a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-7">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div>
+        </nav>
+    </div><!-- /example -->
+
+    <div class="bs-callout bs-callout-danger" id="callout-navbar-fixed-bottom-padding">
+        <h4>需要为 <code>body</code> 元素设置内补（padding）</h4>
+        <p>这个固定的导航条会遮住页面上的其它内容，除非你给 <code>&lt;body&gt;</code> 元素底部设置了 <code>padding</code>。用你自己的值，或用下面给出的代码都可以。提示：导航条的默认高度是
+            50px。</p>
+        <div class="zero-clipboard"><span class="btn-clipboard">复制</span></div>
+        <div class="highlight">
+            <pre><code class="language-scss" data-lang="scss"><span class="nt">body</span> <span
+                    class="p">{</span> <span class="nl">padding-bottom</span><span class="p">:</span> <span class="m">70px</span><span
+                    class="p">;</span> <span class="p">}</span></code></pre>
+        </div>
+        <p>Make sure to include this <strong>after</strong> the core Bootstrap CSS.</p>
+    </div>
+
+
+    <h2 id="navbar-static-top">静止在顶部</h2>
+    <p>通过添加 <code>.navbar-static-top</code> 类即可创建一个与页面等宽度的导航条，它会随着页面向下滚动而消失。还可以包含一个 <code>.container</code> 或 <code>.container-fluid</code>
+        容器，用于将导航条居中对齐并在两侧添加内补（padding）。</p>
+    <p>通过添加 <code>.navbar-static-top</code> 类即可创建一个与页面等宽度的导航条，它会随着页面向下滚动而消失。还可以包含一个 <code>.container</code> 或 <code>.container-fluid</code>
+        容器，用于将导航条居中对齐并在两侧添加内补（padding）。to center and pad navbar content.</p>
+    <p>Unlike the <code>.navbar-fixed-*</code> 类不同的是，你不用给 <code>body</code> 添加任何内补（padding）。</p>
+    <div class="bs-example bs-navbar-top-example" data-example-id="navbar-static-top">
+        <nav class="navbar navbar-default navbar-static-top">
+            <!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-8" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Brand</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-8">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div>
+        </nav>
+    </div><!-- /example -->
+
+
+    <h2 id="navbar-inverted">反色的导航条</h2>
+    <p>通过添加 <code>.navbar-inverse</code> 类可以改变导航条的外观。/p&gt;
+    </p>
+    <div class="bs-example" data-example-id="inverted-navbar">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-9" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Brand</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+    </div><!-- /example -->
+</div>
