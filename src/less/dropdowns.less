@@ -19,6 +19,7 @@
 .dropup,
 .dropdown {
     position: relative;
+    display: inline-block;
 }
 
 .dropdown-toggle {
@@ -50,6 +51,7 @@
     border: 1px solid @dropdown-border;
     border-radius: @border-radius-base;
     //background-clip: padding-box;
+    .box-shadow(0 6px 12px rgba(0, 0, 0, .175));
 
     // Aligns the dropdown menu to right
     //
@@ -74,6 +76,10 @@
         color: @dropdown-link-color;
         white-space: nowrap; // prevent links from randomly breaking onto new lines
     }
+}
+
+.dropup > .dropdown-menu {
+    .box-shadow(0 -6px 12px rgba(0, 0, 0, .175));
 }
 
 // Hover/Focus state
@@ -144,6 +150,10 @@
         > .btn-sm ~ .dropdown-menu {
             bottom: @dropdown-menu-sm-top;
         }
+
+        > .btn-xs ~ .dropdown-menu {
+            bottom: @dropdown-menu-xs-top;
+        }
     }
     // Show the menu
     // 各种尺寸的menu偏移量不同
@@ -158,6 +168,10 @@
 
     > .btn-sm ~ .dropdown-menu {
         top: @dropdown-menu-sm-top;
+    }
+
+    > .btn-xs ~ .dropdown-menu {
+        top: @dropdown-menu-xs-top;
     }
 
     > .dropdown-toggle.btn {
