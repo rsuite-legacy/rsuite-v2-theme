@@ -121,6 +121,32 @@
                     "link": "#popovers-options"
                 }
             ]
+        },
+        {
+            "text": "导航",
+            "link": "#nav",
+            "children": [
+                {
+                    "text": "标签页",
+                    "link": "#nav-tabs"
+                },
+                {
+                    "text": "胶囊式标签页",
+                    "link": "#nav-pills"
+                },
+                {
+                    "text": "两端对齐",
+                    "link": "#nav-justified"
+                },
+                {
+                    "text": "禁用的链接",
+                    "link": "#nav-disabled-links"
+                },
+                {
+                    "text": "添加下拉菜单",
+                    "link": "#nav-dropdowns"
+                }
+            ]
         }
     ]
 }
