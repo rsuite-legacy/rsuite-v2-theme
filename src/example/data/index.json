@@ -1,6 +1,20 @@
 {
     "completmentary": [
         {
+            "text": "字体图标",
+            "link": "#glyphicons",
+            "children": [
+                {
+                    "text": "IcoMoon",
+                    "link": "#glyphicons-glyphs"
+                },
+                {
+                    "text": "Awesome",
+                    "link": "#glyphicons-awesome"
+                }
+            ]
+        },
+        {
             "text": "按钮",
             "link": "#buttons",
             "children": [
@@ -197,6 +211,10 @@
                     "link": "#navbar-inverted"
                 }
             ]
+        },
+        {
+            "text": "路径导航(面包屑)",
+            "link": "#breadcrumbs"
         }
     ]
 }
