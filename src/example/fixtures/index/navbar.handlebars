@@ -96,18 +96,15 @@
     <h2 id="navbar-brand-image">品牌图标</h2>
     <p>将导航条内放置品牌标志的地方替换为 <code>&lt;img&gt;</code> 元素即可展示自己的品牌图标。由于 <code>.navbar-brand</code>
         已经被设置了内补（padding）和高度（height），你需要根据自己的情况添加一些 CSS 代码从而覆盖默认设置。</p>
-    <div class="bs-example">
-        <div class="bs-example" data-example-id="navbar-with-image-brand">
-            <nav class="navbar navbar-default">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">
-                        <img alt="Brand" width="20" height="20"
-                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAA81BMVEX///9VPnxWPXxWPXxWPXxWPXxWPXxWPXz///9hSYT6+vuFc6BXPn37+vz8+/z9/f2LeqWMe6aOfqiTg6uXiK5bQ4BZQX9iS4VdRYFdRYJfSINuWI5vWY9xXJF0YJR3Y5Z4ZZd5ZZd6Z5h9apq0qcW1qsW1q8a6sMqpnLyrn76tocCvpMGwpMJoUoprVYxeRoJjS4abjLGilLemmbrDutDFvdLPx9nX0eDa1OLb1uPd1+Td2OXe2eXh3Ofj3+nk4Orl4evp5u7u7PLv7fPx7/T08vb08/f19Pf29Pj39vn6+fuEcZ9YP35aQn/8/P1ZQH5fR4PINAOdAAAAB3RSTlMAIWWOw/P002ipnAAAAPhJREFUeF6NldWOhEAUBRvtRsfdfd3d3e3/v2ZPmGSWZNPDqScqqaSBSy4CGJbtSi2ubRkiwXRkBo6ZdJIApeEwoWMIS1JYwuZCW7hc6ApJkgrr+T/eW1V9uKXS5I5GXAjW2VAV9KFfSfgJpk+w4yXhwoqwl5AIGwp4RPgdK3XNHD2ETYiwe6nUa18f5jYSxle4vulw7/EtoCdzvqkPv3bn7M0eYbc7xFPXzqCrRCgH0Hsm/IjgTSb04W0i7EGjz+xw+wR6oZ1MnJ9TWrtToEx+4QfcZJ5X6tnhw+nhvqebdVhZUJX/oFcKvaTotUcvUnY188ue/n38AunzPPE8yg7bAAAAAElFTkSuQmCC">
-                    </a>
-                </div>
-            </nav>
-        </div>
-
+    <div class="bs-example" data-example-id="navbar-with-image-brand">
+        <nav class="navbar navbar-default">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <img alt="Brand" width="20" height="20"
+                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAA81BMVEX///9VPnxWPXxWPXxWPXxWPXxWPXxWPXz///9hSYT6+vuFc6BXPn37+vz8+/z9/f2LeqWMe6aOfqiTg6uXiK5bQ4BZQX9iS4VdRYFdRYJfSINuWI5vWY9xXJF0YJR3Y5Z4ZZd5ZZd6Z5h9apq0qcW1qsW1q8a6sMqpnLyrn76tocCvpMGwpMJoUoprVYxeRoJjS4abjLGilLemmbrDutDFvdLPx9nX0eDa1OLb1uPd1+Td2OXe2eXh3Ofj3+nk4Orl4evp5u7u7PLv7fPx7/T08vb08/f19Pf29Pj39vn6+fuEcZ9YP35aQn/8/P1ZQH5fR4PINAOdAAAAB3RSTlMAIWWOw/P002ipnAAAAPhJREFUeF6NldWOhEAUBRvtRsfdfd3d3e3/v2ZPmGSWZNPDqScqqaSBSy4CGJbtSi2ubRkiwXRkBo6ZdJIApeEwoWMIS1JYwuZCW7hc6ApJkgrr+T/eW1V9uKXS5I5GXAjW2VAV9KFfSfgJpk+w4yXhwoqwl5AIGwp4RPgdK3XNHD2ETYiwe6nUa18f5jYSxle4vulw7/EtoCdzvqkPv3bn7M0eYbc7xFPXzqCrRCgH0Hsm/IjgTSb04W0i7EGjz+xw+wR6oZ1MnJ9TWrtToEx+4QfcZJ5X6tnhw+nhvqebdVhZUJX/oFcKvaTotUcvUnY188ue/n38AunzPPE8yg7bAAAAAElFTkSuQmCC">
+                </a>
+            </div>
+        </nav>
     </div>
 
     <h2 id="navbar-forms">表单</h2>
@@ -273,13 +270,7 @@
     <div class="bs-callout bs-callout-danger" id="callout-navbar-fixed-top-padding">
         <h4>需要为 <code>body</code> 元素设置内补（padding）</h4>
         p&gt;这个固定的导航条会遮住页面上的其它内容，除非你给 <code>&lt;body&gt;</code> 元素底部设置了 <code>padding</code>。用你自己的值，或用下面给出的代码都可以。提示：导航条的默认高度是
-        50px。<p></p>
-        <div class="zero-clipboard"><span class="btn-clipboard">复制</span></div>
-        <div class="highlight">
-            <pre><code class="language-scss" data-lang="scss"><span class="nt">body</span> <span
-                    class="p">{</span> <span class="nl">padding-top</span><span class="p">:</span> <span
-                    class="m">70px</span><span class="p">;</span> <span class="p">}</span></code></pre>
-        </div>
+        50px。
         <p>Make sure to include this <strong>after</strong> the core Bootstrap CSS.</p>
     </div>
 
@@ -358,7 +349,7 @@
                 </div><!-- /.navbar-collapse -->
             </div>
         </nav>
-    </div><!-- /example -->
+    </div>
 
 
     <h2 id="navbar-inverted">反色的导航条</h2>
