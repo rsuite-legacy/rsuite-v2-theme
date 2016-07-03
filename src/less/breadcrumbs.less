@@ -2,7 +2,6 @@
 // Breadcrumbs
 // --------------------------------------------------
 
-
 .breadcrumb {
   padding: @breadcrumb-padding-vertical @breadcrumb-padding-horizontal;
   margin-bottom: @line-height-computed;
@@ -14,13 +13,26 @@
     display: inline-block;
 
     + li:before {
+      font-family: @breadcrumb-separator-font;
       content: "@{breadcrumb-separator}\00a0"; // Unicode space added since inline-block means non-collapsing white-space
-      padding: 0 5px;
+      padding: 0 3px 0 0;
       color: @breadcrumb-color;
     }
   }
 
   > .active {
     color: @breadcrumb-active-color;
+  }
+
+  > .highlight, > .active-highlight {
+    display: block;
+    font-size: @font-size-large;
+    color: @breadcrumb-active-color;
+    padding-top: @base-unit-px;
+
+    &:before {
+      content: "";
+      padding: 0;
+    }
   }
 }
