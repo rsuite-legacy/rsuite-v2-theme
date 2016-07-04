@@ -215,6 +215,66 @@
         {
             "text": "路径导航(面包屑)",
             "link": "#breadcrumbs"
+        },
+        {
+            "text": "列表组",
+            "link": "#list-group",
+            "children": [
+                {
+                    "text": "基本实例",
+                    "link": "#list-group-basic"
+                },
+                {
+                    "text": "徽章",
+                    "link": "#list-group-badges"
+                },
+                {
+                    "text": "链接",
+                    "link": "#list-group-linked"
+                },
+                {
+                    "text": "Button items",
+                    "link": "#list-group-buttons"
+                },
+                {
+                    "text": "被禁用的条目",
+                    "link": "#list-group-disabled"
+                },
+                {
+                    "text": "情境类",
+                    "link": "#list-group-contextual-classes"
+                },
+                {
+                    "text": "定制内容",
+                    "link": "#list-group-custom-content"
+                }
+            ]
+        },
+        {
+            "text": "面板",
+            "link": "#panels",
+            "children": [
+                {
+                    "text": "基本实例",
+                    "link": "#panels-basic"
+                },
+                {
+                    "text": "带标题的面版",
+                    "link": "#panels-heading"
+                },
+                {
+                    "text": "带注脚的面板",
+                    "link": "#panels-footer"
+                },
+                {
+                    "text": "情境效果",
+                    "link": "#panels-alternatives"
+                },
+                {
+                    "text": "带列表组的面版",
+                    "link": "#panels-list-group"
+                }
+            ]
         }
     ]
 }
