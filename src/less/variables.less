@@ -49,15 +49,19 @@
 @body-bg: #fff;
 //** Global text color on `<body>`.
 @text-color: @B900;
+//** Global textual link color.
+@text-primary-color: @H500;
 
 //** Global textual link color.
 @link-color: @H500;
-//** Link hover color set via `darken()` function.
+//** Link hover color.
 @link-hover-color: @H500;
 //** Link hover decoration.
 @link-hover-decoration: underline;
-//** border base color
+//** border base color.
 @border-base-color: @B300;
+//** base bg color.
+@base-bg-color: @B050;
 
 //== common
 //
@@ -605,10 +609,10 @@
 //##
 
 //** Padding applied to the modal body
-@modal-inner-padding: 15px;
+@modal-inner-padding: @base-unit-px;
 
 //** Padding applied to the modal title
-@modal-title-padding: 15px;
+@modal-title-padding: 10px 20px;
 //** Modal title line-height
 @modal-title-line-height: @line-height-base;
 

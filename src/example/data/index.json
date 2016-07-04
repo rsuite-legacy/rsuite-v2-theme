@@ -275,6 +275,44 @@
                     "link": "#panels-list-group"
                 }
             ]
+        },
+        {
+            "text": "模态框",
+            "link": "#modals",
+            "children": [
+                {
+                    "text": "实例",
+                    "link": "#modals-examples"
+                },
+                {
+                    "text": "Sizes",
+                    "link": "#modals-sizes"
+                },
+                {
+                    "text": "Remove animation",
+                    "link": "#modals-remove-animation"
+                },
+                {
+                    "text": "Varying content based on trigger button",
+                    "link": "#modals-related-target"
+                },
+                {
+                    "text": "用法",
+                    "link": "#modals-usage"
+                },
+                {
+                    "text": "参数",
+                    "link": "#modals-options"
+                },
+                {
+                    "text": "方法",
+                    "link": "#modals-methods"
+                },
+                {
+                    "text": "事件",
+                    "link": "#modals-events"
+                }
+            ]
         }
     ]
 }
