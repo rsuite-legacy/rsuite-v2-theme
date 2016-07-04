@@ -313,6 +313,60 @@
                     "link": "#modals-events"
                 }
             ]
+        },
+        {
+            "text": "表单",
+            "link": "#forms",
+            "children": [
+                {
+                    "text": "基本实例",
+                    "link": "#forms-example"
+                },
+                {
+                    "text": "内联表单",
+                    "link": "#forms-inline"
+                },
+                {
+                    "text": "水平排列的表单",
+                    "link": "#forms-horizontal"
+                },
+                {
+                    "text": "被支持的控件",
+                    "link": "#forms-controls"
+                },
+                {
+                    "text": "静态控件",
+                    "link": "#forms-controls-static"
+                },
+                {
+                    "text": "焦点状态",
+                    "link": "#forms-control-focus"
+                },
+                {
+                    "text": "禁用状态",
+                    "link": "#forms-control-disabled"
+                },
+                {
+                    "text": "只读状态",
+                    "link": "#forms-control-readonly"
+                },
+                {
+                    "text": "校验状态",
+                    "link": "#forms-control-validation"
+                },
+                {
+                    "text": "控件尺寸",
+                    "link": "#forms-control-sizes"
+                },
+                {
+                    "text": "辅助文本",
+                    "link": "#forms-help-text"
+                },
+                {
+                    "text": "checkbox radio",
+                    "link": "#uniform"
+                }
+            ]
         }
     ]
 }

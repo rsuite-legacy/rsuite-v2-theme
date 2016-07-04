@@ -103,7 +103,7 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: 'src/example/',
-                    src: '*.hbs',
+                    src: ['*.handlebars', '!base.handlebars'],
                     dest: gruntConfig.output + '/examples/',
                     ext: '.html'
                 }],
@@ -118,7 +118,7 @@ module.exports = function(grunt) {
 
     grunt.initConfig(options);
     grunt.registerTask('default', task_default);
-    grunt.registerTask('dev',task_dev);
+    grunt.registerTask('dev', task_dev);
 
     grunt.registerTask('exampleSite', 'Generate Example Site', function() {
         grunt.log.writeln('Site generating...');

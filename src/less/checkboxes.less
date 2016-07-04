@@ -1,0 +1,190 @@
+@charset "utf-8";
+//Created by yangguo on 2016/7/4 0004.
+/*
+
+Uniform Theme: Uniform Default
+Version: 1.8
+By: Josh Pyles
+License: MIT License
+---
+For use with the Uniform plugin:
+http://uniformjs.com/
+*/
+/* General settings */
+div.checker, div.radio {
+    display: -moz-inline-box;
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    vertical-align: middle;
+
+    &,
+    & * {
+        margin: 0;
+        padding: 0;
+    }
+
+    & span {
+        background-image: url("../examples/images/sprite.png");
+        background-repeat: no-repeat;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    &:focus {
+        outline: 0;
+    }
+}
+
+/* Remove default webkit and possible mozilla .search styles.
+ * Keeping this as :active to remove browser styles */
+div.checker input,
+input[type="search"],
+input[type="search"]:active {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
+
+/* Checkbox */
+div.checker {
+    position: relative;
+    margin-right: 5px;
+
+    &,
+    & span,
+    & input {
+        width: 19px;
+        height: 19px;
+    }
+
+    & span {
+        display: -moz-inline-box;
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        text-align: center;
+        background-position: 0 -260px;
+
+        &.checked {
+            background-position: -76px -260px;
+        }
+    }
+
+    & input {
+        opacity: 0;
+        filter: alpha(opacity=0);
+        -moz-opacity: 0;
+        border: none;
+        background: none;
+        display: -moz-inline-box;
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+    }
+
+    &.active span {
+        background-position: -19px -260px;
+
+        &.checked {
+            background-position: -95px -260px;
+        }
+    }
+
+    &.hover, &.focus {
+        & span {
+            background-position: -38px -260px;
+
+            &.checked {
+                background-position: -114px -260px;
+            }
+        }
+    }
+
+    &.disabled {
+        &, &.active {
+            & span {
+                background-position: -152px -260px;
+
+                &.checked {
+                    background-position: -171px -260px;
+                }
+            }
+        }
+    }
+}
+
+/* Radio */
+div.radio {
+    position: relative;
+    margin-right: 3px;
+
+    &,
+    & span,
+    & input {
+        width: 18px;
+        height: 18px;
+    }
+
+    & span {
+        display: -moz-inline-box;
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        text-align: center;
+        background-position: 0 -279px;
+
+        &.checked {
+            background-position: -72px -279px;
+        }
+    }
+
+    & input {
+        opacity: 0;
+        filter: alpha(opacity=0);
+        -moz-opacity: 0;
+        border: none;
+        background: none;
+        display: -moz-inline-box;
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        text-align: center;
+    }
+
+    &.active span {
+        background-position: -18px -279px;
+
+        &.checked {
+            background-position: -90px -279px;
+        }
+    }
+
+    &.hover, &.focus {
+        & span {
+            background-position: -36px -279px;
+
+            &.checked {
+                background-position: -108px -279px;
+            }
+        }
+    }
+
+    &.active span {
+        background-position: -54px -279px;
+
+        &.checked {
+            background-position: -126px -279px;
+        }
+    }
+
+    &.disabled {
+        &, &.active {
+            & span {
+                background-position: -144px -279px;
+
+                &.checked{
+                    background-position: -162px -279px;
+                }
+            }
+        }
+    }
+}
