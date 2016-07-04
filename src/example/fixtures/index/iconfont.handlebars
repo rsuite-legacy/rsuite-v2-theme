@@ -1,3 +1,4 @@
+<!--ICON FONT-->
 <div class="bs-docs-section">
     <h1 id="glyphicons" class="page-header">Glyphicons 字体图标</h1>
 
@@ -1703,7 +1704,7 @@
         </div>
     </div>
 
-    <h2 id="glyphicons-how-to-use"><a class="anchorjs-link " href="#glyphicons-how-to-use" aria-label="Anchor link for: glyphicons how to use" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>如何使用</h2>
+    <h2 id="glyphicons-how-to-use">如何使用</h2>
     <p>出于性能的考虑，所有图标都需要一个基类和对应每个图标的类。把下面的代码放在任何地方都可以正常使用。注意，为了设置正确的内补（padding），务必在图标和文本之间添加一个空格。</p>
     <div class="bs-callout bs-callout-danger" id="callout-glyphicons-dont-mix">
         <h4>不要和其他组件混合使用</h4>
@@ -1729,40 +1730,5 @@
         <p>如果你使用图标是为了表达某些含义（不仅仅是为了装饰用），请确保你所要表达的意思能够通过被辅助设备识别，例如，包含额外的内容并通过 <code>.sr-only</code> 类让其在视觉上表现出隐藏的效果。</p>
         <p>如果你所创建的组件不包含任何文本内容（例如， <code>&lt;button&gt;</code> 内只包含了一个图标），你应当提供其他的内容来表示这个控件的意图，这样就能让使用辅助设备的用户知道其作用了。这种情况下，你可以为控件添加 <code>aria-label</code> 属相。</p>
     </div>
-    <div class="zero-clipboard"><span class="btn-clipboard">复制</span></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-search"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;</span></code></pre></div>
-
-
-    <h2 id="glyphicons-examples"><a class="anchorjs-link " href="#glyphicons-examples" aria-label="Anchor link for: glyphicons examples" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>实例</h2>
-    <p>可以把它们应用到按钮、工具条中的按钮组、导航或输入框等地方。</p>
-    <div class="bs-example" data-example-id="glyphicons-general">
-        <div class="btn-toolbar" role="toolbar">
-            <div class="btn-group">
-                <button type="button" class="btn btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-align-left" aria-hidden="true"></span></button>
-                <button type="button" class="btn btn-default" aria-label="Center Align"><span class="glyphicon glyphicon-align-center" aria-hidden="true"></span></button>
-                <button type="button" class="btn btn-default" aria-label="Right Align"><span class="glyphicon glyphicon-align-right" aria-hidden="true"></span></button>
-                <button type="button" class="btn btn-default" aria-label="Justify"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span></button>
-            </div>
-        </div>
-        <div class="btn-toolbar" role="toolbar">
-            <button type="button" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star</button>
-            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star</button>
-            <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star</button>
-            <button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star</button>
-        </div>
-    </div>
-    <div class="zero-clipboard"><span class="btn-clipboard">复制</span></div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-default"</span> <span class="na">aria-label=</span><span class="s">"Left Align"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-align-left"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;</span>
-<span class="nt">&lt;/button&gt;</span>
-
-<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-default btn-lg"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-star"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;</span> Star
-<span class="nt">&lt;/button&gt;</span></code></pre></div>
-    <p><a href="#alerts">alert</a> 组件中所包含的图标是用来表示这是一条错误消息的，通过添加额外的 <code>.sr-only</code> 文本就可以让辅助设备知道这条提示所要表达的意思了。</p>
-    <div class="bs-example" data-example-id="glyphicons-accessibility">
-        <div class="alert alert-danger" role="alert">
-            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-            <span class="sr-only">Error:</span>
-            Enter a valid email address
-        </div>
-    </div>
 </div>
+<!--ICON FONT END-->
