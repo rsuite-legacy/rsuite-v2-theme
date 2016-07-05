@@ -7,3 +7,8 @@
 $ npm install
 $ grunt
 ```
+
+## 生成Demo站点
+```bash
+$ grunt exampleSite
+```
