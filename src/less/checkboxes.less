@@ -36,6 +36,17 @@ div.checker, div.radio {
             text-rendering: optimizeLegibility;
             -webkit-font-smoothing: antialiased;
         }
+
+        &:after {
+            .opacity(0);
+            transition: opacity .3s linear;
+        }
+
+        &.checked {
+            &:after {
+                .opacity(1);
+            }
+        }
     }
 
     &.disabled {

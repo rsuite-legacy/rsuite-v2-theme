@@ -37,9 +37,9 @@
 
 @brand-primary: @H500; // #337ab7
 @brand-success: #1b9451;
-@brand-info: #2c96da;
-@brand-warning: #faa121;
-@brand-danger: #c40707;
+@brand-info: #4d90fe;
+@brand-warning: #eca22e;
+@brand-danger: #d84a38;
 
 //== Scaffolding
 //
@@ -62,6 +62,8 @@
 @border-base-color: @B300;
 //** base bg color.
 @base-bg-color: @B050;
+//** border primary color.
+@border-primary-color: @H500;
 
 //== common
 //
@@ -184,20 +186,20 @@
 @btn-primary-border: @H500;
 
 @btn-success-color: #fff;
-@btn-success-bg: #1b9451;
-@btn-success-border: #1b9451;
+@btn-success-bg: @brand-success;
+@btn-success-border: @brand-success;
 
 @btn-info-color: #fff;
-@btn-info-bg: #4d90fe;
-@btn-info-border: #4d90fe;
+@btn-info-bg: @brand-info;
+@btn-info-border: @brand-info;
 
 @btn-warning-color: #fff;
-@btn-warning-bg: #eca22e;
-@btn-warning-border: #eca22e;
+@btn-warning-bg: @brand-warning;
+@btn-warning-border: @brand-warning;
 
 @btn-danger-color: #fff;
-@btn-danger-bg: #d84a38;
-@btn-danger-border: #d84a38;
+@btn-danger-bg: @brand-danger;
+@btn-danger-border: @brand-danger;
 
 @btn-link-disabled-color: @gray-light;
 
@@ -478,21 +480,21 @@
 //
 //##
 
-@pagination-color: @link-color;
-@pagination-bg: #fff;
-@pagination-border: #ddd;
+@pagination-color: @B900;
+@pagination-bg: @base-bg-color;
+@pagination-border: @base-bg-color;
 
-@pagination-hover-color: @link-hover-color;
-@pagination-hover-bg: @gray-lighter;
-@pagination-hover-border: #ddd;
+@pagination-hover-color: @pagination-color;
+@pagination-hover-bg: darken(@base-bg-color, 5%);
+@pagination-hover-border: darken(@base-bg-color, 5%);
 
-@pagination-active-color: #fff;
-@pagination-active-bg: @brand-primary;
-@pagination-active-border: @brand-primary;
+@pagination-active-color: @pagination-color;
+@pagination-active-bg: darken(@base-bg-color, 10%);
+@pagination-active-border: darken(@base-bg-color, 10%);
 
-@pagination-disabled-color: @gray-light;
-@pagination-disabled-bg: #fff;
-@pagination-disabled-border: #ddd;
+@pagination-disabled-color: @pagination-color;
+@pagination-disabled-bg: darken(@base-bg-color, 10%);
+@pagination-disabled-border: darken(@base-bg-color, 10%);
 
 //== Pager
 //
