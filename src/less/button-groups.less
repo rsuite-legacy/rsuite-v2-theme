@@ -147,13 +147,16 @@
 //
 // Remix the default button sizing classes into new ones for easier manipulation.
 
-.btn-group-xs > .btn { &:extend(.btn-xs);
+.btn-group-xs > .btn {
+    &:extend(.btn-xs);
 }
 
-.btn-group-sm > .btn { &:extend(.btn-sm);
+.btn-group-sm > .btn {
+    &:extend(.btn-sm);
 }
 
-.btn-group-lg > .btn { &:extend(.btn-lg);
+.btn-group-lg > .btn {
+    &:extend(.btn-lg);
 }
 
 // Split button dropdowns
@@ -368,6 +371,7 @@
 }
 
 .btn-group-lg {
+    &.btn-group .btn:hover,
     .dropdown-toggle.btn:hover {
         padding-bottom: (@padding-large-vertical - 1);
     }

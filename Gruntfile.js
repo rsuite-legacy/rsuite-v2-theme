@@ -28,7 +28,7 @@ module.exports = function(grunt) {
                     expand: true,
                     cwd: 'src/fonts',
                     src: ['**/*'],
-                    dest: gruntConfig.output + '/fonts',
+                    dest: gruntConfig.output + '/css/fonts',
                     flatten: false
                 }]
             },
