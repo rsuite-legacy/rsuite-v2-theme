@@ -24,7 +24,7 @@
 
 .dropdown-toggle {
     position: relative;
-    z-index: (@zindex-dropdown+10);
+    z-index: @zindex-dropdown;
 }
 
 // Prevent the focus on the dropdown toggle when closing dropdowns
@@ -237,6 +237,11 @@
 .pull-right > .dropdown-menu {
     right: 0;
     left: auto;
+}
+
+//fixed link a active color
+.dropdown > .btn-link:active {
+    color: @link-color;
 }
 
 // Allow for dropdowns to go bottom up (aka)
