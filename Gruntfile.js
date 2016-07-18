@@ -12,9 +12,10 @@ module.exports = function(grunt) {
 
     var READ_JSON_CONFIG = {encoding: 'utf8'}
     var gruntConfig = grunt.file.readJSON('grunt/config.json', READ_JSON_CONFIG)
+    var pkg = grunt.file.readJSON("package.json", READ_JSON_CONFIG);
 
     var options = {
-        pkg: grunt.file.readJSON("package.json", READ_JSON_CONFIG),
+        pkg: pkg,
         clean: {
             //清除dist目录
             dist: [gruntConfig.output]
@@ -92,7 +93,7 @@ module.exports = function(grunt) {
                     outputSourceFiles: true,
                     sourceMapURL: '<%= pkg.name %>.css.map',
                     sourceMapFilename: gruntConfig.output + '/css/<%= pkg.name %>.css.map',
-                    banner:`@charset "utf-8";/*!
+                    banner: `@charset "utf-8";/*!
  * @Name:suite <%= pkg.version %>
  * @Author: <%= pkg.author %>
  * @Base:Bootstrap v3.3.6 (http://getbootstrap.com)
@@ -124,8 +125,13 @@ module.exports = function(grunt) {
     var task_examples = ['compile-handlebars:example'];
 
     grunt.initConfig(options);
-    grunt.registerTask('default', task_default);
+    grunt.registerTask('defaultTask', task_default);
     grunt.registerTask('dev', task_dev);
+
+    grunt.registerTask('default', 'Generate css & font', function() {
+        pkg.name = 'rsuite';
+        grunt.task.run('defaultTask');
+    });
 
     grunt.registerTask('exampleSite', 'Generate Example Site', function() {
         grunt.log.writeln('Site generating...');
