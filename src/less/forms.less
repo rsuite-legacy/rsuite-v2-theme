@@ -617,3 +617,35 @@ input[type="checkbox"] {
         }
     }
 }
+
+/**
+CHECKBOX LIST
+**/
+.checkbox-list > label {
+    display: block;
+
+    &.checkbox-inline, &.inline {
+        display: inline-block;
+    }
+}
+
+.radio-list > label {
+    display: block;
+
+    &.radio-inline {
+        display: inline-block;
+    }
+}
+
+.checkbox-list > label.checkbox-inline,
+.checkbox-list > label.inline,
+.radio-list > label.radio-inline,
+.radio-list > label.inline {
+    padding-left: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
+
+    &:first-child {
+        padding-left: 0;
+    }
+}
