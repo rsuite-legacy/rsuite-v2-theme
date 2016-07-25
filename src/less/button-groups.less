@@ -171,16 +171,75 @@
 
         &, &:active, &:focus, &:hover {
             background: white;
-            border-bottom: 1px solid white;
+            border-bottom: medium none;
+            padding-bottom: (@padding-base-vertical+1);
         }
 
         &:hover {
-            padding-bottom: @padding-base-vertical;
+            padding-bottom: (@padding-base-vertical+1);
+        }
+
+        &.btn-lg {
+            &, &:active, &:focus, &:hover {
+                padding-bottom: (@padding-large-vertical+1);
+            }
+        }
+
+        &.btn-sm {
+            &, &:active, &:focus, &:hover {
+                padding-bottom: (@padding-small-vertical+1);
+            }
+        }
+
+        &.btn-xs {
+            &, &:active, &:focus, &:hover {
+                padding-bottom: (@padding-xs-vertical+1);
+            }
         }
     }
 
     .dropdown-menu {
         z-index: (@zindex-dropdown+5);
+    }
+}
+
+.btn-group.open.dropup {
+    .dropdown-toggle.btn {
+        z-index: (@zindex-dropdown+10);
+
+        &, &:active, &:focus, &:hover {
+            background: white;
+            border-top: medium none;
+            padding-top: (@padding-base-vertical+1);
+            padding-bottom: @padding-base-vertical;
+        }
+
+        &:hover {
+            padding-top: (@padding-base-vertical+1);
+            padding-bottom: @padding-base-vertical;
+        }
+
+        &.btn-lg {
+            &, &:active, &:focus, &:hover {
+                padding-top: (@padding-large-vertical+1);
+                padding-bottom: @padding-large-vertical;
+            }
+        }
+
+        &.btn-sm {
+            &, &:active, &:focus, &:hover {
+                padding-top: (@padding-small-vertical+1);
+                padding-bottom: @padding-small-vertical;
+            }
+        }
+
+        &.btn-xs {
+            &, &:active, &:focus, &:hover {
+                padding-top: (@padding-xs-vertical+1);
+                padding-bottom: @padding-xs-vertical;
+
+            }
+        }
     }
 }
 
@@ -381,19 +440,19 @@
     }
 
     &.btn-group.open .dropdown-toggle.btn:hover {
-        padding-bottom: @padding-large-vertical;
+        padding-bottom: (@padding-large-vertical+1);
     }
 }
 
 .btn-group-sm {
     &.btn-group.open .dropdown-toggle.btn:hover {
-        padding-bottom: @padding-small-vertical;
+        padding-bottom: (@padding-small-vertical+1);
     }
 }
 
 .btn-group-xs {
     &.btn-group.open .dropdown-toggle.btn:hover {
-        padding-bottom: @padding-xs-vertical;
+        padding-bottom: (@padding-xs-vertical+1);
     }
 }
 
