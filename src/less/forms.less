@@ -486,6 +486,10 @@ input[type="checkbox"] {
             display: inline-block;
             margin-bottom: 0;
             vertical-align: middle;
+
+            .checkbox-list {
+                display: inline-block;
+            }
         }
 
         // In navbar-form, allow folks to *not* use `.form-group`
@@ -614,6 +618,23 @@ input[type="checkbox"] {
                 padding-top: (@padding-small-vertical + 1);
                 font-size: @font-size-small;
             }
+        }
+    }
+
+    //adjust radio padding
+    .radio-list .radio-inline {
+        padding-top: 6px;
+
+        .radio {
+            padding-top: 4px;
+        }
+    }
+
+    .checkboxList .checkbox-inline {
+        padding-top: 6px;
+
+        .checkbox {
+            padding-top: 4px;
         }
     }
 }
