@@ -53,6 +53,41 @@
             left: -1px;
         }
     }
+
+    input.form-control ~ .input-group-addon {
+        border-left: none;
+    }
+
+    &.input-group-inside {
+        width: 100%;
+
+        input.form-control {
+            display: block;
+            width: 100%;
+            padding-right: 36px;
+        }
+
+        .input-group-addon {
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 20;
+            background: none;
+            border: none;
+            padding: 9px 13px 8px 13px;
+            width: auto;
+        }
+
+        .input-group-addon ~ input.form-control {
+            padding-left: 36px;
+            padding-right: 12px;
+        }
+
+        input.form-control ~ .input-group-addon {
+            left: inherit;
+            right: 0;
+        }
+    }
 }
 
 // Sizing options

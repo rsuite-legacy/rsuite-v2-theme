@@ -20,6 +20,19 @@
 .dropdown {
     position: relative;
     display: inline-block;
+
+    //both-ends
+    &.both-ends .btn {
+       .clearfix;
+
+        & > span:first-child {
+           float: left;
+        }
+
+        & > span:last-child {
+            float: right;
+        }
+    }
 }
 
 .dropdown-toggle {
