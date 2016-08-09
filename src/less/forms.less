@@ -241,7 +241,7 @@ input[type="search"] {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 999999;
+    z-index: @zindex-input;
 }
 
 .radio + .radio,
@@ -405,7 +405,7 @@ input[type="checkbox"] {
     position: absolute;
     top: 0;
     right: 0;
-    z-index: 2; // Ensure icon is above input groups
+    z-index: @zindex-input; // Ensure icon is above input groups
     display: block;
     width: @input-height-base;
     height: @input-height-base;

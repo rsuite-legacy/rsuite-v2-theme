@@ -20,7 +20,7 @@
         // Ensure that the input is always above the *appended* addon button for
         // proper border colors.
         position: relative;
-        z-index: 2;
+        z-index: @zindex-input;
 
         // IE9 fubars the placeholder attribute in text inputs and the arrows on
         // select elements in input groups. To fix it, we float the input. Details:
@@ -31,7 +31,7 @@
         margin-bottom: 0;
 
         &:focus {
-            z-index: 3;
+            z-index: (@zindex-input+1);
         }
     }
 
@@ -45,11 +45,11 @@
         .dropdown-toggle {
             border-bottom: none;
             padding-bottom: (@padding-base-vertical+1);
-            z-index: 1020;
+            z-index: (@zindex-input-group-icon+2);
         }
 
         .dropdown-menu {
-            z-index: 1010;
+            z-index: (@zindex-input-group-icon+1);
             left: -1px;
         }
     }
@@ -71,7 +71,7 @@
             position: absolute;
             left: 0;
             top: 0;
-            z-index: 20;
+            z-index: @zindex-input-group-icon;
             background: none;
             border: none;
             padding: 9px 13px 8px 13px;
