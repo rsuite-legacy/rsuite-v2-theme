@@ -394,27 +394,27 @@
 }
 
 .btn-group-primary {
-    .button-group-btn(@brand-primary);
+    .button-group-btn(@brand-primary, @brand-primary-hover);
 }
 
 .btn-group-success {
-    .button-group-btn(@brand-success);
+    .button-group-btn(@brand-success, @brand-success-hover);
 }
 
 .btn-group-warning {
-    .button-group-btn(@brand-warning);
+    .button-group-btn(@brand-warning, @brand-warning-hover);
 }
 
 .btn-group-danger {
-    .button-group-btn(@brand-danger);
+    .button-group-btn(@brand-danger, @brand-danger-hover);
 }
 
 .btn-group-info {
-    .button-group-btn(@brand-info);
+    .button-group-btn(@brand-info, @brand-info-hover);
 }
 
 .btn-group-link {
-    .button-group-btn(@brand-primary);
+    .button-group-btn(@brand-primary, @brand-primary-hover);
 
     &.btn-group {
         .btn-link:focus, .btn-link:hover {
@@ -456,7 +456,7 @@
     }
 }
 
-.button-group-btn(@base-color) {
+.button-group-btn(@base-color,@hover-bg-color) {
     &.btn-group {
         .btn:hover {
             background-color: darken(@base-color, 5%);
@@ -465,6 +465,11 @@
 
         .dropdown-menu {
             border-color: darken(@base-color, 10%);
+
+            & > li > a:focus,
+            & > li > a:hover {
+                background: @hover-bg-color;
+            }
 
             & > .active > a,
             & > .active > a:focus,
