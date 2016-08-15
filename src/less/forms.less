@@ -431,16 +431,20 @@ input[type="checkbox"] {
 }
 
 // Feedback states
-.has-success {
-    .form-control-validation(@state-success-text; @state-success-text; @state-success-bg);
-}
+//.has-success {
+//    .form-control-validation(@state-success-text; @state-success-text; @state-success-bg);
+//}
 
-.has-warning {
-    .form-control-validation(@state-warning-text; @state-warning-text; @state-warning-bg);
-}
+//.has-warning {
+//    .form-control-validation(@state-warning-text; @state-warning-text; @state-warning-bg);
+//}
 
 .has-error {
-    .form-control-validation(@state-danger-text; @state-danger-text; @state-danger-bg);
+    //.form-control-validation(@state-danger-text; @state-danger-text; @state-danger-bg);
+
+    .help-block.error {
+        color: @state-danger-text;
+    }
 }
 
 // Reposition feedback icon if input has visible label above
@@ -461,9 +465,10 @@ input[type="checkbox"] {
 
 .help-block {
     display: block; // account for any element using help-block
-    margin-top: 5px;
-    margin-bottom: 10px;
+    margin: 5px 0px;
     color: lighten(@text-color, 25%); // lighten the text some for contrast
+    height: 16.8px;
+    line-height: 16.8px;
 }
 
 // Inline forms
