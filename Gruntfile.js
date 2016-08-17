@@ -101,7 +101,7 @@ module.exports = function(grunt) {
  * Licensed under MIT (https://github.com/suitejs/suite-theme-pagurian/blob/master/LICENSE)
  */`
                 },
-                src: 'src/less/suite.less',
+                src: 'src/less/rsuite.less',
                 dest: gruntConfig.output + '/css/<%= pkg.name %>.css'
             }
         },
