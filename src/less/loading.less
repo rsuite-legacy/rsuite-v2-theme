@@ -15,6 +15,7 @@
         width: 64px;
         margin: 0 auto 10px;
         animation: loadTween 4s cubic-bezier(.785, .135, .15, .86) infinite;
+        min-height: 48px;
     }
 
     #loading-text {
@@ -72,137 +73,137 @@
 
 @keyframes xLeftMatrixR {
     0% {
-        opacity: 0;
-
-        transform: translateX(-50px) rotate(-30deg) scale(1.5)
-    }
-
-    20% {
-        opacity: 0;
-        transform: translateX(-50px) rotate(-30deg) scale(1.5)
-    }
-
-    80% {
         opacity: 1;
-        transform: translateX(0) rotate(0deg) scale(1)
+        transform: translateX(0) rotate(0deg) scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateX(0) rotate(0deg) scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(-50px) rotate(-30deg) scale(1.5);
     }
 }
 
 @keyframes xRightMatrixR {
     0% {
-        opacity: 0;
-        transform: translateX(50px) rotate(30deg) scale(1.5)
-    }
-
-    20% {
-        opacity: 0;
-        transform: translateX(50px) rotate(30deg) scale(1.5)
-    }
-
-    80% {
         opacity: 1;
-        transform: translateX(0) rotate(0deg) scale(1)
+        transform: translateX(0) rotate(0deg) scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateX(0) rotate(0deg) scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(50px) rotate(30deg) scale(1.5);
     }
 }
 
 @keyframes Load5 {
     0% {
-        opacity: 0;
-        transform: translate(-30px, 30px) rotate(-30deg) scale(1.5)
-    }
-
-    20% {
-        opacity: 0;
-        transform: translate(-30px, 30px) rotate(-30deg) scale(1.5)
-    }
-
-    80% {
         opacity: 1;
-        transform: translate(0) rotate(0deg) scale(1)
+        transform: translate(0) rotate(0deg) scale(1);
+
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(0) rotate(0deg) scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: translate(-30px, 30px) rotate(-30deg) scale(1.5);
     }
 }
 
 @keyframes Load4 {
     0% {
-        opacity: 0;
-        transform: translate(30px, -30px) rotate(-30deg) scale(1.5)
-    }
-
-    20% {
-        opacity: 0;
-        transform: translate(30px, -30px) rotate(-30deg) scale(1.5)
-    }
-
-    80% {
         opacity: 1;
-        transform: translate(0) rotate(0deg) scale(1)
+        transform: translate(0) rotate(0deg) scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(0) rotate(0deg) scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: translate(30px, -30px) rotate(-30deg) scale(1.5);
     }
 }
 
 @keyframes Load3 {
     0% {
-        opacity: 0;
-        transform: translate(-30px, -30px) rotate(30deg) scale(1.5)
-    }
-
-    20% {
-        opacity: 0;
-        transform: translate(-30px, -30px) rotate(30deg) scale(1.5)
-    }
-
-    80% {
         opacity: 1;
-        transform: translate(0) rotate(0deg) scale(1)
+        transform: translate(0) rotate(0deg) scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(0) rotate(0deg) scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: translate(-30px, -30px) rotate(30deg) scale(1.5);
     }
 }
 
 @keyframes Load2 {
     0% {
-        opacity: 0;
-        transform: translate(-30px, 30px) rotate(-30deg) scale(1.5)
-    }
-
-    20% {
-        opacity: 0;
-        transform: translate(-30px, 30px) rotate(-30deg) scale(1.5)
-    }
-
-    80% {
         opacity: 1;
-        transform: translate(0) rotate(0deg) scale(1)
+        transform: translate(0) rotate(0deg) scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(0) rotate(0deg) scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: translate(-30px, 30px) rotate(-30deg) scale(1.5);
     }
 }
 
 @keyframes Load1 {
     0% {
-        opacity: 0;
-        transform: translate(30px, 30px) rotate(30deg) scale(1.5)
-    }
-
-    20% {
-        opacity: 0;
-        transform: translate(30px, 30px) rotate(30deg) scale(1.5)
-    }
-
-    80% {
         opacity: 1;
-        transform: translate(0) rotate(0deg) scale(1)
+        transform: translate(0) rotate(0deg) scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(0) rotate(0deg) scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: translate(30px, 30px) rotate(30deg) scale(1.5);
     }
 }
 
 @keyframes Load0 {
     0% {
-        opacity: 0;
-        transform: translate(30px, -30px) rotate(-30deg) scale(1.5)
-    }
-
-    20% {
-        opacity: 0;
-        transform: translate(30px, -30px) rotate(-30deg) scale(1.5)
-    }
-
-    80% {
         opacity: 1;
-        transform: translate(0) rotate(0deg) scale(1)
+        transform: translate(0) rotate(0deg) scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(0) rotate(0deg) scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: translate(30px, -30px) rotate(-30deg) scale(1.5);
     }
 }
