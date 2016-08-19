@@ -1,15 +1,5 @@
 @charset "utf-8";
 //Created by yangguo on 2016/7/4 0004.
-/*
-
-Uniform Theme: Uniform Default
-Version: 1.8
-By: Josh Pyles
-License: MIT License
----
-For use with the Uniform plugin:
-http://uniformjs.com/
-*/
 /* General settings */
 div.checker, div.radio {
     display: -moz-inline-box;
@@ -62,81 +52,6 @@ div.checker, div.radio {
             }
         }
     }
-}
-
-/* Remove default webkit and possible mozilla .search styles.
- * Keeping this as :active to remove browser styles */
-div.checker input,
-input[type="search"],
-input[type="search"]:active {
-    -moz-appearance: none;
-    -webkit-appearance: none;
-}
-
-/* Checkbox */
-div.checker {
-    position: relative;
-    margin-right: 5px;
-
-    &,
-    & span,
-    & input {
-        width: 19px;
-        height: 19px;
-    }
-
-    & input {
-        opacity: 0;
-        filter: alpha(opacity=0);
-        -moz-opacity: 0;
-        border: none;
-        background: none;
-        display: -moz-inline-box;
-        display: inline-block;
-        *display: inline;
-        zoom: 1;
-        position: absolute;
-        top: 0;
-        left: 0;
-        //z-index: 999999;
-    }
-
-    & span {
-        display: -moz-inline-box;
-        display: inline-block;
-        *display: inline;
-        zoom: 1;
-        text-align: center;
-        //background-image: none;
-        position: relative;
-        background-color: white;
-
-        &:before, &:after {
-            content: " ";
-            position: absolute;
-            width: @base-unit-px;
-            height: @base-unit-px;
-            line-height: @base-unit-px;
-            top: 0;
-            left: 0;
-        }
-
-        &:before {
-            display: block;
-            border: 1px solid @border-base-color;
-        }
-
-        &:after {
-            font-family: FontAwesome;
-            color: @text-primary-color;
-        }
-
-        &.checked {
-            &:after {
-                content: "\f00c";
-            }
-        }
-    }
 
     &.active span {
         &:before {
@@ -177,17 +92,40 @@ div.checker {
     }
 }
 
-/* Radio */
-div.radio {
+/* Remove default webkit and possible mozilla .search styles.
+ * Keeping this as :active to remove browser styles */
+div.checker input,
+input[type="search"],
+input[type="search"]:active {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
+
+/* Checkbox */
+div.checker {
     position: relative;
-    margin-right: 3px;
-    background-image: none;
+    margin-right: 5px;
 
     &,
     & span,
     & input {
-        width: 18px;
-        height: 18px;
+        width: 19px;
+        height: 19px;
+    }
+
+    & input {
+        opacity: 0;
+        filter: alpha(opacity=0);
+        -moz-opacity: 0;
+        border: none;
+        background: none;
+        display: -moz-inline-box;
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        position: absolute;
+        top: 0;
+        left: 0;
     }
 
     & span {
@@ -197,6 +135,57 @@ div.radio {
         zoom: 1;
         text-align: center;
         position: relative;
+        background-color: white;
+
+        &:before, &:after {
+            content: " ";
+            position: absolute;
+            width: @base-unit-px;
+            height: @base-unit-px;
+            line-height: @base-unit-px;
+            top: 0;
+            left: 0;
+        }
+
+        &:before {
+            display: block;
+            border: 1px solid @border-base-color;
+        }
+
+        &:after {
+            font-family: FontAwesome;
+            color: @text-primary-color;
+        }
+
+        &.checked {
+            &:after {
+                content: "\f00c";
+            }
+        }
+    }
+}
+
+/* Radio */
+div.radio {
+    position: relative;
+    margin-right: 3px;
+    background-image: none;
+
+    &,
+    & span,
+    & input {
+        width: @base-unit-px;
+        height: @base-unit-px;
+    }
+
+    & span {
+        display: -moz-inline-box;
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        text-align: center;
+        position: relative;
+        border-radius: (@base-unit-px/2);
 
         &:before, &:after {
             content: " ";
@@ -208,24 +197,26 @@ div.radio {
 
         &:before {
             display: block;
-            background-image: url("@{radio-background}");
-            background-repeat: no-repeat;
-            background-position: 0 0;
+            border: 1px solid #ddd;
+            border-radius: 9px;
             top: 0;
             left: 0;
         }
 
         &:after {
-            font-family: FontAwesome;
-            color: @text-primary-color;
+            width: @radio-check-width;
+            height: @radio-check-width;
+            border-radius: (@radio-check-width/2);
+            margin: auto;
             top: 0;
             left: 0;
-            font-size: 12px;
+            right: 0;
+            bottom: 0;
         }
 
         &.checked {
             &:after {
-                content: "\f111";
+                background-color: @text-primary-color;
             }
         }
     }
@@ -243,44 +234,11 @@ div.radio {
         text-align: center;
     }
 
-    &.active span {
-        background-position: -18px -279px;
-
-        &.checked {
-            background-position: -90px -279px;
-        }
-    }
-
-    &.hover, &.focus {
-        & span {
-            &:before {
-                background-position-x: -40px;
-
-                &.checked {
-                    background-position-x: -40px;
-                }
-            }
-        }
-    }
-
-    &.active span {
-        background-position: -54px -279px;
-
-        &.checked {
-            background-position: -126px -279px;
-        }
-    }
-
     &.disabled {
         &, &.active {
             & span {
-
-                &:before {
-                    background-position-x: -20px;
-
-                    &.checked {
-                        background-position-x: -20px;
-                    }
+                &:after {
+                    background-color: darken(@btn-default-bg, 17%);;
                 }
             }
         }
