@@ -8,6 +8,18 @@
     margin-top: -50px;
     transition: opacity .45s;
     pointer-events: none;
+    z-index: @zindex-loading;
+
+    &:before {
+        content: " ";
+        display: block;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: white;
+    }
 
     img {
         transform-style: preserve-3d;
