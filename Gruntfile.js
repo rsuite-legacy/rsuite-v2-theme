@@ -71,8 +71,10 @@ module.exports = function(grunt) {
                 advanced: false
             },
             minifyCore: {
-                src: gruntConfig.output + '/css/<%= pkg.name %>.css',
-                dest: gruntConfig.output + '/css/<%= pkg.name %>.min.css'
+                files: {
+                    [gruntConfig.output + '/css/<%= pkg.name %>.min.css']: gruntConfig.output + '/css/<%= pkg.name %>.css',
+                    [gruntConfig.output + '/css/loading.min.css']: gruntConfig.output + '/css/loading.css',
+                }
             }
         },
         csscomb: {
@@ -105,8 +107,10 @@ module.exports = function(grunt) {
  * Licensed under MIT (https://github.com/suitejs/suite-theme-pagurian/blob/master/LICENSE)
  */`
                 },
-                src: 'src/less/rsuite.less',
-                dest: gruntConfig.output + '/css/<%= pkg.name %>.css'
+                files: {
+                    [gruntConfig.output + '/css/<%= pkg.name %>.css']: 'src/less/rsuite.less',
+                    [gruntConfig.output + '/css/loading.css']: 'src/less/loading.less'
+                }
             }
         },
         'compile-handlebars': {
