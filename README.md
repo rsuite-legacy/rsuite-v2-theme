@@ -12,3 +12,6 @@ $ grunt
 ```bash
 $ grunt exampleSite
 ```
+
+## 预览
+[http://rsuite.github.io/](http://rsuite.github.io/)

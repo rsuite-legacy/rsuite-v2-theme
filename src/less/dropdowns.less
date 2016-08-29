@@ -287,3 +287,20 @@
         }
     }
 }
+
+//nav pills
+.nav.nav-pills {
+    & .open > a, & .open > a:focus, & .open > a:hover {
+        z-index: 10;
+        border-bottom: medium none;
+        padding-bottom: 10px !important;
+        border-color: pallet(@btn-default-border, 700);
+    }
+}
+
+//collapse navbar-collapse
+.collapse.navbar-collapse {
+    .dropdown-menu {
+        border-color: @collapse-dropdown-border-color;
+    }
+}

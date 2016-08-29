@@ -11,27 +11,27 @@
     &:focus,
     &.focus {
         color: @color;
-        background-color: darken(@background, 10%);
-        border-color: darken(@border, 10%);
+        background-color: pallet(@background, 700);
+        border-color: pallet(@border, 700);
     }
     &:hover {
         color: @color;
-        background-color: darken(@background, 5%);
-        border-color: darken(@border, 5%);
+        background-color: pallet(@background, 600);
+        border-color: pallet(@border, 600);
     }
     &:active,
     &.active,
     .open > .dropdown-toggle& {
         color: @color;
-        background-color: darken(@background, 10%);
-        border-color: darken(@border, 10%);
+        background-color: pallet(@background, 700);
+        border-color: pallet(@border, 700);
 
         &:hover,
         &:focus,
         &.focus {
             color: @color;
-            background-color: darken(@background, 17%);
-            border-color: darken(@border, 17%);
+            background-color: pallet(@background, 800);
+            border-color: pallet(@border, 800);
         }
     }
     &:active,

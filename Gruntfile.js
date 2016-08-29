@@ -10,8 +10,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-csscomb');
     grunt.loadNpmTasks('grunt-compile-handlebars');
 
-    var READ_JSON_CONFIG = {encoding: 'utf8'}
-    var gruntConfig = grunt.file.readJSON('grunt/config.json', READ_JSON_CONFIG)
+    var pallet = require('./grunt/pallet');
+    var READ_JSON_CONFIG = {encoding: 'utf8'};
+    var gruntConfig = grunt.file.readJSON('grunt/config.json', READ_JSON_CONFIG);
     var pkg = grunt.file.readJSON("package.json", READ_JSON_CONFIG);
 
     var options = {
@@ -91,6 +92,9 @@ module.exports = function(grunt) {
                     strictMath: true,
                     sourceMap: true,
                     outputSourceFiles: true,
+                    customFunctions: {
+                        'pallet': pallet
+                    },
                     sourceMapURL: '<%= pkg.name %>.css.map',
                     sourceMapFilename: gruntConfig.output + '/css/<%= pkg.name %>.css.map',
                     banner: `@charset "utf-8";/*!
