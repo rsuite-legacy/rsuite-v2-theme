@@ -147,4 +147,6 @@ module.exports = function(grunt) {
         grunt.task.run('copy:exampleResource');
         grunt.task.run('compile-handlebars:example');
     });
+
+    return grunt;
 }

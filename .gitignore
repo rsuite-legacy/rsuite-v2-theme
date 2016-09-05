@@ -35,3 +35,4 @@ node_modules
 # Idea Cache
 /dist
 .idea
+/lib/

@@ -1,0 +1,10 @@
+/.idea/
+/resourse/
+/src/example/
+/.babelrc
+/.csscomb.json
+/.csslintrc
+/.editorconfig
+/.gitattributes
+/.gitignore
+/.jshintrc
