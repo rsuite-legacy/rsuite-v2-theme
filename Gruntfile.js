@@ -10,11 +10,13 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-csscomb');
     grunt.loadNpmTasks('grunt-compile-handlebars');
 
+    var path = require('path');
     var pallet = require('./grunt/pallet');
     var READ_JSON_CONFIG = {encoding: 'utf8'};
     var gruntConfig = grunt.file.readJSON('grunt/config.json', READ_JSON_CONFIG);
     var pkg = grunt.file.readJSON("package.json", READ_JSON_CONFIG);
 
+    gruntConfig.output = path.join(__dirname, gruntConfig.output);
     var options = {
         pkg: pkg,
         clean: {
@@ -28,7 +30,7 @@ module.exports = function(grunt) {
             fonts: {
                 files: [{
                     expand: true,
-                    cwd: 'src/fonts',
+                    cwd: `${__dirname}/src/fonts`,
                     src: ['**/*'],
                     dest: gruntConfig.output + '/css/fonts',
                     flatten: false
@@ -37,7 +39,7 @@ module.exports = function(grunt) {
             exampleResource: {
                 files: [{
                     expand: true,
-                    cwd: 'src/example',
+                    cwd: `${__dirname}/src/example`,
                     src: ['**/*', '!fixtures', '!data', '!**/*.json', '!**/*.handlebars', '!**/*.hbs'],
                     dest: gruntConfig.output + '/examples',
                     flatten: false
@@ -118,12 +120,12 @@ module.exports = function(grunt) {
                 partials: ['src/example/fixtures/**/*.handlebars', 'src/example/base.handlebars'],
                 files: [{
                     expand: true,
-                    cwd: 'src/example/',
+                    cwd: `${__dirname}/src/example/`,
                     src: ['*.handlebars', '!base.handlebars'],
                     dest: gruntConfig.output + '/examples/',
                     ext: '.html'
                 }],
-                templateData: 'src/example/data/index.json'
+                templateData: `${__dirname}/src/example/data/index.json`
             }
         }
     }
