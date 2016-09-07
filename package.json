@@ -1,6 +1,6 @@
 {
     "name": "rsuite-theme",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "The suite theme for pagurian",
     "main": "main.js",
     "repository": {
@@ -9,7 +9,8 @@
     },
     "scripts": {
         "test": "npm run build && node test.js",
-        "build": "rm -rf lib && babel src/script --out-dir lib"
+        "build": "rm -rf lib && babel src/script --out-dir lib",
+        "published": "grunt && npm run build"
     },
     "keywords": [
         "css",
