@@ -1,4 +1,5 @@
 /.idea/
+/dist/test
 /src
 /.babelrc
 /.csscomb.json

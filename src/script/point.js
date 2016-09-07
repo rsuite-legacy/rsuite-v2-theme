@@ -4,19 +4,22 @@
 
 require('colors');
 const Q = require('q');
-//const less = require('less');
 const glob = require('glob');
 const Path = require('path');
 const util = require('util');
 const fse = require('fs-extra');
+const fs = require('fs');
+const color = require('./util/color');
 const {promisesResolve} = require('./util/common');
 
 const rootPath = Path.join(__dirname, '../dist');
+const originColor = '#00bcd4';
 
 /**
  * 导入资源
- * @param paths
- * @returns {Block}
+ * @param {Object} options
+ * @param {String []} paths
+ * @param {String} dist
  */
 function importResources({paths = [], dist = ''}={}) {
     try {
@@ -28,22 +31,22 @@ function importResources({paths = [], dist = ''}={}) {
     }
     console.log('importResources ...');
     let defferds = [];
-    paths = paths
+    paths
         .map((path)=> {
             return Path.join(rootPath, path);
-        });
-    paths.forEach((path)=> {
-        let defer = Q.defer();
-        defferds.push(defer.promise);
-        glob(path, {}, (err, files)=> {
-            if (err) {
-                console.log(err);
-                defer.reject();
-                return;
-            }
-            defer.resolve(files);
         })
-    });
+        .forEach((path)=> {
+            let defer = Q.defer();
+            defferds.push(defer.promise);
+            glob(path, {}, (err, files)=> {
+                if (err) {
+                    console.log(err);
+                    defer.reject();
+                    return;
+                }
+                defer.resolve(files);
+            })
+        });
 
     promisesResolve(defferds, (datas)=> {
         let copyDefferds = [];
@@ -67,8 +70,51 @@ function importResources({paths = [], dist = ''}={}) {
             console.log('importResources ' + '[SUCCESS]'.green);
         });
     });
+
+    return module.exports;
 };
 
+/**
+ * 画板方法
+ * @param {Object} options
+ */
+function palette({baseColor = originColor, src = 'css/rsuite.min.css', dist}={}) {
+
+    try {
+        const requiredKey = ['src', 'dist'];
+        requiredKey.forEach((key)=> {
+            if (!arguments[0][key]) {
+                throw  `ERROR: [option.${key}] is required`;
+            }
+        });
+    } catch (e) {
+        console.log(e.red);
+        return;
+    }
+
+    const originColors = color.calcColors(originColor);
+    const colors = color.calcColors(baseColor);
+    const distPath = Path.dirname(dist);
+    fse.ensureDir(distPath, (err)=> {
+        if (err) console.log(err);
+        fs.readFile(Path.join(rootPath, src), 'utf-8', (err, data)=> {
+            originColors.forEach((color, index)=> {
+                data = data.replace(new RegExp(color, 'g'), colors[index]);
+            });
+            fs.writeFile(dist, data, (err)=> {
+                if (err) {
+                    console.log("生成失败:" + err.red);
+                    return;
+                }
+                console.log(`palette ${dist}` + '【成功】'.green);
+            });
+        });
+    });
+
+    return module.exports;
+}
+
 module.exports = {
-    importResources
+    importResources,
+    palette
 };

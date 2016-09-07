@@ -9,3 +9,9 @@ rsuiteCssBuild.importResources({
     ],
     dist: 'dist/test'
 });
+
+rsuiteCssBuild.palette({
+    baseColor: '#1b9451',
+    src: 'css/rsuite.min.css',
+    dist: 'dist/test/css/rsuite.min.css'
+});
