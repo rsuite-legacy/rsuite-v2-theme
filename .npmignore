@@ -9,3 +9,5 @@
 /.gitignore
 /.jshintrc
 /test.js
+/grunt/
+/Gruntfile.js

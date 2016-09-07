@@ -37,7 +37,7 @@ npm install rsuite-theme
 
 ### Usage examples
 ```javascript
-var rsuiteCssBuild = require('./rsuite-theme');
+var rsuiteCssBuild = require('rsuite-theme');
 
 rsuiteCssBuild.importResources({
     paths: [
@@ -51,6 +51,9 @@ rsuiteCssBuild.palette({
     src: 'css/rsuite.min.css',
     dist: 'dist/test/css/rsuite.min.css'
 });
+
+//同时支持链式调用
+//rsuiteCssBuild.importResources(options).palette(options);
 ```
 
 ### 目录结构
