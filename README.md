@@ -1,6 +1,6 @@
 #RSuite Theme For Pagurian
 
-这是一款基于[bootstrap](https://github.com/twbs/bootstrap)修改的,为[rsuite](http://rsuite.github.io)量身打造的[pagurian](https://github.com/hypers/pagurian)主题
+本仓库用于存放rsuite项目的theme,目前有一款基于[bootstrap](https://github.com/twbs/bootstrap)修改的,为[rsuite](http://rsuite.github.io)量身打造的[pagurian](https://github.com/hypers/pagurian)主题
 
 ## 生成样式
 ```bash
@@ -19,7 +19,7 @@ $ grunt exampleSite
 # 使用
 ## install
 ```bash
-npm install rsuite-theme
+npm install rsuite-theme --save-dev
 ```
 ## api
 ### `importResources(options)` 导入资源
