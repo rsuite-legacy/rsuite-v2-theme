@@ -1,6 +1,5 @@
 /.idea/
-/resourse/
-/src/example/
+/src
 /.babelrc
 /.csscomb.json
 /.csslintrc

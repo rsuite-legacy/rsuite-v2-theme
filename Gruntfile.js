@@ -44,6 +44,15 @@ module.exports = function(grunt) {
                     dest: gruntConfig.output + '/examples',
                     flatten: false
                 }]
+            },
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: `${__dirname}/src`,
+                    src: ['**/*', '!example', '!example/**/*', '!script', '!script/**/*'],
+                    dest: gruntConfig.output,
+                    flatten: false
+                }]
             }
         },
         autoprefixer: {
@@ -141,6 +150,7 @@ module.exports = function(grunt) {
     grunt.registerTask('default', 'Generate css & font', function() {
         pkg.name = 'rsuite';
         grunt.task.run('defaultTask');
+        grunt.task.run('copy:dist');
     });
 
     grunt.registerTask('exampleSite', 'Generate Example Site', function() {

@@ -3,7 +3,9 @@
  */
 var rsuiteCssBuild = require('./main');
 
-rsuiteCssBuild.importResources([
-    'less/**/*.less',
-    'fonts/**/*.*'
-]);
+rsuiteCssBuild.importResources({
+    paths: [
+        'fonts/**/*.*'
+    ],
+    dist: 'dist/test'
+});

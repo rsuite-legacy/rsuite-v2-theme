@@ -36,3 +36,4 @@ node_modules
 /dist
 .idea
 /lib/
+/src/css/
