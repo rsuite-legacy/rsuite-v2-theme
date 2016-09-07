@@ -9,6 +9,7 @@ const glob = require('glob');
 const Path = require('path');
 const util = require('util');
 const fse = require('fs-extra');
+const {promisesResolve} = require('./util/common');
 
 const rootPath = Path.join(__dirname, '../dist');
 
@@ -66,29 +67,7 @@ function importResources({paths = [], dist = ''}={}) {
             console.log('importResources ' + '[SUCCESS]'.green);
         });
     });
-}
-
-/**
- *
- * @param {q.defer.promise []} promises
- * @param call
- */
-function promisesResolve(promises = [], call) {
-    let datas = [];
-    const defer = Q.defer();
-    defer.resolve([]);
-    promises.reduce((previous, current, index)=> {
-        return previous.then((resp)=> {
-            datas.push(resp);
-            return current;
-        });
-    }, defer.promise).then((resp)=> {
-        datas.push(resp);
-        if (util.isFunction(call)) {
-            call(datas);
-        }
-    });
-}
+};
 
 module.exports = {
     importResources

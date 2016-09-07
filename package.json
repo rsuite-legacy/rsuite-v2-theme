@@ -16,7 +16,13 @@
         "bootstrap",
         "pagurian"
     ],
-    "author": "Godfery",
+    "author": [
+        {
+            "name": "Godfery Yang",
+            "email": "hiyangguo@qq.com",
+            "url": "http://hiyangguo.github.io"
+        }
+    ],
     "license": "MIT",
     "bugs": {
         "url": "https://github.com/suitejs/suite-theme-pagurian/issues"
