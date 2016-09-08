@@ -10,7 +10,7 @@
     "scripts": {
         "test": "npm run build && node test.js",
         "build": "rm -rf lib && babel src/script --out-dir lib",
-        "published": "grunt && npm run build"
+        "prepublish": "grunt && npm run build"
     },
     "keywords": [
         "css",
