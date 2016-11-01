@@ -81,12 +81,9 @@ function importResources({paths = [], dist = ''}={}) {
 function palette({baseColor = originColor, src = 'css/rsuite.min.css', dist}={}) {
 
     try {
-        const requiredKey = ['src', 'dist'];
-        requiredKey.forEach((key)=> {
-            if (!arguments[0][key]) {
-                throw  `ERROR: [option.${key}] is required`;
-            }
-        });
+        if (!dist) {
+            throw  `ERROR: [option.${key}] is required`;
+        }
     } catch (e) {
         console.log(e.red);
         return;
