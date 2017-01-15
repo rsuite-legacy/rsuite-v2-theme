@@ -1,17 +1,10 @@
-#RSuite Theme For Pagurian
+#RSuite Theme
 
-本仓库用于存放rsuite项目的theme,目前有一款基于[bootstrap](https://github.com/twbs/bootstrap)修改的,为[rsuite](http://rsuite.github.io)量身打造的[pagurian](https://github.com/hypers/pagurian)主题
-
-## 生成样式
-```bash
-$ npm install
-$ grunt
-```
-
-## 生成Demo站点
-```bash
-$ grunt exampleSite
-```
+本主题基于[bootstrap](https://github.com/twbs/bootstrap)进行定制修改。主要特点：
+> 1. 基于[HyperS](http://www.hypers.com)前端框架[pagurian](http://pagurian.com/design/)设计规范。并进行了大量改进优化。
+> 2. 配置后一键生成主题样式
+> 3. 增加各种动效
+> 4. 支持ie9+、chrome、firefox等各种主流浏览器
 
 ## 预览
 [http://rsuite.github.io/](http://rsuite.github.io/)
@@ -54,6 +47,18 @@ rsuiteCssBuild.palette({
 
 //同时支持链式调用
 //rsuiteCssBuild.importResources(options).palette(options);
+```
+
+## 开发
+### 生成样式
+```bash
+$ npm install
+$ grunt
+```
+
+### 生成Demo站点
+```bash
+$ grunt exampleSite
 ```
 
 ### 目录结构
