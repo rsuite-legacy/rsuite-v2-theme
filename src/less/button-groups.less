@@ -11,6 +11,7 @@
     > .btn {
         position: relative;
         float: left;
+        transition: background 0s;
         // Bring the "active" button to the front
         &:hover,
         &:focus,
@@ -390,7 +391,9 @@
 //suite-button-group
 //------------------
 .btn-group-default {
-    //border-bottom-color: darken(@border-base-color, 5%);
+    .dropdown-menu{
+        border-color: @btn-default-active-bg;
+    }
 }
 
 .btn-group-primary {
