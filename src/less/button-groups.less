@@ -11,7 +11,9 @@
     > .btn {
         position: relative;
         float: left;
-        transition: background 0s;
+        border: medium none;
+        transition: background .3s cubic-bezier(0.4, 0, 1, 1);
+        padding: (@padding-base-vertical+1) (@padding-base-horizontal+1);
         // Bring the "active" button to the front
         &:hover,
         &:focus,
@@ -153,14 +155,17 @@
 // Remix the default button sizing classes into new ones for easier manipulation.
 
 .btn-group-xs > .btn {
+    padding: (@padding-xs-vertical+1) (@padding-xs-horizontal+1);
     &:extend(.btn-xs);
 }
 
 .btn-group-sm > .btn {
+    padding: (@padding-small-vertical+1) (@padding-small-horizontal+1);
     &:extend(.btn-sm);
 }
 
 .btn-group-lg > .btn {
+    padding: (@padding-large-vertical+1) (@padding-large-horizontal+1);
     &:extend(.btn-lg);
 }
 
@@ -391,7 +396,7 @@
 //suite-button-group
 //------------------
 .btn-group-default {
-    .dropdown-menu{
+    .dropdown-menu {
         border-color: @btn-default-active-bg;
     }
 }
@@ -437,7 +442,7 @@
 }
 
 .btn-group-lg {
-    //&.btn-group .btn:hover,
+    &.btn-group .btn:hover,
     .dropdown-toggle.btn:hover {
         padding-bottom: (@padding-large-vertical - 1);
     }
