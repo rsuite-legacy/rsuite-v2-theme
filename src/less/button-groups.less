@@ -8,12 +8,17 @@
     position: relative;
     display: inline-block;
     vertical-align: middle; // match .btn alignment given font-size hack above
-    > .btn {
-        position: relative;
-        float: left;
+
+    &:not(.dropdown):not(.dropup) > .btn {
         border: medium none;
         transition: background .3s cubic-bezier(0.4, 0, 1, 1);
         padding: (@padding-base-vertical+1) (@padding-base-horizontal+1);
+    }
+
+    > .btn {
+        position: relative;
+        float: left;
+        transition: background .0s;
         // Bring the "active" button to the front
         &:hover,
         &:focus,
@@ -155,18 +160,27 @@
 // Remix the default button sizing classes into new ones for easier manipulation.
 
 .btn-group-xs > .btn {
-    padding: (@padding-xs-vertical+1) (@padding-xs-horizontal+1);
     &:extend(.btn-xs);
 }
 
+.btn-group-xs:not(.dropdown):not(.dropup) > .btn {
+    padding: (@padding-xs-vertical+1) (@padding-xs-horizontal+1);
+}
+
 .btn-group-sm > .btn {
-    padding: (@padding-small-vertical+1) (@padding-small-horizontal+1);
     &:extend(.btn-sm);
 }
 
+.btn-group-sm:not(.dropdown):not(.dropup) > .btn {
+    padding: (@padding-small-vertical+1) (@padding-small-horizontal+1);
+}
+
 .btn-group-lg > .btn {
-    padding: (@padding-large-vertical+1) (@padding-large-horizontal+1);
     &:extend(.btn-lg);
+}
+
+.btn-group-lg:not(.dropdown):not(.dropup) > .btn {
+    padding: (@padding-large-vertical+1) (@padding-large-horizontal+1);
 }
 
 // Split button dropdowns
