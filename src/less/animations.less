@@ -1,0 +1,41 @@
+@charset "utf-8";
+//Created by godfery on 2017/1/18.
+@keyframes shake {
+    0%, 100% {
+        transform: translate3d(0, 0, 0)
+    }
+
+    12.5%, 37.5%, 62.5%, 87.5% {
+        transform: translate3d(-10px, 0, 0)
+    }
+
+    25%, 50%, 75% {
+        transform: translate3d(10px, 0, 0)
+    }
+}
+
+@keyframes slideUpIn {
+    0% {
+        opacity: 0;
+        transform-origin: 0% 0%;
+        transform: scaleY(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform-origin: 0% 0%;
+        transform: scaleY(1);
+    }
+}
+
+@keyframes slideDownIn {
+    0% {
+        opacity: 0;
+        transform-origin: 100% 100%;
+        transform: scaleY(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform-origin: 100% 100%;
+        transform: scaleY(1);
+    }
+}

@@ -65,6 +65,10 @@
     border-radius: @border-radius-base;
     //background-clip: padding-box;
     .box-shadow(0 6px 12px rgba(0, 0, 0, .175));
+    animation-duration: .3s;
+    animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+    animation-fill-mode: both;
+    animation-play-state: paused;
 
     // Aligns the dropdown menu to right
     //
@@ -155,6 +159,8 @@
         > .dropdown-menu {
             top: auto;
             bottom: @dropdown-menu-top;
+            animation-name: slideDownIn;
+            animation-play-state: running;
         }
 
         > .btn-lg ~ .dropdown-menu {
@@ -174,6 +180,8 @@
     > .dropdown-menu {
         display: block;
         top: @dropdown-menu-top;
+        animation-name: slideUpIn;
+        animation-play-state: running;
     }
 
     > .btn-lg ~ .dropdown-menu {
