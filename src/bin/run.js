@@ -6,7 +6,7 @@ const Path = require('path');
 const {findUp} = require('./lib/tool');
 const info = require('./lib/info');
 const {palette, importResources} = require('./command/index');
-const pkg = findUp('package.json');
+const pkg = require('../package.json');
 let config;
 
 try {

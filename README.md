@@ -13,7 +13,7 @@
 
 ## install
 ```bash
-npm install rsuite-theme --save-dev
+npm install rsuite-theme -g
 ```
 
 ### Usage examples
