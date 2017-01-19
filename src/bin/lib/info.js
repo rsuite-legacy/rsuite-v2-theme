@@ -2,7 +2,7 @@
  * Created by Godfery on 2017/1/19.
  */
 const {findUp} = require('./tool')
-const pkg = findUp('package.json');
+const pkg = require('../../package.json');
 
 exports.helpHeader = function () {
     console.log(`${pkg.name}: ${pkg.description}@${pkg.version}`);

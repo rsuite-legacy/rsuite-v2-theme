@@ -1,7 +1,7 @@
 {
   "name": "rsuite-theme",
-  "version": "0.3.0",
-  "description": "The suite theme for pagurian.",
+  "version": "0.3.1",
+  "description": "The suite theme for pagurian",
   "main": "main.js",
   "bin": {
     "rsuite-theme": "rsuite-theme.js"

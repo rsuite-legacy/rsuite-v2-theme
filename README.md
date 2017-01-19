@@ -10,12 +10,15 @@
 [http://rsuite.github.io/](http://rsuite.github.io/)
 
 # 使用
+
 ## install
 ```bash
 npm install rsuite-theme --save-dev
 ```
+
 ### Usage examples
 在项目根目录下新建`rsuite.config.js`
+
 ```javascript
 const colors = {
     "default": "#00bcd4",
@@ -48,25 +51,35 @@ module.exports = {
 rsuite-theme -I -P
 ```
 ## 帮助
+
 ```bash
 rsuite-theme -h
 ```
 ## 配置项
+
 ### `options.resources` `{Object}` 导入资源
+
 #### `options.resources.path`  **必填**
 需要导入的资源，支持正则匹配,如`fonts/**/*.*`,`css/*.css`等,资源列表详见目录结构
+
 #### `options.resources.dist` **必填**
 输出目录,相对于运行使的脚本目录
+
 ### `options.palette` `{Array <palette>}` 按照主题色输出css文件  **必填**
+
 ### `palette` `{Object}` 
+
 #### `palette.colors` `{Object}`  输出的基色的配置 **必填**
 `<key>`:输出文件的文件名
 `<value>`:输出文件的基色
 每一个键值对对应一个css文件,如:`{'default':'#00bcd4'}`会输出一个名为`default.css`的文件，其基色为`#dddd`
+
 #### `palette.src` 源文件
 默认为:`css/rsuite.min.css`
+
 #### `palette.dist` **必填**
 输出目录,相对于运行使的脚本目录
+
 ### `prev` 输出文件的前缀名
 输出文件为`<output>/<prev><colors.key>.css`的格式，如
 ```json
@@ -83,6 +96,7 @@ rsuite-theme -h
 `dist/test/css/loading-default.css`
 
 ## 开发
+
 ### 生成样式
 ```bash
 $ npm install
