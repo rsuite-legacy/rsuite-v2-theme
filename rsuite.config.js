@@ -1,6 +1,6 @@
 const colors = {
-    "default": "#dddd",
-    "hypers": "#f5f5f5"
+    "default": "#00bcd4",
+    "pagurian": "#1b9451"
 };
 
 module.exports = {
@@ -8,7 +8,6 @@ module.exports = {
         {
             colors,
             "output": "dist/test/css/",
-            "src": "css/rsuite.min.css"
         },
         {
             colors,

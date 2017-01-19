@@ -22,7 +22,7 @@ exports.module = function (options) {
  * @return {Array}
  */
 function convertConfig(config) {
-    let {colors, prev = '', output, src} =config;
+    let {colors, prev = '', output, src = 'css/rsuite.min.css'} =config;
     return Object.keys(colors).map(key => {
         return {
             baseColor: colors[key],
