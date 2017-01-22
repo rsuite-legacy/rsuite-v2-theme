@@ -1,7 +1,7 @@
 #RSuite Theme
 
-本主题基于[bootstrap](https://github.com/twbs/bootstrap)进行定制修改。主要特点：
-> 1. 基于[HyperS](http://www.hypers.com)前端框架[pagurian](http://pagurian.com/design/)设计规范。并进行了大量改进优化。
+本主题基于 [bootstrap](https://github.com/twbs/bootstrap) 进行定制修改。主要特点：
+> 1. 遵循[HyperS](http://www.hypers.com)前端框架[pagurian](http://pagurian.com/design/)设计规范。并进行了大量改进优化。
 > 2. 配置后一键生成主题样式
 > 3. 增加各种动效
 > 4. 支持ie9+、chrome、firefox等各种主流浏览器
