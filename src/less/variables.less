@@ -136,7 +136,7 @@
 //## Specify custom location and filename of the included Glyphicons icon font. Useful for those including Bootstrap via Bower.
 
 //** Load fonts from this directory.
-@icon-font-path: "./fonts/";
+@icon-font-path: "./fonts";
 
 //== Components
 //
@@ -274,7 +274,7 @@
 @input-height-small: (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
 
 //** `.form-group` margin
-@form-group-margin-bottom: 15px;
+@form-group-margin-bottom: @base-unit-px;
 
 @legend-color: @gray-dark;
 @legend-border-color: #e5e5e5;
