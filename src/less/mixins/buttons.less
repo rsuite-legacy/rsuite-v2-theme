@@ -66,10 +66,10 @@
 }
 
 // Button ripple
-.button-ripple() {
+.button-ripple(@transition:background-color .3s linear, border-bottom-color .3s linear;) {
     overflow: hidden;
     position: relative;
-    transition: background-color .3s linear, border .3s linear;
+    transition: @transition;
 
     &:not(.disabled) {
         &:after {
