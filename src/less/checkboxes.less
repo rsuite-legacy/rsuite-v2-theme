@@ -30,7 +30,7 @@ div.checker, div.radio {
         &:after {
             .opacity(0);
             transform: scale(0);
-            transition: opacity .3s linear, transform .2s cubic-bezier(0, 0, 0.2, 1);
+            transition: all .3s linear, transform .2s cubic-bezier(0, 0, 0.2, 1);
         }
 
         &.checked {
@@ -157,12 +157,7 @@ div.checker {
         &:after {
             font-family: FontAwesome;
             color: @text-primary-color;
-        }
-
-        &.checked {
-            &:after {
-                content: "\f00c";
-            }
+            content: "\f00c";
         }
     }
 }
