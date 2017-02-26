@@ -13,7 +13,8 @@
   "scripts": {
     "test": "npm run build && node test.js",
     "build": "rm -rf lib && babel src/script --out-dir lib && babel src/bin --out-dir bin",
-    "prepublish": "grunt && npm run build"
+    "prepublish": "grunt && npm run build",
+    "example": "grunt exampleSite"
   },
   "keywords": [
     "css",
