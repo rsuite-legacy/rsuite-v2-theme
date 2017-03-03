@@ -11,10 +11,10 @@
     "url": "https://github.com/suitejs/suite-theme-pagurian.git"
   },
   "scripts": {
-    "test": "npm run build && node test.js",
+    "test": "npm run prepublish && node test.js",
     "build": "rm -rf lib && babel src/script --out-dir lib && babel src/bin --out-dir bin",
     "prepublish": "grunt && npm run build",
-    "example": "grunt exampleSite"
+    "example": "npm run prepublish && node build-site-theme.js && grunt exampleSite"
   },
   "keywords": [
     "css",

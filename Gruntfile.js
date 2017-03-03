@@ -1,4 +1,4 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
     require('time-grunt')(grunt);
 
     grunt.loadNpmTasks('grunt-autoprefixer');
@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 
     var path = require('path');
     var pallet = require('./grunt/pallet');
-    var READ_JSON_CONFIG = {encoding: 'utf8'};
+    var READ_JSON_CONFIG = { encoding: 'utf8' };
     var gruntConfig = grunt.file.readJSON('grunt/config.json', READ_JSON_CONFIG);
     var pkg = grunt.file.readJSON("package.json", READ_JSON_CONFIG);
 
@@ -49,7 +49,7 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: `${__dirname}/src`,
-                    src: ['**/*', '!example', '!example/**/*', '!script', '!script/**/*'],
+                    src: ['**/*', '!example', '!example/**/*', '!script', '!script/**/*', '!less', '!less/**/*', '!bin', '!bin/**/*'],
                     dest: gruntConfig.output,
                     flatten: false
                 }]
@@ -147,15 +147,14 @@ module.exports = function(grunt) {
     grunt.registerTask('defaultTask', task_default);
     grunt.registerTask('dev', task_dev);
 
-    grunt.registerTask('default', 'Generate css & font', function() {
+    grunt.registerTask('default', 'Generate css & font', function () {
         pkg.name = 'rsuite';
         grunt.task.run('defaultTask');
         grunt.task.run('copy:dist');
     });
 
-    grunt.registerTask('exampleSite', 'Generate Example Site', function() {
+    grunt.registerTask('exampleSite', 'Generate Example Site', function () {
         grunt.log.writeln('Site generating...');
-        grunt.task.run('dev');
         grunt.task.run('copy:exampleResource');
         grunt.task.run('compile-handlebars:example');
     });

@@ -286,6 +286,15 @@
             }
         }
     }
+
+    // Mobile screen show panel
+    @media (max-width: @grid-float-breakpoint) {
+        margin: -1px 0 0;
+        min-width: 50%;
+        position: absolute;
+        right: 0;
+        background-color: @base-color;
+    }
 }
 
 // Navbar form
@@ -589,11 +598,6 @@
         .icon-bar {
             background-color: @navbar-inverse-toggle-icon-bar-bg;
         }
-    }
-
-    .navbar-collapse,
-    .navbar-form {
-        border-color: darken(@navbar-inverse-bg, 7%);
     }
 
     // Dropdowns
