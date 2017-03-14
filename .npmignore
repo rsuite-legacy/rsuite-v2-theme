@@ -1,4 +1,5 @@
 /.idea/
+/bash/
 /dist/test
 /src
 /.babelrc
