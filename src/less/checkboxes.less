@@ -158,14 +158,14 @@ div.checker {
             border-width: 0 3px 3px 0;
             width: 8px;
             height: 12px;
-            transform: scale(0) rotate(30deg);
+            transform: scale(0) rotate(@check-check-rotate);
             transform-origin: center center;
             margin-top: 2px;
             margin-left: 5px;
         }
 
         &.checked:after {
-            transform: scale(1) rotate(30deg);
+            transform: scale(1) rotate(@check-check-rotate);
         }
     }
 }
