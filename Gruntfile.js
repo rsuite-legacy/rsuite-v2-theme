@@ -105,11 +105,11 @@ module.exports = function (grunt) {
                     strictMath: true,
                     sourceMap: true,
                     outputSourceFiles: true,
-                    sourceMapURL: `${pkg.name}.css.map`,
-                    sourceMapFilename: `${gruntConfig.output}/css/${pkg.name}.css.map'`,
+                    sourceMapURL: '<%= pkg.name %>.css.map',
+                    sourceMapFilename: gruntConfig.output + '/css/<%= pkg.name %>.css.map',
                     banner: `@charset "utf-8";/*!
- * @Name:suite ${pkg.version}
- * @Author: ${pkg.author.map((author) => `[${author.name}](${author.email})`)}
+ * @Name:suite <%= pkg.version %>
+ * @Author: ${pkg.author.map((author) => `[${author.name}](${author.name})`)}
  * @Base:Bootstrap v3.3.6 (http://getbootstrap.com)
  * Copyright 2016 hypers, Inc.
  * Licensed under MIT (https://github.com/suitejs/suite-theme-pagurian/blob/master/LICENSE)
