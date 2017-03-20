@@ -49,7 +49,7 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: `${__dirname}/src`,
-                    src: ['**/*', '!example', '!example/**/*', '!script', '!script/**/*', '!less', '!less/**/*', '!bin', '!bin/**/*'],
+                    src: ['**/*', '!example', '!example/**/*', '!script', '!script/**/*', '!bin', '!bin/**/*'],
                     dest: gruntConfig.output,
                     flatten: false
                 }]
@@ -105,14 +105,11 @@ module.exports = function (grunt) {
                     strictMath: true,
                     sourceMap: true,
                     outputSourceFiles: true,
-                    customFunctions: {
-                        'pallet': pallet
-                    },
-                    sourceMapURL: '<%= pkg.name %>.css.map',
-                    sourceMapFilename: gruntConfig.output + '/css/<%= pkg.name %>.css.map',
+                    sourceMapURL: `${pkg.name}.css.map`,
+                    sourceMapFilename: `${gruntConfig.output}/css/${pkg.name}.css.map'`,
                     banner: `@charset "utf-8";/*!
- * @Name:suite <%= pkg.version %>
- * @Author: <%= pkg.author %>
+ * @Name:suite ${pkg.version}
+ * @Author: ${pkg.author.map((author) => `[${author.name}](${author.email})`)}
  * @Base:Bootstrap v3.3.6 (http://getbootstrap.com)
  * Copyright 2016 hypers, Inc.
  * Licensed under MIT (https://github.com/suitejs/suite-theme-pagurian/blob/master/LICENSE)
