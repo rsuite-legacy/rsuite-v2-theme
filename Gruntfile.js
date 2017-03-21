@@ -32,7 +32,7 @@ module.exports = function (grunt) {
                     expand: true,
                     cwd: `${__dirname}/src/fonts`,
                     src: ['**/*'],
-                    dest: gruntConfig.output + '/css/fonts',
+                    dest: gruntConfig.output + '/less/fonts',
                     flatten: false
                 }]
             },
@@ -49,7 +49,7 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: `${__dirname}/src`,
-                    src: ['**/*', '!example', '!example/**/*', '!script', '!script/**/*', '!bin', '!bin/**/*'],
+                    src: ['**/*', '!example', '!example/**/*', '!script', '!script/**/*', '!fonts', '!fonts/**/*', '!bin', '!bin/**/*'],
                     dest: gruntConfig.output,
                     flatten: false
                 }]
