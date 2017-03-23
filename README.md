@@ -145,26 +145,13 @@ node css-build.js
 输出文件为:
 `dist/test/css/loading-default.css`
 
-## 开发
-
-### 生成样式
-```bash
-$ npm install
-$ grunt
-```
-
-### 生成Demo站点
-```bash
-$ grunt exampleSite
-```
-
 ### 目录结构
 
 ```
 Root
 ├── dist/                   //发布目录
 │   ├── css/                //css
-│   ├── fonts/              //字体
 │   └── less/               //less源文件
-└── docs //开发文档
+│         └── fonts/              //字体文件
+└── READNE.md //使用文档
 ```
