@@ -34,6 +34,12 @@ module.exports = function (grunt) {
                     src: ['**/*'],
                     dest: gruntConfig.output + '/less/fonts',
                     flatten: false
+                },{
+                    expand: true,
+                    cwd: `${__dirname}/src/fonts`,
+                    src: ['**/*'],
+                    dest: gruntConfig.output + '/css/fonts',
+                    flatten: false
                 }]
             },
             exampleResource: {
