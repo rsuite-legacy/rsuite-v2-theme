@@ -28,37 +28,53 @@ module.exports = function (grunt) {
                 paths: ['src']
             },
             fonts: {
-                files: [{
-                    expand: true,
-                    cwd: `${__dirname}/src/fonts`,
-                    src: ['**/*'],
-                    dest: gruntConfig.output + '/less/fonts',
-                    flatten: false
-                },{
-                    expand: true,
-                    cwd: `${__dirname}/src/fonts`,
-                    src: ['**/*'],
-                    dest: gruntConfig.output + '/css/fonts',
-                    flatten: false
-                }]
+                files: [
+                    {
+                        expand: true,
+                        cwd: `${__dirname}/src/fonts`,
+                        src: ['**/*'],
+                        dest: gruntConfig.output + '/less/fonts',
+                        flatten: false
+                    }, {
+                        expand: true,
+                        cwd: `${__dirname}/src/fonts`,
+                        src: ['**/*'],
+                        dest: gruntConfig.output + '/css/fonts',
+                        flatten: false
+                    }
+                ]
             },
             exampleResource: {
-                files: [{
-                    expand: true,
-                    cwd: `${__dirname}/src/example`,
-                    src: ['**/*', '!fixtures', '!data', '!**/*.json', '!**/*.handlebars', '!**/*.hbs'],
-                    dest: gruntConfig.output + '/examples',
-                    flatten: false
-                }]
+                files: [
+                    {
+                        expand: true,
+                        cwd: `${__dirname}/src/example`,
+                        src: ['**/*', '!fixtures', '!data', '!**/*.json', '!**/*.handlebars', '!**/*.hbs'],
+                        dest: gruntConfig.output + '/examples',
+                        flatten: false
+                    }
+                ]
             },
             dist: {
-                files: [{
-                    expand: true,
-                    cwd: `${__dirname}/src`,
-                    src: ['**/*', '!example', '!example/**/*', '!script', '!script/**/*', '!fonts', '!fonts/**/*', '!bin', '!bin/**/*'],
-                    dest: gruntConfig.output,
-                    flatten: false
-                }]
+                files: [
+                    {
+                        expand: true,
+                        cwd: `${__dirname}/src`,
+                        src: [
+                            '**/*',
+                            '!example',
+                            '!example/**/*',
+                            '!script',
+                            '!script/**/*',
+                            '!fonts',
+                            '!fonts/**/*',
+                            '!bin',
+                            '!bin/**/*'
+                        ],
+                        dest: gruntConfig.output,
+                        flatten: false
+                    }
+                ]
             }
         },
         autoprefixer: {
@@ -114,11 +130,11 @@ module.exports = function (grunt) {
                     sourceMapURL: '<%= pkg.name %>.css.map',
                     sourceMapFilename: gruntConfig.output + '/css/<%= pkg.name %>.css.map',
                     banner: `@charset "utf-8";/*!
- * @Name:suite <%= pkg.version %>
+ * @Name:${pkg.name}@${pkg.version}
  * @Author: ${pkg.author.map((author) => `[${author.name}](${author.name})`)}
- * @Base:Bootstrap v3.3.6 (http://getbootstrap.com)
+ * @Base on:Bootstrap v3.3.6 (http://getbootstrap.com)
  * Copyright 2016 hypers, Inc.
- * Licensed under MIT (https://github.com/suitejs/suite-theme-pagurian/blob/master/LICENSE)
+ * Licensed under MIT (https://github.com/rsuite/rsuite-theme/blob/master/LICENSE)
  */`
                 },
                 files: {
@@ -130,19 +146,29 @@ module.exports = function (grunt) {
         'compile-handlebars': {
             example: {
                 partials: ['src/example/fixtures/**/*.handlebars', 'src/example/base.handlebars'],
-                files: [{
-                    expand: true,
-                    cwd: `${__dirname}/src/example/`,
-                    src: ['*.handlebars', '!base.handlebars'],
-                    dest: gruntConfig.output + '/examples/',
-                    ext: '.html'
-                }],
+                files: [
+                    {
+                        expand: true,
+                        cwd: `${__dirname}/src/example/`,
+                        src: ['*.handlebars', '!base.handlebars'],
+                        dest: gruntConfig.output + '/examples/',
+                        ext: '.html'
+                    }
+                ],
                 templateData: `${__dirname}/src/example/data/index.json`
             }
         }
     }
 
-    var task_default = ['clean:dist', 'less:core', 'autoprefixer:core', 'csslint:dist', 'csscomb:dist', 'cssmin:minifyCore', 'copy:fonts'];
+    var task_default = [
+        'clean:dist',
+        'less:core',
+        'autoprefixer:core',
+        'csslint:dist',
+        'csscomb:dist',
+        'cssmin:minifyCore',
+        'copy:fonts'
+    ];
     var task_dev = ['clean:dist', 'less:core', 'autoprefixer:core', 'csscomb:dist', 'cssmin:minifyCore', 'copy:fonts'];
     var task_examples = ['compile-handlebars:example'];
 
