@@ -131,7 +131,7 @@ module.exports = function (grunt) {
                     sourceMapFilename: gruntConfig.output + '/css/<%= pkg.name %>.css.map',
                     banner: `@charset "utf-8";/*!
  * @Name:${pkg.name}@${pkg.version}
- * @Author: ${pkg.author.map((author) => `[${author.name}](${author.name})`)}
+ * @Author: ${pkg.author.map((author) => `[${author.name}](${author.email})`)}
  * @Base on:Bootstrap v3.3.6 (http://getbootstrap.com)
  * Copyright 2016 hypers, Inc.
  * Licensed under MIT (https://github.com/rsuite/rsuite-theme/blob/master/LICENSE)
