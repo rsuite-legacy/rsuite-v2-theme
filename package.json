@@ -1,6 +1,6 @@
 {
   "name": "rsuite-theme",
-  "version": "0.3.25",
+  "version": "0.3.27",
   "description": "The suite theme for pagurian",
   "main": "main.js",
   "bin": {
@@ -11,7 +11,7 @@
     "url": "https://github.com/suitejs/suite-theme-pagurian.git"
   },
   "scripts": {
-    "test": "npm run prepublish && node test.js",
+    "test": "npm run prepublish && rm -rf dist/test/ && node test.js",
     "build": "rm -rf lib && babel src/script --out-dir lib && babel src/bin --out-dir bin",
     "prepublish": "grunt && npm run build",
     "example": "npm run prepublish && node build-site-theme.js && grunt exampleSite"

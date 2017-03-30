@@ -4,6 +4,7 @@
 var rsuiteCssBuild = require('./main');
 
 rsuiteCssBuild.importResources({
+    needDirPath: true,
     paths: [
         'fonts/**/*.*'
     ],

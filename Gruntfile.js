@@ -29,17 +29,23 @@ module.exports = function (grunt) {
             },
             fonts: {
                 files: [
-                    {
+                    {//用于webpack打包
                         expand: true,
                         cwd: `${__dirname}/src/fonts`,
                         src: ['**/*'],
                         dest: gruntConfig.output + '/less/fonts',
                         flatten: false
-                    }, {
+                    }, {//用于cdn托管
                         expand: true,
                         cwd: `${__dirname}/src/fonts`,
                         src: ['**/*'],
                         dest: gruntConfig.output + '/css/fonts',
+                        flatten: false
+                    }, {//用于命令中copy
+                        expand: true,
+                        cwd: `${__dirname}/src/fonts`,
+                        src: ['**/*'],
+                        dest: gruntConfig.output + '/fonts',
                         flatten: false
                     }
                 ]

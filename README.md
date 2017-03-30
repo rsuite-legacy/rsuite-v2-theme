@@ -115,6 +115,10 @@ node css-build.js
 #### `options.resources.dist` **必填**
 输出目录,相对于运行使的脚本目录
 
+
+#### `options.resources.needDirPath`  `{Boolean}` 默认为`true`
+是否需要保留源文件的路径（如果为true，则输出文件会拥有源文件同样层级的输出目录）
+
 ### `options.palette` `{Array <palette>}` 按照主题色输出css文件  **必填**
 
 ### `palette` `{Object}` 

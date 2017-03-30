@@ -10,7 +10,7 @@ const util = require('util');
 const fse = require('fs-extra');
 const fs = require('fs');
 const color = require('./util/color');
-const {promisesResolve} = require('./util/common');
+const { promisesResolve } = require('./util/common');
 
 const rootPath = Path.join(__dirname, '../dist');
 const originColor = '#00bcd4';
@@ -21,7 +21,7 @@ const originColor = '#00bcd4';
  * @param {String []} paths
  * @param {String} dist
  */
-function importResources({paths = [], dist = ''}={}) {
+function importResources({ paths = [], dist = '', needDirPath = true } = {}) {
     try {
         if (dist.length === 0) {
             throw  'ERROR: [option.dist] is required';
@@ -32,13 +32,13 @@ function importResources({paths = [], dist = ''}={}) {
     console.log('importResources ...');
     let defferds = [];
     paths
-        .map((path)=> {
+        .map((path) => {
             return Path.join(rootPath, path);
         })
-        .forEach((path)=> {
+        .forEach((path) => {
             let defer = Q.defer();
             defferds.push(defer.promise);
-            glob(path, {}, (err, files)=> {
+            glob(path, {}, (err, files) => {
                 if (err) {
                     console.log(err);
                     defer.reject();
@@ -48,17 +48,18 @@ function importResources({paths = [], dist = ''}={}) {
             })
         });
 
-    promisesResolve(defferds, (datas)=> {
+    promisesResolve(defferds, (datas) => {
         let copyDefferds = [];
-        let allFilePaths = datas.reduce((previous, current)=> {
+        let allFilePaths = datas.reduce((previous, current) => {
             previous.push(...current);
             return previous;
         }, []);
 
-        allFilePaths.forEach((filePath)=> {
+        allFilePaths.forEach((filePath) => {
             let defer = Q.defer();
             copyDefferds.push(defer.promise);
-            fse.copy(filePath, Path.join(dist, Path.relative(rootPath, filePath)), function(err) {
+            let outputPath = needDirPath ? Path.relative(rootPath, filePath) : Path.basename(filePath);
+            fse.copy(filePath, Path.join(dist, outputPath), function (err) {
                 if (err) {
                     return console.error(err);
                 }
@@ -66,7 +67,7 @@ function importResources({paths = [], dist = ''}={}) {
             });
         });
 
-        promisesResolve(copyDefferds, ()=> {
+        promisesResolve(copyDefferds, () => {
             console.log('importResources ' + '[SUCCESS]'.green);
         });
     });
@@ -78,7 +79,7 @@ function importResources({paths = [], dist = ''}={}) {
  * 画板方法
  * @param {Object} options
  */
-function palette({baseColor = originColor, src = 'css/rsuite.min.css', dist}={}) {
+function palette({ baseColor = originColor, src = 'css/rsuite.min.css', dist } = {}) {
 
     try {
         if (!dist) {
@@ -92,13 +93,13 @@ function palette({baseColor = originColor, src = 'css/rsuite.min.css', dist}={})
     const originColors = color.calcColors(originColor);
     const colors = color.calcColors(baseColor);
     const distPath = Path.dirname(dist);
-    fse.ensureDir(distPath, (err)=> {
+    fse.ensureDir(distPath, (err) => {
         if (err) console.log(err);
-        fs.readFile(Path.join(rootPath, src), 'utf-8', (err, data)=> {
-            originColors.forEach((color, index)=> {
+        fs.readFile(Path.join(rootPath, src), 'utf-8', (err, data) => {
+            originColors.forEach((color, index) => {
                 data = data.replace(new RegExp(color, 'g'), colors[index]);
             });
-            fs.writeFile(dist, data, (err)=> {
+            fs.writeFile(dist, data, (err) => {
                 if (err) {
                     console.log("生成失败:" + err.red);
                     return;
