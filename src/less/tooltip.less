@@ -4,7 +4,6 @@
 
 // Base class
 .tooltip {
-    @tooltip-translate-reverse-distance: (-1*@tooltip-translate-distance);
     position: absolute;
     z-index: @zindex-tooltip;
     display: block;
@@ -33,13 +32,13 @@
     &.right {
         margin-left: 3px;
         padding: 0 @tooltip-arrow-width;
-        transform: translate(@tooltip-translate-reverse-distance, 0);
+        transform: translate(-@tooltip-translate-distance, 0);
         .reset-translate;
     }
     &.bottom {
         margin-top: 3px;
         padding: @tooltip-arrow-width 0;
-        transform: translate(0, @tooltip-translate-reverse-distance);
+        transform: translate(0, -@tooltip-translate-distance);
         .reset-translate;
     }
     &.left {
