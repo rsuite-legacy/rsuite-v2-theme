@@ -215,6 +215,7 @@
 @btn-default-active-bg: @B200;
 @btn-default-focus-bg: @B200;
 @btn-default-disabled-bg: @B100;
+@btn-default-nav-pills-open-color: color(~`palette("@{btn-default-border}", 700)`);
 
 @btn-primary-color: #fff;
 @btn-primary-bg: @H500;
@@ -300,7 +301,7 @@
 //** Background for the dropdown menu.
 @dropdown-bg: #fff;
 //** Dropdown menu `border-color`.
-@dropdown-border: pallet(@btn-default-border, 700);
+@dropdown-border: palette(@btn-default-border, 700);
 //** Dropdown menu `border-color` **for IE8**.
 @dropdown-fallback-border: #ccc;
 //** Divider color for between dropdown items.

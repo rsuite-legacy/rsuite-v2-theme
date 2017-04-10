@@ -12,27 +12,27 @@
     &:focus,
     &.focus {
         color: @color;
-        background-color: pallet(@background, 700);
-        border-color: pallet(@border, 700);
+        background-color: color(~`palette("@{background}", 700)`);
+        border-color: color(~`palette("@{border}", 700)`);
     }
     &:hover {
         color: @color;
-        background-color: pallet(@background, 600);
-        border-color: pallet(@border, 600);
+        background-color: color(~`palette("@{background}", 600)`);
+        border-color: color(~`palette("@{border}", 600)`);
     }
     &:active,
     &.active,
     .open > .dropdown-toggle& {
         color: @color;
-        background-color: pallet(@background, 700);
-        border-color: pallet(@border, 700);
+        background-color: color(~`palette("@{background}", 700)`);
+        border-color: color(~`palette("@{border}", 700)`);
 
         &:hover,
         &:focus,
         &.focus {
             color: @color;
-            background-color: pallet(@background, 800);
-            border-color: pallet(@border, 800);
+            background-color: color(~`palette("@{background}", 800)`);
+            border-color: color(~`palette("@{border}", 800)`);
         }
     }
     &:active,
