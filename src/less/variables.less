@@ -1,35 +1,4 @@
-//
-// Variables
-// --------------------------------------------------
-
-//== Colors
-//
-//## Gray and brand colors for use across Bootstrap.
-@B000: #fff;
-@B050: #f5f5f5;
-@B100: #eee;
-@B200: #e5e5e5;
-@B300: #ddd;
-@B400: #ccc;
-@B500: #b5b5b5;
-@B600: #9f9f9f;
-@B700: #888;
-@B800: #717171;
-@B900: #575757;
-
-//## Pallet
-@base-color: #00bcd4;
-@H050: color(~`palette("@{base-color}", 50)`);
-@H100: color(~`palette("@{base-color}", 100)`);
-@H200: color(~`palette("@{base-color}", 200)`);
-@H300: color(~`palette("@{base-color}", 300)`);
-@H400: color(~`palette("@{base-color}", 400)`);
-@H500: @base-color;
-@H600: color(~`palette("@{base-color}", 600)`);
-@H700: color(~`palette("@{base-color}", 700)`);
-@H800: color(~`palette("@{base-color}", 800)`);
-@H900: color(~`palette("@{base-color}", 900)`);
-
+@import "commonly-variables";
 @gray-base: #000;
 @gray-darker: lighten(@gray-base, 13.5%); // #222
 @gray-dark: lighten(@gray-base, 20%); // #333
@@ -37,23 +6,15 @@
 @gray-light: lighten(@gray-base, 46.7%); // #777
 @gray-lighter: @B050; // #F5F5F5
 
-@primary-color: @H500;
-@primary-bg-color: @H050;
-@primary-border-color: @H300;
-
-@success-color: #1b9451;
 @success-bg-color: #e8f4ee;
 @success-border-color: #67b88b;
 
-@info-color: #2c96da;
 @info-bg-color: #eaf5fb;
 @info-border-color: #72b9e6;
 
-@warning-color: #faa121;
 @warning-bg-color: #fff6e9;
 @warning-border-color: #fcc06b;
 
-@danger-color: #c40707;
 @danger-bg-color: #f9e6e6;
 @danger-border-color: #d85a5a;
 
@@ -79,20 +40,10 @@
 //** Global textual link color.
 @text-primary-color: @H500;
 
-//** Global textual link color.
-@link-color: @H500;
-//** Link hover color.
-@link-hover-color: @H500;
 //** Link hover decoration.
 @link-hover-decoration: underline;
 //** border base color.
 @border-base-color: @B300;
-//** base bg color.
-@base-bg-color: @B050;
-//** border primary color.
-@border-primary-color: @H500;
-//** loading text color
-@loading-text-color: @B800;
 
 //== common
 //
