@@ -12,13 +12,20 @@ div.checker, div.radio {
     & * {
         margin: 0;
         padding: 0;
+        line-height: 1;
+        vertical-align: middle;
     }
 
     &:focus {
         outline: 0;
     }
 
-    & span {
+    & .checkbox-wrapper,
+    & .radio-wrapper {
+        & {
+            margin-right: 5px;
+        }
+
         &,
         &:before,
         &:after {
@@ -41,20 +48,16 @@ div.checker, div.radio {
     }
 
     &.disabled {
-        &, &.active {
-            & span {
-
-                &.checked {
-
-                    &:after {
-                        color: darken(@btn-default-bg, 17%);
-                    }
-                }
+        & .checkbox-wrapper.checked,
+        & .radio-wrapper.checked {
+            &:after {
+                border-color: darken(@btn-default-bg, 17%);
             }
         }
     }
 
-    &.active span {
+    &.active .checkbox-wrapper,
+    &.active .radio-wrapper {
         &:before {
             border-color: darken(@btn-default-border, 10%);
         }
@@ -65,7 +68,8 @@ div.checker, div.radio {
     }
 
     &.hover, &.focus {
-        & span {
+        & .checkbox-wrapper,
+        & .radio-wrapper {
             &:before {
                 border-color: darken(@btn-default-border, 5%);
             }
@@ -78,7 +82,8 @@ div.checker, div.radio {
 
     &.disabled {
         &, &.active {
-            & span {
+            & .checkbox-wrapper,
+            & .radio-wrapper {
                 background-color: @btn-default-bg;
 
                 &.checked {
@@ -91,6 +96,7 @@ div.checker, div.radio {
             }
         }
     }
+
 }
 
 /* Remove default webkit and possible mozilla .search styles.
@@ -107,8 +113,7 @@ div.checker {
     position: relative;
     margin-right: 5px;
 
-    &,
-    & span,
+    & .checkbox-wrapper,
     & input {
         width: @base-unit-px;
         height: @base-unit-px;
@@ -129,7 +134,7 @@ div.checker {
         left: 0;
     }
 
-    & span {
+    & .checkbox-wrapper {
         display: -moz-inline-box;
         display: inline-block;
         *display: inline;
@@ -176,14 +181,13 @@ div.radio {
     margin-right: 3px;
     background-image: none;
 
-    &,
-    & span,
+    & .radio-wrapper,
     & input {
         width: @base-unit-px;
         height: @base-unit-px;
     }
 
-    & span {
+    & .radio-wrapper {
         display: -moz-inline-box;
         display: inline-block;
         *display: inline;
@@ -202,7 +206,7 @@ div.radio {
 
         &:before {
             display: block;
-            border: 1px solid #DDD;
+            border: 1px solid #ddd;
             border-radius: 9px;
             top: 0;
             left: 0;
@@ -242,7 +246,7 @@ div.radio {
 
     &.disabled {
         &, &.active {
-            & span {
+            & .radio-wrapper {
                 &:after {
                     background-color: darken(@btn-default-bg, 17%);;
                 }
