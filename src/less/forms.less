@@ -471,7 +471,8 @@ input[type="checkbox"] {
     display: block; // account for any element using help-block
     margin: 5px 0px;
     color: lighten(@text-color, 25%); // lighten the text some for contrast
-    height: 16.8px;
+    //Sometimes help info is more than one line，so height can't set a fixed value
+    min-height: 16.8px;
     line-height: 16.8px;
 }
 
