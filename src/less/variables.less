@@ -1,4 +1,5 @@
 @import "commonly-variables";
+
 @gray-base: #000;
 @gray-darker: lighten(@gray-base, 13.5%); // #222
 @gray-dark: lighten(@gray-base, 20%); // #333
@@ -49,6 +50,8 @@
 //
 //## base unit
 @base-unit-px: 18px;
+//## inline gap
+@inline-gap: 8px;
 
 //== Typography
 //
@@ -289,6 +292,12 @@
 @dropdown-menu-sm-top: 27px;
 @dropdown-menu-xs-top: 21px;
 
+//== Toggle
+//Toggle checked background color
+@toggle-background-color: @H500;
+//Disabled toggle checked background color
+@toggle-disabled-background-color: @H300;
+
 //-- Z-index master list
 //
 // Warning: Avoid customizing these values. They're used for a bird's eye view
@@ -426,7 +435,7 @@
 @navbar-inverse-link-hover-bg: transparent;
 @navbar-inverse-link-active-color: @navbar-inverse-link-hover-color;
 @navbar-inverse-link-active-bg: darken(@navbar-inverse-bg, 10%);
-@navbar-inverse-link-disabled-color: @link-color;
+@navbar-inverse-link-disabled-color: #fff;
 @navbar-inverse-link-disabled-bg: transparent;
 
 // Inverted navbar brand label

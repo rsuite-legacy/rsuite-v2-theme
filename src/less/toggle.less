@@ -25,6 +25,10 @@
     &.disabled {
         cursor: not-allowed;
         background: #f4f4f4;
+
+        &.toggle-checked{
+            background: @toggle-disabled-background-color;
+        }
     }
 
     &:active:after {
@@ -47,7 +51,7 @@
         transition: all .36s cubic-bezier(.78, .14, .15, .86);
     }
     &-checked {
-        background-color: @base-color;
+        background-color: @toggle-background-color;
         .toggle-inner {
             margin-left: 6px;
             margin-right: 24px;

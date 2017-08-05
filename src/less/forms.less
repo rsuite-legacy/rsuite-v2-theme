@@ -488,14 +488,21 @@ input[type="checkbox"] {
 // Heads up! This is mixin-ed into `.navbar-form` in navbars.less.
 
 .form-inline {
+    > *, > .btn {
+        margin-right: @base-unit-px;
+        margin-bottom: @base-unit-px;
+    }
 
     // Kick in the inline
     @media (min-width: @screen-sm-min) {
         // Inline-block all the things for "inline"
         .form-group {
             display: inline-block;
-            margin-bottom: 0;
             vertical-align: middle;
+
+            .control-label {
+                margin-right: @inline-gap;
+            }
 
             .checkbox-list {
                 display: inline-block;
