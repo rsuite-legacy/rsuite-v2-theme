@@ -34,10 +34,13 @@
             '900': -0.5
         };
         percent = colorConfig[percent] === undefined ? percent : colorConfig[percent] ;
-        color = color.toLowerCase();
-        return shadeColor(color, percent);
+        var colorValue = color.slice(1);
+        colorValue = colorValue.length === 3 ? colorValue.split('').map(s=>s.repeat(2)).join('') : colorValue ;
+        colorValue = colorValue.toLowerCase();
+        return shadeColor('#'+colorValue, percent);
     }
 })()`;
 }
+
 // It is hacky way to make this function will be compiled preferentially by less
 .colorPaletteMixin();
