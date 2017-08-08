@@ -168,7 +168,8 @@
 @btn-default-hover-bg: @B100;
 @btn-default-active-bg: @B200;
 @btn-default-focus-bg: @B200;
-@btn-default-disabled-bg: @B100;
+@btn-default-disabled-bg: @gray-lighter;
+@btn-default-border-color: @gray-lighter;
 @btn-default-nav-pills-open-color: color(~`palette("@{btn-default-border}", 700)`);
 
 @btn-primary-color: #fff;
@@ -191,12 +192,15 @@
 @btn-danger-bg: @brand-danger;
 @btn-danger-border: @brand-danger;
 
-@btn-link-disabled-color: @gray-light;
+@btn-link-disabled-color: @H500;
 
 // Allows for customizing button radius independently from global border radius
 @btn-border-radius-base: @border-radius-base;
 @btn-border-radius-large: @border-radius-large;
 @btn-border-radius-small: @border-radius-small;
+
+//== Btn Group
+@btn-group-disabled-active-color: @B500;
 
 //== Forms
 //
@@ -288,7 +292,7 @@
 //** dropDownMenu的偏移量
 @dropdown-max-height: 280px;
 @dropdown-menu-top: 35px;
-@dropdown-menu-lg-top: 43px;
+@dropdown-menu-lg-top: 40px;
 @dropdown-menu-sm-top: 27px;
 @dropdown-menu-xs-top: 21px;
 

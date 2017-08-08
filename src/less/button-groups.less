@@ -36,15 +36,15 @@
 //btn-group
 .btn-group {
     &.btn-group-sm, &.btn-group-xs {
-        .btn {
+        .btn:not(.disabled), .btn.active {
             &:hover {
-                border-bottom: 1px solid darken(@btn-primary-border, 5%);
+                border-bottom-width: 1px;
             }
         }
     }
 
     &.btn-group-sm {
-        .btn {
+        .btn:not(.disabled), .btn.disabled.active {
             &:hover, &:active, &.active {
                 padding-bottom: @padding-small-vertical;
             }
@@ -55,7 +55,7 @@
     }
 
     &.btn-group-xs {
-        .btn {
+        .btn:not(.disabled), .btn.disabled.active {
             &:hover, &:active, &.active {
                 padding-bottom: @padding-xs-vertical;
             }
@@ -68,7 +68,8 @@
     .btn {
         @border-bottom: (@btn-border-size + 1);
         @padding-bootom: (@padding-base-vertical - 1);
-        &:hover {
+
+        &:not(.disabled):hover {
             border-color: darken(@btn-default-bg, 5%);
             background-color: darken(@btn-default-bg, 5%);
             border-bottom: @border-bottom solid darken(@btn-primary-border, 5%);
@@ -78,6 +79,11 @@
         &:active, &.active {
             border-bottom: @border-bottom solid darken(@btn-primary-border, 10%);
             padding-bottom: @padding-bootom;
+
+            &.disabled {
+                border-color: @btn-default-border-color @btn-default-border-color @btn-group-disabled-active-color;
+                background: @btn-default-disabled-bg;
+            }
         }
     }
 
@@ -390,6 +396,9 @@
 //suite-button-group
 //------------------
 .btn-group-default {
+    &.btn-group .dropdown-toggle.btn:hover {
+        border-bottom-color: @btn-default-border;
+    }
     .dropdown-menu {
         border-color: @btn-default-active-bg;
     }
@@ -419,6 +428,14 @@
     .button-group-btn(@brand-primary, @brand-primary-hover);
 
     &.btn-group {
+        .btn.disabled:hover {
+            background-color: white;
+            border-color: white;
+            color: @brand-primary;
+        }
+    }
+
+    &.btn-group {
         .btn-link:focus, .btn-link:hover {
             color: white;
         }
@@ -441,6 +458,11 @@
         padding-bottom: (@padding-large-vertical - 1);
     }
 
+    &.btn-group.disabled .btn:hover,
+    .dropdown-toggle.disabled.btn:hover {
+        padding-bottom: @padding-large-vertical;
+    }
+
     &.btn-group.open .dropdown-toggle.btn:hover {
         padding-bottom: (@padding-large-vertical+1);
     }
@@ -460,6 +482,11 @@
 
 .button-group-btn(@base-color,@hover-bg-color) {
     &.btn-group {
+        .btn.disabled:hover {
+            background-color: @base-color;
+            border-color: @base-color;
+        }
+
         .btn:hover {
             background-color: darken(@base-color, 5%);
             border-color: darken(@base-color, 5%);
