@@ -15,7 +15,7 @@ const palette = () => {
 
 const importResources = (callback) => {
     rsuiteCssBuild.importResources({
-        needDirPath: true,
+        needDirPath: true, 
         paths: [
             'fonts/**/*.*',
             'css/**/*'
