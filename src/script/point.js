@@ -83,7 +83,7 @@ function importResources({ paths = [], dist = '', needDirPath = true } = {}, don
  * 画板方法
  * @param {Object} options
  */
-function palette({ baseColor = originColor, src = 'css/rsuite.min.css', dist } = {}) {
+function palette({ baseColor = originColor, src = 'css/rsuite.min.css', dist } = {}, doneCallback) {
 
     try {
         if (!dist) {
@@ -106,9 +106,10 @@ function palette({ baseColor = originColor, src = 'css/rsuite.min.css', dist } =
             fs.writeFile(dist, data, (err) => {
                 if (err) {
                     console.log("Failed :" + err.red);
-                    return;
+                } else {
+                    console.log(`Palette ${dist}` + '[SUCCESS]'.green);
                 }
-                console.log(`Palette ${dist}` + '[SUCCESS]'.green);
+                doneCallback && doneCallback();
             });
         });
     });
