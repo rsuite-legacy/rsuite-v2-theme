@@ -1,6 +1,6 @@
 {
   "name": "rsuite-theme",
-  "version": "2.0.0-beta.1-2",
+  "version": "2.0.0-beta.2",
   "description": "The suite theme for pagurian",
   "main": "main.js",
   "bin": {
@@ -34,6 +34,7 @@
   },
   "homepage": "https://github.com/rsuite/rsuite-theme",
   "dependencies": {
+    "async": "^2.5.0",
     "colors": "^1.1.2",
     "commander": "^2.9.0",
     "fs-extra": "^0.30.0",
