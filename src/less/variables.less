@@ -1,4 +1,5 @@
 @import "commonly-variables";
+
 @gray-base: #000;
 @gray-darker: lighten(@gray-base, 13.5%); // #222
 @gray-dark: lighten(@gray-base, 20%); // #333
@@ -49,6 +50,8 @@
 //
 //## base unit
 @base-unit-px: 18px;
+//## inline gap
+@inline-gap: 8px;
 
 //== Typography
 //
@@ -165,7 +168,8 @@
 @btn-default-hover-bg: @B100;
 @btn-default-active-bg: @B200;
 @btn-default-focus-bg: @B200;
-@btn-default-disabled-bg: @B100;
+@btn-default-disabled-bg: @gray-lighter;
+@btn-default-border-color: @gray-lighter;
 @btn-default-nav-pills-open-color: color(~`palette("@{btn-default-border}", 700)`);
 
 @btn-primary-color: #fff;
@@ -188,12 +192,15 @@
 @btn-danger-bg: @brand-danger;
 @btn-danger-border: @brand-danger;
 
-@btn-link-disabled-color: @gray-light;
+@btn-link-disabled-color: @H500;
 
 // Allows for customizing button radius independently from global border radius
 @btn-border-radius-base: @border-radius-base;
 @btn-border-radius-large: @border-radius-large;
 @btn-border-radius-small: @border-radius-small;
+
+//== Btn Group
+@btn-group-disabled-active-color: @B500;
 
 //== Forms
 //
@@ -285,9 +292,15 @@
 //** dropDownMenu的偏移量
 @dropdown-max-height: 280px;
 @dropdown-menu-top: 35px;
-@dropdown-menu-lg-top: 43px;
+@dropdown-menu-lg-top: 40px;
 @dropdown-menu-sm-top: 27px;
 @dropdown-menu-xs-top: 21px;
+
+//== Toggle
+//Toggle checked background color
+@toggle-background-color: @H500;
+//Disabled toggle checked background color
+@toggle-disabled-background-color: @H300;
 
 //-- Z-index master list
 //
@@ -426,7 +439,7 @@
 @navbar-inverse-link-hover-bg: transparent;
 @navbar-inverse-link-active-color: @navbar-inverse-link-hover-color;
 @navbar-inverse-link-active-bg: darken(@navbar-inverse-bg, 10%);
-@navbar-inverse-link-disabled-color: @link-color;
+@navbar-inverse-link-disabled-color: #fff;
 @navbar-inverse-link-disabled-bg: transparent;
 
 // Inverted navbar brand label
@@ -487,9 +500,9 @@
 @pagination-active-bg: darken(@base-bg-color, 10%);
 @pagination-active-border: darken(@base-bg-color, 10%);
 
-@pagination-disabled-color: @pagination-color;
-@pagination-disabled-bg: darken(@base-bg-color, 10%);
-@pagination-disabled-border: darken(@base-bg-color, 10%);
+@pagination-disabled-color: @text-color;
+@pagination-disabled-bg: @gray-lighter;
+@pagination-disabled-border: @gray-lighter;
 
 //== Pager
 //

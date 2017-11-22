@@ -5,14 +5,12 @@
 // Dropdown arrow/caret
 .caret {
     display: inline-block;
-    width: 0;
-    height: 0;
     margin-left: 2px;
-    vertical-align: middle;
-    border-top: @caret-width-base dashed;
-    border-top: @caret-width-base solid ~"\9"; // IE8
-    border-right: @caret-width-base solid transparent;
-    border-left: @caret-width-base solid transparent;
+
+    &:before {
+        font-family: 'RSuiteIconFont' !important;
+        content: "\F107";
+    }
 }
 
 // The dropdown wrapper (div)
@@ -21,16 +19,17 @@
     position: relative;
     display: inline-block;
 
+    .btn .caret {
+        margin-left: 4px;
+    }
+
     //both-ends
     &.both-ends .btn {
         .clearfix;
+        text-align: right;
 
         & > span:first-child {
             float: left;
-        }
-
-        & > span:last-child {
-            float: right;
         }
     }
 }
@@ -171,6 +170,11 @@
             animation-play-state: running;
         }
 
+        > .btn-lg ~ .dropdown-menu,
+        > .btn-sm ~ .dropdown-menu,
+        > .btn-xs ~ .dropdown-menu {
+            top: auto;
+        }
         > .btn-lg ~ .dropdown-menu {
             bottom: @dropdown-menu-lg-top;
         }
@@ -279,11 +283,8 @@
 // TODO: abstract this so that the navbar fixed styles are not placed here?
 .dropup, .navbar-fixed-bottom .dropdown {
     // Reverse the caret
-    .caret {
-        border-top: 0;
-        border-bottom: @caret-width-base dashed;
-        border-bottom: @caret-width-base solid ~"\9"; // IE8
-        content: "";
+    .caret:before {
+        content: "\F106";
     }
 }
 
