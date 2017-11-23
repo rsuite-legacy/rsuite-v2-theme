@@ -18,6 +18,10 @@ html {
 
 body {
   margin: 0;
+  
+  // Optimize for the retina screen
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: antialiased;
 }
 
 // HTML5 display definitions
@@ -270,8 +274,8 @@ button {
 //
 // Remove border radius in Chrome 62+
 //
-button{
-    border-radius: 0;
+button {
+  border-radius: 0;
 }
 
 //
@@ -430,10 +434,9 @@ th {
   padding: 0;
 }
 
-
 //
 // Remove tabIndex component outline
 //
 [tabindex="-1"] {
-    outline: none;
+  outline: none;
 }
