@@ -22,32 +22,30 @@
     border-radius: @border-radius-large;
     .drop-shadow(0 1px 8px rgba(0, 0, 0, .2));
 
-    .reset-translate() {
+    .set-translate(@translateX:0,@translateY:0) {
+        transform: translate(0, 0);
+
         &.in {
-            transform: translate(0, 0);
+            transform: translate(@translateX, @translateY);
         }
     }
 
     // Offset the popover to account for the popover arrow
     &.top {
         margin-top: -@popover-arrow-width;
-        transform: translate(0, @popover-translate-distance);
-        .reset-translate();
+        .set-translate(0, -@popover-translate-distance);
     }
     &.right {
         margin-left: @popover-arrow-width;
-        transform: translate(-@popover-translate-distance, 0);
-        .reset-translate();
+        .set-translate(@popover-translate-distance, 0);
     }
     &.bottom {
         margin-top: @popover-arrow-width;
-        transform: translate(0, -@popover-translate-distance);
-        .reset-translate();
+        .set-translate(0, @popover-translate-distance);
     }
     &.left {
         margin-left: -@popover-arrow-width;
-        transform: translate(@popover-translate-distance, 0);
-        .reset-translate();
+        .set-translate(-@popover-translate-distance, 0);
     }
     &.fade {
         transition: opacity .15s ease-out .15s, transform .15s ease-out .15s;

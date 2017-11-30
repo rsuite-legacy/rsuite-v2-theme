@@ -1,4 +1,5 @@
 @import "commonly-variables";
+
 @gray-base: #000;
 @gray-darker: lighten(@gray-base, 13.5%); // #222
 @gray-dark: lighten(@gray-base, 20%); // #333
@@ -558,7 +559,7 @@
 //** Tooltip arrow color
 @tooltip-arrow-color: @tooltip-bg;
 //** Tooltip translate distance
-@tooltip-translate-distance: @tooltip-arrow-width;
+@tooltip-translate-distance: 2px;
 
 //== Popovers
 //
@@ -581,7 +582,7 @@
 //** Popover arrow color
 @popover-arrow-color: @popover-bg;
 //** Popover translate distance
-@popover-translate-distance: @popover-arrow-width;
+@popover-translate-distance: 2px;
 
 //** Popover outer arrow width
 @popover-arrow-outer-width: (@popover-arrow-width + 1);
