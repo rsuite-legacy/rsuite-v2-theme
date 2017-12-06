@@ -11,7 +11,7 @@
     "url": "https://github.com/rsuite/rsuite-theme.git"
   },
   "scripts": {
-    "test": "npm run prepublish && rm -rf dist/test/ && node test/index.js",
+    "test": "npm run prepublish && rm -rf dist/test/ && jest --color",
     "build": "babel src/script --out-dir lib && babel src/bin --out-dir bin",
     "prepublish": "gulp && npm run build"
   },
@@ -50,7 +50,8 @@
     "gulp-less": "^3.3.2",
     "gulp-postcss": "^7.0.0",
     "gulp-rename": "^1.2.2",
-    "gulp-sourcemaps": "^2.6.1"
+    "gulp-sourcemaps": "^2.6.1",
+    "jest": "^21.2.1"
   },
   "browserslist": [
     "> 1%",
