@@ -37,3 +37,5 @@ node_modules
 /lib/
 /src/css/
 /bin/
+/assets/
+/yarn.lock

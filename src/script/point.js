@@ -3,17 +3,14 @@
  */
 
 require('colors');
-const Q = require('q');
 const glob = require('glob');
 const Path = require('path');
 const fse = require('fs-extra');
 const fs = require('fs');
 const color = require('./util/color');
-const { promisesResolve } = require('./util/common');
-
 const async = require('async');
 
-const rootPath = Path.join(__dirname, '../dist');
+const rootPath = Path.join(__dirname, '../lib');
 const originColor = '#00bcd4';
 
 /**
