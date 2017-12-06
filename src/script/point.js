@@ -23,60 +23,60 @@ const originColor = '#00bcd4';
  * @param {String} dist
  */
 function importResources({ paths = [], dist = '', needDirPath = true } = {}, doneCallback) {
-    try {
-        if (dist.length === 0) {
-            throw  'ERROR: [option.dist] is required';
+  try {
+    if (dist.length === 0) {
+      throw  'ERROR: [option.dist] is required';
+    }
+  } catch (e) {
+    console.log(e.red);
+  }
+  console.log('ImportResources ...');
+  /**
+   * 获取全部文件的路径
+   * @param paths
+   * @param callback
+   */
+  const getPathsAllFiles = (paths, callback) => {
+    let allFiles = [];
+    const absolutePaths = paths.map(path => Path.join(rootPath, path));
+    async.eachLimit(absolutePaths, 1, (path, next) => {
+      glob(path, {}, (err, files) => {
+        if (err) {
+          console.log(err);
+        } else {
+          allFiles = [...allFiles, ...files];
         }
-    } catch (e) {
-        console.log(e.red);
-    }
-    console.log('ImportResources ...');
-    /**
-     * 获取全部文件的路径
-     * @param paths
-     * @param callback
-     */
-    const getPathsAllFiles = (paths, callback) => {
-        let allFiles = [];
-        const absolutePaths = paths.map(path => Path.join(rootPath, path));
-        async.eachLimit(absolutePaths, 1, (path, next) => {
-            glob(path, {}, (err, files) => {
-                if (err) {
-                    console.log(err);
-                } else {
-                    allFiles = [...allFiles, ...files];
-                }
-                next();
-            })
-        }, () => callback && callback(allFiles));
-    }
+        next();
+      })
+    }, () => callback && callback(allFiles));
+  }
 
-    /**
-     * 复制文件
-     * @param files
-     * @param callback
-     */
-    const copyFiles = (files, callback) => {
-        async.eachLimit(files, 1, (filePath, next) => {
-            const outputPath = needDirPath ? Path.relative(rootPath, filePath) : Path.basename(filePath);
-            console.log(`Copy ${outputPath}`);
-            fse.copy(filePath, Path.join(dist, outputPath), function (err) {
-                if (err) {
-                    console.error(err);
-                }
-                next();
-            });
-        }, () => {
-            callback && callback();
-            doneCallback && doneCallback();
-        });
-    }
+  /**
+   * 复制文件
+   * @param files
+   * @param callback
+   */
+  const copyFiles = (files, callback) => {
+    async.eachLimit(files, 1, (filePath, next) => {
+      const outputPath = needDirPath ? Path.relative(rootPath, filePath) : Path.basename(filePath);
+      console.log(`Copy ${outputPath}`);
+      fse.copy(filePath, Path.join(dist, outputPath), function (err) {
+        if (err) {
+          console.error(err);
+        }
+        next();
+      });
+    }, () => {
+      callback && callback();
+      doneCallback && doneCallback();
+    });
+  }
 
-    getPathsAllFiles(paths, file => copyFiles(file, () => {
-        console.log('ImportResources ' + '[SUCCESS]'.green);
-    }));
+  getPathsAllFiles(paths, file => copyFiles(file, () => {
+    console.log('ImportResources ' + '[SUCCESS]'.green);
+  }));
 
-    return module.exports;
+  return module.exports;
 };
 
 /**
@@ -85,39 +85,39 @@ function importResources({ paths = [], dist = '', needDirPath = true } = {}, don
  */
 function palette({ baseColor = originColor, src = 'css/rsuite.min.css', dist } = {}, doneCallback) {
 
-    try {
-        if (!dist) {
-            throw  `ERROR: [option.${key}] is required`;
-        }
-    } catch (e) {
-        console.log(e.red);
-        return;
+  try {
+    if (!dist) {
+      throw  `ERROR: [option.dist] is required`;
     }
+  } catch (e) {
+    console.log(e.red);
+    return;
+  }
 
-    const originColors = color.calcColors(originColor);
-    const colors = color.calcColors(baseColor);
-    const distPath = Path.dirname(dist);
-    fse.ensureDir(distPath, (err) => {
-        if (err) console.log(err);
-        fs.readFile(Path.join(rootPath, src), 'utf-8', (err, data) => {
-            originColors.forEach((color, index) => {
-                data = data.replace(new RegExp(color, 'g'), colors[index]);
-            });
-            fs.writeFile(dist, data, (err) => {
-                if (err) {
-                    console.log("Failed :" + err.red);
-                } else {
-                    console.log(`Palette ${dist}` + '[SUCCESS]'.green);
-                }
-                doneCallback && doneCallback();
-            });
-        });
+  const originColors = color.calcColors(originColor);
+  const colors = color.calcColors(baseColor);
+  const distPath = Path.dirname(dist);
+  fse.ensureDir(distPath, (err) => {
+    if (err) console.log(err);
+    fs.readFile(Path.join(rootPath, src), 'utf-8', (err, data) => {
+      originColors.forEach((color, index) => {
+        data = data.replace(new RegExp(color, 'g'), colors[index]);
+      });
+      fs.writeFile(dist, data, (err) => {
+        if (err) {
+          console.log("Failed :" + err.red);
+        } else {
+          console.log(`Palette ${dist}` + '[SUCCESS]'.green);
+        }
+        doneCallback && doneCallback();
+      });
     });
+  });
 
-    return module.exports;
+  return module.exports;
 }
 
 module.exports = {
-    importResources,
-    palette
+  importResources,
+  palette
 };
