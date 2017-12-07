@@ -1,4 +1,9 @@
 # RSuite Theme
+[![Npm][npm-badge]][npm]
+[![Travis][build-badge]][build]
+[![Coverage Status][coverage-badge]][coverage-badge]
+[![MIT licensed][license]][license]
+
 ## 概述
 本主题基于 [bootstrap](https://github.com/twbs/bootstrap) 进行定制修改。在统一不同使用场景的视觉和操作体验的同时，我们建立了完整的规范体系，便于创建项目也方便统一管理。以扁平化和简洁为主旨的设计风格，使用块面来进行布局，用线条来表达各个控件，使功能庞杂的系统 既直观又条理清晰，让使用者一目了然。选用清新的色彩为主基调，使界面清晰又不失沉稳。主要特点：
 > 1. 遵循[HyperS](http://www.hypers.com)前端框架[pagurian](http://pagurian.com/design/)设计规范。并进行了大量改进优化。
@@ -159,3 +164,16 @@ Root
 │         └── fonts/              //字体文件
 └── READNE.md //使用文档
 ```
+
+
+[npm-badge]: https://img.shields.io/npm/v/rsuite-theme/version3.x.svg
+[npm]: https://www.npmjs.com/package/rsuite-theme
+
+[build-badge]: https://travis-ci.org/rsuite/rsuite-theme.svg?branch=next
+[build]: https://travis-ci.org/rsuite/rsuite-theme
+
+[coverage-badge]: https://coveralls.io/repos/github/rsuite/rsuite-theme/badge.svg?branch=next
+[coverage]: https://coveralls.io/github/rsuite/rsuite-theme?branch=next
+
+[license-badge]:https://img.shields.io/npm/l/express.svg
+[license]:https://github.com/rsuite/rsuite-theme/blob/master/LICENSE

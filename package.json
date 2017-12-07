@@ -11,7 +11,8 @@
     "url": "https://github.com/rsuite/rsuite-theme.git"
   },
   "scripts": {
-    "test": "npm run prepublish && rm -rf dist/test/ && jest --color",
+    "test": "npm run prepublish && rm -rf dist/test/ && rm -rf coverage && jest --silent --coverage",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "build": "babel src/script --out-dir lib && babel src/bin --out-dir bin",
     "prepublish": "gulp && npm run build"
   },
@@ -44,6 +45,7 @@
     "autoprefixer": "^7.2.1",
     "babel-cli": "^6.14.0",
     "babel-preset-env": "^1.6.1",
+    "coveralls": "^3.0.0",
     "cssnano": "^3.10.0",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
