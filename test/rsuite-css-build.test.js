@@ -28,7 +28,7 @@ const importResources = (callback) => {
 };
 
 describe('RSUITE css build tools test:', () => {
-  test('Importresources test.', (done) => {
+  test('ImportResources test.', (done) => {
     importResources(() => {
       const getFileNum = path => glob.sync(Path.join(__dirname, `../${path}/**/*`)).length;
       expect(getFileNum(`${srcPath}/fonts`)).toBe(getFileNum(`${distPath}/fonts`));
