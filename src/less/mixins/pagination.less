@@ -2,8 +2,7 @@
 
 .pagination-size(@padding-vertical; @padding-horizontal; @font-size; @line-height; @border-radius) {
     > li {
-        > a,
-        > span {
+        > a {
             padding: @padding-vertical @padding-horizontal;
             font-size: @font-size;
             line-height: @line-height;
@@ -16,21 +15,18 @@
 
         }
         &:first-child {
-            > a,
-            > span {
+            > a {
                 .border-left-radius(@border-radius);
             }
         }
         &:last-child {
-            > a,
-            > span {
+            > a {
                 .border-right-radius(@border-radius);
             }
         }
     }
 
-    > .active > a,
-    > .active > span {
+    > .active > a {
         &,
         &:hover,
         &:focus {

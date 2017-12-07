@@ -32,7 +32,6 @@ label {
     display: inline-block;
     max-width: 100%; // Force IE8 to wrap long content (see https://github.com/twbs/bootstrap/issues/13141)
     margin-bottom: 5px;
-    //font-weight: bold;
 }
 
 // Normalize form controls
@@ -175,36 +174,6 @@ input[type="search"] {
     -webkit-appearance: none;
 }
 
-// Special styles for iOS temporal inputs
-//
-// In Mobile Safari, setting `display: block` on temporal inputs causes the
-// text within the input to become vertically misaligned. As a workaround, we
-// set a pixel line-height that matches the given height of the input, but only
-// for Safari. See https://bugs.webkit.org/show_bug.cgi?id=139848
-//
-// Note that as of 8.3, iOS doesn't support `datetime` or `week`.
-
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-    input[type="date"],
-    input[type="time"],
-    input[type="datetime-local"],
-    input[type="month"] {
-        &.form-control {
-            line-height: @input-height-base;
-        }
-
-        &.input-sm,
-        .input-group-sm & {
-            line-height: @input-height-small;
-        }
-
-        &.input-lg,
-        .input-group-lg & {
-            line-height: @input-height-large;
-        }
-    }
-}
-
 // Form groups
 //
 // Designed to help with the organization and spacing of vertical forms. For
@@ -254,7 +223,6 @@ input[type="search"] {
 .checkbox-inline {
     position: relative;
     display: inline-block;
-    //padding-left: 20px;
     margin-bottom: 0;
     vertical-align: middle;
     font-weight: normal;
