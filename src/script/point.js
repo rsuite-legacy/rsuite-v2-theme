@@ -7,11 +7,11 @@ const glob = require('glob');
 const Path = require('path');
 const fse = require('fs-extra');
 const fs = require('fs');
-const color = require('./util/color');
 const async = require('async');
+const color = require('./util/color');
 
 const rootPath = Path.join(__dirname, '../lib');
-const originColor = '#00bcd4';
+const baseColor = '#00bcd4';
 
 /**
  * 导入资源
@@ -26,6 +26,7 @@ function importResources({ paths = [], dist = '', needDirPath = true } = {}, don
     }
   } catch (e) {
     console.log(e.red);
+    process.env.exit(0);
   }
   console.log('ImportResources ...');
   /**
@@ -44,7 +45,7 @@ function importResources({ paths = [], dist = '', needDirPath = true } = {}, don
           allFiles = [...allFiles, ...files];
         }
         next();
-      })
+      });
     }, () => callback && callback(allFiles));
   }
 
@@ -80,7 +81,7 @@ function importResources({ paths = [], dist = '', needDirPath = true } = {}, don
  * 画板方法
  * @param {Object} options
  */
-function palette({ baseColor = originColor, src = 'css/rsuite.min.css', dist } = {}, doneCallback) {
+function palette({ baseColor = baseColor, src = 'css/rsuite.min.css', dist } = {}, doneCallback) {
 
   try {
     if (!dist) {
@@ -91,7 +92,7 @@ function palette({ baseColor = originColor, src = 'css/rsuite.min.css', dist } =
     return;
   }
 
-  const originColors = color.calcColors(originColor);
+  const originColors = color.calcColors(baseColor);
   const colors = color.calcColors(baseColor);
   const distPath = Path.dirname(dist);
   fse.ensureDir(distPath, (err) => {
