@@ -12,28 +12,12 @@
     > li {
         display: inline-block;
 
-        + li:before {
-            font-family: @breadcrumb-separator-font;
-            content: "\00a0@{breadcrumb-separator}\00a0"; // Unicode space added since inline-block means non-collapsing white-space
-            padding: 0 1px;
-            color: @breadcrumb-color;
-            float: left;
+        + .breadcrumb-separator {
+            margin: 0 4px;
         }
     }
 
     > .active {
         color: @breadcrumb-active-color;
-    }
-
-    > .highlight, > .active-highlight {
-        display: block;
-        font-size: @font-size-large;
-        color: @breadcrumb-active-color;
-        padding-top: @base-unit-px;
-
-        &:before {
-            content: "";
-            padding: 0;
-        }
     }
 }
