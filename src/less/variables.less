@@ -61,7 +61,9 @@
 
 @font-size-base: 14px;
 @font-size-large: 16px;
-@font-size-small: ceil((@font-size-base * 0.85)); // ~12px
+@font-size-small: 12px;
+
+@font-size-button-base: @font-size-small;
 
 @font-size-h1: 40px;
 @font-size-h2: 20px;
@@ -71,7 +73,7 @@
 @font-size-h6: ceil((@font-size-base * 0.85)); // ~12px
 
 //** Unit-less `line-height` for use in components like buttons.
-@line-height-base: 1.428571429; // 20/14
+@line-height-base: 1.666666667; // 20/12
 //** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
 @line-height-computed: floor((@font-size-base * @line-height-base)); // ~20px
 
@@ -87,7 +89,7 @@
 
 //** Load fonts from this directory.
 @icon-font-path: "./fonts";
-@icon-font-size-base: 14px;
+@icon-font-size-base: @font-size-base;
 @icon-line-height-base: 1;
 @icon-css-prefix: icon;
 @icon-version: "4.7.0";
@@ -98,8 +100,8 @@
 //
 //## Define common padding and border radius sizes and more. Values based on 14px text and 1.428 line-height (~20px to start).
 
-@padding-base-vertical: 7px;
-@padding-base-horizontal: @base-unit-px;
+@padding-base-vertical: 8px;
+@padding-base-horizontal: 12px;
 
 @padding-base-input-vertical: @padding-base-vertical;
 @padding-base-input-horizontal: 12px;
@@ -116,7 +118,7 @@
 @line-height-large: 1.3333333; // extra decimals for Win 8.1 Chrome
 @line-height-small: 1.5;
 
-@border-radius-base: 0px;
+@border-radius-base: 6px;
 @border-radius-large: 0px;
 @border-radius-small: 0px;
 
@@ -156,16 +158,15 @@
 
 @btn-font-weight: normal;
 
-@btn-border-size: 1px;
-
-@btn-default-color: @text-color;
+@btn-default-color: @text-primary-color;
 @btn-default-bg: @gray-lighter;
 @btn-default-border: @gray-lighter;
-@btn-default-hover-bg: @B100;
+@btn-default-hover-color: @H600;
+@btn-default-hover-bg: @B050;
 @btn-default-active-bg: @B200;
 @btn-default-focus-bg: @B200;
-@btn-default-disabled-bg: @gray-lighter;
-@btn-default-border-color: @gray-lighter;
+@btn-default-disabled-bg: @H100;
+//@btn-default-border-color: @H100;
 @btn-default-nav-pills-open-color: color(~`palette("@{btn-default-border}", 700)`);
 
 @btn-primary-color: #fff;
@@ -192,8 +193,8 @@
 
 // Allows for customizing button radius independently from global border radius
 @btn-border-radius-base: @border-radius-base;
-@btn-border-radius-large: @border-radius-large;
-@btn-border-radius-small: @border-radius-small;
+@btn-border-radius-large: @border-radius-base;
+@btn-border-radius-small: @border-radius-base;
 
 //== Btn Group
 @btn-group-disabled-active-color: @B500;
@@ -255,9 +256,9 @@
 //** Background for the dropdown menu.
 @dropdown-bg: #fff;
 //** Dropdown menu `border-color`.
-@dropdown-border: palette(@btn-default-border, 700);
+//@dropdown-border: palette(@btn-default-border, 700);
 //** Dropdown menu `border-color` **for IE8**.
-@dropdown-fallback-border: #ccc;
+//@dropdown-fallback-border: #ccc;
 //** Divider color for between dropdown items.
 @dropdown-divider-bg: #e5e5e5;
 
@@ -515,7 +516,6 @@
 
 @pager-disabled-color: @pagination-disabled-color;
 
-
 //== Form states and alerts
 //
 //## Define colors for form feedback states and, by default, alerts.
@@ -536,9 +536,25 @@
 @state-danger-bg: @danger-bg-color;
 @state-danger-border: @danger-border-color;
 
+//** Checkbox Styles
+@checkbox-width-height: 16px;
+@checkbox-sense-width: 10px;
+@checkbox-border-radius: 3px;
+@checkbox-default-border-color: @border-base-color;
+@checkbox-checked-border-color: @border-primary-color;
+@checkbox-disabled-color: @B050;
+@checkbox-bg: @B000;
+
 //** Radio Checked width
-@radio-check-width: 10px;
-@check-check-rotate: 45deg;
+@radio-width-height: 16px;
+@radio-inner-width-height: 6px;
+@radio-sense-width: 10px;
+@radio-border-radius: 50%;
+@radio-default-border-color: @border-base-color;
+@radio-checked-border-color: @border-primary-color;
+@radio-disabled-color: @B050;
+@radio-bg: @B000;
+@radio-inner-checked-color: @B000;
 
 //== Tooltips
 //
@@ -594,7 +610,6 @@
 //== Labels
 //
 //##
-
 
 //** Default label text color
 @label-color: #fff;

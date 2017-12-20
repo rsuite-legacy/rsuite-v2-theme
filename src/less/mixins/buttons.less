@@ -3,17 +3,15 @@
 // Easily pump out default styles, as well as :hover, :focus, :active,
 // and disabled options for all buttons
 
-.button-variant(@color; @background; @border) {
+.button-variant(@color; @background) {
     color: @color;
     background-color: @background;
-    border-color: @border;
     .button-ripple;
 
     &:focus,
     &.focus {
         color: @color;
         background-color: color(~`palette("@{background}", 700)`);
-        border-color: color(~`palette("@{border}", 700)`);
     }
 
     &:hover {
@@ -22,7 +20,6 @@
 
     &:not(.disabled):hover {
         background-color: color(~`palette("@{background}", 600)`);
-        border-color: color(~`palette("@{border}", 600)`);
     }
 
     &:active,
@@ -30,16 +27,15 @@
     .open > .dropdown-toggle& {
         color: @color;
         background-color: color(~`palette("@{background}", 700)`);
-        border-color: color(~`palette("@{border}", 700)`);
 
         &:hover,
         &:focus,
         &.focus {
             color: @color;
             background-color: color(~`palette("@{background}", 800)`);
-            border-color: color(~`palette("@{border}", 800)`);
         }
     }
+
     &:active,
     &.active,
     .open > .dropdown-toggle& {

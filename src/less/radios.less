@@ -1,0 +1,106 @@
+.radio-inner-wrapper(@border-color) {
+    border: 1px solid @border-color;
+    background-color: @radio-bg;
+    border-radius: @radio-border-radius;
+}
+
+.radio-checker {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: @radio-sense-width*2+@radio-width-height;
+    min-height: @radio-sense-width*2+@radio-width-height;
+    line-height: 1;
+}
+
+.radio-wrapper {
+    position: absolute;
+    width: @radio-width-height;
+    height: @radio-width-height;
+    display: inline-block;
+    left: @radio-sense-width;
+    top: @checkbox-sense-width;
+
+    [type="radio"] {
+        display: none;
+    }
+
+    &::before,
+    &::after,
+    .radio-inner::before,
+    .radio-inner::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: block;
+    }
+
+    &::before,
+    .radio-inner::before,
+    .radio-inner::after {
+        width: @radio-width-height;
+        height: @radio-width-height;
+    }
+
+    // 涟漪效果外框
+    &::before {
+        .radio-inner-wrapper(@radio-checked-border-color);
+        transform: scale(1);
+        opacity: .7;
+        visibility: hidden;
+        transition: transform .2s linear, opacity .2s linear;
+
+        .radio-checked & {
+            transform: scale(1.5);
+            opacity: 0;
+            visibility: visible;
+        }
+    }
+
+    //感知区域
+    &::after {
+        top: -@radio-sense-width;
+        right: -@radio-sense-width;
+        bottom: -@radio-sense-width;
+        left: -@radio-sense-width;
+    }
+
+    //边框
+    .radio-inner::before {
+        .radio-inner-wrapper(@radio-default-border-color);
+        transition: background .2s linear, border .2s linear;
+
+        .radio-checked & {
+            border-color: @radio-checked-border-color;
+            background-color: @radio-checked-border-color;
+        }
+
+        .radio-disabled:not(.radio-checked) & {
+            border-color: @radio-disabled-color;
+            background-color: @radio-disabled-color;
+        }
+
+        .radio-disabled.radio-checked & {
+            opacity: .3;
+        }
+    }
+
+    //实心圆
+    .radio-inner::after {
+        width: @radio-inner-width-height;
+        height: @radio-inner-width-height;
+        background: @radio-inner-checked-color;
+        margin-top: (@radio-width-height - @radio-inner-width-height) / 2;
+        margin-left: (@radio-width-height - @radio-inner-width-height) / 2;
+        border-radius: @radio-border-radius;
+        .opacity(0);
+        transform: scale(0);
+        transition: opacity .2s ease-in, transform .2s cubic-bezier(0.12, 0.4, 0.29, 1.46);
+
+        .radio-checked & {
+            transform: scale(1);
+            .opacity(1);
+        }
+    }
+}
+

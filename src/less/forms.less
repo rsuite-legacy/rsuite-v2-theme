@@ -191,16 +191,26 @@ input[type="search"] {
 .checkbox {
     position: relative;
     display: block;
-    margin-top: 10px;
-    margin-bottom: 10px;
 
     label {
-        min-height: @line-height-computed; // Ensure the input doesn't jump when there is no text
-        padding-left: 20px;
+        line-height: 1.1428571428571428; //  @checkbox-width-height/@font-size-base = 16px/14px
         margin-bottom: 0;
         font-weight: normal;
         cursor: pointer;
     }
+}
+
+.checkbox label:hover .checkbox-inner::before {
+    border-color: @checkbox-checked-border-color;
+}
+
+.radio label:hover .radio-inner::before {
+    border-color: @radio-checked-border-color;
+}
+
+.checkbox.checkbox-disabled label,
+.radio.radio-disabled label {
+    cursor: not-allowed;
 }
 
 .radio input[type="radio"],
@@ -215,7 +225,7 @@ input[type="search"] {
 
 .radio + .radio,
 .checkbox + .checkbox {
-    margin-top: -5px; // Move up sibling radios or checkboxes for tighter spacing
+    //margin-top: -5px; // Move up sibling radios or checkboxes for tighter spacing
 }
 
 // Radios and checkboxes on same line
@@ -397,15 +407,6 @@ input[type="checkbox"] {
     height: @input-height-small;
     line-height: @input-height-small;
 }
-
-// Feedback states
-//.has-success {
-//    .form-control-validation(@state-success-text; @state-success-text; @state-success-bg);
-//}
-
-//.has-warning {
-//    .form-control-validation(@state-warning-text; @state-warning-text; @state-warning-bg);
-//}
 
 .has-error {
     //.form-control-validation(@state-danger-text; @state-danger-text; @state-danger-bg);
@@ -622,40 +623,4 @@ input[type="checkbox"] {
             padding-top: 4px;
         }
     }
-}
-
-/**
-CHECKBOX LIST
-**/
-.checkbox-list > label {
-    display: block;
-
-    &.checkbox-inline, &.inline {
-        display: inline-block;
-    }
-}
-
-.radio-list > label {
-    display: block;
-
-    &.radio-inline {
-        display: inline-block;
-    }
-}
-
-.checkbox-list > label.checkbox-inline,
-.checkbox-list > label.inline,
-.radio-list > label.radio-inline,
-.radio-list > label.inline {
-    padding-left: 10px;
-    margin-top: 0;
-    margin-bottom: 0;
-
-    &:first-child {
-        padding-left: 0;
-    }
-}
-
-.checkbox-list .checkbox {
-    margin-top: 0;
 }

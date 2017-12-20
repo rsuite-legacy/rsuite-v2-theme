@@ -11,13 +11,11 @@
     font-weight: @btn-font-weight;
     text-align: center;
     vertical-align: middle;
-    touch-action: manipulation;
     cursor: pointer;
     outline: 0 !important;
     background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
-    border: @btn-border-size solid transparent;
     white-space: nowrap;
-    .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @btn-border-radius-base);
+    .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-button-base; @line-height-base; @btn-border-radius-base);
     .user-select(none);
 
     &,
@@ -46,7 +44,7 @@
     &[disabled],
     fieldset[disabled] & {
         cursor: @cursor-disabled;
-        .opacity(.65);
+        .opacity(.3);
 
         &:after {
             display: none;
@@ -69,38 +67,32 @@
     //这里没有使用 .button-variant 因为要遵循规范
     //http://pagurian.com/design/widgets/character&icon_button.html
     color: @btn-default-color;
-    background-color: @btn-default-bg;
-    border-color: @btn-default-border;
+    background: none;
 
     &:focus,
     &.focus {
         color: @btn-default-color;
         background-color: @btn-default-focus-bg;
-        border-color: @btn-default-focus-bg;
     }
     &:hover {
-        color: @btn-default-color;
+        color: @btn-default-hover-color;
         background-color: @btn-default-hover-bg;
-        border-color: @btn-default-hover-bg;
     }
     &:active,
     &.active,
     .open > .dropdown-toggle& {
         color: @btn-default-color;
         background-color: @btn-default-active-bg;
-        border-color: @btn-default-active-bg;
 
         &:hover {
             color: @btn-default-color;
             background-color: @btn-default-hover-bg;
-            border-color: @btn-default-hover-bg;
         }
 
         &:focus,
         &.focus {
             color: @btn-default-color;
             background-color: @btn-default-focus-bg;
-            border-color: @btn-default-focus-bg;
         }
     }
     &:active,
@@ -108,14 +100,14 @@
     .open > .dropdown-toggle& {
         background-image: none;
     }
+
     &.disabled,
     &[disabled],
-    fieldset[disabled] & {
+    fieldset[disabled] {
         &:hover,
         &:focus,
         &.focus {
-            background-color: @btn-default-disabled-bg;
-            border-color: @btn-default-disabled-bg;
+            background: none;
         }
     }
 
@@ -126,27 +118,27 @@
 }
 
 .btn-primary {
-    .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
+    .button-variant(@btn-primary-color; @btn-primary-bg;);
 }
 
 // Success appears as green
 .btn-success {
-    .button-variant(@btn-success-color; @btn-success-bg; @btn-success-border);
+    .button-variant(@btn-success-color; @btn-success-bg;);
 }
 
 // Info appears as blue-green
 .btn-info {
-    .button-variant(@btn-info-color; @btn-info-bg; @btn-info-border);
+    .button-variant(@btn-info-color; @btn-info-bg;);
 }
 
 // Warning appears as orange
 .btn-warning {
-    .button-variant(@btn-warning-color; @btn-warning-bg; @btn-warning-border);
+    .button-variant(@btn-warning-color; @btn-warning-bg;);
 }
 
 // Danger and error appear as red
 .btn-danger {
-    .button-variant(@btn-danger-color; @btn-danger-bg; @btn-danger-border);
+    .button-variant(@btn-danger-color; @btn-danger-bg;);
 }
 
 // Link buttons
