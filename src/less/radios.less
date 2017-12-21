@@ -102,16 +102,16 @@
         outline: none;
 
         .radio-inner::before {
-            .radio-inner-active-shadow(@checkbox-default-border-color);
+            .radio-inner-active-shadow(@radio-default-border-color);
 
             @hover: ~':hover';
             @{hover}& {
-                .radio-inner-active-shadow(@checkbox-checked-border-color);
+                .radio-inner-active-shadow(@radio-checked-border-color);
 
             }
 
             .radio-checked & {
-                .radio-inner-active-shadow(@checkbox-checked-border-color);
+                .radio-inner-active-shadow(@radio-checked-border-color);
             }
         }
     }
