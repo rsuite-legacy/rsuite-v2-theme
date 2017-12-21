@@ -17,6 +17,10 @@
     white-space: nowrap;
     .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-button-base; @line-height-base; @btn-border-radius-base);
     .user-select(none);
+    
+    &.btn-circle {
+        border-radius: 50%;
+    }
 
     &,
     &:active,
@@ -35,7 +39,7 @@
     }
 
     &:active,
-    &.active {
+    &.btn-active {
         outline: 0;
         background-image: none;
     }
@@ -79,7 +83,7 @@
         background-color: @btn-default-hover-bg;
     }
     &:active,
-    &.active,
+    &.btn-active,
     .open > .dropdown-toggle& {
         color: @btn-default-color;
         background-color: @btn-default-active-bg;
@@ -96,7 +100,7 @@
         }
     }
     &:active,
-    &.active,
+    &.btn-active,
     .open > .dropdown-toggle& {
         background-image: none;
     }
