@@ -3,23 +3,23 @@
 // --------------------------------------------------
 
 // Dropdown arrow/caret
-.caret {
+.dropdown-toggle-caret {
     display: inline-block;
     margin-left: 2px;
 
     &:before {
-        font-family: 'RSuiteIconFont' !important;
-        content: "\F107";
+        font-family: @dropdown-caret-font-family !important;
+        content: @dropdown-caret-content;
     }
 }
 
 // The dropdown wrapper (div)
-.dropup,
+.dropdown-dropup,
 .dropdown {
     position: relative;
     display: inline-block;
 
-    .btn .caret {
+    .btn .dropdown-toggle-caret {
         margin-left: 4px;
     }
 
@@ -28,7 +28,7 @@
         .clearfix;
         text-align: left;
 
-        & > .caret {
+        & > .dropdown-toggle-caret {
             float: right;
         }
     }
@@ -64,7 +64,7 @@
     text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
     background-color: @dropdown-bg;
     border-radius: @border-radius-base;
-    .box-shadow(0 6px 12px rgba(0, 0, 0, .175));
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.06), 0 4px 4px rgba(0, 0, 0, 0.12);
     animation-duration: .3s;
     animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
     animation-fill-mode: both;
@@ -102,10 +102,6 @@
 .dropdown.btn-group .dropdown-menu {
     max-height: @dropdown-max-height;
     overflow-y: auto;
-}
-
-.dropup > .dropdown-menu {
-    .box-shadow(0 -6px 12px rgba(0, 0, 0, .175));
 }
 
 // Hover/Focus state
@@ -153,14 +149,12 @@
 }
 
 // Open state for the dropdown
-.open {
+.dropdown-open {
     //打开时的按钮样式
-    &.dropup {
+    &.dropdown-dropup {
         > .dropdown-toggle.btn {
             &, &:active, &:focus {
                 background: white;
-                border-bottom: 1px solid @btn-default-active-bg !important;
-                border-top: medium none;
             }
         }
 
@@ -212,12 +206,6 @@
     > .dropdown-toggle.btn {
         &, &:active, &:focus {
             background: white;
-            border-bottom: 1px solid white;
-        }
-
-        &.btn-sm, &.btn-lg {
-            //border: 1px solid @dropdown-border;
-            border-bottom: 1px solid white;
         }
     }
 
@@ -280,12 +268,10 @@
 }
 
 // Allow for dropdowns to go bottom up (aka)
-//
-// TODO: abstract this so that the navbar fixed styles are not placed here?
-.dropup, .navbar-fixed-bottom .dropdown {
+.dropdown-dropup, .navbar-fixed-bottom .dropdown {
     // Reverse the caret
-    .caret:before {
-        content: "\F106";
+    .dropdown-toggle-caret:before {
+        content: @dropup-caret-content;
     }
 }
 
