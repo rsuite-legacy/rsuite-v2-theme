@@ -46,6 +46,17 @@
         color: @background;
         background-color: @color;
     }
+
+    &.btn-disabled,
+    &[disabled],
+    fieldset[disabled] &,
+    .dropdown-disabled & {
+        &:hover,
+        &:focus,
+        &.focus {
+            background: @background;
+        }
+    }
 }
 
 // Button sizes

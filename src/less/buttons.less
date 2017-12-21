@@ -46,12 +46,13 @@
 
     &.disabled,
     &[disabled],
-    fieldset[disabled] & {
+    fieldset[disabled] &,
+    .dropdown-disabled & {
         cursor: @cursor-disabled;
         .opacity(.3);
 
         &:after {
-            display: none;
+            display: none !important;
         }
     }
 
@@ -105,9 +106,10 @@
         background-image: none;
     }
 
-    &.disabled,
+    &.btn-disabled,
     &[disabled],
-    fieldset[disabled] {
+    fieldset[disabled] &,
+    .dropdown-disabled & {
         &:hover,
         &:focus,
         &.focus {
