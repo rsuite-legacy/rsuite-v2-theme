@@ -1,4 +1,4 @@
-.rsuite-checktreepicker {
+.rsuite-checkpicker {
     /* settings */
     @container-bg: #fff;
     @container-fg: #333;
@@ -30,33 +30,31 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
-    
+
     &-dropup {
-        .rsuite-checktreepicker-toggle-arrow {
+        .rsuite-checkpicker-toggle-arrow {
             &::before {
                 content: "\F106";
             }
         }
     }
+
     &-dropdown {
         position: relative;
         box-sizing: border-box;
         text-align: left;
         outline: none;
         &.disabled {
-            .rsuite-checktreepicker-toggle {
+            .rsuite-checkpicker-toggle {
                 background: #f5f5f5 !important;
                 cursor: not-allowed;
             }
             opacity: .4;
         }
-        &:not(.disabled) .rsuite-checktreepicker-toggle {
+        &:not(.disabled) .rsuite-checkpicker-toggle {
             .button-ripple('background-color .3s linear, border .0s linear');
         }
         &.expand {
-            .dropdown {
-                display: block;
-            }
             .expand();
         }
         &-menu {
@@ -70,7 +68,6 @@
             .clearfix;
         }
         .dropdown {
-            display: none;
             .box-shadow();
             background-color: @container-bg;
             border: @container-border;
@@ -111,7 +108,7 @@
             display: block;
             text-decoration: none;
             outline: none;
-            .item-transition;
+            transition: background-color .3s linear, color 0.2s ease-in;
             label {
                 .ellipsis-basic();
             }
@@ -206,23 +203,21 @@
             }
         }
         .expand() {
-            .rsuite-checktreepicker-toggle {
+            .rsuite-checkpicker-toggle {
                 z-index: 101;
                 background: @container-bg !important;
                 border-color: @expand-border-color !important;
                 border-bottom-width: 0;
                 padding: @container-padding-vertical @container-padding-right (@container-padding-vertical + 1) @container-padding-left;
             }
-            &.rsuite-checktreepicker-dropup {
-                .rsuite-checktreepicker-toggle {
+            &.rsuite-checkpicker-dropup {
+                .rsuite-checkpicker-toggle {
                     border-top-width: 0;
                     border-bottom-width: 1px;
                     padding: (@container-padding-vertical + 1) @container-padding-right @container-padding-vertical @container-padding-left;
                 }
-                .rsuite-checktreepicker-toggle-arrow {
+                .rsuite-checkpicker-toggle-arrow {
                     top: (@arrow-top-spacing + 1);
-                    border-color: transparent transparent @arrow-color;
-                    border-width: @arrow-size;
                 }
             }
         }
@@ -238,6 +233,7 @@
         outline: none;
         width: 100%;
         text-align: left;
+        border-radius: 0;
         &-placeholder {
             white-space: nowrap;
             margin-right: 4px;
@@ -246,7 +242,7 @@
             height: 22px;
         }
         &:hover {
-            .rsuite-checktreepicker-toggle-clean {
+            .rsuite-checkpicker-toggle-clean {
                 opacity: 1;
             }
         }
@@ -261,7 +257,6 @@
             position: absolute;
             right: @arrow-right-spacing;
             top: @arrow-top-spacing;
-            transition: border 200ms;
             &::before {
                 content: "\F107";
             }
@@ -270,7 +265,7 @@
             position: absolute;
             opacity: 0;
             top: 50%;
-            right: 7px;
+            right: 8px;
             height: 20px;
             width: 20px;
             line-height: 20px;
@@ -282,3 +277,5 @@
         }
     }
 }
+
+
