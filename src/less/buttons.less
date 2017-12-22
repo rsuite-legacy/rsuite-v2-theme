@@ -18,10 +18,6 @@
     .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-button-base; @line-height-base; @btn-border-radius-base);
     .user-select(none);
 
-    &.btn-circle {
-        border-radius: 50%;
-    }
-
     &,
     &:active,
     &.active {
@@ -62,6 +58,12 @@
             pointer-events: none; // Future-proof disabling of clicks on `<a>` elements
         }
     }
+}
+
+// Circle Button
+.btn.btn-circle {
+    border-radius: 50%;
+    width: @padding-base-vertical*2+@button-line-height-computed;
 }
 
 // Alternate buttons

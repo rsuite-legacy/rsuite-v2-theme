@@ -1,11 +1,9 @@
 @import "commonly-variables";
 
-@gray-base: #000;
-@gray-darker: lighten(@gray-base, 13.5%); // #222
-@gray-dark: lighten(@gray-base, 20%); // #333
-@gray: @B900; // #555
-@gray-light: lighten(@gray-base, 46.7%); // #777
-@gray-lighter: @B050; // #F5F5F5
+@gray-base: @B900;
+@gray: @B900;
+@gray-light: @B500;
+@gray-lighter: @B050;
 
 @success-bg-color: #e8f4ee;
 @success-border-color: #67b88b;
@@ -75,7 +73,8 @@
 //** Unit-less `line-height` for use in components like buttons.
 @line-height-base: 1.666666667; // 20/12
 //** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
-@line-height-computed: floor((@font-size-base * @line-height-base)); // ~20px
+@line-height-computed: floor((@font-size-base * @line-height-base)); // ~23px
+@button-line-height-computed: floor((@font-size-small * @line-height-base)); // ~20px
 
 //** By default, this inherits from the `<body>`.
 @headings-font-family: inherit;
@@ -92,7 +91,6 @@
 @icon-font-size-base: @font-size-base;
 @icon-line-height-base: 1;
 @icon-css-prefix: icon;
-@icon-version: "4.7.0";
 @icon-border-color: #eee;
 @icon-inverse: #fff;
 @icon-li-width: (30em / 14);
@@ -115,7 +113,7 @@
 @padding-xs-vertical: 1px;
 @padding-xs-horizontal: 5px;
 
-@line-height-large: 1.3333333; // extra decimals for Win 8.1 Chrome
+@line-height-large: 1.25; // extra decimals for Win 8.1 Chrome
 @line-height-small: 1.5;
 
 @border-radius-base: 6px;
@@ -160,34 +158,28 @@
 
 @btn-default-color: @text-primary-color;
 @btn-default-bg: @gray-lighter;
-@btn-default-border: @gray-lighter;
 @btn-default-hover-color: @H600;
 @btn-default-hover-bg: @B050;
 @btn-default-active-bg: @B200;
 @btn-default-focus-bg: @B200;
 @btn-default-disabled-bg: @H100;
 //@btn-default-border-color: @H100;
-@btn-default-nav-pills-open-color: color(~`palette("@{btn-default-border}", 700)`);
+//@btn-default-nav-pills-open-color: color(~`palette("@{btn-default-border}", 700)`);
 
 @btn-primary-color: #fff;
 @btn-primary-bg: @H500;
-@btn-primary-border: @H500;
 
 @btn-success-color: #fff;
 @btn-success-bg: @brand-success;
-@btn-success-border: @brand-success;
 
 @btn-info-color: #fff;
 @btn-info-bg: @brand-info;
-@btn-info-border: @brand-info;
 
 @btn-warning-color: #fff;
 @btn-warning-bg: @brand-warning;
-@btn-warning-border: @brand-warning;
 
 @btn-danger-color: #fff;
 @btn-danger-bg: @brand-danger;
-@btn-danger-border: @brand-danger;
 
 @btn-link-disabled-color: @H500;
 
@@ -238,7 +230,7 @@
 //** `.form-group` margin
 @form-group-margin-bottom: @base-unit-px;
 
-@legend-color: @gray-dark;
+@legend-color: @gray;
 @legend-border-color: #e5e5e5;
 
 //** Background color for textual input addons
@@ -747,7 +739,7 @@
 @panel-inner-border: #ddd;
 @panel-footer-bg: #f5f5f5;
 
-@panel-default-text: @gray-dark;
+@panel-default-text: @gray;
 @panel-default-border: #ddd;
 @panel-default-heading-bg: #f5f5f5;
 
@@ -862,7 +854,7 @@
 @kbd-bg: #333;
 
 @pre-bg: #f5f5f5;
-@pre-color: @gray-dark;
+@pre-color: @gray;
 @pre-border-color: #ccc;
 @pre-scrollable-max-height: 340px;
 

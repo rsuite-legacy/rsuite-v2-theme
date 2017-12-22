@@ -65,6 +65,11 @@
     font-size: @font-size;
     line-height: @line-height;
     border-radius: @border-radius;
+
+    &.btn-circle {
+        width: @padding-vertical*2 + floor(@font-size*@line-height);
+        padding: @padding-vertical;
+    }
 }
 
 // Button ripple
