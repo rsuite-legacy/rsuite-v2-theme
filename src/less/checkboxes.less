@@ -1,4 +1,4 @@
-.checkbox-checker {
+.@{ns}checkbox-checker {
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: @checkbox-sense-width*2+@checkbox-width-height;
@@ -6,7 +6,7 @@
     line-height: 1;
 }
 
-.checkbox-wrapper {
+.@{ns}checkbox-wrapper {
     position: absolute;
     width: @checkbox-width-height;
     height: @checkbox-width-height;
@@ -20,8 +20,8 @@
 
     &::before,
     &::after,
-    .checkbox-inner::before,
-    .checkbox-inner::after {
+    .@{ns}checkbox-inner::before,
+    .@{ns}checkbox-inner::after {
         content: '';
         position: absolute;
         left: 0;
@@ -30,8 +30,8 @@
     }
 
     &::before,
-    .checkbox-inner::before,
-    .checkbox-inner::after {
+    .@{ns}checkbox-inner::before,
+    .@{ns}checkbox-inner::after {
         width: @checkbox-width-height;
         height: @checkbox-width-height;
     }
@@ -44,7 +44,7 @@
         visibility: hidden;
         transition: transform .2s linear, opacity .2s linear;
 
-        .checkbox-checked & {
+        .@{ns}checkbox-checked & {
             transform: scale(1.5);
             opacity: 0;
             visibility: visible;
@@ -60,36 +60,36 @@
     }
 
     //外框
-    .checkbox-inner::before {
+    .@{ns}checkbox-inner::before {
         .checkbox-inner-wrap(@checkbox-default-border-color);
         transition: background .2s linear, border .2s linear, box-shadow .2s linear;
 
-        .checkbox-checked &,
-        .checkbox-indeterminate & {
+        .@{ns}checkbox-checked &,
+        .@{ns}checkbox-indeterminate & {
             border-color: @checkbox-checked-border-color;
             background-color: @checkbox-checked-border-color;
         }
 
-        .checkbox-disabled:not(.checkbox-checked):not(.checkbox-indeterminate) & {
+        .@{ns}checkbox-disabled:not(.@{ns}checkbox-checked):not(.@{ns}checkbox-indeterminate) & {
             border-color: @checkbox-disabled-color;
             background-color: @checkbox-disabled-color;
         }
 
-        .checkbox-disabled.checkbox-checked &,
-        .checkbox-disabled.checkbox-indeterminate & {
+        .@{ns}checkbox-disabled.@{ns}checkbox-checked &,
+        .@{ns}checkbox-disabled.@{ns}checkbox-indeterminate & {
             opacity: .3;
         }
 
     }
 
     //对钩
-    .checkbox-inner::after {
+    .@{ns}checkbox-inner::after {
         transform: rotate(45deg) scale(0);
         .opacity(0);
         transition: opacity .2s ease-in, transform .2s cubic-bezier(0.12, 0.4, 0.29, 1.46);
 
-        .checkbox-checked &,
-        .checkbox-indeterminate & {
+        .@{ns}checkbox-checked &,
+        .@{ns}checkbox-indeterminate & {
             border: solid @B000;
             width: 6px;
             height: 9px;
@@ -98,12 +98,12 @@
             .opacity(1);
         }
 
-        .checkbox-checked & {
+        .@{ns}checkbox-checked & {
             border-width: 0 2px 2px 0;
             transform: rotate(45deg) scale(1);
         }
 
-        .checkbox-indeterminate & {
+        .@{ns}checkbox-indeterminate & {
             border-width: 0 0 2px;
             transform: rotate(0deg) scale(1);
             width: 10px;
@@ -116,7 +116,7 @@
     &:focus {
         outline: none;
 
-        .checkbox-inner::before {
+        .@{ns}checkbox-inner::before {
             .checkbox-inner-active-shadow(@checkbox-default-border-color);
 
             @hover: ~':hover';
@@ -124,7 +124,7 @@
                 .checkbox-inner-active-shadow(@checkbox-checked-border-color);
             }
 
-            .checkbox-checked & {
+            .@{ns}checkbox-checked & {
                 .checkbox-inner-active-shadow(@checkbox-checked-border-color);
             }
         }

@@ -1,4 +1,4 @@
-.radio-checker {
+.@{ns}radio-checker {
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: @radio-sense-width*2+@radio-width-height;
@@ -6,7 +6,7 @@
     line-height: 1;
 }
 
-.radio-wrapper {
+.@{ns}radio-wrapper {
     position: absolute;
     width: @radio-width-height;
     height: @radio-width-height;
@@ -20,8 +20,8 @@
 
     &::before,
     &::after,
-    .radio-inner::before,
-    .radio-inner::after {
+    .@{ns}radio-inner::before,
+    .@{ns}radio-inner::after {
         content: '';
         position: absolute;
         left: 0;
@@ -30,8 +30,8 @@
     }
 
     &::before,
-    .radio-inner::before,
-    .radio-inner::after {
+    .@{ns}radio-inner::before,
+    .@{ns}radio-inner::after {
         width: @radio-width-height;
         height: @radio-width-height;
     }
@@ -44,7 +44,7 @@
         visibility: hidden;
         transition: transform .2s linear, opacity .2s linear;
 
-        .radio-checked & {
+        .@{ns}radio-checked & {
             transform: scale(1.5);
             opacity: 0;
             visibility: visible;
@@ -60,27 +60,27 @@
     }
 
     //边框
-    .radio-inner::before {
+    .@{ns}radio-inner::before {
         .radio-inner-wrapper(@radio-default-border-color);
         transition: background .2s linear, border .2s linear, box-shadow .2s linear;
 
-        .radio-checked & {
+        .@{ns}radio-checked & {
             border-color: @radio-checked-border-color;
             background-color: @radio-checked-border-color;
         }
 
-        .radio-disabled:not(.radio-checked) & {
+        .@{ns}radio-disabled:not(.@{ns}radio-checked) & {
             border-color: @radio-disabled-color;
             background-color: @radio-disabled-color;
         }
 
-        .radio-disabled.radio-checked & {
+        .@{ns}radio-disabled.@{ns}radio-checked & {
             opacity: .3;
         }
     }
 
     //实心圆
-    .radio-inner::after {
+    .@{ns}radio-inner::after {
         width: @radio-inner-width-height;
         height: @radio-inner-width-height;
         background: @radio-inner-checked-color;
@@ -91,7 +91,7 @@
         transform: scale(0);
         transition: opacity .2s ease-in, transform .2s cubic-bezier(0.12, 0.4, 0.29, 1.46);
 
-        .radio-checked & {
+        .@{ns}radio-checked & {
             transform: scale(1);
             .opacity(1);
         }
@@ -101,7 +101,7 @@
     &:focus {
         outline: none;
 
-        .radio-inner::before {
+        .@{ns}radio-inner::before {
             .radio-inner-active-shadow(@radio-default-border-color);
 
             @hover: ~':hover';
@@ -110,7 +110,7 @@
 
             }
 
-            .radio-checked & {
+            .@{ns}radio-checked & {
                 .radio-inner-active-shadow(@radio-checked-border-color);
             }
         }

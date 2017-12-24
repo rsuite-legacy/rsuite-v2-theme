@@ -16,6 +16,8 @@
     @expand-border-color: #dcdcdc;
     @check-box-size: 17px;
     @check-box-fg: @H500;
+    @check-tree-picker-tree-view-max-height: 320px;
+
     .rusite-icon() {
         font-family: 'RSuiteIconFont';
         speak: none;
@@ -37,11 +39,17 @@
             }
         }
     }
+
     &-dropdown {
         position: relative;
         box-sizing: border-box;
         text-align: left;
         outline: none;
+
+        .tree-view.checktree {
+            max-height: @check-tree-picker-tree-view-max-height;
+        }
+
         &.disabled {
             .rsuite-checktreepicker-toggle {
                 background: #f5f5f5 !important;

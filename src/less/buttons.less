@@ -5,7 +5,7 @@
 // Base styles
 // --------------------------------------------------
 
-.btn {
+.@{ns}btn {
     display: inline-block;
     margin-bottom: 0; // For input.btn
     font-weight: @btn-font-weight;
@@ -61,7 +61,7 @@
 }
 
 // Circle Button
-.btn.btn-circle {
+.@{ns}btn.@{ns}btn-circle {
     border-radius: 50%;
     width: @padding-base-vertical*2+@button-line-height-computed;
 }
@@ -69,7 +69,7 @@
 // Alternate buttons
 // --------------------------------------------------
 
-.btn-default {
+.@{ns}btn-default {
     .button-ripple;
     //这里没有使用 .button-variant 因为要遵循规范
     //http://pagurian.com/design/widgets/character&icon_button.html
@@ -87,7 +87,7 @@
     }
     &:active,
     &.btn-active,
-    .open > .dropdown-toggle& {
+    .open > .@{ns}dropdown-toggle& {
         color: @btn-default-color;
         background-color: @btn-default-active-bg;
 
@@ -104,48 +104,43 @@
     }
     &:active,
     &.btn-active,
-    .open > .dropdown-toggle& {
+    .@{ns}open > .@{ns}dropdown-toggle& {
         background-image: none;
     }
 
-    &.btn-disabled,
+    &.@{ns}btn-disabled,
     &[disabled],
     fieldset[disabled] &,
-    .dropdown-disabled & {
+    .@{ns}dropdown-disabled & {
         &:hover,
         &:focus,
         &.focus {
             background: none;
         }
     }
-
-    .badge {
-        color: @btn-default-bg;
-        background-color: @btn-default-color;
-    }
 }
 
-.btn-primary {
+.@{ns}btn-primary {
     .button-variant(@btn-primary-color; @btn-primary-bg;);
 }
 
 // Success appears as green
-.btn-success {
+.@{ns}btn-success {
     .button-variant(@btn-success-color; @btn-success-bg;);
 }
 
 // Info appears as blue-green
-.btn-info {
+.@{ns}btn-info {
     .button-variant(@btn-info-color; @btn-info-bg;);
 }
 
 // Warning appears as orange
-.btn-warning {
+.@{ns}btn-warning {
     .button-variant(@btn-warning-color; @btn-warning-bg;);
 }
 
 // Danger and error appear as red
-.btn-danger {
+.@{ns}btn-danger {
     .button-variant(@btn-danger-color; @btn-danger-bg;);
 }
 
@@ -153,7 +148,7 @@
 // -------------------------
 
 // Make a button look and behave like a link
-.btn-link {
+.@{ns}btn-link {
     color: @link-color;
     font-weight: normal;
     border-radius: 0;
@@ -192,30 +187,30 @@
 // Button Sizes
 // --------------------------------------------------
 
-.btn-lg {
+.@{ns}btn-lg {
     // line-height: ensure even-numbered height of button next to large input
     .button-size(@padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @btn-border-radius-large);
 }
 
-.btn-sm {
+.@{ns}btn-sm {
     // line-height: ensure proper height of button next to small input
     .button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @btn-border-radius-small);
 }
 
-.btn-xs {
+.@{ns}btn-xs {
     .button-size(@padding-xs-vertical; @padding-xs-horizontal; @font-size-small; @line-height-small; @btn-border-radius-small);
 }
 
 // Block button
 // --------------------------------------------------
 
-.btn-block {
+.@{ns}btn-block {
     display: block;
     width: 100%;
 }
 
 // Vertically space out multiple block buttons
-.btn-block + .btn-block {
+.@{ns}btn-block + .@{ns}btn-block {
     margin-top: 5px;
 }
 
@@ -223,7 +218,7 @@
 input[type="submit"],
 input[type="reset"],
 input[type="button"] {
-    &.btn-block {
+    &.@{ns}btn-block {
         width: 100%;
     }
 }

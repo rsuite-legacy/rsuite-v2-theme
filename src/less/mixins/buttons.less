@@ -23,8 +23,8 @@
     }
 
     &:active,
-    &.btn-active,
-    .open > .dropdown-toggle& {
+    &.@{ns}btn-active,
+    .@{ns}open > .@{ns}dropdown-toggle& {
         color: @color;
         background-color: color(~`palette("@{background}", 700)`);
 
@@ -37,20 +37,15 @@
     }
 
     &:active,
-    &.btn-active,
-    .open > .dropdown-toggle& {
+    &.@{ns}btn-active,
+    .open > .@{ns}dropdown-toggle& {
         background-image: none;
     }
 
-    .badge {
-        color: @background;
-        background-color: @color;
-    }
-
-    &.btn-disabled,
+    &.@{ns}btn-disabled,
     &[disabled],
     fieldset[disabled] &,
-    .dropdown-disabled & {
+    .@{ns}dropdown-disabled & {
         &:hover,
         &:focus,
         &.focus {
@@ -66,7 +61,7 @@
     line-height: @line-height;
     border-radius: @border-radius;
 
-    &.btn-circle {
+    &.@{ns}btn-circle {
         width: @padding-vertical*2 + floor(@font-size*@line-height);
         padding: @padding-vertical;
     }
@@ -78,7 +73,7 @@
     position: relative;
     transition: @transition;
 
-    &:not(.disabled) {
+    &:not(.@{ns}disabled) {
         &:after {
             content: "";
             display: block;
