@@ -1,17 +1,18 @@
 // Button variants
-//
-// Easily pump out default styles, as well as :hover, :focus, :active,
-// and disabled options for all buttons
+.button-primary-variant(@color; @background) {
+    @background-dark: color(~`palette("@{background}", 600)`);
+    @background-darker: color(~`palette("@{background}", 700)`);
+    @background-even-darker: color(~`palette("@{background}", 800)`);
 
-.button-variant(@color; @background) {
     color: @color;
     background-color: @background;
-    .button-ripple;
+    .btn-icon-with-text(@background-dark);
 
     &:focus,
     &.focus {
         color: @color;
-        background-color: color(~`palette("@{background}", 700)`);
+        background-color: @background-dark;
+        .btn-icon-with-text(@background-darker);
     }
 
     &:hover {
@@ -19,20 +20,23 @@
     }
 
     &:not(.disabled):hover {
-        background-color: color(~`palette("@{background}", 600)`);
+        background-color: @background-dark;
+        .btn-icon-with-text(@background-darker);
     }
 
     &:active,
     &.@{ns}btn-active,
     .@{ns}open > .@{ns}dropdown-toggle& {
         color: @color;
-        background-color: color(~`palette("@{background}", 700)`);
+        background-color: @background-darker;
+        .btn-icon-with-text(@background-even-darker);
 
         &:hover,
         &:focus,
         &.focus {
             color: @color;
-            background-color: color(~`palette("@{background}", 800)`);
+            background-color: @background-darker;
+            .btn-icon-with-text(@background-even-darker);
         }
     }
 
@@ -54,15 +58,251 @@
     }
 }
 
+.btn-link-variant(@color) {
+    @color-dark: color(~`palette("@{color}", 600)`);
+    @color-darker: color(~`palette("@{color}", 700)`);
+    color: @color;
+    font-weight: normal;
+    border-radius: 0;
+
+    &,
+    &:active,
+    &.active,
+    &[disabled],
+    fieldset[disabled] & {
+        background-color: transparent;
+    }
+
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+        border-color: transparent;
+    }
+
+    &:hover,
+    &:focus {
+        color: @color-dark;
+        text-decoration: @link-hover-decoration;
+        background-color: transparent;
+    }
+
+    &:active {
+        color: @color-darker;
+        text-decoration: none;
+
+        &:hover,
+        &:focus,
+        &.focus {
+            color: @color-darker;
+        }
+    }
+
+    &[disabled],
+    fieldset[disabled] & {
+        &:hover,
+        &:focus {
+            color: @color;
+            text-decoration: none;
+        }
+    }
+}
+
+.btn-subtle-variant(@color) {
+    @color-dark: color(~`palette("@{color}", 600)`);
+    @color-darker: color(~`palette("@{color}", 700)`);
+    @color-fade: fadeout(@color-darker, 70%);
+
+    color: @color;
+    background-color: transparent;
+
+    &:focus,
+    &.focus,
+    &:hover {
+        color: @color-dark;
+    }
+
+    &:focus,
+    &.focus {
+        background-color: @btn-subtle-focus-bg;
+    }
+
+    &:hover {
+        background-color: @btn-subtle-hover-bg;
+    }
+
+    &:active,
+    &.@{ns}btn-active,
+    .@{ns}open > .@{ns}dropdown-toggle& {
+        color: @color-darker;
+        background-color: @color-fade;
+
+        &:hover,
+        &:focus,
+        &.focus {
+            color: @color-darker;
+            background-color: @color-fade;
+        }
+    }
+
+    &:active,
+    &.@{ns}btn-active,
+    .@{ns}open > .@{ns}dropdown-toggle& {
+        background-image: none;
+    }
+
+    &.@{ns}btn-disabled,
+    &[disabled],
+    fieldset[disabled] &,
+    .@{ns}dropdown-disabled & {
+        &:hover,
+        &:focus,
+        &.focus {
+            background: none;
+        }
+    }
+}
+
+.btn-ghost-variant(@color,@border-color) {
+    @color-dark: color(~`palette("@{color}", 600)`);
+    @color-darker: color(~`palette("@{color}", 700)`);
+    @color-border-dark: color(~`palette("@{color}", 600)`);
+    @color-border-darker: color(~`palette("@{color}", 700)`);
+
+    color: @color;
+    border: 1px solid @border-color;
+    background-color: transparent;
+
+    &:focus,
+    &.focus {
+        color: @color-dark;
+        border-color: @color-border-dark;
+    }
+
+    &:hover {
+        color: @color-dark;
+        border-color: @color-border-dark;
+    }
+
+    &:active,
+    &.@{ns}btn-active,
+    .@{ns}open > .@{ns}dropdown-toggle& {
+        color: @color-darker;
+        border-color: @color-border-darker;
+
+        &:hover,
+        &:focus,
+        &.focus {
+            color: @color-darker;
+            border-color: @color-border-darker;
+        }
+    }
+
+    &:active,
+    &.@{ns}btn-active,
+    .@{ns}open > .@{ns}dropdown-toggle& {
+        background-image: none;
+    }
+
+    &.@{ns}btn-disabled,
+    &[disabled],
+    fieldset[disabled] &,
+    .@{ns}dropdown-disabled & {
+        &:hover,
+        &:focus,
+        &.focus {
+            background: none;
+        }
+    }
+}
+
+// General spectrum buttons
+.generate-spectrum-primary-btns(@i:length(@spectrum)) when (@i>0) {
+    .generate-spectrum-primary-btns(@i - 1);
+    @name: extract(@spectrum, @i);
+    @backgroud-color: @@name;
+    &.@{ns}btn-@{name} {
+        .button-primary-variant(@btn-primary-color, @backgroud-color);
+    }
+}
+
+.generate-spectrum-link-btns(@i:length(@spectrum)) when (@i>0) {
+    .generate-spectrum-link-btns(@i - 1);
+    @name: extract(@spectrum, @i);
+    @color: @@name;
+    &.@{ns}btn-@{name} {
+        .btn-link-variant(@color);
+    }
+}
+
+.generate-spectrum-subtle-btns(@i:length(@spectrum)) when (@i>0) {
+    .generate-spectrum-subtle-btns(@i - 1);
+    @name: extract(@spectrum, @i);
+    @color: @@name;
+    &.@{ns}btn-@{name} {
+        .btn-subtle-variant(@color);
+    }
+}
+
+.generate-spectrum-ghost-btns(@i:length(@spectrum)) when (@i>0) {
+    .generate-spectrum-ghost-btns(@i - 1);
+    @name: extract(@spectrum, @i);
+    @color: @@name;
+    @border-color: @color;
+    &.@{ns}btn-@{name} {
+        .btn-ghost-variant(@color, @border-color);
+    }
+}
+
 // Button sizes
 .button-size(@padding-vertical; @padding-horizontal; @font-size; @line-height; @border-radius) {
+    @icon-width: @padding-vertical*2 + floor(@font-size*@line-height);
     padding: @padding-vertical @padding-horizontal;
     font-size: @font-size;
     line-height: @line-height;
     border-radius: @border-radius;
 
-    &.@{ns}btn-circle {
-        width: @padding-vertical*2 + floor(@font-size*@line-height);
+    &.@{ns}btn-ghost {
+        // ghost btn has 1px border
+        padding-top: (@padding-vertical - 1);
+        padding-bottom: (@padding-vertical - 1);
+    }
+
+    &.@{ns}btn-icon {
+        padding-left: @icon-width - @padding-horizontal;
+        height: @icon-width;
+        position: relative;
+
+        &.btn-icon-with-text {
+            &.btn-icon-placement-left {
+                padding-left: @icon-width + @padding-vertical;
+            }
+
+            &.btn-icon-placement-right {
+                padding-right: @icon-width + @padding-vertical;
+
+                > .icon {
+                    left: auto;
+                    right: 0;
+                }
+            }
+        }
+
+        > .icon {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            width: @icon-width;
+            height: @icon-width;
+            padding: @padding-vertical 0;
+            font-size: @font-size;
+            line-height: @line-height;
+        }
+    }
+
+    &.@{ns}btn-icon-circle {
+        width: @icon-width;
         padding: @padding-vertical;
     }
 }
@@ -97,4 +337,24 @@
             transition: 0s;
         }
     }
+}
+
+// Icon Button with text
+.btn-icon-with-text(@bg) {
+    &.btn-icon.btn-icon-with-text > .icon {
+        background: @bg;
+    }
+}
+
+// Button transition
+.btn-transition() {
+    transition: color .2s linear, background-color .3s linear;
+}
+
+.btn-transition(color) {
+    transition: color .2s linear;
+}
+
+.btn-transition(color-and-border) {
+    transition: color .2s linear, border-color .3s linear;
 }

@@ -64,8 +64,6 @@
 @font-size-large: 16px;
 @font-size-small: 12px;
 
-@font-size-button-base: @font-size-small;
-
 @font-size-h1: 40px;
 @font-size-h2: 20px;
 @font-size-h3: 18px;
@@ -74,10 +72,9 @@
 @font-size-h6: ceil((@font-size-base * 0.85)); // ~12px
 
 //** Unit-less `line-height` for use in components like buttons.
-@line-height-base: 1.666666667; // 20/12
+@line-height-base: 1.4285714285714286; // 20/14
 //** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
-@line-height-computed: floor((@font-size-base * @line-height-base)); // ~23px
-@button-line-height-computed: floor((@font-size-small * @line-height-base)); // ~20px
+@line-height-computed: floor((@font-size-base * @line-height-base)); // ~20px
 
 //** By default, this inherits from the `<body>`.
 @headings-font-family: inherit;
@@ -107,17 +104,17 @@
 @padding-base-input-vertical: @padding-base-vertical;
 @padding-base-input-horizontal: 12px;
 
-@padding-large-vertical: 9px;
-@padding-large-horizontal: 16px;
+@padding-large-vertical: 11px;
+@padding-large-horizontal: 12px;
 
-@padding-small-vertical: 4px;
-@padding-small-horizontal: 10px;
+@padding-small-vertical: 5px;
+@padding-small-horizontal: 12px;
 
-@padding-xs-vertical: 1px;
-@padding-xs-horizontal: 5px;
+@padding-xs-vertical: 2px;
+@padding-xs-horizontal: 12px;
 
-@line-height-large: 1.25; // extra decimals for Win 8.1 Chrome
-@line-height-small: 1.5;
+@line-height-large: 1.25;
+@line-height-small: 1.6666666666666667;
 
 @border-radius-base: 6px;
 @border-radius-large: 0px;
@@ -158,39 +155,44 @@
 //## For each of Bootstrap's buttons, define text, background and border color.
 
 @btn-font-weight: normal;
-
-@btn-default-color: @text-primary-color;
+// Default Button color set;
+@btn-default-color: @text-color;
 @btn-default-bg: @gray-lighter;
-@btn-default-hover-color: @H600;
-@btn-default-hover-bg: @B050;
-@btn-default-active-bg: @B200;
+@btn-default-bg-dark: @B200;
+@btn-default-hover-color: @text-color;
+@btn-default-hover-bg: @B200;
+@btn-default-hover-bg-dark: @B300;
+@btn-default-active-bg: @B300;
+@btn-default-active-bg-dark: @B400;
 @btn-default-focus-bg: @B200;
-@btn-default-disabled-bg: @H100;
-//@btn-default-border-color: @H100;
-//@btn-default-nav-pills-open-color: color(~`palette("@{btn-default-border}", 700)`);
-
+@btn-default-focus-bg-dark: @B300;
+@btn-default-disabled-bg: @btn-default-bg;
+// Primary Button color set;
 @btn-primary-color: #fff;
 @btn-primary-bg: @H500;
-
-@btn-success-color: #fff;
-@btn-success-bg: @brand-success;
-
-@btn-info-color: #fff;
-@btn-info-bg: @brand-info;
-
-@btn-warning-color: #fff;
-@btn-warning-bg: @brand-warning;
-
-@btn-danger-color: #fff;
-@btn-danger-bg: @brand-danger;
-
-@btn-link-disabled-color: @H500;
+// Default Button color set;
+@btn-link-color: @link-color;
+// Subtle Button color set;
+@btn-btn-subtle-color: @primary-color;
+@btn-subtle-color: @primary-color;
+@btn-subtle-hover-bg: @B200;
+@btn-subtle-focus-bg: @btn-subtle-hover-bg;
+@btn-subtle-active-bg: fadeout(@H500, 70%);
+// Ghost Button color set;
+@btn-ghost-color: @primary-color;
+@btn-ghost-border-color: @primary-color;
 
 // Allows for customizing button radius independently from global border radius
 @btn-border-radius-base: @border-radius-base;
 @btn-border-radius-large: @border-radius-base;
 @btn-border-radius-small: @border-radius-base;
 
+// Button Loading
+@btn-loading-spin-default-diameter: 18px;
+@btn-loading-spin-xs-diameter: 16px;
+@btn-loading-spin-ring-wide: 3px;
+@btn-spin-light-color: @B000;
+@btn-spin-light-invert-color: @B700;
 //== Btn Group
 @btn-group-disabled-active-color: @B500;
 

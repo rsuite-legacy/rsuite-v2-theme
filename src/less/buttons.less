@@ -15,7 +15,7 @@
     outline: 0 !important;
     background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
     white-space: nowrap;
-    .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-button-base; @line-height-base; @btn-border-radius-base);
+    .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @btn-border-radius-base);
     .user-select(none);
 
     &,
@@ -61,49 +61,100 @@
 }
 
 // Circle Button
-.@{ns}btn.@{ns}btn-circle {
-    border-radius: 50%;
-    width: @padding-base-vertical*2+@button-line-height-computed;
+.@{ns}btn-icon-circle {
+    border-radius: 50% !important;
+    width: @padding-base-vertical*2+@line-height-computed;
+}
+
+// Button Loading state
+.@{ns}btn-loading {
+    color: transparent !important;
+    position: relative;
+
+    > .btn-spin {
+        &::before, &::after {
+            content: '';
+            position: absolute;
+            width: @btn-loading-spin-default-diameter;
+            height: @btn-loading-spin-default-diameter;
+            margin: auto;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            border-radius: 50%;
+
+            .@{ns}btn-xs& {
+                width: @btn-loading-spin-xs-diameter;
+                height: @btn-loading-spin-xs-diameter;
+            }
+        }
+
+        &::before {
+            border: @btn-loading-spin-ring-wide solid rgba(0, 0, 0, .15);
+        }
+
+        &::after {
+            border-width: @btn-loading-spin-ring-wide;
+            border-color: @btn-spin-light-color transparent transparent;
+            border-style: solid;
+            animation: buttonSpin .6s infinite linear;
+
+            .@{ns}btn-link&, .@{ns}btn-subtle&, .@{ns}btn-ghost& {
+                border-top-color: @btn-spin-light-invert-color;
+            }
+        }
+    }
 }
 
 // Alternate buttons
 // --------------------------------------------------
 
+// Default Button
 .@{ns}btn-default {
     .button-ripple;
-    //这里没有使用 .button-variant 因为要遵循规范
-    //http://pagurian.com/design/widgets/character&icon_button.html
     color: @btn-default-color;
-    background: none;
+    background: @btn-default-bg;
+    .btn-icon-with-text(@btn-default-bg-dark);
+
+    &, & > .icon {
+        .btn-transition();
+    }
 
     &:focus,
     &.focus {
         color: @btn-default-color;
         background-color: @btn-default-focus-bg;
+
+        .btn-icon-with-text(@btn-default-focus-bg-dark);
     }
     &:hover {
         color: @btn-default-hover-color;
         background-color: @btn-default-hover-bg;
+
+        .btn-icon-with-text(@btn-default-hover-bg-dark);
     }
+
     &:active,
-    &.btn-active,
-    .open > .@{ns}dropdown-toggle& {
+    &.@{ns}btn-active,
+    .@{ns}open > .@{ns}dropdown-toggle& {
         color: @btn-default-color;
         background-color: @btn-default-active-bg;
 
-        &:hover {
-            color: @btn-default-color;
-            background-color: @btn-default-hover-bg;
-        }
+        .btn-icon-with-text(@btn-default-active-bg-dark);
 
+        &:hover,
         &:focus,
         &.focus {
             color: @btn-default-color;
-            background-color: @btn-default-focus-bg;
+            background-color: @btn-default-active-bg;
+
+            .btn-icon-with-text(@btn-default-active-bg-dark);
         }
     }
+
     &:active,
-    &.btn-active,
+    &.@{ns}btn-active,
     .@{ns}open > .@{ns}dropdown-toggle& {
         background-image: none;
     }
@@ -118,69 +169,58 @@
             background: none;
         }
     }
+
+    .generate-spectrum-primary-btns();
 }
 
+// Primary Button
 .@{ns}btn-primary {
-    .button-variant(@btn-primary-color; @btn-primary-bg;);
-}
+    .button-ripple;
+    .button-primary-variant(@btn-primary-color; @btn-primary-bg);
 
-// Success appears as green
-.@{ns}btn-success {
-    .button-variant(@btn-success-color; @btn-success-bg;);
-}
+    &, & > .icon {
+        .btn-transition();
+    }
 
-// Info appears as blue-green
-.@{ns}btn-info {
-    .button-variant(@btn-info-color; @btn-info-bg;);
-}
-
-// Warning appears as orange
-.@{ns}btn-warning {
-    .button-variant(@btn-warning-color; @btn-warning-bg;);
-}
-
-// Danger and error appear as red
-.@{ns}btn-danger {
-    .button-variant(@btn-danger-color; @btn-danger-bg;);
+    .generate-spectrum-primary-btns();
 }
 
 // Link buttons
-// -------------------------
-
-// Make a button look and behave like a link
 .@{ns}btn-link {
-    color: @link-color;
-    font-weight: normal;
-    border-radius: 0;
+    .btn-transition(color);
+    .btn-link-variant(@btn-link-color);
 
-    &,
-    &:active,
-    &.active,
-    &[disabled],
-    fieldset[disabled] & {
-        background-color: transparent;
-        //.box-shadow(none);
-    }
-    &,
-    &:hover,
-    &:focus,
-    &:active {
-        border-color: transparent;
+    .generate-spectrum-link-btns();
+}
+
+// Subtle Button
+.@{ns}btn-subtle {
+    .button-ripple;
+    .btn-transition;
+    .btn-subtle-variant(@btn-btn-subtle-color);
+
+    .generate-spectrum-subtle-btns();
+}
+
+// Ghost Button
+.@{ns}btn-ghost {
+    .btn-transition(color-and-border);
+    .btn-ghost-variant(@btn-ghost-color, @btn-ghost-border-color);
+
+    .generate-spectrum-ghost-btns();
+}
+
+// Icon Button
+// Icon Button text size increase 2 px
+.@{ns}btn-icon:not(.@{ns}btn-icon-with-text) {
+    .icon {
+        font-size: @font-size-large;
+        line-height: @line-height-large;
     }
 
-    &:hover,
-    &:focus {
-        color: @link-hover-color;
-        text-decoration: @link-hover-decoration;
-        background-color: transparent;
-    }
-    &[disabled],
-    fieldset[disabled] & {
-        &:hover,
-        &:focus {
-            color: @btn-link-disabled-color;
-            text-decoration: none;
-        }
+    &.btn-xs {
+        font-size: @font-size-base;
+        line-height: @line-height-base;
     }
 }
 
@@ -189,12 +229,12 @@
 
 .@{ns}btn-lg {
     // line-height: ensure even-numbered height of button next to large input
-    .button-size(@padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @btn-border-radius-large);
+    .button-size(@padding-large-vertical; @padding-large-horizontal; @font-size-base; @line-height-base; @btn-border-radius-large);
 }
 
 .@{ns}btn-sm {
     // line-height: ensure proper height of button next to small input
-    .button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @btn-border-radius-small);
+    .button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-base; @line-height-base; @btn-border-radius-small);
 }
 
 .@{ns}btn-xs {

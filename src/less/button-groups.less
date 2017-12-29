@@ -12,7 +12,6 @@
     > .@{ns}btn {
         position: relative;
         float: left;
-        transition: background .0s;
         // Bring the "active" button to the front
         &:hover,
         &:focus,
@@ -52,33 +51,11 @@
 
 //btn-group
 .@{ns}btn-group {
-    &.@{ns}btn-group-sm {
-        .@{ns}btn:not(.@{ns}disabled), .@{ns}btn.@{ns}disabled.@{ns}active {
-            &:hover, &:active, &.active {
-                padding-bottom: @padding-small-vertical;
-            }
-        }
-    }
-
-    &.@{ns}btn-group-xs {
-        .@{ns}btn:not(.@{ns}disabled), .@{ns}btn.@{ns}disabled.@{ns}active {
-            &:hover, &:active, &.active {
-                padding-bottom: @padding-xs-vertical;
-            }
-        }
-    }
-
-    > .@{ns}btn {
-
-        &:not(.@{ns}disabled):hover {
-            background-color: darken(@btn-default-bg, 5%);
-        }
-
-        &:active, &.active {
-            &.disabled {
-                background: @btn-default-disabled-bg;
-            }
-        }
+    .@{ns}btn + .@{ns}btn,
+    .@{ns}btn + .@{ns}btn-group,
+    .@{ns}btn-group + .@{ns}btn,
+    .@{ns}btn-group + .@{ns}btn-group {
+        margin-left: -1px;
     }
 }
 
