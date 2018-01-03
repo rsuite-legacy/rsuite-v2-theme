@@ -6,19 +6,29 @@
 // -------------------------
 
 .@{ns}message {
-    padding: 20px;
     border-radius: @message-border-radius;
     font-size: @font-size-base;
     line-height: @line-height-base;
     position: relative;
 
+    .message-container {
+        padding: 20px;
+    }
+
     // Multiple messages should have clearance
-    + .@{ns}message {
+    // Hiding Message haven't clearance.
+    &:not(.message-hiding) + .@{ns}message {
         margin-top: 10px;
+
+        //The last message hiding haven't clearance.
+        &.message-hiding:last-child {
+            transition: margin-top .1s linear .3s;
+            margin-top: 0;
+        }
     }
 
     // Only has icon
-    &.@{ns}message-has-icon {
+    &.@{ns}message-has-icon .message-container {
         padding-left: @message-padding + @message-icon-size + @message-icon-margin-right;
     }
 
@@ -36,15 +46,12 @@
         }
     }
 
-    // Bigger icon
-    &.@{ns}message-has-icon.@{ns}message-has-title {
+    // Has icon && title
+    &.@{ns}message-has-icon.@{ns}message-has-title .message-container {
         padding-left: @message-padding + @message-icon-large-size + @message-icon-margin-right;
 
-        > .@{ns}message-icon-wrapper {
-
-        }
-
-        > .@{ns}message-icon-wrapper .icon {
+        // Bigger icon
+        .@{ns}message-icon-wrapper .icon {
             font-size: @message-icon-large-size;
             line-height: 1;
         }
@@ -62,27 +69,40 @@
     }
 
     // Icon wrapper
-    > .@{ns}message-icon-wrapper {
+    .@{ns}message-icon-wrapper {
         position: absolute;
         top: @message-padding;
         left: @message-padding;
         line-height: 1;
+    }
 
-        .icon {
-            font-size: @message-icon-size;
-            line-height: @line-height-small;
-        }
+    // Icon
+    .@{ns}message-icon-wrapper .icon {
+        font-size: @message-icon-size;
+        line-height: @line-height-small;
     }
 
     // Close button
-    > .@{ns}message-btn-close {
+    .@{ns}message-btn-close {
         background: transparent;
         position: absolute;
-        padding: 0;
-        top: 8px;
-        right: 8px;
+        top: 0;
+        right: 0;
+        padding: 8px;
         font-size: @message-close-btn-size;
         line-height: 1;
+        outline: none !important;
+    }
+
+    // Animations
+    // ----------------------------
+    &.message-show {
+        animation: messageMoveIn .3s linear forwards;
+    }
+
+    &.message-hiding {
+        display: ~'none\9\0';
+        animation: messageMoveOut .3s linear forwards;
     }
 }
 
@@ -92,10 +112,11 @@
     top: 0;
     left: 0;
     width: 100%;
+    border-radius: 0;
 }
 
 // Alternate styles
-//
+// -------------------------
 // Generate contextual modifier classes for colorizing the alert.
 
 .@{ns}message-success {
