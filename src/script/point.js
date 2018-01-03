@@ -81,7 +81,7 @@ function importResources({ paths = [], dist = '', needDirPath = true } = {}, don
  * 画板方法
  * @param {Object} options
  */
-function palette({ baseColor = baseColor, src = 'css/rsuite.min.css', dist } = {}, doneCallback) {
+function palette({ baseColor: themeColor = baseColor, src = 'css/rsuite.min.css', dist } = {}, doneCallback) {
 
   try {
     if (!dist) {
@@ -93,13 +93,13 @@ function palette({ baseColor = baseColor, src = 'css/rsuite.min.css', dist } = {
   }
 
   const originColors = color.calcColors(baseColor);
-  const colors = color.calcColors(baseColor);
+  const themeColors = color.calcColors(themeColor);
   const distPath = Path.dirname(dist);
   fse.ensureDir(distPath, (err) => {
     if (err) console.log(err);
     fs.readFile(Path.join(rootPath, src), 'utf-8', (err, data) => {
       originColors.forEach((color, index) => {
-        data = data.replace(new RegExp(color, 'g'), colors[index]);
+        data = data.replace(new RegExp(color, 'g'), themeColors[index]);
       });
       fs.writeFile(dist, data, (err) => {
         if (err) {
