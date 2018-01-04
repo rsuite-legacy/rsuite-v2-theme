@@ -1,9 +1,19 @@
 .alert-variant(@background; @icon-color) {
-  .@{notification-ns}.rsuite-alert & .@{notification-ns}-notice-content {
-    background-color: @background;
-    color: @B900;
+  .@{notification-ns}.rsuite-alert & {
+    // Content
+    .@{notification-ns}-notice-content {
+      background-color: @background;
+      color: @B900;
 
-    .icon {
+      // Tip icon
+      .icon {
+        color: @icon-color;
+      }
+    }
+
+    // Close button
+    .@{notification-ns}-notice-close {
+      cursor: pointer;
       color: @icon-color;
     }
   }

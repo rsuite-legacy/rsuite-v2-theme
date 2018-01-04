@@ -9,16 +9,36 @@
   position: fixed;
   z-index: @zindex-notification;
   top: 0;
-  left: 50%;
 }
 
 .@{notification-ns}.rsuite-alert {
+  left: 50%;
+
+  // Alert wrapper
+  .@{notification-ns}-notice-wrapper {
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin-left: -50%;
+    // messageMoveIn
+    animation: messageMoveIn .3s linear forwards;
+
+    .@{notification-ns}-notice {
+      display: inline-block;
+      position: relative;
+    }
+  }
+
+  // Multiple alter has gap
   .@{notification-ns}-notice-wrapper + .@{notification-ns}-notice-wrapper {
     margin-top: 10px;
   }
 
+  // Alert content
   .@{notification-ns}-notice-content {
-    padding: @alter-padding;
+    padding: @alert-padding;
+    border-radius: @alert-border-radius;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, .12), 0 0 10px rgba(0, 0, 0, .06);
 
     p {
       margin-bottom: 0;
@@ -27,6 +47,31 @@
     .icon {
       margin-right: 10px;
     }
+  }
+
+  // Alert close button
+  .@{notification-ns}-notice-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 4px;
+    font-size: @message-close-btn-size;
+    line-height: 1;
+    outline: none !important;
+
+    &-x::before {
+      content: "×";
+    }
+  }
+
+  // Animations
+  .@{notification-ns}-fade-enter-active {
+    animation: alertMoverIn .3s linear forwards;
+  }
+
+  .@{notification-ns}-fade-leave-active {
+    display: ~"none\9\0";
+    animation: alertMoveOut .3s linear forwards;
   }
 }
 
