@@ -35,6 +35,8 @@ module.exports = {
     // 不禁止低优先级的选择器出现在高优先级的选择器之后
     // [优先级的描述]{@link https://www.w3.org/TR/css3-selectors/#specificity}
     'no-descending-specificity': false,
+    // 类选择器使用 snake case
+    'selector-class-pattern': '^[a-z]+(-?[a-z]+)*$',
     // ID 选择器使用小驼峰命名
     'selector-id-pattern': '^([a-z]+([A-Z][a-z]+)?)$',
     // 禁止属性使用浏览器引擎前缀

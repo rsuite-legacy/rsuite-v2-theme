@@ -178,7 +178,7 @@
 @btn-subtle-active-color: @B000;
 @btn-subtle-active-default-color: @B900;
 @btn-subtle-active-default-bg: @B200;
-@btn-subtle-disabled-color:@B400;
+@btn-subtle-disabled-color: @B400;
 // Ghost Button color set;
 @btn-ghost-color: @primary-color;
 @btn-ghost-border-color: @primary-color;
@@ -317,8 +317,7 @@
 @zindex-modal: 1050;
 @zindex-popover: 1060;
 @zindex-tooltip: 1070;
-@zindex-loading: 2000;
-
+@zindex-notification: 1080;
 //== Media queries breakpoints
 //
 //## Define the breakpoints at which your layout will change, adapting to different screen sizes.
@@ -641,7 +640,7 @@
 @modal-md: 600px;
 @modal-sm: 300px;
 
-//== Alerts
+//== Message
 //
 //## Define alert colors, border radius, and padding.
 
@@ -666,27 +665,23 @@
 @message-error-bg: @state-error-bg;
 @message-error-icon-color: @state-error-text;
 
-//== Progress bars
+//== Alert
 //
 //##
+@notification-ns: ~"@{ns}rsuite-notification";
+@alter-padding: 20px;
 
-//** Background color of the whole progress component
-@progress-bg: #f5f5f5;
-//** Progress bar text color
-@progress-bar-color: #fff;
-//** Variable for setting rounded corners on progress bar.
-@progress-border-radius: @border-radius-base;
+@alert-success-bg: @state-success-bg;
+@alert-success-icon-color: @state-success-text;
 
-//** Default progress bar color
-@progress-bar-bg: @brand-primary;
-//** Success progress bar color
-@progress-bar-success-bg: @success-color;
-//** Warning progress bar color
-@progress-bar-warning-bg: @warning-color;
-//** Danger progress bar color
-@progress-bar-danger-bg: @danger-color;
-//** Info progress bar color
-@progress-bar-info-bg: @info-color;
+@alert-info-bg: @state-info-bg;
+@alert-info-icon-color: @state-info-text;
+
+@alert-warning-bg: @state-warning-bg;
+@alert-warning-icon-color: @state-warning-text;
+
+@alert-error-bg: @state-error-bg;
+@alert-error-icon-color: @state-error-text;
 
 //== List group
 //
@@ -754,49 +749,6 @@
 @panel-danger-text: @state-error-text;
 @panel-danger-heading-bg: @state-error-bg;
 
-//== Thumbnails
-//
-//##
-
-//** Padding around the thumbnail image
-@thumbnail-padding: 4px;
-//** Thumbnail background color
-@thumbnail-bg: @body-bg;
-//** Thumbnail border color
-@thumbnail-border: #ddd;
-//** Thumbnail border radius
-@thumbnail-border-radius: @border-radius-base;
-
-//** Custom text color for thumbnail captions
-@thumbnail-caption-color: @text-color;
-//** Padding around the thumbnail caption
-@thumbnail-caption-padding: 9px;
-
-//== Wells
-//
-//##
-
-@well-bg: #f5f5f5;
-@well-border: darken(@well-bg, 7%);
-
-//== Badges
-//
-//##
-
-@badge-color: #fff;
-//** Linked badge text color on hover
-@badge-link-hover-color: #fff;
-@badge-bg: @gray-light;
-
-//** Badge text color in active nav link
-@badge-active-color: @link-color;
-//** Badge background color in active nav link
-@badge-active-bg: #fff;
-
-@badge-font-weight: bold;
-@badge-line-height: 1;
-@badge-border-radius: 10px;
-
 //== Breadcrumbs
 //
 //##
@@ -809,22 +761,6 @@
 @breadcrumb-color: @text-color;
 //** Text color of current page in the breadcrumb
 @breadcrumb-active-color: @gray-light;
-
-//== Carousel
-//
-//##
-
-@carousel-text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
-
-@carousel-control-color: #fff;
-@carousel-control-width: 15%;
-@carousel-control-opacity: .5;
-@carousel-control-font-size: 20px;
-
-@carousel-indicator-active-bg: #fff;
-@carousel-indicator-border-color: #fff;
-
-@carousel-caption-color: #fff;
 
 //== Close
 //

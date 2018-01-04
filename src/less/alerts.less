@@ -1,0 +1,51 @@
+//
+// Alerts
+// --------------------------------------------------
+
+// Base styles
+// -------------------------
+
+.@{notification-ns} {
+  position: fixed;
+  z-index: @zindex-notification;
+  top: 0;
+  left: 50%;
+}
+
+.@{notification-ns}.rsuite-alert {
+  .@{notification-ns}-notice-wrapper + .@{notification-ns}-notice-wrapper {
+    margin-top: 10px;
+  }
+
+  .@{notification-ns}-notice-content {
+    padding: @alter-padding;
+
+    p {
+      margin-bottom: 0;
+    }
+
+    .icon {
+      margin-right: 10px;
+    }
+  }
+}
+
+// Alternate styles
+// -------------------------
+// Generate contextual modifier classes for colorizing the alert.
+
+.@{notification-ns}-success {
+  .alert-variant(@alert-success-bg; @alert-success-icon-color);
+}
+
+.@{notification-ns}-info {
+  .alert-variant(@alert-info-bg; @alert-info-icon-color);
+}
+
+.@{notification-ns}-warning {
+  .alert-variant(@alert-warning-bg; @alert-warning-icon-color);
+}
+
+.@{notification-ns}-error {
+  .alert-variant(@alert-error-bg; @alert-error-icon-color);
+}
