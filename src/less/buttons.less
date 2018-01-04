@@ -92,7 +92,11 @@
     }
 
     &::before {
-      border: @btn-loading-spin-ring-wide solid rgba(0, 0, 0, .15);
+      border: @btn-loading-spin-ring-wide solid @btn-loading-spin-ring-color;
+
+      .@{ns}btn-primary& {
+        opacity: .3;
+      }
     }
 
     &::after {
@@ -101,6 +105,7 @@
       border-style: solid;
       animation: buttonSpin .6s infinite linear;
 
+      .@{ns}btn-default&,
       .@{ns}btn-link&,
       .@{ns}btn-subtle&,
       .@{ns}btn-ghost& {
@@ -199,7 +204,28 @@
 .@{ns}btn-subtle {
   .button-ripple;
   .btn-transition;
-  .btn-subtle-variant(@btn-subtle-primary-color);
+  .btn-subtle-variant(@btn-subtle-hover-bg);
+
+  &:focus,
+  &.focus,
+  &:hover {
+    color: @btn-subtle-default-hover-color;
+  }
+
+  &:active,
+  &.@{ns}btn-active,
+  .@{ns}open > .@{ns}dropdown-toggle& {
+    color: @btn-subtle-active-default-color;
+    background-color: @btn-subtle-active-default-bg;
+    background-image: none;
+
+    &:hover,
+    &:focus,
+    &.focus {
+      color: @btn-subtle-active-default-color;
+      background-color: @btn-subtle-active-default-bg;
+    }
+  }
 
   .generate-spectrum-subtle-btns();
 }

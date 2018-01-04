@@ -120,29 +120,21 @@
   &.focus,
   &:hover {
     color: @btn-subtle-hover-color;
-  }
-
-  &:focus,
-  &.focus {
-    background-color: @btn-subtle-focus-bg;
-  }
-
-  &:hover {
-    background-color: @btn-subtle-hover-bg;
+    background: @color;
   }
 
   &:active,
   &.@{ns}btn-active,
   .@{ns}open > .@{ns}dropdown-toggle& {
-    color: @color;
-    background-color: @btn-subtle-active-bg;
+    color: @btn-subtle-active-color;
+    background-color: @color-dark;
     background-image: none;
 
     &:hover,
     &:focus,
     &.focus {
-      color: @color-dark;
-      background-color: @btn-subtle-active-bg;
+      color: @btn-subtle-active-color;
+      background-color: @color-dark;
     }
   }
 
@@ -153,6 +145,7 @@
     &:hover,
     &:focus,
     &.focus {
+      color: @btn-subtle-disabled-color;
       background: none;
     }
   }
