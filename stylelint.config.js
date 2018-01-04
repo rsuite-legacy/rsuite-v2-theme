@@ -12,7 +12,7 @@ module.exports = {
     'number-leading-zero': 'never',
 
     // 扩充规则
-    // - 启用了最严格的 vendor-prefix 限制，该限制会适用 {@lin caniuse.com} 的数据进行判断
+    // - 启用了最严格的 vendor-prefix 限制，该限制会适用 {@link https://caniuse.com} 的数据进行判断
     // ----------------------------------
 
     // 禁止 at 规则（ @keyframes ）使用浏览器引擎前缀
