@@ -1,133 +1,136 @@
 .@{ns}checkbox-checker {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: @checkbox-sense-width*2+@checkbox-width-height;
-    min-height: @checkbox-sense-width*2+@checkbox-width-height;
-    line-height: 1;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: @checkbox-sense-width*2 + @checkbox-width-height;
+  min-height: @checkbox-sense-width*2 + @checkbox-width-height;
+  line-height: 1;
 }
 
 .@{ns}checkbox-wrapper {
+  position: absolute;
+  width: @checkbox-width-height;
+  height: @checkbox-width-height;
+  display: inline-block;
+  left: @checkbox-sense-width;
+  top: @checkbox-sense-width;
+
+  [type="checkbox"] {
+    display: none;
+  }
+
+  &::before,
+  &::after,
+  .@{ns}checkbox-inner::before,
+  .@{ns}checkbox-inner::after {
+    content: "";
     position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+  }
+
+  &::before,
+  .@{ns}checkbox-inner::before,
+  .@{ns}checkbox-inner::after {
     width: @checkbox-width-height;
     height: @checkbox-width-height;
-    display: inline-block;
-    left: @checkbox-sense-width;
-    top: @checkbox-sense-width;
+  }
 
-    [type="checkbox"] {
-        display: none;
+  // 涟漪效果外框
+  &::before {
+    .checkbox-inner-wrap(@checkbox-checked-border-color);
+
+    transform: scale(1);
+    opacity: .7;
+    visibility: hidden;
+    transition: transform .2s linear, opacity .2s linear;
+
+    .@{ns}checkbox-checked & {
+      transform: scale(1.5);
+      opacity: 0;
+      visibility: visible;
+    }
+  }
+
+  //感知区域
+  &::after {
+    top: -@checkbox-sense-width;
+    right: -@checkbox-sense-width;
+    bottom: -@checkbox-sense-width;
+    left: -@checkbox-sense-width;
+  }
+
+  //外框
+  .@{ns}checkbox-inner::before {
+    .checkbox-inner-wrap(@checkbox-default-border-color);
+
+    transition: background .2s linear, border .2s linear, box-shadow .2s linear;
+
+    .@{ns}checkbox-checked &,
+    .@{ns}checkbox-indeterminate & {
+      border-color: @checkbox-checked-border-color;
+      background-color: @checkbox-checked-border-color;
     }
 
-    &::before,
-    &::after,
-    .@{ns}checkbox-inner::before,
-    .@{ns}checkbox-inner::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        display: block;
+    .@{ns}checkbox-disabled:not(.@{ns}checkbox-checked):not(.@{ns}checkbox-indeterminate) & {
+      border-color: @checkbox-disabled-color;
+      background-color: @checkbox-disabled-color;
     }
 
-    &::before,
-    .@{ns}checkbox-inner::before,
-    .@{ns}checkbox-inner::after {
-        width: @checkbox-width-height;
-        height: @checkbox-width-height;
+    .@{ns}checkbox-disabled.@{ns}checkbox-checked &,
+    .@{ns}checkbox-disabled.@{ns}checkbox-indeterminate & {
+      opacity: .3;
+    }
+  }
+
+  //对钩
+  .@{ns}checkbox-inner::after {
+    .opacity(0);
+
+    transform: rotate(45deg) scale(0);
+    transition: opacity .2s ease-in, transform .2s cubic-bezier(.12, .4, .29, 1.46);
+
+    .@{ns}checkbox-checked &,
+    .@{ns}checkbox-indeterminate & {
+      border: solid @B000;
+      width: 6px;
+      height: 9px;
+      margin-top: 2px;
+      margin-left: 5px;
+      .opacity(1);
     }
 
-    // 涟漪效果外框
-    &::before {
-        .checkbox-inner-wrap(@checkbox-checked-border-color);
-        transform: scale(1);
-        opacity: .7;
-        visibility: hidden;
-        transition: transform .2s linear, opacity .2s linear;
-
-        .@{ns}checkbox-checked & {
-            transform: scale(1.5);
-            opacity: 0;
-            visibility: visible;
-        }
+    .@{ns}checkbox-checked & {
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg) scale(1);
     }
 
-    //感知区域
-    &::after {
-        top: -@checkbox-sense-width;
-        right: -@checkbox-sense-width;
-        bottom: -@checkbox-sense-width;
-        left: -@checkbox-sense-width;
+    .@{ns}checkbox-indeterminate & {
+      border-width: 0 0 2px;
+      transform: rotate(0deg) scale(1);
+      width: 10px;
+      margin-top: 0;
+      margin-left: 3px;
     }
+  }
 
-    //外框
+  //聚焦
+  &:focus {
+    outline: none;
+
     .@{ns}checkbox-inner::before {
-        .checkbox-inner-wrap(@checkbox-default-border-color);
-        transition: background .2s linear, border .2s linear, box-shadow .2s linear;
+      .checkbox-inner-active-shadow(@checkbox-default-border-color);
 
-        .@{ns}checkbox-checked &,
-        .@{ns}checkbox-indeterminate & {
-            border-color: @checkbox-checked-border-color;
-            background-color: @checkbox-checked-border-color;
-        }
+      @hover: ~":hover";
 
-        .@{ns}checkbox-disabled:not(.@{ns}checkbox-checked):not(.@{ns}checkbox-indeterminate) & {
-            border-color: @checkbox-disabled-color;
-            background-color: @checkbox-disabled-color;
-        }
+      @{hover}& {
+        .checkbox-inner-active-shadow(@checkbox-checked-border-color);
+      }
 
-        .@{ns}checkbox-disabled.@{ns}checkbox-checked &,
-        .@{ns}checkbox-disabled.@{ns}checkbox-indeterminate & {
-            opacity: .3;
-        }
-
+      .@{ns}checkbox-checked & {
+        .checkbox-inner-active-shadow(@checkbox-checked-border-color);
+      }
     }
-
-    //对钩
-    .@{ns}checkbox-inner::after {
-        transform: rotate(45deg) scale(0);
-        .opacity(0);
-        transition: opacity .2s ease-in, transform .2s cubic-bezier(0.12, 0.4, 0.29, 1.46);
-
-        .@{ns}checkbox-checked &,
-        .@{ns}checkbox-indeterminate & {
-            border: solid @B000;
-            width: 6px;
-            height: 9px;
-            margin-top: 2px;
-            margin-left: 5px;
-            .opacity(1);
-        }
-
-        .@{ns}checkbox-checked & {
-            border-width: 0 2px 2px 0;
-            transform: rotate(45deg) scale(1);
-        }
-
-        .@{ns}checkbox-indeterminate & {
-            border-width: 0 0 2px;
-            transform: rotate(0deg) scale(1);
-            width: 10px;
-            margin-top: 0px;
-            margin-left: 3px;
-        }
-    }
-
-    //聚焦
-    &:focus {
-        outline: none;
-
-        .@{ns}checkbox-inner::before {
-            .checkbox-inner-active-shadow(@checkbox-default-border-color);
-
-            @hover: ~':hover';
-            @{hover}& {
-                .checkbox-inner-active-shadow(@checkbox-checked-border-color);
-            }
-
-            .@{ns}checkbox-checked & {
-                .checkbox-inner-active-shadow(@checkbox-checked-border-color);
-            }
-        }
-    }
+  }
 }
 

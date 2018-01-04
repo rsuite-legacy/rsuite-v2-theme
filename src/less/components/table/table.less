@@ -1,161 +1,161 @@
 &-table {
-    border: 1px solid @border-color;
+  border: 1px solid @border-color;
+  position: relative;
+  overflow: hidden;
+  &.column-resizing {
+    cursor: ew-resize;
+    user-select: none;
+  }
+  &-sortable {
+    top: 8px;
+    position: absolute;
+    .icon-sort {
+      color: #aaa;
+    }
+    .icon-sort-asc, .icon-sort-desc {
+      color: #0ae;
+    }
+  }
+  &-row {
+    overflow: hidden;
+    position: absolute;
+    height: 36px;
+    width: 100%;
+    top: 0;
+    border-bottom: 1px solid @border-color;
+  }
+  &-row:hover {
+    background: @head-background;
+    .rsuite-table-cell-group {
+      background: @head-background;
+    }
+    .rsuite-table-cell {
+      background: @head-background;
+    }
+  }
+  &.table-hover {
+    .rsuite-table-row-header {
+      background: @head-background;
+      .rsuite-table-cell {
+        background: @head-background;
+      }
+      &.shadow {
+        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.28);
+        z-index: 5;
+      }
+    }
+  }
+  &-header-row-wrapper {
+    z-index: 2;
+    position: relative;
+  }
+  &-body-row-wrapper {
     position: relative;
     overflow: hidden;
-    &.column-resizing {
-        cursor: ew-resize;
-        user-select: none;
+    z-index: 0;
+  }
+  &-body-info {
+    .icon {
+      margin: 0 10px;
     }
-    &-sortable {
-        top: 8px;
-        position: absolute;
-        .icon-sort {
-            color: #aaa;
-        }
-        .icon-sort-asc, .icon-sort-desc {
-            color: #0ae;
-        }
+    width: 100%;
+    text-align: center;
+    top: 50%;
+    position: absolute;
+    margin-top: -20px;
+    line-height: 40px;
+    &-wheel-area {
+      width: 100%;
     }
-    &-row {
-        overflow: hidden;
-        position: absolute;
-        height: 36px;
-        width: 100%;
-        top: 0;
-        border-bottom: 1px solid @border-color;
+  }
+  &-loading-wrapper {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: rgba(45, 45, 45, 0.5);
+    color: #fff;
+  }
+  &-loading {
+    .icon {
+      margin: 0 10px;
     }
-    &-row:hover {
-        background: @head-background;
-        .rsuite-table-cell-group {
-            background: @head-background;
-        }
-        .rsuite-table-cell {
-            background: @head-background;
-        }
+    width: 100%;
+    text-align: center;
+    top: 50%;
+    position: absolute;
+    margin-top: -20px;
+    line-height: 40px;
+  }
+  &-cell {
+    height: 36px;
+    border-style: solid;
+    border-width: 0;
+    border-color: @border-color;
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    white-space: normal;
+    background: @body-background;
+    &.sortable {
+      cursor: pointer;
     }
-    &.table-hover {
-        .rsuite-table-row-header {
-            background: @head-background;
-            .rsuite-table-cell {
-                background: @head-background;
-            }
-            &.shadow {
-                box-shadow: 0 2px 3px rgba(0, 0, 0, 0.28);
-                z-index: 5;
-            }
-        }
+    &.first {
+      border-left-width: 0;
     }
-    &-header-row-wrapper {
-        z-index: 2;
-        position: relative;
+    &-wrap1 {
+      display: table;
     }
-    &-body-row-wrapper {
-        position: relative;
-        overflow: hidden;
-        z-index: 0;
+    &-wrap2 {
+      display: table-row;
     }
-    &-body-info {
-        .icon {
-            margin: 0 10px;
-        }
-        width: 100%;
-        text-align: center;
-        top: 50%;
-        position: absolute;
-        margin-top: -20px;
-        line-height: 40px;
-        &-wheel-area {
-            width: 100%;
-        }
+    &-wrap3 {
+      display: table-cell;
+      vertical-align: middle;
     }
-    &-loading-wrapper {
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        background: rgba(45, 45, 45, 0.5);
-        color: #fff;
+    &-content {
+      padding: 8px;
+      .ellipsis();
     }
-    &-loading {
-        .icon {
-            margin: 0 10px;
-        }
-        width: 100%;
-        text-align: center;
-        top: 50%;
-        position: absolute;
-        margin-top: -20px;
-        line-height: 40px;
+  }
+  &-column-resize-spanner {
+    height: 36px;
+    width: 6px;
+    z-index: 3;
+    position: absolute;
+    cursor: ew-resize !important;
+    outline: none;
+    &:hover {
+      background: @resize-mouse-color;
     }
-    &-cell {
-        height: 36px;
-        border-style: solid;
-        border-width: 0;
-        border-color: @border-color;
-        display: block;
-        overflow: hidden;
-        position: absolute;
-        white-space: normal;
-        background: @body-background;
-        &.sortable {
-            cursor: pointer;
-        }
-        &.first {
-            border-left-width: 0;
-        }
-        &-wrap1 {
-            display: table;
-        }
-        &-wrap2 {
-            display: table-row;
-        }
-        &-wrap3 {
-            display: table-cell;
-            vertical-align: middle;
-        }
-        &-content {
-            padding: 8px;
-            .ellipsis();
-        }
+  }
+  &-cell-group {
+    &.fixed {
+      position: absolute;
+      z-index: 4;
+      background: @body-background;
     }
-    &-column-resize-spanner {
-        height: 36px;
-        width: 6px;
-        z-index: 3;
-        position: absolute;
-        cursor: ew-resize !important;
-        outline: none;
-        &:hover {
-            background: @resize-mouse-color;
-        }
+    &.shadow {
+      box-shadow: 3px 0 5px rgba(9, 9, 9, 0.08);
     }
-    &-cell-group {
-        &.fixed {
-            position: absolute;
-            z-index: 4;
-            background: @body-background;
-        }
-        &.shadow {
-            box-shadow: 3px 0 5px rgba(9, 9, 9, 0.08);
-        }
+  }
+  &-mouse-area {
+    display: none;
+    background: @resize-mouse-color;
+    left: -1px;
+    top: 0;
+    position: absolute;
+    width: 1px;
+    z-index: 6;
+  }
+  &-bordered {
+    .rsuite-table-cell {
+      border-width: 0 1px 0 0;
     }
-    &-mouse-area {
-        display: none;
-        background: @resize-mouse-color;
-        left: -1px;
-        top: 0;
-        position: absolute;
-        width: 1px;
-        z-index: 6;
+  }
+  &-word-wrap {
+    .rsuite-table-cell-content {
+      white-space: unset;
+      word-break: break-all;
     }
-    &-bordered {
-        .rsuite-table-cell {
-            border-width: 0 1px 0 0;
-        }
-    }
-    &-word-wrap {
-        .rsuite-table-cell-content {
-            white-space: unset;
-            word-break: break-all;
-        }
-    }
+  }
 }

@@ -113,8 +113,8 @@
 @line-height-small: 1.6666666666666667;
 
 @border-radius-base: 6px;
-@border-radius-large: 0px;
-@border-radius-small: 0px;
+@border-radius-large: 0;
+@border-radius-small: 0;
 
 //** Global color for active items (e.g., navs or dropdowns).
 @component-active-color: #fff;
@@ -225,9 +225,9 @@
 //** Default `.form-control` height
 @input-height-base: (@line-height-computed + (@padding-base-vertical * 2) + 2);
 //** Large `.form-control` height
-@input-height-large: (ceil(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);
+@input-height-large: (ceil(@font-size-large * @line-height-large)+(@padding-large-vertical * 2)+2);
 //** Small `.form-control` height
-@input-height-small: (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
+@input-height-small: (floor(@font-size-small * @line-height-small)+(@padding-small-vertical * 2)+2);
 
 //** `.form-group` margin
 @form-group-margin-bottom: @base-unit-px;

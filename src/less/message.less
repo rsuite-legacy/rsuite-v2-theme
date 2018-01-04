@@ -6,113 +6,113 @@
 // -------------------------
 
 .@{ns}message {
-    border-radius: @message-border-radius;
-    font-size: @font-size-base;
-    line-height: @line-height-base;
-    position: relative;
+  border-radius: @message-border-radius;
+  font-size: @font-size-base;
+  line-height: @line-height-base;
+  position: relative;
 
-    .message-container {
-        padding: 20px;
+  .message-container {
+    padding: 20px;
+  }
+
+  // Multiple messages should have clearance
+  // Hiding Message haven't clearance.
+  &:not(.message-hiding) + .@{ns}message {
+    margin-top: 10px;
+
+    //The last message hiding haven't clearance.
+    &.message-hiding:last-child {
+      transition: margin-top .1s linear .3s;
+      margin-top: 0;
     }
+  }
 
-    // Multiple messages should have clearance
-    // Hiding Message haven't clearance.
-    &:not(.message-hiding) + .@{ns}message {
-        margin-top: 10px;
+  // Only has icon
+  &.@{ns}message-has-icon .message-container {
+    padding-left: @message-padding + @message-icon-size + @message-icon-margin-right;
+  }
 
-        //The last message hiding haven't clearance.
-        &.message-hiding:last-child {
-            transition: margin-top .1s linear .3s;
-            margin-top: 0;
-        }
-    }
-
-    // Only has icon
-    &.@{ns}message-has-icon .message-container {
-        padding-left: @message-padding + @message-icon-size + @message-icon-margin-right;
-    }
-
-    // Only has title
-    &.@{ns}message-has-title {
-        h5 {
-            margin-top: 0;
-            margin-bottom: 0;
-            .ellipsis;
-
-            // When title and description all exist , additional a margin
-            & + .message-description {
-                margin-top: 8px;
-            }
-        }
-    }
-
-    // Has icon && title
-    &.@{ns}message-has-icon.@{ns}message-has-title .message-container {
-        padding-left: @message-padding + @message-icon-large-size + @message-icon-margin-right;
-
-        // Bigger icon
-        .@{ns}message-icon-wrapper .icon {
-            font-size: @message-icon-large-size;
-            line-height: 1;
-        }
-    }
-
-    // Title
+  // Only has title
+  &.@{ns}message-has-title {
     h5 {
-        color: @B900;
-        line-height: unit(round(@message-icon-large-size/@message-title-size, 16));
-    }
+      margin-top: 0;
+      margin-bottom: 0;
+      .ellipsis;
 
-    // Description
-    .message-description {
-        color: @B800;
+      // When title and description all exist , additional a margin
+      & + .message-description {
+        margin-top: 8px;
+      }
     }
+  }
 
-    // Icon wrapper
-    .@{ns}message-icon-wrapper {
-        position: absolute;
-        top: @message-padding;
-        left: @message-padding;
-        line-height: 1;
-    }
+  // Has icon && title
+  &.@{ns}message-has-icon.@{ns}message-has-title .message-container {
+    padding-left: @message-padding + @message-icon-large-size + @message-icon-margin-right;
 
-    // Icon
+    // Bigger icon
     .@{ns}message-icon-wrapper .icon {
-        font-size: @message-icon-size;
-        line-height: @line-height-small;
+      font-size: @message-icon-large-size;
+      line-height: 1;
     }
+  }
 
-    // Close button
-    .@{ns}message-btn-close {
-        background: transparent;
-        position: absolute;
-        top: 0;
-        right: 0;
-        padding: 8px;
-        font-size: @message-close-btn-size;
-        line-height: 1;
-        outline: none !important;
-    }
+  // Title
+  h5 {
+    color: @B900;
+    line-height: unit(round(@message-icon-large-size/@message-title-size, 16));
+  }
 
-    // Animations
-    // ----------------------------
-    &.message-show {
-        animation: messageMoveIn .3s linear forwards;
-    }
+  // Description
+  .message-description {
+    color: @B800;
+  }
 
-    &.message-hiding {
-        display: ~'none\9\0';
-        animation: messageMoveOut .3s linear forwards;
-    }
+  // Icon wrapper
+  .@{ns}message-icon-wrapper {
+    position: absolute;
+    top: @message-padding;
+    left: @message-padding;
+    line-height: 1;
+  }
+
+  // Icon
+  .@{ns}message-icon-wrapper .icon {
+    font-size: @message-icon-size;
+    line-height: @line-height-small;
+  }
+
+  // Close button
+  .@{ns}message-btn-close {
+    background: transparent;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 8px;
+    font-size: @message-close-btn-size;
+    line-height: 1;
+    outline: none !important;
+  }
+
+  // Animations
+  // ----------------------------
+  &.message-show {
+    animation: messageMoveIn .3s linear forwards;
+  }
+
+  &.message-hiding {
+    display: ~'none\9\0';
+    animation: messageMoveOut .3s linear forwards;
+  }
 }
 
 // All the containers
 .@{ns}message-full {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    border-radius: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-radius: 0;
 }
 
 // Alternate styles
@@ -120,17 +120,17 @@
 // Generate contextual modifier classes for colorizing the alert.
 
 .@{ns}message-success {
-    .message-variant(@message-success-bg; @message-success-icon-color);
+  .message-variant(@message-success-bg; @message-success-icon-color);
 }
 
 .@{ns}message-info {
-    .message-variant(@message-info-bg; @message-info-icon-color);
+  .message-variant(@message-info-bg; @message-info-icon-color);
 }
 
 .@{ns}message-warning {
-    .message-variant(@message-warning-bg; @message-warning-icon-color);
+  .message-variant(@message-warning-bg; @message-warning-icon-color);
 }
 
 .@{ns}message-error {
-    .message-variant(@message-error-bg; @message-error-icon-color);
+  .message-variant(@message-error-bg; @message-error-icon-color);
 }

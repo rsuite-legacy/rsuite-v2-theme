@@ -1,36 +1,36 @@
 // Pagination
 
 .pagination-size(@padding-vertical; @padding-horizontal; @font-size; @line-height; @border-radius) {
-    > li {
-        > a {
-            padding: @padding-vertical @padding-horizontal;
-            font-size: @font-size;
-            line-height: @line-height;
+  > li {
+    > a {
+      padding: @padding-vertical @padding-horizontal;
+      font-size: @font-size;
+      line-height: @line-height;
 
-            &:hover,
-            &:focus,
-            &:active {
-                padding-bottom: (@padding-vertical - 1 );
-            }
+      &:hover,
+      &:focus,
+      &:active {
+        padding-bottom: (@padding-vertical - 1 );
+      }
 
-        }
-        &:first-child {
-            > a {
-                .border-left-radius(@border-radius);
-            }
-        }
-        &:last-child {
-            > a {
-                .border-right-radius(@border-radius);
-            }
-        }
     }
-
-    > .active > a {
-        &,
-        &:hover,
-        &:focus {
-            padding-bottom: (@padding-vertical - 1);
-        }
+    &:first-child {
+      > a {
+        .border-left-radius(@border-radius);
+      }
     }
+    &:last-child {
+      > a {
+        .border-right-radius(@border-radius);
+      }
+    }
+  }
+
+  > .active > a {
+    &,
+    &:hover,
+    &:focus {
+      padding-bottom: (@padding-vertical - 1);
+    }
+  }
 }

@@ -8,26 +8,26 @@
 // For recommendations on resolving such conflicts, see
 // http://getbootstrap.com/getting-started/#third-box-sizing
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 *:before,
 *:after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 // Body reset
 
 html {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 body {
-    font-family: @font-family-base;
-    font-size: @font-size-base;
-    line-height: @line-height-base;
-    color: @text-color;
-    background-color: @body-bg;
+  font-family: @font-family-base;
+  font-size: @font-size-base;
+  line-height: @line-height-base;
+  color: @text-color;
+  background-color: @body-bg;
 }
 
 // Reset fonts for relevant elements
@@ -35,26 +35,26 @@ input,
 button,
 select,
 textarea {
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
 }
 
 // Links
 
 a {
-    color: @link-color;
-    text-decoration: none;
+  color: @link-color;
+  text-decoration: none;
 
-    &:hover,
-    &:focus {
-        color: @link-hover-color;
-        text-decoration: @link-hover-decoration;
-    }
+  &:hover,
+  &:focus {
+    color: @link-hover-color;
+    text-decoration: @link-hover-decoration;
+  }
 
-    &:focus {
-        .tab-focus();
-    }
+  &:focus {
+    .tab-focus();
+  }
 }
 
 // Figures
@@ -63,19 +63,19 @@ a {
 // ensures we don't break anyone's use of the element.
 
 figure {
-    margin: 0;
+  margin: 0;
 }
 
 // Images
 
 img {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 // Horizontal rules
 hr {
-    margin-top: @line-height-computed;
-    margin-bottom: @line-height-computed;
-    border: 0;
-    border-top: 1px solid @hr-border;
+  margin-top: @line-height-computed;
+  margin-bottom: @line-height-computed;
+  border: 0;
+  border-top: 1px solid @hr-border;
 }

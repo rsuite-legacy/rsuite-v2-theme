@@ -4,127 +4,127 @@
 
 // Dropdown arrow/caret
 .dropdown-toggle-caret {
-    display: inline-block;
-    margin-left: 2px;
+  display: inline-block;
+  margin-left: 2px;
 
-    &:before {
-        font-family: @dropdown-caret-font-family !important;
-        content: @dropdown-caret-content;
-    }
+  &:before {
+    font-family: @dropdown-caret-font-family !important;
+    content: @dropdown-caret-content;
+  }
 }
 
 // The dropdown wrapper (div)
 .dropdown-dropup,
 .dropdown {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
 
-    .btn .dropdown-toggle-caret {
-        margin-left: 4px;
+  .btn .dropdown-toggle-caret {
+    margin-left: 4px;
+  }
+
+  //both-ends
+  &.both-ends .btn {
+    .clearfix;
+    text-align: left;
+
+    & > .dropdown-toggle-caret {
+      float: right;
     }
+  }
 
-    //both-ends
-    &.both-ends .btn {
-        .clearfix;
-        text-align: left;
-
-        & > .dropdown-toggle-caret {
-            float: right;
-        }
-    }
-
-    &.btn-group-default.btn-group .dropdown-toggle.btn:hover {
-        border-bottom-color: darken(@btn-default-bg, 5%);
-    }
+  &.btn-group-default.btn-group .dropdown-toggle.btn:hover {
+    border-bottom-color: darken(@btn-default-bg, 5%);
+  }
 }
 
 .dropdown-toggle {
-    position: relative;
-    z-index: @zindex-dropdown;
+  position: relative;
+  z-index: @zindex-dropdown;
 }
 
 // Prevent the focus on the dropdown toggle when closing dropdowns
 .dropdown-toggle:focus {
-    outline: 0;
+  outline: 0;
 }
 
 // The dropdown menu (ul)
 .dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: @zindex-dropdown;
-    display: none; // none by default, but block on "open" of the menu
-    float: left;
-    min-width: 100%;
-    padding: 0;
-    margin: 0; // override default ul
-    list-style: none;
-    font-size: @font-size-base;
-    text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
-    background-color: @dropdown-bg;
-    border-radius: @border-radius-base;
-    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.06), 0 4px 4px rgba(0, 0, 0, 0.12);
-    animation-duration: .3s;
-    animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
-    animation-fill-mode: both;
-    animation-play-state: paused;
-    overflow-y: auto;
-    padding: @border-radius-base 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: @zindex-dropdown;
+  display: none; // none by default, but block on "open" of the menu
+  float: left;
+  min-width: 100%;
+  padding: 0;
+  margin: 0; // override default ul
+  list-style: none;
+  font-size: @font-size-base;
+  text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
+  background-color: @dropdown-bg;
+  border-radius: @border-radius-base;
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.06), 0 4px 4px rgba(0, 0, 0, 0.12);
+  animation-duration: .3s;
+  animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+  animation-fill-mode: both;
+  animation-play-state: paused;
+  overflow-y: auto;
+  padding: @border-radius-base 0;
 
-    // Aligns the dropdown menu to right
-    //
-    // Deprecated as of 3.1.0 in favor of `.dropdown-menu-[dir]`
-    &.pull-right {
-        right: 0;
-        left: auto;
-    }
+  // Aligns the dropdown menu to right
+  //
+  // Deprecated as of 3.1.0 in favor of `.dropdown-menu-[dir]`
+  &.pull-right {
+    right: 0;
+    left: auto;
+  }
 
-    // Dividers (basically an hr) within the dropdown
-    .dropdown-item-divider {
-        .nav-divider(@dropdown-divider-bg);
-    }
+  // Dividers (basically an hr) within the dropdown
+  .dropdown-item-divider {
+    .nav-divider(@dropdown-divider-bg);
+  }
 
-    // Links within the dropdown menu
-    > li > a {
-        display: block;
-        padding: 6px 20px;
-        clear: both;
-        font-weight: normal;
-        line-height: @line-height-base;
-        color: @dropdown-link-color;
-        white-space: nowrap; // prevent links from randomly breaking onto new lines
-        cursor: pointer; //fixed link has not [href] style
-        transition: color .2s linear, background-color .2s linear;
-    }
+  // Links within the dropdown menu
+  > li > a {
+    display: block;
+    padding: 6px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: @line-height-base;
+    color: @dropdown-link-color;
+    white-space: nowrap; // prevent links from randomly breaking onto new lines
+    cursor: pointer; //fixed link has not [href] style
+    transition: color .2s linear, background-color .2s linear;
+  }
 }
 
 //Set scrollbar to dropdown menu btn-group
 .dropdown.btn-group .dropdown-menu {
-    max-height: @dropdown-max-height;
-    overflow-y: auto;
+  max-height: @dropdown-max-height;
+  overflow-y: auto;
 }
 
 // Hover/Focus state
 .dropdown-menu > li > a {
-    &:hover,
-    &:focus {
-        text-decoration: none;
-        color: @dropdown-link-hover-color;
-        background-color: @dropdown-link-hover-bg;
-    }
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    color: @dropdown-link-hover-color;
+    background-color: @dropdown-link-hover-bg;
+  }
 }
 
 // Active state
 .dropdown-menu > .active > a {
-    &,
-    &:hover,
-    &:focus {
-        color: @dropdown-link-active-color;
-        text-decoration: none;
-        outline: 0;
-        background-color: @dropdown-link-active-bg;
-    }
+  &,
+  &:hover,
+  &:focus {
+    color: @dropdown-link-active-color;
+    text-decoration: none;
+    outline: 0;
+    background-color: @dropdown-link-active-bg;
+  }
 }
 
 // Disabled state
@@ -132,90 +132,90 @@
 // Gray out text and ensure the hover/focus state remains gray
 
 .dropdown-menu > .dropdown-item-disabled > a {
-    opacity: .3;
+  opacity: .3;
 
-    &,
-    &:hover,
-    &:focus {
-        color: @dropdown-link-color;
-    }
+  &,
+  &:hover,
+  &:focus {
+    color: @dropdown-link-color;
+  }
 
-    // Nuke hover/focus effects
-    &:hover,
-    &:focus {
-        text-decoration: none;
-        background-color: transparent;
-        background-image: none; // Remove CSS gradient
-        .reset-filter();
-        cursor: @cursor-disabled;
-    }
+  // Nuke hover/focus effects
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    background-color: transparent;
+    background-image: none; // Remove CSS gradient
+    .reset-filter();
+    cursor: @cursor-disabled;
+  }
 }
 
 // Open state for the dropdown
 .dropdown-open {
-    //打开时的按钮样式
-    &.dropdown-dropup {
-        > .dropdown-toggle.btn {
-            &, &:active, &:focus {
-                background: white;
-            }
-        }
-
-        > .dropdown-menu {
-            top: auto;
-            bottom: @dropdown-menu-top;
-            animation-name: slideDownIn;
-            animation-play-state: running;
-        }
-
-        > .btn-lg ~ .dropdown-menu,
-        > .btn-sm ~ .dropdown-menu,
-        > .btn-xs ~ .dropdown-menu {
-            top: auto;
-        }
-        > .btn-lg ~ .dropdown-menu {
-            bottom: @dropdown-menu-lg-top;
-        }
-
-        > .btn-sm ~ .dropdown-menu {
-            bottom: @dropdown-menu-sm-top;
-        }
-
-        > .btn-xs ~ .dropdown-menu {
-            bottom: @dropdown-menu-xs-top;
-        }
+  //打开时的按钮样式
+  &.dropdown-dropup {
+    > .dropdown-toggle.btn {
+      &, &:active, &:focus {
+        background: white;
+      }
     }
-    // Show the menu
-    // 各种尺寸的menu偏移量不同
+
     > .dropdown-menu {
-        display: block;
-        top: @dropdown-menu-top;
-        animation-name: slideUpIn;
-        animation-play-state: running;
+      top: auto;
+      bottom: @dropdown-menu-top;
+      animation-name: slideDownIn;
+      animation-play-state: running;
     }
 
+    > .btn-lg ~ .dropdown-menu,
+    > .btn-sm ~ .dropdown-menu,
+    > .btn-xs ~ .dropdown-menu {
+      top: auto;
+    }
     > .btn-lg ~ .dropdown-menu {
-        top: @dropdown-menu-lg-top;
+      bottom: @dropdown-menu-lg-top;
     }
 
     > .btn-sm ~ .dropdown-menu {
-        top: @dropdown-menu-sm-top;
+      bottom: @dropdown-menu-sm-top;
     }
 
     > .btn-xs ~ .dropdown-menu {
-        top: @dropdown-menu-xs-top;
+      bottom: @dropdown-menu-xs-top;
     }
+  }
+  // Show the menu
+  // 各种尺寸的menu偏移量不同
+  > .dropdown-menu {
+    display: block;
+    top: @dropdown-menu-top;
+    animation-name: slideUpIn;
+    animation-play-state: running;
+  }
 
-    > .dropdown-toggle.btn {
-        &, &:active, &:focus {
-            background: white;
-        }
-    }
+  > .btn-lg ~ .dropdown-menu {
+    top: @dropdown-menu-lg-top;
+  }
 
-    // Remove the outline when :focus is triggered
-    > a {
-        outline: 0;
+  > .btn-sm ~ .dropdown-menu {
+    top: @dropdown-menu-sm-top;
+  }
+
+  > .btn-xs ~ .dropdown-menu {
+    top: @dropdown-menu-xs-top;
+  }
+
+  > .dropdown-toggle.btn {
+    &, &:active, &:focus {
+      background: white;
     }
+  }
+
+  // Remove the outline when :focus is triggered
+  > a {
+    outline: 0;
+  }
 
 }
 
@@ -224,8 +224,8 @@
 // Add extra class to `.dropdown-menu` to flip the alignment of the dropdown
 // menu with the parent.
 .dropdown-menu-right {
-    left: auto; // Reset the default from `.dropdown-menu`
-    right: 0;
+  left: auto; // Reset the default from `.dropdown-menu`
+  right: 0;
 }
 
 // With v3, we enabled auto-flipping if you have a dropdown within a right
@@ -235,47 +235,47 @@
 // This is only for left-aligning a dropdown menu within a `.navbar-right` or
 // `.pull-right` nav component.
 .dropdown-menu-left {
-    left: 0;
-    right: auto;
+  left: 0;
+  right: auto;
 }
 
 // Dropdown section headers
 .dropdown-header {
-    display: block;
-    padding: 3px 20px;
-    font-size: @font-size-small;
-    line-height: @line-height-base;
-    color: @dropdown-header-color;
-    white-space: nowrap; // as with > li > a
+  display: block;
+  padding: 3px 20px;
+  font-size: @font-size-small;
+  line-height: @line-height-base;
+  color: @dropdown-header-color;
+  white-space: nowrap; // as with > li > a
 }
 
 // Backdrop to catch body clicks on mobile, etc.
 .dropdown-backdrop {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    z-index: (@zindex-dropdown - 10);
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: (@zindex-dropdown - 10);
 }
 
 // Right aligned dropdowns
 .pull-right > .dropdown-menu {
-    right: 0;
-    left: auto;
+  right: 0;
+  left: auto;
 }
 
 //fixed link a active color
 .dropdown > .btn-link:active {
-    color: @link-color;
+  color: @link-color;
 }
 
 // Allow for dropdowns to go bottom up (aka)
 .dropdown-dropup, .navbar-fixed-bottom .dropdown {
-    // Reverse the caret
-    .dropdown-toggle-caret:before {
-        content: @dropup-caret-content;
-    }
+  // Reverse the caret
+  .dropdown-toggle-caret:before {
+    content: @dropup-caret-content;
+  }
 }
 
 // Component alignment
@@ -283,31 +283,31 @@
 // Reiterate per navbar.less and the modified component alignment there.
 
 @media (min-width: @grid-float-breakpoint) {
-    .navbar-right {
-        .dropdown-menu {
-            .dropdown-menu-right();
-        }
-        // Necessary for overrides of the default right aligned menu.
-        // Will remove come v4 in all likelihood.
-        .dropdown-menu-left {
-            .dropdown-menu-left();
-        }
+  .navbar-right {
+    .dropdown-menu {
+      .dropdown-menu-right();
     }
+    // Necessary for overrides of the default right aligned menu.
+    // Will remove come v4 in all likelihood.
+    .dropdown-menu-left {
+      .dropdown-menu-left();
+    }
+  }
 }
 
 //nav pills
 .nav.nav-pills {
-    & .open > a, & .open > a:focus, & .open > a:hover {
-        z-index: 10;
-        border-bottom: medium none;
-        padding-bottom: 10px !important;
-        //border-color: @btn-default-nav-pills-open-color;;
-    }
+  & .open > a, & .open > a:focus, & .open > a:hover {
+    z-index: 10;
+    border-bottom: medium none;
+    padding-bottom: 10px !important;
+    //border-color: @btn-default-nav-pills-open-color;;
+  }
 }
 
 //collapse navbar-collapse
 .collapse.navbar-collapse {
-    .dropdown-menu {
-        border-color: @collapse-dropdown-border-color;
-    }
+  .dropdown-menu {
+    border-color: @collapse-dropdown-border-color;
+  }
 }

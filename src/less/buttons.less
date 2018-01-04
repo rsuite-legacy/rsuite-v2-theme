@@ -6,105 +6,108 @@
 // --------------------------------------------------
 
 .@{ns}btn {
-    display: inline-block;
-    margin-bottom: 0; // For input.btn
-    font-weight: @btn-font-weight;
-    text-align: center;
-    vertical-align: middle;
-    cursor: pointer;
-    outline: 0 !important;
-    background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
-    white-space: nowrap;
-    .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @btn-border-radius-base);
-    .user-select(none);
+  display: inline-block;
+  margin-bottom: 0; // For input.btn
+  font-weight: @btn-font-weight;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  outline: 0 !important;
+  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+  white-space: nowrap;
+  .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @btn-border-radius-base);
+  .user-select(none);
 
-    &,
-    &:active,
-    &.active {
-        &:focus,
-        &.focus {
-            .tab-focus();
-        }
-    }
-
-    &:hover,
+  &,
+  &:active,
+  &.active {
     &:focus,
     &.focus {
-        color: @btn-default-color;
-        text-decoration: none;
+      .tab-focus();
     }
+  }
 
-    &:active,
-    &.btn-active {
-        outline: 0;
-        background-image: none;
+  &:hover,
+  &:focus,
+  &.focus {
+    color: @btn-default-color;
+    text-decoration: none;
+  }
+
+  &:active,
+  &.btn-active {
+    outline: 0;
+    background-image: none;
+  }
+
+  &.disabled,
+  &[disabled],
+  .dropdown-disabled &,
+  fieldset[disabled] & {
+    cursor: @cursor-disabled;
+    .opacity(.3);
+
+    &::after {
+      display: none !important;
     }
+  }
 
+  a& {
     &.disabled,
-    &[disabled],
-    fieldset[disabled] &,
-    .dropdown-disabled & {
-        cursor: @cursor-disabled;
-        .opacity(.3);
-
-        &:after {
-            display: none !important;
-        }
+    fieldset[disabled] & {
+      pointer-events: none; // Future-proof disabling of clicks on `<a>` elements
     }
-
-    a& {
-        &.disabled,
-        fieldset[disabled] & {
-            pointer-events: none; // Future-proof disabling of clicks on `<a>` elements
-        }
-    }
+  }
 }
 
 // Circle Button
 .@{ns}btn-icon-circle {
-    border-radius: 50% !important;
-    width: @padding-base-vertical*2+@line-height-computed;
+  border-radius: 50% !important;
+  width: @padding-base-vertical*2 + @line-height-computed;
 }
 
 // Button Loading state
 .@{ns}btn-loading {
-    color: transparent !important;
-    position: relative;
+  color: transparent !important;
+  position: relative;
 
-    > .btn-spin {
-        &::before, &::after {
-            content: '';
-            position: absolute;
-            width: @btn-loading-spin-default-diameter;
-            height: @btn-loading-spin-default-diameter;
-            margin: auto;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            border-radius: 50%;
+  > .btn-spin {
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      width: @btn-loading-spin-default-diameter;
+      height: @btn-loading-spin-default-diameter;
+      margin: auto;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      border-radius: 50%;
 
-            .@{ns}btn-xs& {
-                width: @btn-loading-spin-xs-diameter;
-                height: @btn-loading-spin-xs-diameter;
-            }
-        }
-
-        &::before {
-            border: @btn-loading-spin-ring-wide solid rgba(0, 0, 0, .15);
-        }
-
-        &::after {
-            border-width: @btn-loading-spin-ring-wide;
-            border-color: @btn-spin-light-color transparent transparent;
-            border-style: solid;
-            animation: buttonSpin .6s infinite linear;
-
-            .@{ns}btn-link&, .@{ns}btn-subtle&, .@{ns}btn-ghost& {
-                border-top-color: @btn-spin-light-invert-color;
-            }
-        }
+      .@{ns}btn-xs& {
+        width: @btn-loading-spin-xs-diameter;
+        height: @btn-loading-spin-xs-diameter;
+      }
     }
+
+    &::before {
+      border: @btn-loading-spin-ring-wide solid rgba(0, 0, 0, .15);
+    }
+
+    &::after {
+      border-width: @btn-loading-spin-ring-wide;
+      border-color: @btn-spin-light-color transparent transparent;
+      border-style: solid;
+      animation: buttonSpin .6s infinite linear;
+
+      .@{ns}btn-link&,
+      .@{ns}btn-subtle&,
+      .@{ns}btn-ghost& {
+        border-top-color: @btn-spin-light-invert-color;
+      }
+    }
+  }
 }
 
 // Alternate buttons
@@ -112,151 +115,150 @@
 
 // Default Button
 .@{ns}btn-default {
-    .button-ripple;
+  .button-ripple;
+  .btn-icon-with-text(@btn-default-bg-dark);
+
+  color: @btn-default-color;
+  background: @btn-default-bg;
+
+  &,
+  & > .icon {
+    .btn-transition();
+  }
+
+  &:focus,
+  &.focus {
     color: @btn-default-color;
-    background: @btn-default-bg;
-    .btn-icon-with-text(@btn-default-bg-dark);
+    background-color: @btn-default-focus-bg;
 
-    &, & > .icon {
-        .btn-transition();
-    }
+    .btn-icon-with-text(@btn-default-focus-bg-dark);
+  }
 
+  &:hover {
+    color: @btn-default-hover-color;
+    background-color: @btn-default-hover-bg;
+
+    .btn-icon-with-text(@btn-default-hover-bg-dark);
+  }
+
+  &:active,
+  &.@{ns}btn-active,
+  .@{ns}open > .@{ns}dropdown-toggle& {
+    color: @btn-default-color;
+    background-color: @btn-default-active-bg;
+    background-image: none;
+
+    .btn-icon-with-text(@btn-default-active-bg-dark);
+
+    &:hover,
     &:focus,
     &.focus {
-        color: @btn-default-color;
-        background-color: @btn-default-focus-bg;
+      color: @btn-default-color;
+      background-color: @btn-default-active-bg;
 
-        .btn-icon-with-text(@btn-default-focus-bg-dark);
+      .btn-icon-with-text(@btn-default-active-bg-dark);
     }
-    &:hover {
-        color: @btn-default-hover-color;
-        background-color: @btn-default-hover-bg;
+  }
 
-        .btn-icon-with-text(@btn-default-hover-bg-dark);
+  &.@{ns}btn-disabled,
+  &[disabled],
+  fieldset[disabled] &,
+  .@{ns}dropdown-disabled & {
+    &:hover,
+    &:focus,
+    &.focus {
+      background: none;
     }
+  }
 
-    &:active,
-    &.@{ns}btn-active,
-    .@{ns}open > .@{ns}dropdown-toggle& {
-        color: @btn-default-color;
-        background-color: @btn-default-active-bg;
-
-        .btn-icon-with-text(@btn-default-active-bg-dark);
-
-        &:hover,
-        &:focus,
-        &.focus {
-            color: @btn-default-color;
-            background-color: @btn-default-active-bg;
-
-            .btn-icon-with-text(@btn-default-active-bg-dark);
-        }
-    }
-
-    &:active,
-    &.@{ns}btn-active,
-    .@{ns}open > .@{ns}dropdown-toggle& {
-        background-image: none;
-    }
-
-    &.@{ns}btn-disabled,
-    &[disabled],
-    fieldset[disabled] &,
-    .@{ns}dropdown-disabled & {
-        &:hover,
-        &:focus,
-        &.focus {
-            background: none;
-        }
-    }
-
-    .generate-spectrum-primary-btns();
+  .generate-spectrum-primary-btns();
 }
 
 // Primary Button
 .@{ns}btn-primary {
-    .button-ripple;
-    .button-primary-variant(@btn-primary-color; @btn-primary-bg);
+  .button-ripple;
+  .button-primary-variant(@btn-primary-color; @btn-primary-bg);
 
-    &, & > .icon {
-        .btn-transition();
-    }
+  &,
+  & > .icon {
+    .btn-transition();
+  }
 
-    .generate-spectrum-primary-btns();
+  .generate-spectrum-primary-btns();
 }
 
 // Link buttons
 .@{ns}btn-link {
-    .btn-transition(color);
-    .btn-link-variant(@btn-link-color);
+  .btn-transition(color);
+  .btn-link-variant(@btn-link-color);
 
-    .generate-spectrum-link-btns();
+  .generate-spectrum-link-btns();
 }
 
 // Subtle Button
 .@{ns}btn-subtle {
-    .button-ripple;
-    .btn-transition;
-    .btn-subtle-variant(@btn-subtle-primary-color);
+  .button-ripple;
+  .btn-transition;
+  .btn-subtle-variant(@btn-subtle-primary-color);
 
-    .generate-spectrum-subtle-btns();
+  .generate-spectrum-subtle-btns();
 }
 
 // Ghost Button
 .@{ns}btn-ghost {
-    .btn-transition(color-and-border);
-    .btn-ghost-variant(@btn-ghost-color, @btn-ghost-border-color);
+  .btn-transition(color-and-border);
+  .btn-ghost-variant(@btn-ghost-color, @btn-ghost-border-color);
 
-    .generate-spectrum-ghost-btns();
+  .generate-spectrum-ghost-btns();
 }
 
 // Icon Button
 // Icon Button text size increase 2 px
 .@{ns}btn-icon:not(.@{ns}btn-icon-with-text) {
-    .icon {
-        font-size: @font-size-large;
-        line-height: @line-height-large;
-    }
+  .icon {
+    font-size: @font-size-large;
+    line-height: @line-height-large;
+  }
 
-    &.btn-xs {
-        font-size: @font-size-base;
-        line-height: @line-height-base;
-    }
+  &.btn-xs {
+    font-size: @font-size-base;
+    line-height: @line-height-base;
+  }
 }
 
 // Button Sizes
 // --------------------------------------------------
 
 .@{ns}btn-lg {
-    .button-size(@padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @btn-border-radius-large);
+  .button-size(@padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @btn-border-radius-large);
 }
 
 .@{ns}btn-sm {
-    .button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-base; @line-height-base; @btn-border-radius-small);
+  .button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-base; @line-height-base; @btn-border-radius-small);
 }
 
 .@{ns}btn-xs {
-    .button-size(@padding-xs-vertical; @padding-xs-horizontal; @font-size-small; @line-height-small; @btn-border-radius-small);
+  .button-size(@padding-xs-vertical; @padding-xs-horizontal; @font-size-small; @line-height-small; @btn-border-radius-small);
 }
 
 // Block button
 // --------------------------------------------------
 
 .@{ns}btn-block {
-    display: block;
-    width: 100%;
+  display: block;
+  width: 100%;
 }
 
 // Vertically space out multiple block buttons
 .@{ns}btn-block + .@{ns}btn-block {
-    margin-top: 5px;
+  margin-top: 5px;
 }
 
 // Specificity overrides
 input[type="submit"],
 input[type="reset"],
 input[type="button"] {
-    &.@{ns}btn-block {
-        width: 100%;
-    }
+  &.@{ns}btn-block {
+    width: 100%;
+  }
 }

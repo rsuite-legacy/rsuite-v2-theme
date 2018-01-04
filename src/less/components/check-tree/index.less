@@ -1,132 +1,132 @@
 .tree-view {
+  position: relative;
+  padding: 18px;
+  overflow: auto;
+  .tree-node {
     position: relative;
-    padding: 18px;
-    overflow: auto;
+    padding: 2px 0;
+    label {
+      cursor: pointer;
+    }
+    &:focus {
+      background: @H050;
+      outline: @H900 dotted thin;
+    }
+    &.active {
+      color: @H500;
+    }
+    &.disabled {
+      color: @B500;
+      label {
+        cursor: not-allowed;
+      }
+    }
+    .expand-icon-wrapper {
+      cursor: pointer;
+      position: absolute;
+      top: 2px;
+      z-index: 1;
+      &[role="button"]:focus {
+        outline: none;
+      }
+      .icon {
+        width: 12px;
+      }
+    }
+    .expand-icon {
+      width: 12px;
+      &:before {
+        content: "\f0da";
+      }
+    }
+
+    label {
+      display: block;
+      padding-left: 14px;
+      .ellipsis-basic();
+    }
+  }
+  .children {
+    display: none;
+  }
+  .open {
+    > .children {
+      display: block;
+    }
+    > .tree-node .expand-icon:before {
+      content: "\f0d7";
+    }
+  }
+
+  @check-box-size: 17px;
+  @check-box-fg: @H500;
+  @container-border: 1px solid #ccc;
+  @check-list-hover-bg: @H050;
+
+  &.checktree {
+    .tree-nodes {
+      display: inline-block;
+    }
+    .checknode-label {
+      display: block;
+      position: relative;
+      margin-bottom: 0;
+      padding-left: 40px;
+      outline: 0;
+      cursor: pointer;
+      &::before {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 16px;
+        width: @check-box-size;
+        height: @check-box-size;
+        background: #fff;
+        border: @container-border;
+      }
+
+      &::after {
+        .opacity(0);
+        font-family: RSuiteIconFont;
+        content: "\f00c";
+        color: @check-box-fg;
+        position: absolute;
+        left: 17px;
+        top: 1px;
+        width: 16px;
+        height: 16px;
+        text-align: center;
+        transform: scale(0);
+        transition: all .3s linear, transform .2s cubic-bezier(0, 0, 0.2, 1);
+      }
+    }
+
     .tree-node {
-        position: relative;
-        padding: 2px 0;
-        label {
-            cursor: pointer;
+      &.half-checked {
+        .checknode-label::after {
+          .opacity(1);
+          transform: scale(1);
+          content: "\f0c8";
+          font-size: 12px;
+          top: 3px;
         }
-        &:focus {
-            background: @H050;
-            outline: @H900 dotted thin;
+      }
+      &.checked {
+        .checknode-label::after {
+          .opacity(1);
+          transform: scale(1);
         }
-        &.active {
-            color: @H500;
+      }
+      &.disabled {
+        .checknode-label::before {
+          background: #eee;
         }
-        &.disabled {
-            color: @B500;
-            label {
-                cursor: not-allowed;
-            }
+        .checknode-label::after {
+          color: #aaa;
         }
-        .expand-icon-wrapper {
-            cursor: pointer;
-            position: absolute;
-            top: 2px;
-            z-index: 1;
-            &[role="button"]:focus {
-                outline: none;
-            }
-            .icon {
-                width: 12px;
-            }
-        }
-        .expand-icon {
-            width: 12px;
-            &:before {
-                content: "\f0da";
-            }
-        }
-
-        label {
-            display: block;
-            padding-left: 14px;
-            .ellipsis-basic();
-        }
+      }
     }
-    .children {
-        display: none;
-    }
-    .open {
-        > .children {
-            display: block;
-        }
-        > .tree-node .expand-icon:before {
-            content: "\f0d7";
-        }
-    }
-
-    @check-box-size: 17px;
-    @check-box-fg: @H500;
-    @container-border: 1px solid #ccc;
-    @check-list-hover-bg: @H050;
-
-    &.checktree {
-        .tree-nodes {
-            display: inline-block;
-        }
-        .checknode-label {
-            display: block;
-            position: relative;
-            margin-bottom: 0;
-            padding-left: 40px;
-            outline: 0;
-            cursor: pointer;
-            &::before {
-                content: '';
-                position: absolute;
-                top: 2px;
-                left: 16px;
-                width: @check-box-size;
-                height: @check-box-size;
-                background: #fff;
-                border: @container-border;
-            }
-
-            &::after {
-                .opacity(0);
-                font-family: RSuiteIconFont;
-                content: "\f00c";
-                color: @check-box-fg;
-                position: absolute;
-                left: 17px;
-                top: 1px;
-                width: 16px;
-                height: 16px;
-                text-align: center;
-                transform: scale(0);
-                transition: all .3s linear, transform .2s cubic-bezier(0, 0, 0.2, 1);
-            }
-        }
-
-        .tree-node {
-            &.half-checked {
-                .checknode-label::after {
-                    .opacity(1);
-                    transform: scale(1);
-                    content: "\f0c8";
-                    font-size: 12px;
-                    top: 3px;
-                }
-            }
-            &.checked {
-                .checknode-label::after {
-                    .opacity(1);
-                    transform: scale(1);
-                }
-            }
-            &.disabled {
-                .checknode-label::before {
-                    background: #eee;
-                }
-                .checknode-label::after {
-                    color: #aaa;
-                }
-            }
-        }
-    }
+  }
 }
 
 
