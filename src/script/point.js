@@ -115,39 +115,25 @@ function palette({ baseColor: themeColor = baseColor, src = 'css/rsuite.min.css'
     });
   });
 
+  const handleCallback = (...args) => doneCallback && doneCallback(args);
+
   const generateThemes = async function () {
-    await ensureDir(distPath);
-    let data = await readData(Path.join(rootPath, src));
-    originColors.forEach((color, index) => {
-      data = data.replace(new RegExp(color, 'g'), themeColors[index]);
-    });
     try {
+      await ensureDir(distPath);
+      let data = await readData(Path.join(rootPath, src));
+      originColors.forEach((color, index) => {
+        data = data.replace(new RegExp(color, 'g'), themeColors[index]);
+      });
       await  writeData(dist, data);
       console.log(`Palette ${dist}` + '[SUCCESS]'.green);
-      doneCallback && doneCallback();
+      handleCallback();
     } catch (e) {
-      console.log(`Palette ${dist}` + '[SUCCESS]'.green);
+      console.log(`Palette ${dist}` + '[FAILD]'.red);
+      handleCallback(e);
     }
   };
 
   generateThemes();
-
-  // fse.ensureDir(distPath, (err) => {
-  //   if (err) console.log(err);
-  //   fs.readFile(Path.join(rootPath, src), 'utf-8', (err, data) => {
-  //     originColors.forEach((color, index) => {
-  //       data = data.replace(new RegExp(color, 'g'), themeColors[index]);
-  //     });
-  //     fs.writeFile(dist, data, (err) => {
-  //       if (err) {
-  //         console.log("Failed :" + err.red);
-  //       } else {
-  //         console.log(`Palette ${dist}` + '[SUCCESS]'.green);
-  //       }
-  //       doneCallback && doneCallback();
-  //     });
-  //   });
-  // });
 
   return module.exports;
 }
