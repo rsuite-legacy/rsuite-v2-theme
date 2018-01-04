@@ -111,15 +111,14 @@
 .btn-subtle-variant(@color) {
     @color-dark: color(~`palette("@{color}", 600)`);
     @color-darker: color(~`palette("@{color}", 700)`);
-    @color-fade: fadeout(@color-darker, 70%);
 
-    color: @color;
+    color: @btn-subtle-color;
     background-color: transparent;
 
     &:focus,
     &.focus,
     &:hover {
-        color: @color-dark;
+        color: @btn-subtle-hover-color;
     }
 
     &:focus,
@@ -134,14 +133,14 @@
     &:active,
     &.@{ns}btn-active,
     .@{ns}open > .@{ns}dropdown-toggle& {
-        color: @color-darker;
-        background-color: @color-fade;
+        color: @color;
+        background-color: @btn-subtle-active-bg;
 
         &:hover,
         &:focus,
         &.focus {
-            color: @color-darker;
-            background-color: @color-fade;
+            color: @color-dark;
+            background-color: @btn-subtle-active-bg;
         }
     }
 
@@ -263,11 +262,12 @@
     border-radius: @border-radius;
 
     &.@{ns}btn-ghost {
-        // ghost btn has 1px border
+        // Ghost button has 1px border
         padding-top: (@padding-vertical - 1);
         padding-bottom: (@padding-vertical - 1);
     }
 
+    // Button icon is a circle.
     &.@{ns}btn-icon {
         padding-left: @icon-width - @padding-horizontal;
         height: @icon-width;

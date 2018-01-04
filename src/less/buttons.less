@@ -197,7 +197,7 @@
 .@{ns}btn-subtle {
     .button-ripple;
     .btn-transition;
-    .btn-subtle-variant(@btn-btn-subtle-color);
+    .btn-subtle-variant(@btn-subtle-primary-color);
 
     .generate-spectrum-subtle-btns();
 }
@@ -228,12 +228,10 @@
 // --------------------------------------------------
 
 .@{ns}btn-lg {
-    // line-height: ensure even-numbered height of button next to large input
-    .button-size(@padding-large-vertical; @padding-large-horizontal; @font-size-base; @line-height-base; @btn-border-radius-large);
+    .button-size(@padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @btn-border-radius-large);
 }
 
 .@{ns}btn-sm {
-    // line-height: ensure proper height of button next to small input
     .button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-base; @line-height-base; @btn-border-radius-small);
 }
 
