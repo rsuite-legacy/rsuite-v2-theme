@@ -95,22 +95,59 @@ function palette({ baseColor: themeColor = baseColor, src = 'css/rsuite.min.css'
   const originColors = color.calcColors(baseColor);
   const themeColors = color.calcColors(themeColor);
   const distPath = Path.dirname(dist);
-  fse.ensureDir(distPath, (err) => {
-    if (err) console.log(err);
-    fs.readFile(Path.join(rootPath, src), 'utf-8', (err, data) => {
-      originColors.forEach((color, index) => {
-        data = data.replace(new RegExp(color, 'g'), themeColors[index]);
-      });
-      fs.writeFile(dist, data, (err) => {
-        if (err) {
-          console.log("Failed :" + err.red);
-        } else {
-          console.log(`Palette ${dist}` + '[SUCCESS]'.green);
-        }
-        doneCallback && doneCallback();
-      });
+
+  const ensureDir = path => new Promise((resolve) => {
+    fse.ensureDir(path, () => resolve());
+  });
+
+  const readData = path => new Promise(resolve => {
+    fs.readFile(path, 'utf-8', (err, data) => {
+      resolve(data || '');
     });
   });
+
+  const writeData = (path, data) => new Promise((resolve, reject) => {
+    fs.writeFile(path, data, (err) => {
+      if (err) {
+        reject(err);
+      }
+      resolve();
+    });
+  });
+
+  const generateThemes = async function () {
+    await ensureDir(distPath);
+    let data = await readData(Path.join(rootPath, src));
+    originColors.forEach((color, index) => {
+      data = data.replace(new RegExp(color, 'g'), themeColors[index]);
+    });
+    try {
+      await  writeData(dist, data);
+      console.log(`Palette ${dist}` + '[SUCCESS]'.green);
+      doneCallback && doneCallback();
+    } catch (e) {
+      console.log(`Palette ${dist}` + '[SUCCESS]'.green);
+    }
+  };
+
+  generateThemes();
+
+  // fse.ensureDir(distPath, (err) => {
+  //   if (err) console.log(err);
+  //   fs.readFile(Path.join(rootPath, src), 'utf-8', (err, data) => {
+  //     originColors.forEach((color, index) => {
+  //       data = data.replace(new RegExp(color, 'g'), themeColors[index]);
+  //     });
+  //     fs.writeFile(dist, data, (err) => {
+  //       if (err) {
+  //         console.log("Failed :" + err.red);
+  //       } else {
+  //         console.log(`Palette ${dist}` + '[SUCCESS]'.green);
+  //       }
+  //       doneCallback && doneCallback();
+  //     });
+  //   });
+  // });
 
   return module.exports;
 }
