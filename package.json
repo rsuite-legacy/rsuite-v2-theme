@@ -11,7 +11,7 @@
     "url": "https://github.com/rsuite/rsuite-theme.git"
   },
   "scripts": {
-    "test": "npm run prepublish && rm -rf dist/test/ && rm -rf coverage && jest --silent --coverage",
+    "test": "npm run prepublish && rm -rf dist/test/ && rm -rf coverage && jest --silent --coverage && npm run coveralls",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "build": "babel src/script --out-dir lib && babel src/bin --out-dir bin",
     "prepublish": "gulp && npm run build"
