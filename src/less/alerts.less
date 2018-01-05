@@ -9,8 +9,9 @@
   position: fixed;
   z-index: @zindex-notification;
 
-  // Multiple notification has gap
-  .@{notification-ns}-notice-wrapper + .@{notification-ns}-notice-wrapper {
+  // Multiple notification should have spacing
+  // Hiding notification haven't spacing.
+  .@{notification-ns}-notice-wrapper:not(.@{notification-ns}-fade-leave-active) + .@{notification-ns}-notice-wrapper {
     margin-top: 10px;
   }
 }

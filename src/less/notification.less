@@ -66,8 +66,18 @@
   }
 
   // Animations
-  .@{notification-ns}-fade-enter-active {
-    animation: notificationMoverIn .3s linear forwards;
+  &.rsuite-bottom-left,
+  &.rsuite-top-left {
+    .@{notification-ns}-fade-enter-active {
+      animation: notificationMoveInLeft .3s linear forwards;
+    }
+  }
+
+  &.rsuite-bottom-right,
+  &.rsuite-top-right {
+    .@{notification-ns}-fade-enter-active {
+      animation: notificationMoveInRight .3s linear forwards;
+    }
   }
 
   .@{notification-ns}-fade-leave-active {
