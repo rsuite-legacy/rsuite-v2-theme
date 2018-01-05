@@ -92,6 +92,15 @@
     font-size: @message-close-btn-size;
     line-height: 1;
     outline: none !important;
+
+    &::before {
+      content: @message-close-btn-content;
+    }
+
+    // hidden aria-hidden dom
+    [aria-hidden] {
+      display: none;
+    }
   }
 
   // Animations
@@ -101,7 +110,7 @@
   }
 
   &.message-hiding {
-    display: ~'none\9\0';
+    display: ~"none\9\0";
     animation: messageMoveOut .3s linear forwards;
   }
 }

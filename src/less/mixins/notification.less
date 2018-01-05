@@ -1,0 +1,18 @@
+.notifocation-variant(@icon-color) {
+  .@{notification-ns}.rsuite-notify & {
+    // Content
+    .@{notification-ns}-notice-content {
+
+      // Description
+      // Has title and description need to ajust distance
+      .title + .description {
+        margin-left: @notify-title-icon-size+@notify-title-icon-margin;
+      }
+
+      // Tip icon
+      .icon {
+        color: @icon-color;
+      }
+    }
+  }
+}

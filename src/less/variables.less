@@ -78,6 +78,12 @@
 @headings-line-height: 1.1;
 @headings-color: inherit;
 
+//** Box shadows
+@default-box-shadow: 0 4px 4px rgba(0, 0, 0, .12), 0 0 10px rgba(0, 0, 0, .06);
+
+//** Close button content
+@default-close-btn-content: "×";
+
 //== Iconography
 //
 //## Specify custom location and filename of the included Glyphicons icon font. Useful for those including Bootstrap via Bower.
@@ -648,6 +654,7 @@
 @message-icon-size: @font-size-small;
 @message-icon-large-size: 24px;
 @message-close-btn-size: 8px;
+@message-close-btn-content: @default-close-btn-content;
 @message-icon-margin-right: 10px;
 @message-title-size: @font-size-base;
 @message-border-radius: @border-radius-base;
@@ -671,6 +678,10 @@
 @notification-ns: ~"@{ns}rsuite-notification";
 @alert-padding: 20px;
 @alert-border-radius: @border-radius-base;
+@alert-max-width: 400px;
+@alert-box-shadow: @default-box-shadow;
+@alert-close-button-content: @default-close-btn-content;
+@alert-close-btn-size: 8px;
 
 @alert-success-bg: @state-success-bg;
 @alert-success-icon-color: @state-success-text;
@@ -683,6 +694,32 @@
 
 @alert-error-bg: @state-error-bg;
 @alert-error-icon-color: @state-error-text;
+
+//== Notification
+//
+//##
+@notify-default-bg: @B000;
+@notify-padding: 20px;
+@notify-border-radius: @border-radius-base;
+@notify-box-shadow: @default-box-shadow;
+@notify-max-width: 400px;
+@notify-close-btn-size: 8px;
+@notify-close-button-content: @default-close-btn-content;
+@nofify-close-btn-color: @B600;
+@notify-title-font-size: @font-size-large;
+@notify-title-icon-size: 24px;
+@notify-title-icon-margin: 10px;
+@notify-title-description-gap: 8px;
+@notify-title-font-color:@B900;
+@notify-description-color:@B800;
+
+@notify-success-icon-color: @state-success-text;
+
+@notify-info-icon-color: @state-info-text;
+
+@notify-warning-icon-color: @state-warning-text;
+
+@notify-error-icon-color: @state-error-text;
 
 //== List group
 //

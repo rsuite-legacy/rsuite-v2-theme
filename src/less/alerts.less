@@ -8,7 +8,11 @@
 .@{notification-ns} {
   position: fixed;
   z-index: @zindex-notification;
-  top: 0;
+
+  // Multiple notification has gap
+  .@{notification-ns}-notice-wrapper + .@{notification-ns}-notice-wrapper {
+    margin-top: 10px;
+  }
 }
 
 .@{notification-ns}.rsuite-alert {
@@ -20,8 +24,6 @@
     text-align: center;
     width: 100%;
     margin-left: -50%;
-    // messageMoveIn
-    animation: messageMoveIn .3s linear forwards;
 
     .@{notification-ns}-notice {
       display: inline-block;
@@ -29,16 +31,13 @@
     }
   }
 
-  // Multiple alter has gap
-  .@{notification-ns}-notice-wrapper + .@{notification-ns}-notice-wrapper {
-    margin-top: 10px;
-  }
-
   // Alert content
   .@{notification-ns}-notice-content {
+    text-align: left;
     padding: @alert-padding;
     border-radius: @alert-border-radius;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, .12), 0 0 10px rgba(0, 0, 0, .06);
+    box-shadow: @alert-box-shadow;
+    max-width: @alert-max-width;
 
     p {
       margin-bottom: 0;
@@ -55,12 +54,13 @@
     top: 0;
     right: 0;
     padding: 4px;
-    font-size: @message-close-btn-size;
+    font-size: @alert-close-btn-size;
     line-height: 1;
     outline: none !important;
+    cursor: pointer;
 
     &-x::before {
-      content: "×";
+      content: @alert-close-button-content;
     }
   }
 
