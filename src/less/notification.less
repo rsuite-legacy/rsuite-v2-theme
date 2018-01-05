@@ -66,23 +66,30 @@
   }
 
   // Animations
+  .@{notification-ns}-fade-enter-active,
+  .@{notification-ns}-fade-leave-active {
+    animation-duration: .3s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+  }
+
   &.rsuite-bottom-left,
   &.rsuite-top-left {
     .@{notification-ns}-fade-enter-active {
-      animation: notificationMoveInLeft .3s linear forwards;
+      animation-name: notificationMoveInLeft;
     }
   }
 
   &.rsuite-bottom-right,
   &.rsuite-top-right {
     .@{notification-ns}-fade-enter-active {
-      animation: notificationMoveInRight .3s linear forwards;
+      animation-name: notificationMoveInRight;
     }
   }
 
   .@{notification-ns}-fade-leave-active {
     display: ~"none\9\0";
-    animation: notificationMoveOut .3s linear forwards;
+    animation-name: notificationMoveOut;
   }
 }
 
