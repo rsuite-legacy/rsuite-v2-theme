@@ -44,6 +44,16 @@
     .content-width(@modal-xs);
   }
 
+  &.@{ns}modal-full {
+    @modal-full-size-margin-value: unit(@modal-full-size-margin);
+    .content-width(~"calc(100% - `@{modal-full-size-margin-value} * 2`px)");
+
+    .@{ns}modal-dialog {
+      margin-left: @modal-full-size-margin;
+      margin-right: @modal-full-size-margin;
+    }
+  }
+
   // Animations
   &.fade .@{ns}modal-dialog {
     display: ~"none\9\0";
