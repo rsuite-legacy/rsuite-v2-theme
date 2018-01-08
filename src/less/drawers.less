@@ -20,13 +20,12 @@
   // When fading in the modal, animate it to slide down
   &.fade .drawer-dialog {
     display: ~"none\9\0";
-    // timing: fast-out
-    animation: modalMoveOut .3s cubic-bezier(.4, 0, 1, 1) forwards;
+    //Fast out
+    .drawer-animation(cubic-bezier(0.4, 0, 1, 1));
   }
 
   &.in .drawer-dialog {
-    // timing: ease-in-out
-    animation: modalMoveIn .3s cubic-bezier(.68, -.55, .27, 1.55) forwards;
+    .drawer-animation(ease-in-out);
   }
 
   // Scale up the drawers
@@ -46,41 +45,68 @@
     .drawer-content-width(@drawer-xs);
   }
 
-  // direction
-  &.drawer-top,
-  &.drawer-bottom {
-    .drawer-content-width(100%) !important;
+  // Drawer direction
+  &.@{ns}drawer-top,
+  &.@{ns}drawer-bottom {
+    .drawer-content-width(100%);
 
+    //Reset height to auto
     .drawer-content {
       height: auto;
     }
   }
 
+  // Full page
+  &.drawer-full {
+    @max-width: ~"calc(100% - @{drawer-full-size-margin})";
+    @max-height: @max-width;
+
+    &.@{ns}drawer-top,
+    &.@{ns}drawer-bottom {
+      .drawer-content-height(@max-height);
+
+      .drawer-content {
+        height: 100%;
+      }
+    }
+
+    &.@{ns}drawer-left,
+    &.@{ns}drawer-right {
+      .drawer-content-width(@max-width);
+    }
+  }
+
+  // Drawer directions
   &-right {
+    .drawer-animation-setting(drawerMoveInRight, drawerMoveOutRight);
+
     .drawer-dialog {
-      width: 200px;
       height: 100%;
       right: 0;
     }
   }
 
   &-left {
+    .drawer-animation-setting(drawerMoveInLeft, drawerMoveOutLeft);
+
     .drawer-dialog {
-      width: 200px;
       height: 100%;
       left: 0;
     }
   }
 
   &-top {
+    .drawer-animation-setting(drawerMoveInTop, drawerMoveOutTop);
+
     .drawer-dialog {
       width: 100%;
-      height: 200px;
       top: 0;
     }
   }
 
   &-bottom {
+    .drawer-animation-setting(drawerMoveInBottom, drawerMoveOutBottom);
+
     .drawer-dialog {
       width: 100%;
       height: 200px;
@@ -104,7 +130,6 @@
 .drawer-content {
   position: absolute;
   background-color: @drawer-content-bg;
-  border-radius: @drawer-border-radius;
   outline: 0;
   width: 100%;
   height: 100%;

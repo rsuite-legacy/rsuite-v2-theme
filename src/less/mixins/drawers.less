@@ -3,3 +3,25 @@
     width: @width;
   }
 }
+
+.drawer-content-height(@height) {
+  .@{ns}drawer-dialog {
+    height: @height;
+  }
+}
+
+.drawer-animation(@timing) {
+  animation-duration: .3s;
+  animation-timing-function: @timing;
+  animation-fill-mode: forwards;
+}
+
+.drawer-animation-setting(@move-in-animation-name,@move-out-animation-name) {
+  &.fade .drawer-dialog {
+    animation-name: @move-out-animation-name;
+  }
+
+  &.in .drawer-dialog {
+    animation-name: @move-in-animation-name;
+  }
+}
