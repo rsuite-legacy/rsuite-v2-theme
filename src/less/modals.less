@@ -8,12 +8,12 @@
 // .modal-content   - actual modal w/ bg and corners and shit
 
 // Kill the scroll on the body
-.modal-open {
+.@{ns}modal-open {
   overflow: hidden;
 }
 
 // Container that the modal scrolls within
-.modal {
+.@{ns}modal {
   display: none;
   overflow: hidden;
   position: fixed;
@@ -22,49 +22,48 @@
   bottom: 0;
   left: 0;
   z-index: @zindex-modal;
-  -webkit-overflow-scrolling: touch;
 
   // Prevent Chrome on Windows from adding a focus outline. For details, see
   // https://github.com/twbs/bootstrap/pull/10951.
   outline: 0;
 
   // Scale up the modal
-  &.modal-lg {
+  &.@{ns}modal-lg {
     .content-width(@modal-lg);
   }
 
-  &.modal-md {
+  &.@{ns}modal-md {
     .content-width(@modal-md);
   }
 
-  &.modal-sm {
+  &.@{ns}modal-sm {
     .content-width(@modal-sm);
   }
 
-  &.modal-xs {
+  &.@{ns}modal-xs {
     .content-width(@modal-xs);
   }
 
-  // @todo: Animation redesign
-  // When fading in the modal, animate it to slide down
-  &.fade .modal-dialog {
-    .translate(0, -25%);
-
-    transition: transform .3s ease-out;
+  // Animations
+  &.fade .@{ns}modal-dialog {
+    display: ~"none\9\0";
+    // timing: fast-out
+    animation: modalMoveOut .3s cubic-bezier(.4, 0, 1, 1) forwards;
   }
 
-  &.in .modal-dialog {
-    .translate(0, 0)
+  &.in .@{ns}modal-dialog {
+    // timing: ease-in-out
+    animation: modalMoveIn .3s cubic-bezier(.68, -.55, .27, 1.55) forwards;
   }
 }
 
-.modal-open .modal {
+.@{ns}modal-open .@{ns}modal {
   overflow-x: hidden;
   overflow-y: auto;
 }
 
 // Shell div to position the modal with bottom padding
-.modal-dialog {
+.@{ns}modal-dialog {
   position: relative;
   width: auto;
   margin: 30px auto;
@@ -72,7 +71,7 @@
 }
 
 // Actual modal
-.modal-content {
+.@{ns}modal-content {
   position: relative;
   background-color: @modal-content-bg;
   border-radius: @modal-border-radius;
@@ -83,7 +82,7 @@
 }
 
 // Modal background
-.modal-backdrop {
+.@{ns}modal-backdrop {
   position: fixed;
   top: 0;
   right: 0;
@@ -104,21 +103,44 @@
 
 // Modal header
 // Top section of the modal w/ title and dismiss
-.modal-header {
+.@{ns}modal-header {
   &:extend(.clearfix all);
+
+  padding-right: 20px;
+
+  .@{ns}modal-title {
+    width: 100%;
+    display: block;
+    .ellipsis;
+  }
 }
 
 // Close icon
-.modal-header .close {
+.@{ns}modal-header .@{ns}modal-header-close {
+  // button width the same to height
+  @padding-right: (@line-height-computed - @modal-close-btn-size)/2;
+
   outline: 0;
   position: absolute;
-  right: 10px;
-  top: 14px;
-  font-size: 30px;
+  right: @modal-content-padding;
+  top: @modal-content-padding;
+  font-size: @modal-close-btn-size;
+  line-height: @modal-close-btn-line-height;
+  color: @modal-close-btn-color;
+  width: @line-height-computed;
+  padding: 0 @padding-right;
+
+  &::before {
+    content: @alert-close-button-content;
+  }
+
+  [aria-hidden] {
+    display: none;
+  }
 }
 
 // Title text within header
-.modal-header .title {
+.@{ns}modal-header .title {
   margin: 0;
   color: @text-primary-color;
   font-size: @modal-title-font-size;
@@ -127,14 +149,14 @@
 
 // Modal body
 // Where all modal content resides (sibling of .modal-header and .modal-footer)
-.modal-body {
+.@{ns}modal-body {
   position: relative;
   margin-top: @modal-body-margin;
   margin-bottom: @modal-body-margin;
 }
 
 // Footer (for actions)
-.modal-footer {
+.@{ns}modal-footer {
   text-align: right; // right align buttons
   border-top: none;
   &:extend(.clearfix all); // clear it in case folks use .pull-* classes on buttons
@@ -155,7 +177,7 @@
 }
 
 // Measure scrollbar width for padding body during modal show/hide
-.modal-scrollbar-measure {
+.@{ns}modal-scrollbar-measure {
   position: absolute;
   top: -9999px;
   width: 50px;
