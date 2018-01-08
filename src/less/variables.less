@@ -284,7 +284,7 @@
 //** Deprecated `@dropdown-caret-color`
 @dropdown-caret-color: #000;
 //** Dropdown Caret Font Family
-@dropdown-caret-font-family: 'RSuiteIconFont';
+@dropdown-caret-font-family: "RSuiteIconFont";
 //** Dropdown Caret Content
 @dropdown-caret-content: "\F107";
 //** Dropup Caret Content
@@ -321,6 +321,8 @@
 @zindex-navbar-fixed: 1030;
 @zindex-modal-background: 1040;
 @zindex-modal: 1050;
+@zindex-drawer: 1050;
+@zindex-drawer-background: 1040;
 @zindex-popover: 1060;
 @zindex-tooltip: 1070;
 @zindex-notification: 1080;
@@ -619,7 +621,7 @@
 //** Margin of modal header and body
 @modal-body-margin: 30px;
 //** Modal border-radius
-@modal-border-radius: 6px;
+@modal-border-radius: @border-radius-base;
 //** Modal title font-size
 @modal-title-font-size: @font-size-large;
 //** Modal title line-height
@@ -627,10 +629,6 @@
 
 //** Background color of modal content area
 @modal-content-bg: @B000;
-//** Modal content border color
-@modal-content-border-color: rgba(0, 0, 0, .2);
-//** Modal content border color **for IE8**
-@modal-content-fallback-border-color: #999;
 
 //** Modal Box shadow
 @modal-box-shadow: @default-box-shadow;
@@ -657,6 +655,28 @@
 
 //** Modal full size margin
 @modal-full-size-margin: 60px;
+
+//== Drawer
+//
+//##
+//** Background color of drawer content area
+@drawer-content-bg: @B000;
+//** Drawer border-radius
+@drawer-border-radius: @border-radius-base;
+//** Drawer backdrop background color
+@drawer-backdrop-bg: @B900;
+//** Drawer backdrop opacity
+@drawer-backdrop-opacity: .3; // 30%
+//** Padding applied to the drawer content
+@drawer-content-padding: 20px;
+//** Modal Box shadow
+@drawer-box-shadow: @default-box-shadow;
+
+//** Drawer sizes
+@drawer-lg: @modal-lg;
+@drawer-md: @modal-md;
+@drawer-sm: @modal-sm;
+@drawer-xs: @modal-xs;
 
 //== Message
 //

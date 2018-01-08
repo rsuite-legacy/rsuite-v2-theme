@@ -1,0 +1,147 @@
+// Kill the scroll on the body
+.@{ns}drawer-open {
+  overflow: hidden;
+}
+
+// Container that the modal scrolls within
+.@{ns}drawer {
+  display: none;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: @zindex-drawer;
+  // Prevent Chrome on Windows from adding a focus outline. For details, see
+  // https://github.com/twbs/bootstrap/pull/10951.
+  outline: 0;
+
+  // When fading in the modal, animate it to slide down
+  &.fade .drawer-dialog {
+    display: ~"none\9\0";
+    // timing: fast-out
+    animation: modalMoveOut .3s cubic-bezier(.4, 0, 1, 1) forwards;
+  }
+
+  &.in .drawer-dialog {
+    // timing: ease-in-out
+    animation: modalMoveIn .3s cubic-bezier(.68, -.55, .27, 1.55) forwards;
+  }
+
+  // Scale up the drawers
+  &.@{ns}drawer-lg {
+    .drawer-content-width(@drawer-lg);
+  }
+
+  &.@{ns}drawer-md {
+    .drawer-content-width(@drawer-md);
+  }
+
+  &.@{ns}drawer-sm {
+    .drawer-content-width(@drawer-sm);
+  }
+
+  &.@{ns}drawer-xs {
+    .drawer-content-width(@drawer-xs);
+  }
+
+  // direction
+  &.drawer-top,
+  &.drawer-bottom {
+    .drawer-content-width(100%) !important;
+
+    .drawer-content {
+      height: auto;
+    }
+  }
+
+  &-right {
+    .drawer-dialog {
+      width: 200px;
+      height: 100%;
+      right: 0;
+    }
+  }
+
+  &-left {
+    .drawer-dialog {
+      width: 200px;
+      height: 100%;
+      left: 0;
+    }
+  }
+
+  &-top {
+    .drawer-dialog {
+      width: 100%;
+      height: 200px;
+      top: 0;
+    }
+  }
+
+  &-bottom {
+    .drawer-dialog {
+      width: 100%;
+      height: 200px;
+      bottom: 0;
+    }
+  }
+}
+
+.drawer-open .drawer {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+// Shell div to position the modal with bottom padding
+.drawer-dialog {
+  position: fixed;
+  z-index: @zindex-drawer;
+}
+
+// Actual modal
+.drawer-content {
+  position: absolute;
+  background-color: @drawer-content-bg;
+  border-radius: @drawer-border-radius;
+  outline: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: @drawer-box-shadow;
+}
+
+// Modal background
+.drawer-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: @zindex-drawer-background;
+  background-color: @drawer-backdrop-bg;
+  // Fade for backdrop
+  &.fade {
+    .opacity(0);
+  }
+
+  &.in {
+    .opacity(@drawer-backdrop-opacity);
+  }
+}
+
+// Modal body
+// Where all modal content resides (sibling of .drawer-header and .drawer-footer)
+.drawer-body {
+  position: relative;
+}
+
+// Measure scrollbar width for padding body during modal show/hide
+.drawer-scrollbar-measure {
+  position: absolute;
+  top: -9999px;
+  width: 50px;
+  height: 50px;
+  overflow: scroll;
+}
+
