@@ -28,11 +28,31 @@
   // https://github.com/twbs/bootstrap/pull/10951.
   outline: 0;
 
+  // Scale up the modal
+  &.modal-lg {
+    .content-width(@modal-lg);
+  }
+
+  &.modal-md {
+    .content-width(@modal-md);
+  }
+
+  &.modal-sm {
+    .content-width(@modal-sm);
+  }
+
+  &.modal-xs {
+    .content-width(@modal-xs);
+  }
+
+  // @todo: Animation redesign
   // When fading in the modal, animate it to slide down
   &.fade .modal-dialog {
     .translate(0, -25%);
-    transition: transform 0.3s ease-out;
+
+    transition: transform .3s ease-out;
   }
+
   &.in .modal-dialog {
     .translate(0, 0)
   }
@@ -47,7 +67,7 @@
 .modal-dialog {
   position: relative;
   width: auto;
-  margin: 10px;
+  margin: 30px auto;
   z-index: @zindex-modal;
 }
 
@@ -55,13 +75,11 @@
 .modal-content {
   position: relative;
   background-color: @modal-content-bg;
-  border: 1px solid @modal-content-fallback-border-color; //old browsers fallback (ie8 etc)
-  border: 1px solid @modal-content-border-color;
-  border-radius: @border-radius-large;
-  .box-shadow(0 3px 9px rgba(0, 0, 0, .5));
-  background-clip: padding-box;
+  border-radius: @modal-border-radius;
   // Remove focus outline from opened modal
   outline: 0;
+  box-shadow: @modal-box-shadow;
+  padding: @modal-content-padding;
 }
 
 // Modal background
@@ -73,10 +91,12 @@
   left: 0;
   z-index: @zindex-modal-background;
   background-color: @modal-backdrop-bg;
+
   // Fade for backdrop
   &.fade {
     .opacity(0);
   }
+
   &.in {
     .opacity(@modal-backdrop-opacity);
   }
@@ -85,9 +105,6 @@
 // Modal header
 // Top section of the modal w/ title and dismiss
 .modal-header {
-  padding: @modal-title-padding;
-  border-bottom: none;
-  background: @modal-header-bg;
   &:extend(.clearfix all);
 }
 
@@ -104,6 +121,7 @@
 .modal-header .title {
   margin: 0;
   color: @text-primary-color;
+  font-size: @modal-title-font-size;
   line-height: @modal-title-line-height;
 }
 
@@ -111,20 +129,19 @@
 // Where all modal content resides (sibling of .modal-header and .modal-footer)
 .modal-body {
   position: relative;
-  padding: @base-unit-px;
+  margin-top: @modal-body-margin;
+  margin-bottom: @modal-body-margin;
 }
 
 // Footer (for actions)
 .modal-footer {
-  padding: @modal-inner-padding;
   text-align: right; // right align buttons
   border-top: none;
-  background-color: @modal-footer-bg;
   &:extend(.clearfix all); // clear it in case folks use .pull-* classes on buttons
 
   // Properly space out buttons
   .btn + .btn {
-    margin-left: 5px;
+    margin-left: 10px;
     margin-bottom: 0; // account for input[type="submit"] which gets the bottom margin like all other inputs
   }
   // but override that for button groups
@@ -146,26 +163,3 @@
   overflow: scroll;
 }
 
-// Scale up the modal
-@media (min-width: @screen-sm-min) {
-  // Automatically set modal's width for larger viewports
-  .modal-dialog {
-    width: @modal-md;
-    margin: 30px auto;
-  }
-
-  .modal-content {
-    .box-shadow(0 5px 15px rgba(0, 0, 0, .5));
-  }
-
-  // Modal sizes
-  .modal-sm {
-    width: @modal-sm;
-  }
-}
-
-@media (min-width: @screen-md-min) {
-  .modal-lg {
-    width: @modal-lg;
-  }
-}

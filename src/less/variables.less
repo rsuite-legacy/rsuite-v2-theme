@@ -119,8 +119,8 @@
 @line-height-small: 1.6666666666666667;
 
 @border-radius-base: 6px;
-@border-radius-large: 0;
-@border-radius-small: 0;
+@border-radius-large: 6px;
+@border-radius-small: 6px;
 
 //** Global color for active items (e.g., navs or dropdowns).
 @component-active-color: #fff;
@@ -614,37 +614,40 @@
 //
 //##
 
-//** Padding applied to the modal body
-@modal-inner-padding: @base-unit-px 10px;
-
-//** Padding applied to the modal title
-@modal-title-padding: 10px 10px;
+//** Padding applied to the modal content
+@modal-content-padding: 20px;
+//** Margin of modal header and body
+@modal-body-margin: 30px;
+//** Modal border-radius
+@modal-border-radius: 6px;
+//** Modal title font-size
+@modal-title-font-size: @font-size-large;
 //** Modal title line-height
-@modal-title-line-height: @line-height-base;
+@modal-title-line-height: @line-height-large;
 
-//** Background color of modal header area
-@modal-header-bg: @base-bg-color;
-//** Background color of modal footer area
-@modal-footer-bg: @base-bg-color;
 //** Background color of modal content area
-@modal-content-bg: #fff;
+@modal-content-bg: @B000;
 //** Modal content border color
 @modal-content-border-color: rgba(0, 0, 0, .2);
 //** Modal content border color **for IE8**
 @modal-content-fallback-border-color: #999;
 
+//** Modal Box shadow
+@modal-box-shadow: @default-box-shadow;
+
 //** Modal backdrop background color
-@modal-backdrop-bg: #000;
+@modal-backdrop-bg: @B900;
 //** Modal backdrop opacity
-@modal-backdrop-opacity: .5;
+@modal-backdrop-opacity: .3; // 30%
 //** Modal header border color
 @modal-header-border-color: #e5e5e5;
 //** Modal footer border color
 @modal-footer-border-color: @modal-header-border-color;
 
-@modal-lg: 900px;
-@modal-md: 600px;
-@modal-sm: 300px;
+@modal-lg: 968px;
+@modal-md: 800px;
+@modal-sm: 600px;
+@modal-xs: 400px;
 
 //== Message
 //
