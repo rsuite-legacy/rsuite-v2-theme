@@ -20,8 +20,8 @@
   // When fading in the modal, animate it to slide down
   &.fade .drawer-dialog {
     display: ~"none\9\0";
-    //Fast out
-    .drawer-animation(cubic-bezier(0.4, 0, 1, 1));
+
+    .drawer-animation(cubic-bezier(0.4, 0, 1, 1)); //Fast out
   }
 
   &.in .drawer-dialog {
@@ -29,30 +29,41 @@
   }
 
   // Scale up the drawers
-  &.@{ns}drawer-lg {
-    .drawer-content-width(@drawer-lg);
+  &.@{ns}drawer-left,
+  &.@{ns}drawer-right {
+    &.@{ns}drawer-lg {
+      .drawer-content-width(@drawer-horizontal-lg);
+    }
+
+    &.@{ns}drawer-md {
+      .drawer-content-width(@drawer-horizontal-md);
+    }
+
+    &.@{ns}drawer-sm {
+      .drawer-content-width(@drawer-horizontal-sm);
+    }
+
+    &.@{ns}drawer-xs {
+      .drawer-content-width(@drawer-horizontal-xs);
+    }
   }
 
-  &.@{ns}drawer-md {
-    .drawer-content-width(@drawer-md);
-  }
-
-  &.@{ns}drawer-sm {
-    .drawer-content-width(@drawer-sm);
-  }
-
-  &.@{ns}drawer-xs {
-    .drawer-content-width(@drawer-xs);
-  }
-
-  // Drawer direction
   &.@{ns}drawer-top,
   &.@{ns}drawer-bottom {
-    .drawer-content-width(100%);
+    &.@{ns}drawer-lg {
+      .drawer-content-height(@drawer-vertical-lg);
+    }
 
-    //Reset height to auto
-    .drawer-content {
-      height: auto;
+    &.@{ns}drawer-md {
+      .drawer-content-height(@drawer-vertical-md);
+    }
+
+    &.@{ns}drawer-sm {
+      .drawer-content-height(@drawer-vertical-sm);
+    }
+
+    &.@{ns}drawer-xs {
+      .drawer-content-height(@drawer-vertical-xs);
     }
   }
 
@@ -136,7 +147,7 @@
   box-shadow: @drawer-box-shadow;
 }
 
-// Modal background
+// Drawer background
 .drawer-backdrop {
   position: fixed;
   top: 0;
@@ -155,10 +166,12 @@
   }
 }
 
-// Modal body
-// Where all modal content resides (sibling of .drawer-header and .drawer-footer)
+// Drawer body
 .drawer-body {
   position: relative;
+  margin: @drawer-body-margin @drawer-content-spacing;
+  // Javascript handle height
+  overflow: scroll;
 }
 
 // Measure scrollbar width for padding body during modal show/hide
@@ -170,3 +183,73 @@
   overflow: scroll;
 }
 
+// Drawer header
+// Top section of the modal title.
+.@{ns}drawer-header {
+  &:extend(.clearfix all);
+
+  padding-right: @line-height-computed;
+  position: relative;
+  margin: @drawer-content-spacing @drawer-content-spacing 0;
+
+  .@{ns}drawer-title {
+    width: 100%;
+    display: block;
+    .ellipsis;
+  }
+}
+
+// Close Button
+.@{ns}drawer-header .@{ns}drawer-header-close {
+  // button width the same to height
+  @padding-right: (@line-height-computed - @drawer-close-btn-size)/2;
+
+  outline: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: @drawer-close-btn-size;
+  line-height: @drawer-close-btn-line-height;
+  color: @drawer-close-btn-color;
+  width: @line-height-computed;
+  padding: 0 @padding-right;
+
+  &::before {
+    content: @alert-close-button-content;
+  }
+
+  [aria-hidden] {
+    display: none;
+  }
+}
+
+// Title text within header
+.@{ns}drawer-header .title {
+  margin: 0;
+  color: @text-primary-color;
+  font-size: @modal-title-font-size;
+  line-height: @modal-title-line-height;
+}
+
+// Footer (for actions)
+.@{ns}drawer-footer {
+  &:extend(.clearfix all); // clear it in case folks use .pull-* classes on buttons
+
+  text-align: right; // right align buttons
+  border-top: none;
+  margin: 0 @drawer-content-spacing @drawer-content-spacing;
+
+  // Properly space out buttons
+  .btn + .btn {
+    margin-left: 10px;
+    margin-bottom: 0; // account for input[type="submit"] which gets the bottom margin like all other inputs
+  }
+  // but override that for button groups
+  .btn-group .btn + .btn {
+    margin-left: -1px;
+  }
+  // and override it for block buttons as well
+  .btn-block + .btn-block {
+    margin-left: 0;
+  }
+}
