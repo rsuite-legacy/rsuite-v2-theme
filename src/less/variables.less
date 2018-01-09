@@ -767,16 +767,26 @@
 @loader-md-diameter: 36px;
 @loader-sm-diameter: 18px;
 @loader-xs-diameter: 16px;
+@loader-content-color: @B800;
+@loader-content-inverse-color: @B000;
 @loader-lg-content-font-size: @font-size-large;
 @loader-md-content-font-size: @font-size-base;
 @loader-sm-content-font-size: @font-size-base;
 @loader-xs-content-font-size: @font-size-small;
 @loader-default-diameter: @loader-xs-diameter;
 @loader-default-content-font-size: @font-size-small;
+// backdrop color
+@loader-backdrop-color: fade(@B900, 30);
 // spin
 @loader-spin-ring-wide: 3px;
 @loader-spin-ring-color: fade(@B050, 80);
 @loader-spin-ring-active-color: @B500;
+@loader-spin-ring-inverse-color: fade(@B050, 30);
+@loader-spin-ring-inverse-active-color: @B000;
+// spin animation time
+@loader-duration-fast: .4s;
+@loader-duration-normal: .6s;
+@loader-duration-slow: .8s;
 // spacing
 @loader-content-spin-spacing-horizontal: 12px;
 @loader-content-spin-spacing-vertical: 10px;

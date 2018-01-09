@@ -10,6 +10,9 @@
 }
 
 .loader-size(@diameter,@font-size) {
+  .@{ns}loader {
+    height: @diameter;
+  }
   .@{ns}loader-spin {
     .set-side-length(@diameter);
   }
@@ -17,5 +20,15 @@
   .@{ns}loader-content {
     font-size: @font-size;
     line-height: unit(@diameter/@font-size);
+  }
+
+  &.@{ns}loader-vertical {
+    .@{ns}loader {
+      height: (@diameter + @loader-content-spin-spacing-vertical + @line-height-computed);
+    }
+
+    .@{ns}loader-content {
+      line-height: unit(@line-height-computed/@font-size);
+    }
   }
 }
