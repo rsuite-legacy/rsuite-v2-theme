@@ -3,6 +3,7 @@
   .loader-size(@loader-default-diameter, @loader-default-content-font-size);
 
   height: @loader-default-diameter;
+  display: inline-block;
 
   //Loader spin
   &-spin {
@@ -61,6 +62,7 @@
 
     .@{ns}loader-content {
       line-height: unit(@line-height-computed/@loader-default-content-font-size);
+      text-align: center;
     }
 
     .@{ns}loader-spin,
@@ -159,4 +161,10 @@
   &-xs {
     .loader-size(@loader-xs-diameter, @loader-xs-content-font-size);
   }
+}
+
+// Set loader width auto
+.@{ns}loader-wrapper {
+  display: inline-block;
+  width: auto;
 }
