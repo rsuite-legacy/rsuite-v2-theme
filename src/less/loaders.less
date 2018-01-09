@@ -124,6 +124,13 @@
       margin: auto;
     }
 
+    // horizontal loader need set display table to set width auto
+    &:not(.@{ns}loader-vertical) {
+      .@{ns}loader {
+        display: table;
+      }
+    }
+
     // vertical content text align center
     &.@{ns}loader-vertical {
       .@{ns}loader {
