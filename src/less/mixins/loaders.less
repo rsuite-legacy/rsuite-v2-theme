@@ -1,0 +1,21 @@
+.set-side-length(@side) {
+  width: @side;
+  height: @side;
+
+  &::before,
+  &::after {
+    width: @side;
+    height: @side;
+  }
+}
+
+.loader-size(@diameter,@font-size) {
+  .@{ns}loader-spin {
+    .set-side-length(@diameter);
+  }
+
+  .@{ns}loader-content {
+    font-size: @font-size;
+    line-height: unit(@diameter/@font-size);
+  }
+}
