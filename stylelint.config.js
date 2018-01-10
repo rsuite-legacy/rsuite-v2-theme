@@ -19,7 +19,7 @@ module.exports = {
     'at-rule-no-vendor-prefix': true,
     // 指定一个在声明中允许使用的属性和单位的白名单
     'declaration-property-unit-whitelist': {
-      'font-size': ['px'],
+      'font-size': ['px', 'em'],
       '/^animation/': ['s'],
     },
     // 禁止 media 特性名称（ @media ）带有浏览器引擎前缀

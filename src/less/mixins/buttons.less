@@ -243,7 +243,8 @@
 
 // Button sizes
 .button-size(@padding-vertical; @padding-horizontal; @font-size; @line-height; @border-radius) {
-  @icon-width: @padding-vertical*2 + floor(@font-size*@line-height);
+  @icon-side-length: @padding-vertical*2 + floor(@font-size*@line-height);
+  @svg-icon-height: @font-size*@line-height;
 
   padding: @padding-vertical @padding-horizontal;
   font-size: @font-size;
@@ -256,19 +257,19 @@
     padding-bottom: (@padding-vertical - 1);
   }
 
-  // Button icon is a circle.
+  // Button icon
   &.@{ns}btn-icon {
-    padding-left: @icon-width - @padding-horizontal;
-    height: @icon-width;
+    padding-left: @icon-side-length - @padding-horizontal;
+    height: @icon-side-length;
     position: relative;
 
     &.btn-icon-with-text {
       &.btn-icon-placement-left {
-        padding-left: @icon-width + @padding-vertical;
+        padding-left: @icon-side-length + @padding-vertical;
       }
 
       &.btn-icon-placement-right {
-        padding-right: @icon-width + @padding-vertical;
+        padding-right: @icon-side-length + @padding-vertical;
 
         > .icon {
           left: auto;
@@ -282,16 +283,20 @@
       top: 0;
       left: 0;
       display: block;
-      width: @icon-width;
-      height: @icon-width;
+      width: @icon-side-length;
+      height: @icon-side-length;
       padding: @padding-vertical 0;
       font-size: @font-size;
       line-height: @line-height;
+
+      > svg {
+        height: @svg-icon-height;
+      }
     }
   }
 
   &.@{ns}btn-icon-circle {
-    width: @icon-width;
+    width: @icon-side-length;
     padding: @padding-vertical;
   }
 }

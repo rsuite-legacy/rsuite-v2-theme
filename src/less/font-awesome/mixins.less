@@ -8,28 +8,19 @@
   text-rendering: auto; // optimizelegibility throws things off #1094
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
 }
 
 .fa-icon-rotate(@degrees, @rotation) {
-  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=@{rotation})";
-  -webkit-transform: rotate(@degrees);
-      -ms-transform: rotate(@degrees);
-          transform: rotate(@degrees);
+  transform: rotate(@degrees);
 }
 
 .fa-icon-flip(@horiz, @vert, @rotation) {
-  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=@{rotation}, mirror=1)";
-  -webkit-transform: scale(@horiz, @vert);
-      -ms-transform: scale(@horiz, @vert);
-          transform: scale(@horiz, @vert);
+  transform: scale(@horiz, @vert);
 }
-
 
 // Only display content to screen readers. A la Bootstrap 4.
 //
 // See: http://a11yproject.com/posts/how-to-hide-content/
-
 .sr-only() {
   position: absolute;
   width: 1px;
@@ -37,7 +28,7 @@
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0,0,0,0);
+  clip: rect(0, 0, 0, 0);
   border: 0;
 }
 
@@ -56,5 +47,17 @@
     margin: 0;
     overflow: visible;
     clip: auto;
+  }
+}
+
+.icon-size(@size) {
+  &,
+  &.@{icon-css-prefix} {
+    height: @size * @icon-font-size-base;
+    font-size: @size * @icon-font-size-base;
+
+    > svg {
+      height: @size * @icon-font-size-base;
+    }
   }
 }

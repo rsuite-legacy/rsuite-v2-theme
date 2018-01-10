@@ -3,34 +3,39 @@
 
 //* makes the font 33% larger relative to the icon container */
 .@{icon-css-prefix}-lg {
-  &, &.@{icon-css-prefix} {
+  &,
+  &.@{icon-css-prefix} {
     font-size: (4em / 3);
     line-height: (3em / 4);
     vertical-align: -15%;
+
+    > svg {
+      height: floor(1.33 * @icon-font-size-base);
+    }
   }
 }
 
 .@{icon-css-prefix}-2x {
-  &, &.@{icon-css-prefix} {
-    font-size: 2em;
-  }
-
+  .icon-size(2);
 }
 
 .@{icon-css-prefix}-3x {
-  &, &.@{icon-css-prefix} {
-    font-size: 3em;
-  }
+  .icon-size(3);
 }
 
 .@{icon-css-prefix}-4x {
-  &, &.@{icon-css-prefix} {
-    font-size: 4em;
-  }
+  .icon-size(4);
 }
 
 .@{icon-css-prefix}-5x {
-  &, &.@{icon-css-prefix} {
-    font-size: 5em;
+  .icon-size(5);
+}
+
+.@{icon-css-prefix} {
+  height: @icon-font-size-base;
+
+  > svg {
+    height: @icon-font-size-base * @icon-line-height-base;
+    vertical-align: -20%;
   }
 }
