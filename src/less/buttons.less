@@ -121,7 +121,7 @@
 // Default Button
 .@{ns}btn-default {
   .button-ripple;
-  .btn-icon-with-text(@btn-default-bg-dark);
+  .btn-icon-with-text(@btn-icon-with-text-bg);
 
   color: @btn-default-color;
   background: @btn-default-bg;
@@ -136,14 +136,14 @@
     color: @btn-default-color;
     background-color: @btn-default-focus-bg;
 
-    .btn-icon-with-text(@btn-default-focus-bg-dark);
+    .btn-icon-with-text(@btn-icon-with-text-focus-bg);
   }
 
   &:hover {
     color: @btn-default-hover-color;
     background-color: @btn-default-hover-bg;
 
-    .btn-icon-with-text(@btn-default-hover-bg-dark);
+    .btn-icon-with-text(@btn-icon-with-text-hover-bg);
   }
 
   &:active,
@@ -153,7 +153,7 @@
     background-color: @btn-default-active-bg;
     background-image: none;
 
-    .btn-icon-with-text(@btn-default-active-bg-dark);
+    .btn-icon-with-text(@btn-icon-with-text-active-bg);
 
     &:hover,
     &:focus,
@@ -161,7 +161,7 @@
       color: @btn-default-color;
       background-color: @btn-default-active-bg;
 
-      .btn-icon-with-text(@btn-default-active-bg-dark);
+      .btn-icon-with-text(@btn-icon-with-text-active-bg);
     }
   }
 
