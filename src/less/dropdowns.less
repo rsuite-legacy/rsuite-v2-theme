@@ -85,7 +85,7 @@
   // Links within the dropdown menu
   .dropdown-item-content {
     display: block;
-    padding: 8px 12px;
+    padding: @dropdown-item-content-padding-vertical @dropdown-item-content-padding-horizontal;
     clear: both;
     font-weight: normal;
     line-height: @line-height-base;
@@ -111,7 +111,7 @@
   }
 
   // Open
-  &:hover > .dropdown-item-content > .dropdown-menu,
+  //&:hover > .dropdown-item-content > .dropdown-menu,
   &.dropdown-item-open > .dropdown-item-content > .dropdown-menu {
     //use display table to fix-content
     display: table;
