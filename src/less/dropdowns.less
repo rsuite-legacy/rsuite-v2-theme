@@ -93,6 +93,13 @@
     white-space: nowrap; // prevent links from randomly breaking onto new lines
     cursor: pointer; //fixed link has not [href] style
     transition: color .3s linear, background-color .3s linear;
+
+    > .icon {
+      width: @font-size-base;
+      line-height: @line-height-base;
+      text-align: center;
+      margin-right: 6px;
+    }
   }
 }
 
@@ -101,31 +108,52 @@
   position: relative;
 
   > .dropdown-item-content {
-    padding-right: @dropdown-item-content-padding-horizontal+ @dropdown-item-content-icon-spacing + @dropdown-item-content-icon-width;
     position: relative;
 
-    > .dropdown-menu-toggle .icon {
-      position: absolute;
-      width: @dropdown-item-content-icon-width;
-      right: @dropdown-item-content-padding-horizontal;
-      line-height: @dropdown-item-content-icon-line-height;
-      font-size: @dropdown-item-content-icon-size;
-      top: @dropdown-item-content-padding-vertical;
+    > .dropdown-menu-toggle {
+      display: inline-block;
+
+      .icon {
+        position: absolute;
+        width: @dropdown-item-content-submenu-icon-angle-width;
+        line-height: @dropdown-item-content-submenu-icon-angle-line-height;
+        font-size: @dropdown-item-content-submenu-icon-angle-size;
+        top: @dropdown-item-content-padding-vertical;
+      }
+    }
+  }
+
+  &.dropdown-menu-pull-right {
+    > .dropdown-item-content {
+      padding-right: @dropdown-item-content-padding-horizontal+ @dropdown-item-content-submenu-icon-angle-spacing + @dropdown-item-content-submenu-icon-angle-width;
+
+      > .dropdown-menu-toggle .icon {
+        right: @dropdown-item-content-padding-horizontal;
+      }
+    }
+  }
+
+  &.dropdown-menu-pull-left {
+    > .dropdown-item-content {
+      padding-left: @dropdown-item-content-padding-horizontal+ @dropdown-item-content-submenu-icon-angle-spacing + @dropdown-item-content-submenu-icon-angle-width;
+
+      > .dropdown-menu-toggle .icon {
+        left: @dropdown-item-content-padding-horizontal;
+      }
     }
   }
 
   > .dropdown-item-content > .dropdown-menu {
     top: 0;
-    right: 0;
     left: 100%;
   }
 
+  // Pull right
   &.dropdown-menu-pull-right > .dropdown-item-content > .dropdown-menu {
     right: 0;
   }
 
   // Open
-  &:hover > .dropdown-item-content > .dropdown-menu,
   &.dropdown-item-open > .dropdown-item-content > .dropdown-menu {
     //use display table to fix-content
     display: table;
