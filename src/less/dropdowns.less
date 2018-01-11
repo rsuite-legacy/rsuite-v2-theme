@@ -52,13 +52,10 @@
 // The dropdown menu (ul)
 .dropdown-menu {
   position: absolute;
-  top: 100%;
-  left: 0;
   // dropdown-menu zindex value is greater than dropdown-toggle
   z-index: @zindex-dropdown + 1;
   display: none; // none by default, but block on "open" of the menu
   float: left;
-  min-width: 100%;
   margin: 0; // override default ul
   list-style: none;
   font-size: @font-size-base;
@@ -88,7 +85,7 @@
   // Links within the dropdown menu
   .dropdown-item-content {
     display: block;
-    padding: 6px 20px;
+    padding: 8px 12px;
     clear: both;
     font-weight: normal;
     line-height: @line-height-base;
@@ -109,8 +106,15 @@
     left: 100%;
   }
 
-  &:hover > .dropdown-item-content > .dropdown-menu {
-    display: block;
+  .dropdown-menu-toggle .icon {
+    margin-left: 10px;
+  }
+
+  // Open
+  &:hover > .dropdown-item-content > .dropdown-menu,
+  &.dropdown-item-open > .dropdown-item-content > .dropdown-menu {
+    //use display table to fix-content
+    display: table;
     animation-name: slideUpIn;
     animation-play-state: running;
   }
@@ -171,37 +175,49 @@
 
 // Open state for the dropdown
 .dropdown-open {
-  //打开时的按钮样式
-  &.dropdown-dropup {
-    > .dropdown-toggle.btn {
-      &,
-      &:active,
-      &:focus {
-        background: white;
-      }
-    }
-
-    > .dropdown-menu {
-      top: auto;
-      bottom: @dropdown-menu-top;
-      animation-name: slideDownIn;
-      animation-play-state: running;
-    }
-  }
-  // Show the menu
-  // 各种尺寸的menu偏移量不同
   > .dropdown-menu {
     display: block;
-    top: @dropdown-menu-top;
-    animation-name: slideUpIn;
     animation-play-state: running;
+  }
+
+  // Show the menu
+  &.dropdown-placement-top-left,
+  &.dropdown-placement-top-right,
+  &.dropdown-placement-top-center {
+    > .dropdown-menu {
+      bottom: @dropdown-menu-top;
+      animation-name: slideDownIn;
+    }
+  }
+
+  &.dropdown-placement-top-left,
+  &.dropdown-placement-bottom-left {
+    > .dropdown-menu {
+      left: 0;
+    }
+  }
+
+  &.dropdown-placement-top-right,
+  &.dropdown-placement-bottom-right {
+    > .dropdown-menu {
+      right: 0;
+    }
+  }
+
+  &.dropdown-placement-bottom-left,
+  &.dropdown-placement-bottom-right,
+  &.dropdown-placement-bottom-center {
+    > .dropdown-menu {
+      top: @dropdown-menu-top;
+      animation-name: slideUpIn;
+    }
   }
 
   > .dropdown-toggle.btn {
     &,
     &:active,
     &:focus {
-      background: white;
+      background: transparent;
     }
   }
 

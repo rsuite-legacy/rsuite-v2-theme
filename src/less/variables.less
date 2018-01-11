@@ -223,7 +223,6 @@
 //** `<input>` border color
 @input-border: #ccc;
 
-// TODO: Rename `@input-border-radius` to `@input-border-radius-base` in v4
 //** Default `.form-control` border radius
 // This has no effect on `<select>`s  in some browsers, due to the limited stylability of `<select>`s in CSS.
 @input-border-radius: @border-radius-base;
@@ -418,7 +417,7 @@
 @nav-item-click-font-color: @B900;
 @nav-item-active-font-color: @H500;
 @nav-item-disable-font-color: @B400;
-@nav-item-transition:color .3s linear, background-color .3s linear;
+@nav-item-transition: color .3s linear, background-color .3s linear;
 
 // Variant
 //** Tab
@@ -428,6 +427,9 @@
 @nav-subtle-border-width: 2px;
 @nav-subtle-default-border: @nav-subtle-border-width solid @B050;
 @nav-subtle-active-border: @nav-subtle-border-width solid @H500;
+
+//** divider
+@nav-divider-margin-vertical: 6px;
 
 //== Navbar
 //

@@ -23,34 +23,38 @@
 }
 
 .@{ns}btn-group {
-  .@{ns}btn + .@{ns}btn:not(:last-child),
-  .@{ns}btn + .@{ns}btn-group:not(:last-child),
-  .@{ns}btn-group + .@{ns}btn:not(:last-child),
-  .@{ns}btn-group + .@{ns}btn-group:not(:last-child) {
+  :not(:first-child):not(:last-child),
+  > .dropdown:not(:first-child):not(:last-child) > .dropdown-toggle > .btn {
     border-radius: 0;
   }
 
   //** Horizontal Button remove radius
-  &:not(.@{ns}btn-group-vertical) > .@{ns}btn:first-child {
+  &:not(.@{ns}btn-group-vertical) > .@{ns}btn:first-child,
+  &:not(.@{ns}btn-group-vertical) > .@{ns}dropdown:first-child > .@{ns}dropdown-toggle > .@{ns}btn {
     .border-right-radius(0);
   }
 
-  &:not(.@{ns}btn-group-vertical) > .@{ns}btn:last-child {
+  &:not(.@{ns}btn-group-vertical) > .@{ns}btn:last-child,
+  &:not(.@{ns}btn-group-vertical) > .@{ns}dropdown:last-child > .@{ns}dropdown-toggle > .@{ns}btn {
     .border-left-radius(0);
   }
 
   //** Vertical Button remove radius
-  &.@{ns}btn-group-vertical > .@{ns}btn:first-child {
+  &.@{ns}btn-group-vertical > .@{ns}btn:first-child,
+  &.@{ns}btn-group-vertical > .@{ns}dropdown:first-child > .@{ns}dropdown-toggle > .@{ns}btn {
     .border-bottom-radius(0);
   }
 
-  &.@{ns}btn-group-vertical > .@{ns}btn:last-child {
+  &.@{ns}btn-group-vertical > .@{ns}btn:last-child,
+  &.@{ns}btn-group-vertical > .@{ns}dropdown:last-child > .@{ns}dropdown-toggle > .@{ns}btn {
     .border-top-radius(0);
   }
-}
 
-//btn-group
-.@{ns}btn-group {
+  &.@{ns}btn-group-vertical > .@{ns}dropdown,
+  &.@{ns}btn-group-vertical > .@{ns}dropdown-dropup {
+    display: block;
+  }
+
   .@{ns}btn + .@{ns}btn,
   .@{ns}btn + .@{ns}btn-group,
   .@{ns}btn-group + .@{ns}btn,
@@ -61,17 +65,16 @@
 
 // Optional: Group multiple button groups together for a toolbar
 .@{ns}btn-toolbar {
-  margin-left: -5px; // Offset the first child's margin
   &:extend(.clearfix all);
 
   .@{ns}btn,
   .@{ns}btn-group,
-  .@{ns}input-group {
+  .@{ns}input-group,
+  .@{ns}dropdown {
     float: left;
   }
-  > .@{ns}btn,
-  > .@{ns}btn-group,
-  > .@{ns}input-group {
+
+  > :not(:first-child) {
     margin-left: 5px;
   }
 }
@@ -124,7 +127,10 @@
   .dropdown-toggle.btn {
     z-index: (@zindex-dropdown+10);
 
-    &, &:active, &:focus, &:hover {
+    &,
+    &:active,
+    &:focus,
+    &:hover {
       background: white;
       padding-bottom: (@padding-base-vertical+1);
     }
@@ -134,19 +140,28 @@
     }
 
     &.btn-lg {
-      &, &:active, &:focus, &:hover {
+      &,
+      &:active,
+      &:focus,
+      &:hover {
         padding-bottom: (@padding-large-vertical+1);
       }
     }
 
     &.btn-sm {
-      &, &:active, &:focus, &:hover {
+      &,
+      &:active,
+      &:focus,
+      &:hover {
         padding-bottom: (@padding-small-vertical+1);
       }
     }
 
     &.btn-xs {
-      &, &:active, &:focus, &:hover {
+      &,
+      &:active,
+      &:focus,
+      &:hover {
         padding-bottom: (@padding-xs-vertical+1);
       }
     }
@@ -161,7 +176,10 @@
   .dropdown-toggle.btn {
     z-index: (@zindex-dropdown+10);
 
-    &, &:active, &:focus, &:hover {
+    &,
+    &:active,
+    &:focus,
+    &:hover {
       background: white;
       padding-top: (@padding-base-vertical+1);
       padding-bottom: @padding-base-vertical;
@@ -173,24 +191,32 @@
     }
 
     &.btn-lg {
-      &, &:active, &:focus, &:hover {
+      &,
+      &:active,
+      &:focus,
+      &:hover {
         padding-top: (@padding-large-vertical+1);
         padding-bottom: @padding-large-vertical;
       }
     }
 
     &.btn-sm {
-      &, &:active, &:focus, &:hover {
+      &,
+      &:active,
+      &:focus,
+      &:hover {
         padding-top: (@padding-small-vertical+1);
         padding-bottom: @padding-small-vertical;
       }
     }
 
     &.btn-xs {
-      &, &:active, &:focus, &:hover {
+      &,
+      &:active,
+      &:focus,
+      &:hover {
         padding-top: (@padding-xs-vertical+1);
         padding-bottom: @padding-xs-vertical;
-
       }
     }
   }
@@ -239,6 +265,7 @@
   // Clear floats so dropdown menus can be properly placed
   > .btn-group {
     &:extend(.clearfix all);
+
     > .btn {
       float: none;
     }
@@ -261,12 +288,14 @@
   width: 100%;
   table-layout: fixed;
   border-collapse: separate;
+
   > .@{ns}btn,
   > .@{ns}btn-group {
     float: none;
     display: table-cell;
     width: 1%;
   }
+
   > .@{ns}btn-group .@{ns}btn {
     width: 100%;
   }
@@ -315,10 +344,9 @@
       background-color: white;
       color: @brand-primary;
     }
-  }
 
-  &.@{ns}btn-group {
-    .btn-link:focus, .btn-link:hover {
+    .btn-link:focus,
+    .btn-link:hover {
       color: white;
     }
   }
