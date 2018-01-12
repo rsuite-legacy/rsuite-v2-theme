@@ -9,6 +9,25 @@
 
   &::before {
     font-family: @dropdown-caret-font-family !important;
+  }
+
+  .dropdown-placement-left-bottom &::before,
+  .dropdown-placement-left-top &::before {
+    content: @dropleft-caret-content;
+  }
+
+  .dropdown-placement-right-bottom &::before,
+  .dropdown-placement-right-top &::before {
+    content: @dropright-caret-content;
+  }
+
+  .dropdown-placement-top-left &::before,
+  .dropdown-placement-top-right &::before {
+    content: @dropup-caret-content;
+  }
+
+  .dropdown-placement-bottom-left &::before,
+  .dropdown-placement-bottom-right &::before {
     content: @dropdown-caret-content;
   }
 }
@@ -229,11 +248,34 @@
 
   // Show the menu
   &.dropdown-placement-top-left,
-  &.dropdown-placement-top-right,
-  &.dropdown-placement-top-center {
+  &.dropdown-placement-top-right {
     > .dropdown-menu {
-      bottom: @dropdown-menu-top;
       animation-name: slideDownIn;
+      bottom: @dropdown-menu-top;
+    }
+  }
+
+  &.dropdown-placement-left-top,
+  &.dropdown-placement-left-bottom {
+    > .dropdown-menu {
+      animation-name: slideRightIn;
+      right: 100%;
+    }
+  }
+
+  &.dropdown-placement-right-top,
+  &.dropdown-placement-right-bottom {
+    > .dropdown-menu {
+      animation-name: slideLeftIn;
+      left: 100%;
+    }
+  }
+
+  &.dropdown-placement-bottom-left,
+  &.dropdown-placement-bottom-right {
+    > .dropdown-menu {
+      animation-name: slideUpIn;
+      top: @dropdown-menu-top;
     }
   }
 
@@ -251,12 +293,17 @@
     }
   }
 
-  &.dropdown-placement-bottom-left,
-  &.dropdown-placement-bottom-right,
-  &.dropdown-placement-bottom-center {
+  &.dropdown-placement-left-top,
+  &.dropdown-placement-right-top {
     > .dropdown-menu {
-      top: @dropdown-menu-top;
-      animation-name: slideUpIn;
+      bottom: 0;
+    }
+  }
+
+  &.dropdown-placement-right-bottom,
+  &.dropdown-placement-left-bottom {
+    > .dropdown-menu {
+      top: 0;
     }
   }
 
@@ -313,13 +360,4 @@
 //fixed link a active color
 .dropdown > .btn-link:active {
   color: @link-color;
-}
-
-// Allow for dropdowns to go bottom up (aka)
-.dropdown-dropup,
-.navbar-fixed-bottom .dropdown {
-  // Reverse the caret
-  .dropdown-toggle-caret::before {
-    content: @dropup-caret-content;
-  }
 }

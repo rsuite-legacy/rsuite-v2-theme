@@ -123,6 +123,16 @@
       margin-top: @nav-item-spacing;
     }
 
+    .@{ns}dropdown {
+      width: 100%;
+
+      > .@{ns}dropdown-toggle {
+        width: 100%;
+        text-align: left;
+        z-index: 0;
+      }
+    }
+
     // Waterline
     .@{ns}nav-waterline {
       display: block;
@@ -158,7 +168,7 @@
 }
 
 // Tab Nav
-.@{ns}nav-tabs {
+.@{ns}nav-tab {
   //Default style
   .@{ns}nav-item > .@{ns}nav-item-content {
     background-color: @nav-tab-default-bg;
@@ -216,6 +226,7 @@
   // Vertical
   &.@{ns}nav-vertical {
     //Nav content
+    .@{ns}dropdown > .@{ns}dropdown-toggle,
     .@{ns}nav-item > .@{ns}nav-item-content {
       border-radius: @nav-item-border-radius 0 0 @nav-item-border-radius;
 
