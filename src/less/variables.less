@@ -417,8 +417,8 @@
 @nav-item-padding-vertical: 8px;
 @nav-item-padding-horizontal: 12px;
 @nav-item-spacing: 6px;
-@nav-item-icon-spacing:6px;
 @nav-base-height: @line-height-computed+@nav-item-padding-vertical*2;
+@nav-item-icon-spacing: 6px;
 @nav-item-font-default-color: @B600;
 @nav-item-font-active-color: @H600;
 @nav-item-border-radius: 6px;
@@ -432,12 +432,17 @@
 
 // Variant
 //** Tab
-@nav-tab-border: 1px solid @B300;
+@nav-tab-default-bg:@B000;
+@nav-tab-border-width: 1px;
+@nav-tab-border-color: @B300;
+@nav-tab-border: @nav-tab-border-width solid @nav-tab-border-color;
 
 //** Subtle
 @nav-subtle-border-width: 2px;
-@nav-subtle-default-border: @nav-subtle-border-width solid @B050;
-@nav-subtle-active-border: @nav-subtle-border-width solid @H500;
+@nav-subtle-border-default-color: @B050;
+@nav-subtle-border-active-color: @H500;
+@nav-subtle-default-border: @nav-subtle-border-width solid @nav-subtle-border-default-color;
+@nav-subtle-active-border: @nav-subtle-border-width solid @nav-subtle-default-border;
 
 //** divider
 @nav-divider-margin-vertical: 6px;

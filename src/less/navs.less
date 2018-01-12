@@ -5,6 +5,8 @@
 // Base class
 // --------------------------------------------------
 .@{ns}nav {
+  position: relative;
+
   > ul {
     list-style: none;
     margin: 0;
@@ -13,6 +15,22 @@
 
   // Nav item
   &-item {
+    //:hover :focus :active
+    &:not(.@{ns}nav-item-disabled) > .@{ns}nav-item-content {
+      &:hover,
+      &:hover,
+      &:focus {
+        color: @nav-item-hover-font-color;
+      }
+
+      &:active {
+        color: @nav-item-click-font-color;
+      }
+    }
+
+    &.@{ns}nav-item-disabled {
+      opacity: .3;
+    }
 
     // Nav item content
     > .@{ns}nav-item-content {
@@ -23,16 +41,6 @@
       cursor: pointer;
       color: @nav-item-font-default-color;
       transition: @nav-item-transition;
-
-      &:hover,
-      &:hover,
-      &:focus {
-        color: @nav-item-hover-font-color;
-      }
-
-      &:active {
-        color: @nav-item-click-font-color;
-      }
 
       > .icon {
         margin-right: @nav-item-icon-spacing;
@@ -45,40 +53,18 @@
     > a.@{ns}nav-item-content:focus {
       text-decoration: none;
     }
-
-    > .@{ns}nav-dropdown-toggle {
-      height: @nav-base-height;
-    }
   }
 
-  // Nav dropdown
-  &-dropdown {
-    //rest drop down color
-    > .@{ns}nav-dropdown-toggle {
-      color: @nav-item-font-default-color;
-      background: transparent;
-      transition: @nav-item-transition;
-
-      &:hover,
-      &:focus {
-        color: @nav-item-hover-font-color;
-        background-color: @nav-item-default-hover-bg;
-      }
-
-      &:active {
-        color: @nav-item-click-font-color;
-        background-color: @nav-item-click-bg;
-      }
-    }
-
-    &.@{ns}dropdown-open .@{ns}nav-dropdown-toggle {
-      color: @nav-item-click-font-color;
-      background: @nav-item-click-bg;
-    }
+  // Rest dropdown height
+  .@{ns}dropdown > .@{ns}dropdown-toggle {
+    height: @nav-base-height;
   }
 
   // Active
   .@{ns}nav-item-active > .@{ns}nav-item-content {
+    position: relative;
+    z-index: 1;
+
     &,
     &:hover,
     &:focus,
@@ -92,20 +78,47 @@
   &.@{ns}nav-horizontal {
     .clearfix;
 
+    // Justified
+    &.@{ns}nav-justified {
+      .@{ns}nav-item,
+      .@{ns}dropdown {
+        float: none;
+        display: table-cell;
+        width: 1%;
+      }
+
+      .dropdown .dropdown-toggle {
+        width: 100%;
+        text-align: left;
+      }
+    }
+
     .@{ns}nav-item {
       float: left;
     }
 
     // margin space
-    ul > .@{ns}nav-dropdown:not(:first-child),
+    ul > .@{ns}dropdown:not(:first-child),
     ul > .@{ns}nav-item:not(:first-child) {
       margin-left: @nav-item-spacing;
+    }
+
+    // Waterline
+    .@{ns}nav-waterline {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+
+      //** Reversed
+      .@{ns}nav-reversed& {
+        bottom: auto;
+      }
     }
   }
 
   &.@{ns}nav-vertical {
     // margin space
-    ul > .@{ns}nav-dropdown:not(:first-child),
+    ul > .@{ns}dropdown:not(:first-child),
     ul > .@{ns}nav-item:not(:first-child) {
       margin-top: @nav-item-spacing;
     }
@@ -117,7 +130,7 @@
 
 // Default Nav
 .@{ns}nav-default {
-  .@{ns}nav-item > .@{ns}nav-item-content {
+  .@{ns}nav-item:not(.nav-item-active):not(.@{ns}nav-item-disabled) > .@{ns}nav-item-content {
     border-radius: @nav-item-border-radius;
 
     &:hover,
@@ -133,14 +146,79 @@
 
 // Tab Nav
 .@{ns}nav-tabs {
+  //Default style
   .@{ns}nav-item > .@{ns}nav-item-content {
+    background-color: @nav-tab-default-bg;
+  }
 
+  //:hover :active :focus
+  .@{ns}nav-item:not(.@{ns}nav-item-active):not(.@{ns}nav-item-disabled) > .@{ns}nav-item-content {
+    &:hover,
+    &:focus {
+      background: @nav-item-default-hover-bg;
+    }
+
+    &:active {
+      background: @nav-item-click-bg;
+    }
+  }
+
+  // Horizontal
+  &.@{ns}nav-horizontal {
+    //Nav content
+    .@{ns}nav-item > .@{ns}nav-item-content {
+      border-radius: @nav-item-border-radius @nav-item-border-radius 0 0;
+
+      .@{ns}nav-reversed& {
+        border-radius: 0 0 @nav-item-border-radius @nav-item-border-radius;
+      }
+    }
+
+    //** Waterline
+    .@{ns}nav-waterline {
+      border-top: @nav-tab-border;
+    }
+
+    //** Active
+    .@{ns}nav-item.@{ns}nav-item-active > .@{ns}nav-item-content {
+      @padding-vertical: @nav-item-padding-vertical - @nav-tab-border-width;
+      @padding-horizontal: @nav-item-padding-horizontal - @nav-tab-border-width;
+
+      border: @nav-tab-border-width solid @nav-tab-border-color;
+      border-bottom-color: @nav-tab-default-bg;
+      padding: @padding-vertical @padding-horizontal;
+
+      // Reversed
+      .@{ns}nav-reversed& {
+        border-bottom-color: @nav-tab-border-color;
+        border-top-color: @nav-tab-default-bg;
+      }
+    }
   }
 }
 
 // Subtle Nav
 .@{ns}nav-subtle {
-  .@{ns}nav-item > .@{ns}nav-item-content {
+  // Horizontal
+  &.@{ns}nav-horizontal {
+    //Waterline
+    .@{ns}nav-waterline {
+      border-top: @nav-subtle-default-border;
+    }
 
+    // Active item
+    .@{ns}nav-item.@{ns}nav-item-active > .@{ns}nav-item-content {
+      @active-padding-spacing: @nav-item-padding-vertical - @nav-subtle-border-width;
+
+      border-bottom: @nav-subtle-border-width solid @nav-subtle-border-active-color;
+      padding-bottom: @active-padding-spacing;
+
+      // Reversed
+      .@{ns}nav-reversed& {
+        border-bottom: none;
+        border-top: @nav-subtle-border-width solid @nav-subtle-border-active-color;
+        padding-top: @active-padding-spacing;
+      }
+    }
   }
 }
