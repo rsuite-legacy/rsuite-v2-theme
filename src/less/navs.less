@@ -122,6 +122,19 @@
     ul > .@{ns}nav-item:not(:first-child) {
       margin-top: @nav-item-spacing;
     }
+
+    // Waterline
+    .@{ns}nav-waterline {
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+
+      .@{ns}nav-reversed& {
+        right: auto;
+      }
+    }
   }
 }
 
@@ -163,6 +176,14 @@
     }
   }
 
+  //** Active
+  .@{ns}nav-item.@{ns}nav-item-active > .@{ns}nav-item-content {
+    @padding-vertical: @nav-item-padding-vertical - @nav-tab-waterline-width;
+    @padding-horizontal: @nav-item-padding-horizontal - @nav-tab-waterline-width;
+
+    padding: @padding-vertical @padding-horizontal;
+  }
+
   // Horizontal
   &.@{ns}nav-horizontal {
     //Nav content
@@ -176,22 +197,48 @@
 
     //** Waterline
     .@{ns}nav-waterline {
-      border-top: @nav-tab-border;
+      border-top: @nav-tab-waterline;
     }
 
     //** Active
     .@{ns}nav-item.@{ns}nav-item-active > .@{ns}nav-item-content {
-      @padding-vertical: @nav-item-padding-vertical - @nav-tab-border-width;
-      @padding-horizontal: @nav-item-padding-horizontal - @nav-tab-border-width;
-
-      border: @nav-tab-border-width solid @nav-tab-border-color;
+      border: @nav-tab-waterline-width solid @nav-tab-waterline-color;
       border-bottom-color: @nav-tab-default-bg;
-      padding: @padding-vertical @padding-horizontal;
 
       // Reversed
       .@{ns}nav-reversed& {
-        border-bottom-color: @nav-tab-border-color;
+        border-bottom-color: @nav-tab-waterline-color;
         border-top-color: @nav-tab-default-bg;
+      }
+    }
+  }
+
+  // Vertical
+  &.@{ns}nav-vertical {
+    //Nav content
+    .@{ns}nav-item > .@{ns}nav-item-content {
+      border-radius: @nav-item-border-radius 0 0 @nav-item-border-radius;
+
+      .@{ns}nav-reversed& {
+        border-radius: 0 @nav-item-border-radius @nav-item-border-radius 0;
+      }
+    }
+
+    //** Waterline
+    .@{ns}nav-waterline {
+      width: @nav-tab-waterline-width;
+      background: @nav-tab-waterline-color;
+    }
+
+    //** Active
+    .@{ns}nav-item.@{ns}nav-item-active > .@{ns}nav-item-content {
+      border: @nav-tab-waterline-width solid @nav-tab-waterline-color;
+      border-right-color: @nav-tab-default-bg;
+
+      // Reversed
+      .@{ns}nav-reversed& {
+        border-left-color: @nav-tab-default-bg;
+        border-right-color: @nav-tab-waterline-color;
       }
     }
   }
@@ -203,21 +250,45 @@
   &.@{ns}nav-horizontal {
     //Waterline
     .@{ns}nav-waterline {
-      border-top: @nav-subtle-default-border;
+      border-top: @nav-subtle-default-waterline;
     }
 
     // Active item
     .@{ns}nav-item.@{ns}nav-item-active > .@{ns}nav-item-content {
-      @active-padding-spacing: @nav-item-padding-vertical - @nav-subtle-border-width;
+      @active-padding-spacing: @nav-item-padding-vertical - @nav-subtle-waterline-width;
 
-      border-bottom: @nav-subtle-border-width solid @nav-subtle-border-active-color;
+      border-bottom: @nav-subtle-waterline-width solid @nav-subtle-waterline-active-color;
       padding-bottom: @active-padding-spacing;
 
       // Reversed
       .@{ns}nav-reversed& {
         border-bottom: none;
-        border-top: @nav-subtle-border-width solid @nav-subtle-border-active-color;
+        border-top: @nav-subtle-waterline-width solid @nav-subtle-waterline-active-color;
         padding-top: @active-padding-spacing;
+      }
+    }
+  }
+
+  // Horizontal
+  &.@{ns}nav-vertical {
+    //Waterline
+    .@{ns}nav-waterline {
+      width: @nav-subtle-waterline-width;
+      background: @nav-subtle-waterline-default-color;
+    }
+
+    // Active item
+    .@{ns}nav-item.@{ns}nav-item-active > .@{ns}nav-item-content {
+      @active-padding-spacing: @nav-item-padding-vertical - @nav-subtle-waterline-width;
+
+      border-right: @nav-subtle-waterline-width solid @nav-subtle-waterline-active-color;
+      padding-right: @active-padding-spacing;
+
+      // Reversed
+      .@{ns}nav-reversed& {
+        border-right: none;
+        border-left: @nav-subtle-waterline-width solid @nav-subtle-waterline-active-color;
+        padding-left: @active-padding-spacing;
       }
     }
   }
