@@ -5,12 +5,14 @@
 // Base class
 // --------------------------------------------------
 .@{ns}nav {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
 
   // Nav item
-  & > &-item {
+  &-item {
 
     // Nav item content
     > .@{ns}nav-item-content {
@@ -23,12 +25,17 @@
       transition: @nav-item-transition;
 
       &:hover,
+      &:hover,
       &:focus {
         color: @nav-item-hover-font-color;
       }
 
       &:active {
         color: @nav-item-click-font-color;
+      }
+
+      > .icon {
+        margin-right: @nav-item-icon-spacing;
       }
     }
 
@@ -45,7 +52,7 @@
   }
 
   // Nav dropdown
-  & > &-dropdown {
+  &-dropdown {
     //rest drop down color
     > .@{ns}nav-dropdown-toggle {
       color: @nav-item-font-default-color;
@@ -90,16 +97,16 @@
     }
 
     // margin space
-    > .@{ns}nav-dropdown:not(:first-child),
-    > .@{ns}nav-item:not(:first-child) {
+    ul > .@{ns}nav-dropdown:not(:first-child),
+    ul > .@{ns}nav-item:not(:first-child) {
       margin-left: @nav-item-spacing;
     }
   }
 
   &.@{ns}nav-vertical {
     // margin space
-    > .@{ns}nav-dropdown:not(:first-child),
-    > .@{ns}nav-item:not(:first-child) {
+    ul > .@{ns}nav-dropdown:not(:first-child),
+    ul > .@{ns}nav-item:not(:first-child) {
       margin-top: @nav-item-spacing;
     }
   }
@@ -110,7 +117,7 @@
 
 // Default Nav
 .@{ns}nav-default {
-  > .@{ns}nav-item > .@{ns}nav-item-content {
+  .@{ns}nav-item > .@{ns}nav-item-content {
     border-radius: @nav-item-border-radius;
 
     &:hover,

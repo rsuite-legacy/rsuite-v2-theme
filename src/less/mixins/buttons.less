@@ -142,9 +142,12 @@
   &[disabled],
   fieldset[disabled] &,
   .@{ns}dropdown-disabled & {
+    &,
     &:hover,
     &:focus,
-    &.focus {
+    &.focus,
+    &:active,
+    &:hover:active {
       color: @btn-subtle-disabled-color;
       background: none;
     }
