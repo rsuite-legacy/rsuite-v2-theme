@@ -311,3 +311,61 @@
     }
   }
 }
+
+// NavBar
+// --------------------------------------------------
+
+.@{ns}navbar {
+  .clearfix;
+}
+
+.@{ns}navbar-header {
+  float: left;
+  display: inline-block;
+  height: @nav-bar-height;
+}
+
+.@{ns}navbar-brand {
+  display: inline-block;
+
+  &,
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+  }
+}
+
+// Common
+
+.@{ns}navbar-nav {
+  float: left;
+
+  &.@{ns}navbar-right {
+    float: right;
+  }
+
+  // Nav item content
+  .@{ns}nav-item > .@{ns}nav-item-content {
+    // Reset padding
+    padding: @nav-bar-padding-vertical @nav-bar-padding-horizontal;
+    height: @nav-bar-height;
+  }
+
+  // DropDown
+  .dropdown > .dropdown-toggle {
+    padding: @nav-bar-padding-vertical @nav-bar-padding-horizontal;
+    padding-right: @nav-bar-padding-horizontal+@dropdown-caret-with+@dropdown-caret-padding;
+  }
+
+  .dropdown-toggle-caret {
+    top: @nav-bar-padding-vertical;
+    right: @nav-bar-padding-horizontal;
+  }
+
+  .dropdown.dropdown-open > .dropdown-menu {
+    top: @nav-bar-padding-vertical * 2 + @line-height-computed;
+  }
+}
+
+// Default Navbar
