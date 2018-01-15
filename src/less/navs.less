@@ -438,11 +438,16 @@
   & .navbar-header a {
     color: @nav-bar-subtle-font-color;
   }
-
-  .dropdown .dropdown-menu-active ~ .dropdown-toggle,
+  
   .dropdown .dropdown-toggle,
   .@{ns}nav-item > .@{ns}nav-item-content {
     .font-color(@nav-bar-subtle-font-color);
+  }
+
+  // Active
+  .@{ns}nav-item-active > .@{ns}nav-item-content,
+  .dropdown .dropdown-menu-active ~ .dropdown-toggle {
+    .font-color(@nav-bar-subtle-font-active-color);
   }
 
   .navbar-nav .nav-item > .nav-item-content,
