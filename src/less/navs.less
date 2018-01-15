@@ -18,7 +18,6 @@
     //:hover :focus :active
     &:not(.@{ns}nav-item-disabled) > .@{ns}nav-item-content {
       &:hover,
-      &:hover,
       &:focus {
         color: @nav-item-hover-font-color;
       }
@@ -351,7 +350,9 @@
     height: @nav-bar-height;
   }
 
-  .@{ns}nav-item:not(.nav-item-active):not(.nav-item-disabled) > .@{ns}nav-item-content {
+  // Reset border-radius
+  .@{ns}nav-item:not(.nav-item-active):not(.nav-item-disabled) > .@{ns}nav-item-content,
+  .dropdown > .dropdown-toggle {
     border-radius: 0;
   }
 
@@ -360,7 +361,6 @@
     padding: @nav-bar-padding-vertical @nav-bar-padding-horizontal;
     padding-right: @nav-bar-padding-horizontal+@dropdown-caret-with+@dropdown-caret-padding;
     height: @nav-bar-height;
-    border-radius: 0;
   }
 
   .dropdown-toggle-caret {
@@ -376,4 +376,86 @@
 // Default Navbar
 .@{ns}navbar.@{ns}navbar-default {
   background-color: @nav-bar-default-bg;
+
+  //font-color
+  &,
+  & .navbar-header a {
+    color: @nav-bar-default-font-color;
+  }
+
+  .dropdown .dropdown-toggle,
+  .@{ns}nav-item > .@{ns}nav-item-content {
+    .font-color(@nav-bar-default-font-color);
+  }
+}
+
+// Inverse Navbar
+.@{ns}navbar.@{ns}navbar-inverse {
+  background-color: @nav-bar-inverse-bg;
+
+  //font-color
+  &,
+  & .navbar-header a {
+    color: @nav-bar-inverse-font-color;
+  }
+
+  .dropdown .dropdown-menu-active ~ .dropdown-toggle,
+  .dropdown .dropdown-toggle,
+  .@{ns}nav-item-active > .@{ns}nav-item-content,
+  .@{ns}nav-item > .@{ns}nav-item-content {
+    .font-color(@nav-bar-inverse-font-color);
+  }
+
+  .@{ns}nav-item-active > .@{ns}nav-item-content,
+  .dropdown .dropdown-menu-active ~ .dropdown-toggle {
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: @nav-bar-inverse-active-bg;
+    }
+  }
+
+  .navbar-nav .nav-item > .nav-item-content,
+  .navbar-nav .dropdown .dropdown-toggle {
+    &:hover,
+    &:focus {
+      background-color: @nav-bar-inverse-hover-bg;
+    }
+
+    &:active {
+      background-color: @nav-bar-inverse-active-bg;
+    }
+  }
+}
+
+// Subtle Navbar
+.@{ns}navbar.@{ns}navbar-subtle {
+  background-color: @nav-bar-subtle-bg;
+
+  //font-color
+  &,
+  & .navbar-header a {
+    color: @nav-bar-subtle-font-color;
+  }
+
+  .dropdown .dropdown-menu-active ~ .dropdown-toggle,
+  .dropdown .dropdown-toggle,
+  .@{ns}nav-item > .@{ns}nav-item-content {
+    .font-color(@nav-bar-subtle-font-color);
+  }
+
+  .navbar-nav .nav-item > .nav-item-content,
+  .navbar-nav .dropdown .dropdown-toggle {
+    &:hover,
+    &:focus {
+      background-color: @nav-bar-subtle-hover-bg;
+      color: @nav-bar-subtle-hover-font-color;
+    }
+
+    &:active {
+      background-color: @nav-bar-subtle-active-bg;
+      color: @nav-bar-subtle-active-font-color;
+    }
+  }
 }
