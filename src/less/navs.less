@@ -61,6 +61,7 @@
   }
 
   // Active
+  .dropdown .dropdown-menu-active ~ .dropdown-toggle,
   .@{ns}nav-item-active > .@{ns}nav-item-content {
     position: relative;
     z-index: 1;
@@ -145,6 +146,12 @@
         right: auto;
       }
     }
+  }
+
+  // Ripple
+  .@{ns}nav-default &-item-content,
+  .@{ns}nav-tabs &-item-content {
+    .button-ripple;
   }
 }
 
@@ -290,7 +297,7 @@
 
     // Active item
     .@{ns}nav-item.@{ns}nav-item-active > .@{ns}nav-item-content {
-      @active-padding-spacing: @nav-item-padding-vertical - @nav-subtle-waterline-width;
+      @active-padding-spacing: @nav-item-padding-horizontal - @nav-subtle-waterline-width;
 
       border-right: @nav-subtle-waterline-width solid @nav-subtle-waterline-active-color;
       padding-right: @active-padding-spacing;

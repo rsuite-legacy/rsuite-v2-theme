@@ -6,6 +6,9 @@
 .dropdown-toggle-caret {
   display: inline-block;
   margin-left: 2px;
+  position: absolute;
+  top: @padding-base-vertical;
+  right: @padding-base-horizontal;
 
   &::before {
     font-family: @dropdown-caret-font-family !important;
@@ -66,6 +69,7 @@
 .dropdown-toggle {
   position: relative;
   z-index: @zindex-dropdown;
+  padding-right: @padding-base-horizontal+@dropdown-caret-with+@dropdown-caret-padding;
 }
 
 // Prevent the focus on the dropdown toggle when closing dropdowns
@@ -184,12 +188,6 @@
     animation-name: slideUpIn;
     animation-play-state: running;
   }
-}
-
-//Set scrollbar to dropdown menu btn-group
-.dropdown.btn-group .dropdown-menu {
-  max-height: @dropdown-max-height;
-  overflow-y: auto;
 }
 
 // Hover/Focus state
@@ -321,26 +319,6 @@
   }
 }
 
-// Menu positioning
-//
-// Add extra class to `.dropdown-menu` to flip the alignment of the dropdown
-// menu with the parent.
-.dropdown-menu-right {
-  left: auto; // Reset the default from `.dropdown-menu`
-  right: 0;
-}
-
-// With v3, we enabled auto-flipping if you have a dropdown within a right
-// aligned nav component. To enable the undoing of that, we provide an override
-// to restore the default dropdown menu alignment.
-//
-// This is only for left-aligning a dropdown menu within a `.navbar-right` or
-// `.pull-right` nav component.
-.dropdown-menu-left {
-  left: 0;
-  right: auto;
-}
-
 // Dropdown section headers
 .dropdown-header {
   display: block;
@@ -349,15 +327,4 @@
   line-height: @line-height-base;
   color: @dropdown-header-color;
   white-space: nowrap; // as with > li > a
-}
-
-// Right aligned dropdowns
-.pull-right > .dropdown-menu {
-  right: 0;
-  left: auto;
-}
-
-//fixed link a active color
-.dropdown > .btn-link:active {
-  color: @link-color;
 }

@@ -19,7 +19,7 @@ module.exports = {
     'at-rule-no-vendor-prefix': true,
     // 指定一个在声明中允许使用的属性和单位的白名单
     'declaration-property-unit-whitelist': {
-      'font-size': ['px', 'em'],
+      'font-size': ['px', 'em', '%'],
       '/^animation/': ['s'],
     },
     // 禁止 media 特性名称（ @media ）带有浏览器引擎前缀
@@ -36,7 +36,7 @@ module.exports = {
     // [优先级的描述]{@link https://www.w3.org/TR/css3-selectors/#specificity}
     'no-descending-specificity': false,
     // 类选择器使用 snake case
-    'selector-class-pattern': '^[a-z]+(-?[a-z]+)*$',
+    'selector-class-pattern': '^[a-z0-9]+(-?[a-z0-9]+)*$',
     // ID 选择器使用小驼峰命名
     'selector-id-pattern': '^([a-z]+([A-Z][a-z]+)?)$',
     // 禁止属性使用浏览器引擎前缀
