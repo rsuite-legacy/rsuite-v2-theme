@@ -328,16 +328,15 @@
 .@{ns}navbar-brand {
   display: inline-block;
 
-  &,
-  &:hover,
-  &:focus,
-  &:active {
+  a&,
+  a&:hover,
+  a&:focus,
+  a&:active {
     text-decoration: none;
   }
 }
 
 // Common
-
 .@{ns}navbar-nav {
   float: left;
 
@@ -352,11 +351,16 @@
     height: @nav-bar-height;
   }
 
+  .@{ns}nav-item:not(.nav-item-active):not(.nav-item-disabled) > .@{ns}nav-item-content {
+    border-radius: 0;
+  }
+
   // DropDown
   .dropdown > .dropdown-toggle {
     padding: @nav-bar-padding-vertical @nav-bar-padding-horizontal;
     padding-right: @nav-bar-padding-horizontal+@dropdown-caret-with+@dropdown-caret-padding;
     height: @nav-bar-height;
+    border-radius: 0;
   }
 
   .dropdown-toggle-caret {
@@ -370,3 +374,6 @@
 }
 
 // Default Navbar
+.@{ns}navbar.@{ns}navbar-default {
+  background-color: @nav-bar-default-bg;
+}
