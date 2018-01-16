@@ -1,0 +1,67 @@
+//
+// Sidenavs
+// --------------------------------------------------
+
+// Base class
+// --------------------------------------------------
+
+.@{ns}sidenav {
+  .nav-item > .nav-item-content,
+  .dropdown .dropdown-toggle {
+    padding: @sidenav-padding-vertical @sidenav-padding-horizonal;
+  }
+
+  .dropdown .dropdown-toggle {
+    height: auto;
+  }
+}
+
+//** Expanded styles
+.@{ns}sidenav-expanded {
+  //Nav item content
+  .nav-item:not(.nav-item-active):not(.nav-item-disabled) > .nav-item-content {
+    border-radius: 0;
+  }
+
+  //Dropdown style rewrite
+  .dropdown {
+    padding-top: @sidenav-padding-vertical + @sidenav-item-height;
+
+    > .dropdown-toggle {
+      position: absolute;
+      top: @sidenav-padding-vertical;
+    }
+
+    // Dropdown menu
+    > .dropdown-menu {
+      .reset-sidenav-dropdown-menu;
+
+      // Submenu
+      .dropdown-item-submenu > .dropdown-item-content {
+        padding: 0;
+
+        > .dropdown-menu-toggle {
+          display: block;
+          padding: @sidenav-padding-vertical @sidenav-padding-horizonal;
+        }
+
+        > .dropdown-menu {
+          .reset-sidenav-dropdown-menu;
+        }
+
+        &:hover {
+          background-color: transparent;
+        }
+      }
+
+      .dropdown-item-content {
+        padding: @sidenav-padding-vertical @sidenav-padding-horizonal;
+      }
+    }
+  }
+}
+
+//sidenav-default
+.sidenav-default {
+  background-color: @sidenav-deafult-bg;
+}
