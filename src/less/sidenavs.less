@@ -4,18 +4,21 @@
 
 // Base class
 // --------------------------------------------------
-
 .@{ns}sidenav {
   transition: width @sidenav-collapse-transition-config;
   width: @sidenav-default-width;
 
-  .nav-item > .nav-item-content,
-  .dropdown .dropdown-toggle {
+  .@{ns}nav-item > .@{ns}nav-item-content,
+  .@{ns}dropdown .@{ns}dropdown-toggle {
     padding: @sidenav-padding-vertical @sidenav-padding-horizonal;
     transition: padding-left @sidenav-collapse-transition-config;
   }
 
-  .dropdown .dropdown-toggle {
+  .@{ns}dropdown .@{ns}dropdown-menu {
+    transition: padding-left @sidenav-collapse-transition-config;
+  }
+
+  .@{ns}dropdown .dropdown-toggle {
     height: auto;
     padding-right: @sidenav-padding-horizonal + @sidenav-dropdown-toggle-caret-width;
 
@@ -23,6 +26,11 @@
       right: @sidenav-padding-horizonal;
       top: @sidenav-padding-vertical;
     }
+  }
+
+  .@{ns}nav.@{ns}nav-vertical ul > .@{ns}dropdown:not(:first-child),
+  .@{ns}nav.@{ns}nav-vertical ul > .@{ns}nav-item:not(:first-child) {
+    margin-top: 0;
   }
 
   // Level1
@@ -45,6 +53,7 @@
 }
 
 //** Expanded styles
+.@{ns}sidenav-collapsing,
 .@{ns}sidenav-collapse-in {
   width: @sidenav-collapse-in-width;
 
@@ -86,11 +95,15 @@
     }
   }
 
+  //Ellipsis
+  .dropdown-item:not(.@{ns}dropdown-item-submenu) > .@{ns}dropdown-item-content,
+  .dropdown-menu .@{ns}dropdown-menu-toggle {
+    .ellipsis;
+  }
+
   // Level2
   // -----------------
   .@{ns}dropdown-item-submenu > .@{ns}dropdown-item-content > .@{ns}dropdown-menu-toggle {
-    .ellipsis;
-
     padding-left: @sidenav-level1-retract;
     padding-right: @sidenav-padding-horizonal + @sidenav-dropdown-toggle-caret-width;
     position: relative;
@@ -136,7 +149,6 @@
 }
 
 //** Folded && Collapsing styles
-.@{ns}sidenav-collapsing,
 .@{ns}sidenav-collapse-out {
   .@{ns}nav-item .@{ns}nav-item-content,
   .@{ns}dropdown .@{ns}dropdown-toggle {
@@ -151,19 +163,36 @@
     display: none;
   }
 
+  // Folded text animation setting
   .@{ns}nav-item-text,
   .@{ns}dropdown-toggle > span {
     display: ~"none\9\0";
-    animation: sideNaveFoldedText .3s linear forwards;
+    animation: sideNavFoldedText @sidenav-collapse-transition-config forwards;
   }
 }
 
 //** Collapsing styles
 .@{ns}sidenav-collapsing {
-  .@{ns}nav-item .@{ns}nav-item-content,
-  .@{ns}dropdown .dropdown-toggle,
-  .@{ns}dropdown-item-submenu > .@{ns}dropdown-item-content > .@{ns}dropdown-menu-toggle {
-    text-overflow: clip;
+  // Rewrite  text-overflow
+  &.@{ns}sidenav-collapse-in,
+  &.@{ns}sidenav-collapse-out {
+    .@{ns}nav-item .@{ns}nav-item-content,
+    .@{ns}dropdown .dropdown-toggle,
+    .@{ns}dropdown-item .@{ns}dropdown-item-content,
+    .@{ns}dropdown-item-submenu > .@{ns}dropdown-item-content > .@{ns}dropdown-menu-toggle {
+      text-overflow: clip;
+    }
+  }
+
+  // Make sure icon text-align center
+  &.@{ns}sidenav-collapse-out {
+    .@{ns}dropdown .@{ns}dropdown-menu {
+      padding-left: @sidenav-default-width - @sidenav-level1-retract;
+    }
+
+    .@{ns}dropdown-item > .@{ns}dropdown-item-content {
+      animation: sideNavFoldedText @sidenav-collapse-transition-config;
+    }
   }
 }
 
