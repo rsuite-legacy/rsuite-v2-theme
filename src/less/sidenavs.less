@@ -6,11 +6,13 @@
 // --------------------------------------------------
 
 .@{ns}sidenav {
-  transition: width .3s linear;
+  transition: width @sidenav-collapse-transition-config;
+  width: @sidenav-default-width;
 
   .nav-item > .nav-item-content,
   .dropdown .dropdown-toggle {
     padding: @sidenav-padding-vertical @sidenav-padding-horizonal;
+    transition: padding-left @sidenav-collapse-transition-config;
   }
 
   .dropdown .dropdown-toggle {
@@ -43,8 +45,8 @@
 }
 
 //** Expanded styles
-.@{ns}sidenav-expanded {
-  width: @sidenav-deafult-width;
+.@{ns}sidenav-collapse-in {
+  width: @sidenav-collapse-in-width;
 
   //Nav item content
   .@{ns}nav-item:not(.nav-item-active):not(.nav-item-disabled) > .nav-item-content {
@@ -133,19 +135,16 @@
   }
 }
 
-//** Folded styles
-.@{ns}sidenav-folded {
-  width: @sidenav-level1-retract;
-
+//** Folded && Collapsing styles
+.@{ns}sidenav-collapsing,
+.@{ns}sidenav-collapse-out {
   .@{ns}nav-item .@{ns}nav-item-content,
   .@{ns}dropdown .@{ns}dropdown-toggle {
     padding-right: 0;
-  }
-
-  // fixed height
-  .@{ns}nav-item-content,
-  .@{ns}dropdown .dropdown-toggle {
+    // fixed height
     height: @sidenav-item-height;
+    // supplement padding
+    padding-left: @sidenav-default-width;
   }
 
   .@{ns}dropdown-toggle-caret {
@@ -156,6 +155,15 @@
   .@{ns}dropdown-toggle > span {
     display: ~"none\9\0";
     animation: sideNaveFoldedText .3s linear forwards;
+  }
+}
+
+//** Collapsing styles
+.@{ns}sidenav-collapsing {
+  .@{ns}nav-item .@{ns}nav-item-content,
+  .@{ns}dropdown .dropdown-toggle,
+  .@{ns}dropdown-item-submenu > .@{ns}dropdown-item-content > .@{ns}dropdown-menu-toggle {
+    text-overflow: clip;
   }
 }
 

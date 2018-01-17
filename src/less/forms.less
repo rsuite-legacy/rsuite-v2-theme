@@ -51,6 +51,16 @@ input[type="checkbox"] {
   margin: 4px 0 0;
   margin-top: 1px \9; // IE8-9
   line-height: normal;
+
+  // Apply same disabled cursor tweak as for inputs
+  // Some special care is needed because <label>s don't inherit their parent's `cursor`.
+  //
+  // Note: Neither radios nor checkboxes can be readonly.
+  &[disabled],
+  &.disabled,
+  fieldset[disabled] & {
+    cursor: @cursor-disabled;
+  }
 }
 
 input[type="file"] {
@@ -142,10 +152,6 @@ output {
   fieldset[disabled] & {
     background-color: @input-bg-disabled;
     opacity: 1; // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655
-  }
-
-  &[disabled],
-  fieldset[disabled] & {
     cursor: @cursor-disabled;
   }
 
@@ -159,17 +165,6 @@ output {
   select& {
     padding: 0;
   }
-}
-
-// Search inputs in iOS
-//
-// This overrides the extra rounded corners on search inputs in iOS so that our
-// `.form-control` class can properly style them. Note that this cannot simply
-// be added to `.form-control` as it's not specific enough. For details, see
-// https://github.com/twbs/bootstrap/issues/11586.
-
-input[type="search"] {
-  -webkit-appearance: none;
 }
 
 // Form groups
@@ -189,6 +184,14 @@ input[type="search"] {
 .checkbox {
   position: relative;
   display: block;
+
+  // These classes are used on elements with <label> descendants
+  &.disabled,
+  fieldset[disabled] & {
+    label {
+      cursor: @cursor-disabled;
+    }
+  }
 
   label {
     line-height: 1.1428571428571428; //  @checkbox-width-height/@font-size-base = 16px/14px
@@ -235,45 +238,17 @@ input[type="search"] {
   vertical-align: middle;
   font-weight: normal;
   cursor: pointer;
+
+  &.disabled,
+  fieldset[disabled] & {
+    cursor: @cursor-disabled;
+  }
 }
 
 .radio-inline + .radio-inline,
 .checkbox-inline + .checkbox-inline {
   margin-top: 0;
   margin-left: 10px; // space out consecutive inline controls
-}
-
-// Apply same disabled cursor tweak as for inputs
-// Some special care is needed because <label>s don't inherit their parent's `cursor`.
-//
-// Note: Neither radios nor checkboxes can be readonly.
-input[type="radio"],
-input[type="checkbox"] {
-  &[disabled],
-  &.disabled,
-  fieldset[disabled] & {
-    cursor: @cursor-disabled;
-  }
-}
-
-// These classes are used directly on <label>s
-.radio-inline,
-.checkbox-inline {
-  &.disabled,
-  fieldset[disabled] & {
-    cursor: @cursor-disabled;
-  }
-}
-
-// These classes are used on elements with <label> descendants
-.radio,
-.checkbox {
-  &.disabled,
-  fieldset[disabled] & {
-    label {
-      cursor: @cursor-disabled;
-    }
-  }
 }
 
 // Static form control text
@@ -316,14 +291,17 @@ input[type="checkbox"] {
     line-height: @line-height-small;
     border-radius: @input-border-radius-small;
   }
+
   select.form-control {
     height: @input-height-small;
     line-height: @input-height-small;
   }
+
   textarea.form-control,
   select[multiple].form-control {
     height: auto;
   }
+
   .form-control-static {
     height: @input-height-small;
     min-height: (@line-height-computed + @font-size-small);
@@ -345,14 +323,17 @@ input[type="checkbox"] {
     line-height: @line-height-large;
     border-radius: @input-border-radius-large;
   }
+
   select.form-control {
     height: @input-height-large;
     line-height: @input-height-large;
   }
+
   textarea.form-control,
   select[multiple].form-control {
     height: auto;
   }
+
   .form-control-static {
     height: @input-height-large;
     min-height: (@line-height-computed + @font-size-large);
@@ -420,10 +401,10 @@ input[type="checkbox"] {
 
 // Reposition feedback icon if input has visible label above
 .has-feedback label {
-
   & ~ .form-control-feedback {
     top: (@line-height-computed + 5); // Height of the `label` and its margin
   }
+
   &.sr-only ~ .form-control-feedback {
     top: 0;
   }
@@ -436,7 +417,7 @@ input[type="checkbox"] {
 
 .help-block {
   display: block; // account for any element using help-block
-  margin: 5px 0px;
+  margin: 5px 0;
   color: lighten(@text-color, 25%); // lighten the text some for contrast
   //Sometimes help info is more than one line，so height can't set a fixed value
   min-height: 16.8px;
@@ -455,7 +436,8 @@ input[type="checkbox"] {
 // Heads up! This is mixin-ed into `.navbar-form` in navbars.less.
 
 .form-inline {
-  > *, > .btn {
+  > *,
+  > .btn {
     margin-right: @base-unit-px;
     margin-bottom: @base-unit-px;
   }
@@ -596,6 +578,7 @@ input[type="checkbox"] {
       }
     }
   }
+
   .form-group-sm {
     @media (min-width: @screen-sm-min) {
       .control-label {
