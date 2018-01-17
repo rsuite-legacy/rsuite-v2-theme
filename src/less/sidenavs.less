@@ -8,6 +8,11 @@
   transition: width @sidenav-collapse-transition-config;
   width: @sidenav-default-width;
 
+  // Remove <li/> spacing
+  .sidenav-nav > ul {
+    font-size: 0;
+  }
+
   .@{ns}nav-item > .@{ns}nav-item-content,
   .@{ns}dropdown .@{ns}dropdown-toggle {
     padding: @sidenav-padding-vertical @sidenav-padding-horizonal;
@@ -120,11 +125,10 @@
 
   // Expand && Collapse
   .@{ns}dropdown-expand.@{ns}dropdown > .@{ns}dropdown-menu {
-    height: auto;
-
+    .expand-sidenav-dropdown-menu;
     // Submenu
     .@{ns}dropdown-item-submenu.@{ns}dropdown-item-expand > .@{ns}dropdown-item-content > .@{ns}dropdown-menu {
-      height: auto;
+      .expand-sidenav-dropdown-menu;
     }
   }
 
