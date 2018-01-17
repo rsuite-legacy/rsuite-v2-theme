@@ -11,7 +11,7 @@
   .@{ns}nav-item > .@{ns}nav-item-content,
   .@{ns}dropdown .@{ns}dropdown-toggle {
     padding: @sidenav-padding-vertical @sidenav-padding-horizonal;
-    transition: padding-left @sidenav-collapse-transition-config;
+    transition: padding-left @sidenav-collapse-transition-config, @nav-item-transition;
   }
 
   .@{ns}dropdown .@{ns}dropdown-menu {
@@ -69,6 +69,23 @@
     > .@{ns}dropdown-toggle {
       position: absolute;
       top: 0;
+      border-radius: 0;
+    }
+
+    .@{ns}dropdown-toggle-caret::before,
+    .@{ns}dropdown-menu-toggle > .icon::before {
+      content: @dropdown-caret-content;
+    }
+
+    .@{ns}dropdown-toggle-caret,
+    .@{ns}dropdown-menu-toggle > .icon {
+      transition: transform .3s linear;
+    }
+
+    // Expand
+    &.@{ns}dropdown-expand .@{ns}dropdown-toggle-caret,
+    .@{ns}dropdown-item.@{ns}dropdown-item-expand > .@{ns}dropdown-item-content > .@{ns}dropdown-menu-toggle > .icon {
+      transform: rotate(180deg);
     }
 
     // Dropdown menu
@@ -101,6 +118,16 @@
     .ellipsis;
   }
 
+  // Expand && Collapse
+  .@{ns}dropdown-expand.@{ns}dropdown > .@{ns}dropdown-menu {
+    height: auto;
+
+    // Submenu
+    .@{ns}dropdown-item-submenu.@{ns}dropdown-item-expand > .@{ns}dropdown-item-content > .@{ns}dropdown-menu {
+      height: auto;
+    }
+  }
+
   // Level2
   // -----------------
   .@{ns}dropdown-item-submenu > .@{ns}dropdown-item-content > .@{ns}dropdown-menu-toggle {
@@ -112,6 +139,8 @@
       position: absolute;
       right: @sidenav-padding-horizonal;
       top: @sidenav-padding-vertical;
+      width: auto;
+      height: @sidenav-dropdown-toggle-caret-width;
     }
   }
 
@@ -196,7 +225,27 @@
   }
 }
 
-//sidenav-default
+// Alternate Sidenavs
+// --------------------------------------------------
+
+//** Default sidenav
 .@{ns}sidenav-default {
   background-color: @sidenav-deafult-bg;
+
+  .dropdown-menu > li > .dropdown-item-content {
+    color: @sidenav-deafult-font-color;
+
+    &:hover {
+      background-color: transparent;
+      color: @sidenav-deafult-hover-font-color;
+    }
+  }
+}
+
+.@{ns}sidenav-inverse {
+  background-color: @sidenav-inverse-bg;
+}
+
+.@{ns}sidenav-subtle {
+  background-color: @sidenav-subtle-bg;
 }
