@@ -131,11 +131,25 @@
   }
 
   // Expand && Collapse
-  .@{ns}dropdown-expand.@{ns}dropdown > .@{ns}dropdown-menu {
-    .expand-sidenav-dropdown-menu;
-    // Submenu
-    .@{ns}dropdown-item-submenu.@{ns}dropdown-item-expand > .@{ns}dropdown-item-content > .@{ns}dropdown-menu {
-      .expand-sidenav-dropdown-menu;
+  //** Collapse
+  .dropdown,
+  .dropdown-item-submenu .dropdown-item-content {
+    //transition: max-height .5s linear;
+    overflow: hidden;
+    max-height: ~"@{sidenav-item-height}\9\0";
+    animation-duration: .0065s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    animation-name: sideNavDropdownCollapse;
+  }
+
+  //** Expand
+  .@{ns}dropdown-expand.@{ns}dropdown {
+    &,
+    & .@{ns}dropdown-item-submenu.@{ns}dropdown-item-expand > .@{ns}dropdown-item-content {
+      max-height: ~"@{sidenav-menu-max-height}\9\0";
+      animation-duration: @sidenav-menu-animation-time;
+      animation-name: sideNavDropdownExpand;
     }
   }
 

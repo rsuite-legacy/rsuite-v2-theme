@@ -29,3 +29,25 @@
     opacity: 0;
   }
 }
+
+@keyframes sideNavDropdownExpand {
+  from {
+    overflow: visible;
+    max-height: @sidenav-item-height;
+  }
+
+  to {
+    overflow: hidden;
+    max-height: @sidenav-menu-max-height;
+  }
+}
+
+@keyframes sideNavDropdownCollapse {
+  from {
+    max-height: @sidenav-item-height * 2;
+  }
+
+  to {
+    max-height: @sidenav-item-height;
+  }
+}
