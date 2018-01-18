@@ -55,6 +55,12 @@
       top: @sidenav-padding-vertical;
     }
   }
+
+  // Reset border-radius
+  .nav-item:not(.nav-item-active):not(.nav-item-disabled) > .nav-item-content,
+  .@{ns}dropdown .dropdown-toggle {
+    border-radius: 0;
+  }
 }
 
 //** Expanded styles
@@ -71,6 +77,7 @@
   .@{ns}dropdown {
     padding-top: @sidenav-item-height;
 
+    .@{ns}dropdown-menu-active ~ .@{ns}dropdown-toggle,
     > .@{ns}dropdown-toggle {
       position: absolute;
       top: 0;
@@ -235,21 +242,201 @@
 //** Default sidenav
 .@{ns}sidenav-default {
   background-color: @sidenav-deafult-bg;
+}
 
-  .dropdown-menu > li > .dropdown-item-content {
+.@{ns}sidenav-default.@{ns}sidenav-collapse-in,
+.@{ns}sidenav-default.@{ns}sidenav-collapsing {
+  .dropdown-menu > li > .dropdown-item-content,
+  .dropdown-item-content > .dropdown-menu-toggle {
+    color: @sidenav-deafult-font-color;
+
+    &:hover,
+    &:focus {
+      background-color: transparent;
+      color: @sidenav-deafult-hover-font-color;
+    }
+
+    &:active {
+      background-color: @sidenav-deafult-click-bg;
+    }
+  }
+
+  // Reset active dropdown-item-content style
+  .dropdown-menu > li.dropdown-item-active > .dropdown-item-content {
+    color: @sidenav-deafult-active-font-color;
+
+    &,
+    &:hover,
+    &:focus {
+      background-color: @sidenav-deafult-bg;
+    }
+  }
+
+  // Set active Level1 style
+  .dropdown-menu.dropdown-menu-active ~ .dropdown-toggle {
     color: @sidenav-deafult-font-color;
 
     &:hover {
-      background-color: transparent;
-      color: @sidenav-deafult-hover-font-color;
+      background-color: @sidenav-deafult-click-bg;
+    }
+
+    > .icon {
+      color: @sidenav-deafult-active-font-color;
     }
   }
 }
 
+//** Inverse sidenav
 .@{ns}sidenav-inverse {
   background-color: @sidenav-inverse-bg;
+
+  // Active
+  .dropdown .dropdown-menu-active ~ .dropdown-toggle,
+  .@{ns}nav-item .@{ns}nav-item-content,
+  .@{ns}dropdown .@{ns}dropdown-toggle {
+    &,
+    &:hover,
+    &:focus {
+      color: @sidenav-inverse-font-color;
+    }
+  }
+
+  .sidenav-nav .nav-item:not(.nav-item-active) > .nav-item-content,
+  .sidenav-nav .@{ns}dropdown .dropdown-toggle {
+    color: @sidenav-inverse-font-color;
+
+    &:hover,
+    &:focus {
+      background-color: @sidenav-inverse-hover-bg;
+      color: @sidenav-inverse-font-color;
+    }
+
+    &:active {
+      background-color: @sidenav-inverse-active-bg;
+    }
+  }
+
+  .dropdown .dropdown-menu-active ~ .dropdown-toggle,
+  .@{ns}nav-item-active > .@{ns}nav-item-content {
+    background-color: @sidenav-inverse-active-bg;
+  }
+}
+
+.@{ns}sidenav-inverse.@{ns}sidenav-collapse-in,
+.@{ns}sidenav-inverse.@{ns}sidenav-collapsing {
+  .dropdown-menu > li > .dropdown-item-content,
+  .dropdown-item-content > .dropdown-menu-toggle {
+    color: @sidenav-inverse-font-color;
+
+    &:hover,
+    &:focus {
+      background-color: @sidenav-inverse-hover-bg;
+      color: @sidenav-inverse-font-color;
+    }
+
+    &:active {
+      background-color: @sidenav-inverse-active-bg;
+    }
+  }
+
+  // Active
+  .dropdown .dropdown-menu-active ~ .dropdown-toggle,
+  .@{ns}nav-item-active > .@{ns}nav-item-content {
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      color: @sidenav-inverse-font-color;
+      background: @sidenav-inverse-active-bg;
+    }
+  }
+
+  .dropdown-menu > li.dropdown-item-active > .dropdown-item-content {
+    background-color: @sidenav-inverse-bg;
+  }
+
+  // Reset active dropdown-item-content style
+  .dropdown-menu > li.dropdown-item-active:not(.@{ns}dropdown-item-submenu) > .dropdown-item-content {
+    color: @sidenav-inverse-font-color;
+    background-color: @sidenav-inverse-active-bg;
+
+    &,
+    &:hover,
+    &:focus {
+      background-color: @sidenav-inverse-active-bg;
+    }
+  }
+
+  // Set active Level1 style
+  .dropdown-menu.dropdown-menu-active ~ .dropdown-toggle {
+    color: @sidenav-inverse-font-color;
+    background-color: @sidenav-inverse-active-bg;
+
+    &:hover {
+      background-color: @sidenav-inverse-active-bg;
+    }
+
+    > .icon {
+      color: @sidenav-inverse-font-color;
+    }
+  }
 }
 
 .@{ns}sidenav-subtle {
   background-color: @sidenav-subtle-bg;
+
+  .dropdown-open > .dropdown-toggle.btn {
+    background-color: transparent;
+
+    &:hover,
+    &:focus {
+      background-color: @sidenav-deafult-hover-bg;
+    }
+
+    &:active {
+      background-color: @sidenav-deafult-click-bg;
+    }
+  }
+}
+
+.@{ns}sidenav-subtle.@{ns}sidenav-collapse-in,
+.@{ns}sidenav-subtle.@{ns}sidenav-collapsing {
+  .dropdown-menu > li > .dropdown-item-content,
+  .dropdown-item-content > .dropdown-menu-toggle {
+    color: @sidenav-deafult-font-color;
+
+    &:hover,
+    &:focus {
+      background-color: transparent;
+      color: @sidenav-deafult-hover-font-color;
+    }
+
+    &:active {
+      background-color: @sidenav-deafult-click-bg;
+    }
+  }
+
+  // Reset active dropdown-item-content style
+  .dropdown-menu > li.dropdown-item-active > .dropdown-item-content {
+    color: @sidenav-deafult-active-font-color;
+
+    &,
+    &:hover,
+    &:focus {
+      background-color: @sidenav-subtle-bg;
+    }
+  }
+
+  // Set active Level1 style
+  .dropdown-menu.dropdown-menu-active ~ .dropdown-toggle {
+    color: @sidenav-deafult-font-color;
+
+    &:hover {
+      background-color: @sidenav-deafult-click-bg;
+    }
+
+    > .icon {
+      color: @sidenav-deafult-active-font-color;
+    }
+  }
 }
