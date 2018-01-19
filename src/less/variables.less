@@ -208,6 +208,8 @@
 @btn-spin-light-invert-color: @B500;
 //== Btn Group
 @btn-group-disabled-active-color: @B500;
+//== other
+@ripple-transition:background-color .3s linear, border-bottom-color .3s linear;
 
 //== Forms
 //
@@ -520,35 +522,11 @@
 //##
 
 @pagination-color: @B900;
-@pagination-bg: @base-bg-color;
-@pagination-border: @base-bg-color;
-
-@pagination-hover-color: @pagination-color;
-@pagination-hover-bg: darken(@base-bg-color, 5%);
-@pagination-hover-border: darken(@base-bg-color, 5%);
-
-@pagination-active-color: @pagination-color;
-@pagination-active-bg: darken(@base-bg-color, 10%);
-@pagination-active-border: darken(@base-bg-color, 10%);
-
-@pagination-disabled-color: @text-color;
-@pagination-disabled-bg: @gray-lighter;
-@pagination-disabled-border: @gray-lighter;
-
-//== Pager
-//
-//##
-
-@pager-bg: @pagination-bg;
-@pager-border: @pagination-border;
-@pager-border-radius: 15px;
-
-@pager-hover-bg: @pagination-hover-bg;
-
-@pager-active-bg: @pagination-active-bg;
-@pager-active-color: @pagination-active-color;
-
-@pager-disabled-color: @pagination-disabled-color;
+@pagination-hover-color: @btn-subtle-default-hover-color;
+@pagination-active-color: @H500;
+@pagination-hover-bg: @btn-subtle-hover-bg;
+@pagination-active-bg: @btn-subtle-active-default-bg;
+@pagination-transition:  @ripple-transition, color .3s linear;
 
 //== Form states and alerts
 //

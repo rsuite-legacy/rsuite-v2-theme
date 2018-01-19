@@ -305,7 +305,7 @@
 }
 
 // Button ripple
-.button-ripple(@transition:background-color .3s linear, border-bottom-color .3s linear;) when (@button-ripple = true) {
+.button-ripple(@transition:@ripple-transition) when (@button-ripple = true) {
   overflow: hidden;
   position: relative;
   transition: @transition;
