@@ -6,14 +6,13 @@
   padding: @breadcrumb-padding-vertical @breadcrumb-padding-horizontal;
   margin-bottom: @line-height-computed;
   list-style: none;
-  background-color: @breadcrumb-bg;
-  border-radius: @border-radius-base;
 
   > li {
     display: inline-block;
 
     a {
       cursor: pointer;
+      transition: color .3s linear;
     }
 
     + .breadcrumb-separator {
