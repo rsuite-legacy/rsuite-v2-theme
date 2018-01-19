@@ -136,9 +136,14 @@
     overflow: hidden;
   }
 
-  .@{ns}dropdown.@{ns}dropdown-collapse > .@{ns}dropdown-menu:not(.@{ns}dropdown-menu-collapsing),
-  .@{ns}dropdown-item-submenu.@{ns}dropdown-item-collapse > .@{ns}dropdown-item-content > .@{ns}dropdown-menu:not(.@{ns}dropdown-menu-collapsing) {
-    height: 0;
+  .@{ns}dropdown.@{ns}dropdown-collapse > .@{ns}dropdown-menu.dropdown-menu-collapse-out,
+  .@{ns}dropdown-item-submenu.@{ns}dropdown-item-collapse > .@{ns}dropdown-item-content > .@{ns}dropdown-menu.dropdown-menu-collapse-out {
+    display: none;
+  }
+
+  .@{ns}dropdown.@{ns}dropdown-menu-collapse-in > .@{ns}dropdown-menu.dropdown-menu-collapse-in,
+  .@{ns}dropdown-item-submenu.@{ns}dropdown-menu-collapse-in > .@{ns}dropdown-item-content > .@{ns}dropdown-menu.dropdown-menu-collapse-in {
+    display: block;
   }
 
   // Level2
