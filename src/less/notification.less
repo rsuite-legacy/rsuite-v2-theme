@@ -88,8 +88,9 @@
   }
 
   .@{notification-ns}-fade-leave-active {
-    display: ~"none\9\0";
     animation-name: notificationMoveOut;
+    // IE hack
+    .ie-display-none;
   }
 }
 

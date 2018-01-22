@@ -110,8 +110,9 @@
   }
 
   &.message-hiding {
-    display: ~"none\9\0";
     animation: messageMoveOut .3s linear forwards;
+    // IE hack
+    .ie-display-none;
   }
 }
 

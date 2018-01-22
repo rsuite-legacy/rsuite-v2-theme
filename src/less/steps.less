@@ -41,6 +41,11 @@
     color: @steps-icon-process-color;
   }
 
+  .@{ns}steps-item-status-error & {
+    border-color: @steps-error-color;
+    color: @steps-error-color;
+  }
+
   // Icon content
   > .@{ns}steps-item-icon {
     width: 100%;
@@ -65,6 +70,10 @@
   .@{ns}steps-item-status-process & {
     color: @steps-content-process-color;
   }
+
+  .@{ns}steps-item-status-error & {
+    color: @steps-error-color;
+  }
 }
 
 // Item title
@@ -83,6 +92,19 @@
 
 .@{ns}steps-item-tail {
   position: absolute;
+  border-color: @steps-default-color;
+
+  .@{ns}steps-item-status-process & {
+    border-color: @steps-content-process-color;
+  }
+
+  .@{ns}steps-item-status-finish & {
+    border-color: @steps-icon-finish-color;
+  }
+
+  .@{ns}steps-next-error & {
+    border-color: @steps-error-color;
+  }
 }
 
 // Horizontal
@@ -109,16 +131,37 @@
         left: @steps-icon-space-width + @steps-item-spacing;
       }
     }
-
-    &:last-child {
-      width: 58px;
-    }
   }
 
   .@{ns}steps-item-tail {
     top: @steps-icon-diameter/2;
     left: @steps-icon-space-width;
     width: 100%;
-    border-top: 1px solid @steps-default-color;
+    border-top-width: 1px;
+    border-top-style: solid;
+  }
+}
+
+// Verticla
+.@{ns}steps-vertical {
+  .@{ns}steps-item {
+    padding-bottom: 20px;
+
+    // There is a 10px spacing between each item.
+    &:not(:first-child) {
+      margin-top: @steps-item-spacing;
+    }
+
+    &:last-child .@{ns}steps-item-tail {
+      display: none;
+    }
+  }
+
+  .@{ns}steps-item-tail {
+    top: @steps-icon-space-width;
+    bottom: 0;
+    left: @steps-icon-diameter/2;
+    border-left-width: 1px;
+    border-left-style: solid;
   }
 }

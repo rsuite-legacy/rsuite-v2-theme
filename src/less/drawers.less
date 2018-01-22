@@ -19,9 +19,9 @@
 
   // When fading in the modal, animate it to slide down
   &.fade .drawer-dialog {
-    display: ~"none\9\0";
-
     .drawer-animation(cubic-bezier(0.4, 0, 1, 1)); //Fast out
+    // IE hack
+    .ie-display-none;
   }
 
   &.in .drawer-dialog {

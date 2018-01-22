@@ -71,8 +71,9 @@
   }
 
   .@{notification-ns}-fade-leave-active {
-    display: ~"none\9\0";
     animation: alertMoveOut .3s linear forwards;
+    // IE hack
+    .ie-display-none;
   }
 }
 
