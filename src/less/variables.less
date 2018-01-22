@@ -209,7 +209,7 @@
 //== Btn Group
 @btn-group-disabled-active-color: @B500;
 //== other
-@ripple-transition:background-color .3s linear, border-bottom-color .3s linear;
+@ripple-transition: background-color .3s linear, border-bottom-color .3s linear;
 
 //== Forms
 //
@@ -525,7 +525,28 @@
 @pagination-active-color: @H500;
 @pagination-hover-bg: @btn-subtle-hover-bg;
 @pagination-active-bg: @btn-subtle-active-default-bg;
-@pagination-transition:  @ripple-transition, color .3s linear;
+@pagination-transition: @ripple-transition, color .3s linear;
+
+//== Steps
+//
+//##
+
+@steps-bg: @B000;
+@steps-icon-diameter: 30px;
+@steps-default-color: @B600;
+@steps-icon-finish-color: @H500;
+@steps-icon-process-bg: @H500;
+@steps-icon-process-color: @B000;
+@steps-content-process-color: @B800;
+@steps-icon-spacing: 10px;
+@steps-item-spacing: 10px;
+// This space place the steps-icon
+@steps-icon-space-width: @steps-icon-diameter+ @steps-icon-spacing;
+@steps-icon-size: @font-size-large;
+@steps-icon-line-height: unit(@steps-icon-diameter/@font-size-large);
+@steps-title-font-size: @font-size-large;
+@steps-title-line-height: unit(@steps-icon-diameter/@font-size-large);
+@steps-description-margin-top: 16px;
 
 //== Form states and alerts
 //

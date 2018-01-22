@@ -1,0 +1,124 @@
+//
+// Steps
+// --------------------------------------------------
+.@{ns}steps {
+  min-height: @steps-icon-diameter;
+}
+
+// Item
+// --------------------------
+.@{ns}steps-item {
+  padding-left: @steps-icon-space-width;
+  position: relative;
+  overflow: hidden;
+}
+
+// Item icon
+.@{ns}steps-item-icon-wrapper {
+  display: block;
+  width: @steps-icon-diameter;
+  height: @steps-icon-diameter;
+  border-width: 1px;
+  border-style: solid;
+  border-color: @steps-default-color;
+  border-radius: 50%;
+  text-align: center;
+  font-size: @steps-icon-size;
+  line-height: @steps-icon-line-height;
+  color: @steps-default-color;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  .@{ns}steps-item-status-finish & {
+    border-color: @steps-icon-finish-color;
+    color: @steps-icon-finish-color;
+  }
+
+  .@{ns}steps-item-status-process & {
+    border-color: @steps-icon-process-bg;
+    background: @steps-icon-process-bg;
+    color: @steps-icon-process-color;
+  }
+
+  // Icon content
+  > .@{ns}steps-item-icon {
+    width: 100%;
+    display: block;
+    text-align: center;
+
+    .@{ns}icon {
+      line-height: 1;
+      vertical-align: baseline;
+    }
+  }
+}
+
+// Item content
+// --------------------------
+.@{ns}steps-item-content {
+  color: @steps-default-color;
+  display: inline-block;
+  // Change static to relative, Make `z-index` more than Tail line
+  position: relative;
+
+  .@{ns}steps-item-status-process & {
+    color: @steps-content-process-color;
+  }
+}
+
+// Item title
+.@{ns}steps-item-title {
+  font-size: @steps-title-font-size;
+  line-height: @steps-title-line-height;
+  padding-right: @steps-icon-spacing;
+  background: @steps-bg;
+  display: inline-block;
+}
+
+// Item description
+.@{ns}steps-item-description {
+  margin-top: @steps-description-margin-top;
+}
+
+.@{ns}steps-item-tail {
+  position: absolute;
+}
+
+// Horizontal
+.@{ns}steps-horizontal {
+  display: table;
+  width: 100%;
+
+  .@{ns}steps-item {
+    display: table-cell;
+    box-sizing: content-box;
+    vertical-align: top;
+    // To ensure that the width of each item is evenly distributed
+    max-width: 1px;
+
+    // There is a 10px spacing between each item.
+    &:not(:first-child) {
+      padding-left: @steps-icon-space-width + @steps-item-spacing;
+
+      .@{ns}steps-item-icon-wrapper {
+        left: @steps-item-spacing;
+      }
+
+      .@{ns}steps-item-tail {
+        left: @steps-icon-space-width + @steps-item-spacing;
+      }
+    }
+
+    &:last-child {
+      width: 58px;
+    }
+  }
+
+  .@{ns}steps-item-tail {
+    top: @steps-icon-diameter/2;
+    left: @steps-icon-space-width;
+    width: 100%;
+    border-top: 1px solid @steps-default-color;
+  }
+}
