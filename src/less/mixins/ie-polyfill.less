@@ -1,7 +1,27 @@
-.ie-border-none {
+.ie-border-none() when (@ie-polyfill = true) {
   border: ~"none@{ieSuffix}";
 }
 
-.ie-display-none {
+.ie-display-none() when (@ie-polyfill = true) {
   display: ~"none@{ieSuffix}";
+}
+
+.ie-display-table() when (@ie-polyfill = true) {
+  display: ~"table@{ieSuffix}";
+}
+
+.ie-display-table-cell() when (@ie-polyfill = true) {
+  display: ~"table-cell@{ieSuffix}";
+}
+
+.ie-width-full() when (@ie-polyfill = true) {
+  width: ~"100%@{ieSuffix}";
+}
+
+.ie-max-width-1px() when (@ie-polyfill = true) {
+  max-width: ~"1px@{ieSuffix}";
+}
+
+.ie-vertical-align-top() when (@ie-polyfill = true) {
+  vertical-align: ~"top@{ieSuffix}";
 }
