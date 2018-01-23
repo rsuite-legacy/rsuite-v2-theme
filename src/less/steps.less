@@ -109,15 +109,24 @@
 
 // Horizontal
 .@{ns}steps-horizontal {
-  display: table;
-  width: 100%;
+  display: flex;
+  justify-content: space-between;
 
   .@{ns}steps-item {
-    display: table-cell;
-    box-sizing: content-box;
-    vertical-align: top;
-    // To ensure that the width of each item is evenly distributed
-    max-width: 1px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-height: @steps-icon-diameter;
+
+    // The last node is self-adaptive width.
+    &:last-child {
+      flex-grow: 0;
+      flex-shrink: 0;
+
+      // The last item hidden tail line
+      .@{ns}steps-item-tail {
+        display: none;
+      }
+    }
 
     // There is a 10px spacing between each item.
     &:not(:first-child) {
