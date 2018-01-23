@@ -219,6 +219,8 @@
 @padding-base-input-vertical: @padding-base-vertical;
 @padding-base-input-horizontal: @padding-base-horizontal;
 
+@input-border-width: 1px;
+
 //** `<input>` background color
 @input-bg: #fff;
 //** `<input disabled>` background color
@@ -233,22 +235,23 @@
 // This has no effect on `<select>`s  in some browsers, due to the limited stylability of `<select>`s in CSS.
 @input-border-radius: @border-radius-base;
 //** Large `.form-control` border radius
-@input-border-radius-large: @border-radius-large;
+@input-border-radius-large: @border-radius-base;
 //** Small `.form-control` border radius
-@input-border-radius-small: @border-radius-small;
+@input-border-radius-small: @border-radius-base;
 
 //** Border color for inputs on focus
-@input-border-focus: @B600;
+@input-border-focus: @H500;
 
 //** Placeholder text color
-@input-color-placeholder: #999;
+@input-color-placeholder: @B600;
 
 //** Default `.form-control` height
-@input-height-base: (@line-height-computed + (@padding-base-vertical * 2) + 2);
+@input-height-base: @line-height-computed + (@padding-base-vertical * 2);
 //** Large `.form-control` height
-@input-height-large: (ceil(@font-size-large * @line-height-large)+(@padding-large-vertical * 2)+2);
+@input-height-large: @line-height-large-computed + (@padding-large-vertical * 2);
 //** Small `.form-control` height
-@input-height-small: (floor(@font-size-small * @line-height-small)+(@padding-small-vertical * 2)+2);
+@input-height-small: @line-height-computed + (@padding-small-vertical * 2);
+@input-height-xs: @line-height-computed + (@padding-xs-vertical * 2);
 
 //** `.form-group` margin
 @form-group-margin-bottom: @base-unit-px;

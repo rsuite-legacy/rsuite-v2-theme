@@ -93,20 +93,23 @@ input[type="checkbox"]:focus {
   display: block;
   width: 100%;
   height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
-  padding: @padding-base-input-vertical @padding-base-input-horizontal;
+  padding: (@padding-base-input-vertical - @input-border-width) (@padding-base-input-horizontal - @input-border-width);
   font-size: @font-size-base;
   line-height: @line-height-base;
   color: @input-color;
   background-color: @input-bg;
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
-  border: 1px solid @input-border;
+  border: @input-border-width solid @input-border;
   border-radius: @input-border-radius; // Note: This has no effect on <select>s in some browsers, due to the limited stylability of <select>s in CSS.
-  transition: border-color ease-in-out .15s;
-  // Customize the `:focus` state to imitate native WebKit styles.
-  .form-control-focus();
-
+  transition: border-color ease-in-out .3s;
   // Placeholder
-  .placeholder();
+  .placeholder;
+
+  &:focus,
+  &:hover {
+    border-color: @input-border-focus;
+    outline: 0;
+  }
 
   // Unstyle the caret on `<select>`s in IE10+.
   &::-ms-expand {
@@ -123,7 +126,6 @@ input[type="checkbox"]:focus {
   &[disabled],
   fieldset[disabled] & {
     background-color: @input-bg-disabled;
-    opacity: 1; // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655
     cursor: @cursor-disabled;
   }
 
@@ -131,11 +133,6 @@ input[type="checkbox"]:focus {
   textarea& {
     height: auto;
     resize: none;
-  }
-
-  //Reset padding for `select`
-  select& {
-    padding: 0;
   }
 }
 
@@ -218,26 +215,6 @@ input[type="checkbox"]:focus {
   margin-left: 10px; // space out consecutive inline controls
 }
 
-// Static form control text
-//
-// Apply class to a `p` element to make any string of text align with labels in
-// a horizontal form layout.
-
-.form-control-static {
-  // Size it appropriately next to real form controls
-  padding-top: (@padding-base-vertical + 1);
-  padding-bottom: (@padding-base-vertical + 1);
-  // Remove default margin from `p`
-  margin-bottom: 0;
-  min-height: (@line-height-computed + @font-size-base);
-
-  &.input-lg,
-  &.input-sm {
-    padding-left: 0;
-    padding-right: 0;
-  }
-}
-
 // Form control sizing
 //
 // Build on `.form-control` with modifier classes to decrease or increase the
@@ -246,68 +223,16 @@ input[type="checkbox"]:focus {
 // The `.form-group-* form-control` variations are sadly duplicated to avoid the
 // issue documented in https://github.com/twbs/bootstrap/issues/15074.
 
-.input-sm {
-  .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @input-border-radius-small);
+.input-xs {
+  .input-size(@input-height-xs; @padding-xs-vertical; @padding-base-input-horizontal; @font-size-small; @line-height-base; @input-border-radius);
 }
 
-.form-group-sm {
-  .form-control {
-    height: @input-height-small;
-    padding: @padding-small-vertical @padding-small-horizontal;
-    font-size: @font-size-small;
-    line-height: @line-height-small;
-    border-radius: @input-border-radius-small;
-  }
-
-  select.form-control {
-    height: @input-height-small;
-    line-height: @input-height-small;
-  }
-
-  textarea.form-control,
-  select[multiple].form-control {
-    height: auto;
-  }
-
-  .form-control-static {
-    height: @input-height-small;
-    min-height: (@line-height-computed + @font-size-small);
-    padding: (@padding-small-vertical + 1) @padding-small-horizontal;
-    font-size: @font-size-small;
-    line-height: @line-height-small;
-  }
+.input-sm {
+  .input-size(@input-height-small; @padding-small-vertical; @padding-base-input-horizontal; @font-size-base; @line-height-base; @input-border-radius);
 }
 
 .input-lg {
-  .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @input-border-radius-large);
-}
-
-.form-group-lg {
-  .form-control {
-    height: @input-height-large;
-    padding: @padding-large-vertical @padding-large-horizontal;
-    font-size: @font-size-large;
-    line-height: @line-height-large;
-    border-radius: @input-border-radius-large;
-  }
-
-  select.form-control {
-    height: @input-height-large;
-    line-height: @input-height-large;
-  }
-
-  textarea.form-control,
-  select[multiple].form-control {
-    height: auto;
-  }
-
-  .form-control-static {
-    height: @input-height-large;
-    min-height: (@line-height-computed + @font-size-large);
-    padding: (@padding-large-vertical + 1) @padding-large-horizontal;
-    font-size: @font-size-large;
-    line-height: @line-height-large;
-  }
+  .input-size(@input-height-large; @padding-large-vertical; @padding-base-input-horizontal; @font-size-large; @line-height-large; @input-border-radius);
 }
 
 // Form control feedback states
