@@ -68,27 +68,6 @@ input[type="checkbox"]:focus {
 }
 
 // Common form controls
-//
-// Shared size and type resets for form controls. Apply `.form-control` to any
-// of the following form controls:
-//
-// select
-// textarea
-// input[type="text"]
-// input[type="password"]
-// input[type="datetime"]
-// input[type="datetime-local"]
-// input[type="date"]
-// input[type="month"]
-// input[type="time"]
-// input[type="week"]
-// input[type="number"]
-// input[type="email"]
-// input[type="url"]
-// input[type="search"]
-// input[type="tel"]
-// input[type="color"]
-
 .form-control {
   display: block;
   width: 100%;
@@ -102,8 +81,11 @@ input[type="checkbox"]:focus {
   border: @input-border-width solid @input-border;
   border-radius: @input-border-radius; // Note: This has no effect on <select>s in some browsers, due to the limited stylability of <select>s in CSS.
   transition: border-color ease-in-out .3s;
+
   // Placeholder
-  .placeholder;
+  &::placeholder {
+    color: @input-color-placeholder;
+  }
 
   &:focus,
   &:hover {
@@ -111,20 +93,7 @@ input[type="checkbox"]:focus {
     outline: 0;
   }
 
-  // Unstyle the caret on `<select>`s in IE10+.
-  &::-ms-expand {
-    border: 0;
-    background-color: transparent;
-  }
-
-  // Disabled and read-only inputs
-  //
-  // HTML5 says that controls under a fieldset > legend:first-child won't be
-  // disabled if the fieldset is disabled. Due to implementation difficulty, we
-  // don't honor that edge case; we style them as disabled anyway.
-  //&[readonly],
-  &[disabled],
-  fieldset[disabled] & {
+  &[disabled] {
     background-color: @input-bg-disabled;
     cursor: @cursor-disabled;
   }
@@ -134,6 +103,19 @@ input[type="checkbox"]:focus {
     height: auto;
     resize: none;
   }
+}
+
+// Form control sizing
+.input-xs {
+  .input-size(@input-height-xs; @padding-xs-vertical; @padding-base-input-horizontal; @font-size-small; @line-height-base; @input-border-radius);
+}
+
+.input-sm {
+  .input-size(@input-height-small; @padding-small-vertical; @padding-base-input-horizontal; @font-size-base; @line-height-base; @input-border-radius);
+}
+
+.input-lg {
+  .input-size(@input-height-large; @padding-large-vertical; @padding-base-input-horizontal; @font-size-large; @line-height-large; @input-border-radius);
 }
 
 // Form groups
@@ -213,26 +195,6 @@ input[type="checkbox"]:focus {
 .checkbox-inline + .checkbox-inline {
   margin-top: 0;
   margin-left: 10px; // space out consecutive inline controls
-}
-
-// Form control sizing
-//
-// Build on `.form-control` with modifier classes to decrease or increase the
-// height and font-size of form controls.
-//
-// The `.form-group-* form-control` variations are sadly duplicated to avoid the
-// issue documented in https://github.com/twbs/bootstrap/issues/15074.
-
-.input-xs {
-  .input-size(@input-height-xs; @padding-xs-vertical; @padding-base-input-horizontal; @font-size-small; @line-height-base; @input-border-radius);
-}
-
-.input-sm {
-  .input-size(@input-height-small; @padding-small-vertical; @padding-base-input-horizontal; @font-size-base; @line-height-base; @input-border-radius);
-}
-
-.input-lg {
-  .input-size(@input-height-large; @padding-large-vertical; @padding-base-input-horizontal; @font-size-large; @line-height-large; @input-border-radius);
 }
 
 // Form control feedback states
