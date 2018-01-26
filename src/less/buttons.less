@@ -203,7 +203,7 @@
 }
 
 // Subtle Button
-.@{ns}btn-subtle {
+.btn-subtle() {
   .button-ripple;
   .btn-transition;
   .btn-subtle-variant(@btn-subtle-hover-bg);
@@ -230,6 +230,10 @@
   }
 
   .generate-spectrum-subtle-btns();
+}
+
+.@{ns}btn-subtle {
+  .btn-subtle;
 }
 
 // Ghost Button

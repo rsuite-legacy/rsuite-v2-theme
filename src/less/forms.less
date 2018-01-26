@@ -5,29 +5,6 @@
 // Normalize non-controls
 //
 // Restyle and baseline non-control form elements.
-
-fieldset {
-  padding: 0;
-  margin: 0;
-  border: 0;
-  // Chrome and Firefox set a `min-width: min-content;` on fieldsets,
-  // so we reset that to ensure it behaves more like a standard block element.
-  // See https://github.com/twbs/bootstrap/issues/12359.
-  min-width: 0;
-}
-
-legend {
-  display: block;
-  width: 100%;
-  padding: 0;
-  margin-bottom: @line-height-computed;
-  font-size: (@font-size-base * 1.5);
-  line-height: inherit;
-  color: @legend-color;
-  border: 0;
-  border-bottom: 1px solid @legend-border-color;
-}
-
 label {
   display: inline-block;
   margin-bottom: 5px;
@@ -38,27 +15,6 @@ label {
 // While most of our form styles require extra classes, some basic normalization
 // is required to ensure optimum display with or without those classes to better
 // address browser inconsistencies.
-
-// Override content-box in Normalize (* isn't specific enough)
-input[type="search"] {
-  box-sizing: border-box;
-}
-
-input[type="file"] {
-  display: block;
-}
-
-// Make range inputs behave like textual form controls
-input[type="range"] {
-  display: block;
-  width: 100%;
-}
-
-// Make multiple select elements height not fixed
-select[multiple],
-select[size] {
-  height: auto;
-}
 
 // Focus for file, radio, and checkbox
 input[type="file"]:focus,
@@ -80,7 +36,7 @@ input[type="checkbox"]:focus {
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: @input-border-width solid @input-border;
   border-radius: @input-border-radius; // Note: This has no effect on <select>s in some browsers, due to the limited stylability of <select>s in CSS.
-  transition: border-color ease-in-out .3s;
+  transition: @input-transition;
 
   // Placeholder
   &::placeholder {
@@ -95,6 +51,7 @@ input[type="checkbox"]:focus {
 
   &[disabled] {
     background-color: @input-bg-disabled;
+    color: @input-color-disabled;
     cursor: @cursor-disabled;
   }
 
@@ -110,12 +67,12 @@ input[type="checkbox"]:focus {
   .input-size(@input-height-xs; @padding-xs-vertical; @padding-base-input-horizontal; @font-size-small; @line-height-base; @input-border-radius);
 }
 
-.input-sm {
-  .input-size(@input-height-small; @padding-small-vertical; @padding-base-input-horizontal; @font-size-base; @line-height-base; @input-border-radius);
-}
-
 .input-lg {
   .input-size(@input-height-large; @padding-large-vertical; @padding-base-input-horizontal; @font-size-large; @line-height-large; @input-border-radius);
+}
+
+.input-sm {
+  .input-size(@input-height-small; @padding-small-vertical; @padding-base-input-horizontal; @font-size-base; @line-height-base; @input-border-radius);
 }
 
 // Form groups
@@ -197,50 +154,7 @@ input[type="checkbox"]:focus {
   margin-left: 10px; // space out consecutive inline controls
 }
 
-// Form control feedback states
-//
-// Apply contextual and semantic states to individual form controls.
-
-.has-feedback {
-  // Enable absolute positioning
-  position: relative;
-
-  // Ensure icons don't overlap text
-  .form-control {
-    padding-right: (@input-height-base * 1.25);
-  }
-}
-
-// Feedback icon (requires .glyphicon classes)
-.form-control-feedback {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: @zindex-input; // Ensure icon is above input groups
-  display: block;
-  width: @input-height-base;
-  height: @input-height-base;
-  line-height: @input-height-base;
-  text-align: center;
-  pointer-events: none;
-}
-
-.input-lg + .form-control-feedback,
-.input-group-lg + .form-control-feedback,
-.form-group-lg .form-control + .form-control-feedback {
-  width: @input-height-large;
-  height: @input-height-large;
-  line-height: @input-height-large;
-}
-
-.input-sm + .form-control-feedback,
-.input-group-sm + .form-control-feedback,
-.form-group-sm .form-control + .form-control-feedback {
-  width: @input-height-small;
-  height: @input-height-small;
-  line-height: @input-height-small;
-}
-
+// Form control error states
 .has-error {
   //.form-control-validation(@state-danger-text; @state-danger-text; @state-danger-bg);
 
@@ -250,17 +164,6 @@ input[type="checkbox"]:focus {
     animation-duration: .5s;
     animation-fill-mode: both;
     animation-timing-function: ease-in-out;
-  }
-}
-
-// Reposition feedback icon if input has visible label above
-.has-feedback label {
-  & ~ .form-control-feedback {
-    top: (@line-height-computed + 5); // Height of the `label` and its margin
-  }
-
-  &.sr-only ~ .form-control-feedback {
-    top: 0;
   }
 }
 

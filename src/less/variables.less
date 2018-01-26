@@ -227,9 +227,11 @@
 @input-bg-disabled: @gray-lighter;
 
 //** Text color for `<input>`s
-@input-color: @gray;
+@input-color: @B800;
+//** Text disabled color
+@input-color-disabled: @B400;
 //** `<input>` border color
-@input-border: #ccc;
+@input-border: @B200;
 
 //** Default `.form-control` border radius
 // This has no effect on `<select>`s  in some browsers, due to the limited stylability of `<select>`s in CSS.
@@ -241,6 +243,9 @@
 
 //** Border color for inputs on focus
 @input-border-focus: @H500;
+
+//** Input transition
+@input-transition: border-color ease-in-out .3s;
 
 //** Placeholder text color
 @input-color-placeholder: @B600;
@@ -260,7 +265,7 @@
 @legend-border-color: #e5e5e5;
 
 //** Background color for textual input addons
-@input-group-addon-bg: @gray-lighter;
+@input-group-addon-bg: @B050;
 //** Border color for textual input addons
 @input-group-addon-border-color: @input-border;
 
