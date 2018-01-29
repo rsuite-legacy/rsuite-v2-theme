@@ -150,7 +150,7 @@
   // Ripple
   .@{ns}nav-default &-item-content,
   .@{ns}nav-tabs &-item-content {
-    .button-ripple;
+    .button-ripple(@nav-item-transition);
   }
 }
 
@@ -269,19 +269,34 @@
     .@{ns}nav-waterline {
       border-top: @nav-subtle-default-waterline;
     }
-
     // Active item
-    .@{ns}nav-item.@{ns}nav-item-active > .@{ns}nav-item-content {
-      @active-padding-spacing: @nav-item-padding-vertical - @nav-subtle-waterline-width;
+    .@{ns}nav-item {
+      > .@{ns}nav-item-content {
+        position: relative;
 
-      border-bottom: @nav-subtle-waterline-width solid @nav-subtle-waterline-active-color;
-      padding-bottom: @active-padding-spacing;
+        &::before {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          right: 50%;
+          height: @nav-subtle-waterline-width;
+          background-color: @nav-subtle-waterline-active-color;
+          transition-property: left, right;
+          transition-duration: .3s;
+          transition-timing-function: ease-out;
 
-      // Reversed
-      .@{ns}nav-reversed& {
-        border-bottom: none;
-        border-top: @nav-subtle-waterline-width solid @nav-subtle-waterline-active-color;
-        padding-top: @active-padding-spacing;
+          // Reversed
+          .@{ns}nav-reversed& {
+            bottom: auto;
+            top: 0;
+          }
+        }
+      }
+
+      &.@{ns}nav-item-active > .@{ns}nav-item-content::before {
+        left: 0;
+        right: 0;
       }
     }
   }
@@ -295,17 +310,33 @@
     }
 
     // Active item
-    .@{ns}nav-item.@{ns}nav-item-active > .@{ns}nav-item-content {
-      @active-padding-spacing: @nav-item-padding-horizontal - @nav-subtle-waterline-width;
+    .@{ns}nav-item {
+      > .@{ns}nav-item-content {
+        position: relative;
 
-      border-right: @nav-subtle-waterline-width solid @nav-subtle-waterline-active-color;
-      padding-right: @active-padding-spacing;
+        &::before {
+          content: "";
+          position: absolute;
+          right: 0;
+          top: 50%;
+          bottom: 50%;
+          width: @nav-subtle-waterline-width;
+          background-color: @nav-subtle-waterline-active-color;
+          transition-property: top, bottom;
+          transition-duration: .3s;
+          transition-timing-function: ease-out;
 
-      // Reversed
-      .@{ns}nav-reversed& {
-        border-right: none;
-        border-left: @nav-subtle-waterline-width solid @nav-subtle-waterline-active-color;
-        padding-left: @active-padding-spacing;
+          // Reversed
+          .@{ns}nav-reversed& {
+            right: auto;
+            left: 0;
+          }
+        }
+      }
+
+      &.@{ns}nav-item-active > .@{ns}nav-item-content::before {
+        top: 0;
+        bottom: 0;
       }
     }
   }
