@@ -139,6 +139,9 @@
   color: @modal-close-btn-color;
   width: @line-height-computed;
   padding: 0 @padding-right;
+  background: none;
+  // IE polyfill
+  .ie-border-style(none);
 
   &::before {
     content: @alert-close-button-content;
