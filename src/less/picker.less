@@ -134,8 +134,7 @@
     cursor: default;
     transition: @picker-item-transition;
 
-    &:hover,
-    &:focus {
+    &:hover {
       background-color: @picker-select-menu-item-hover-bg;
     }
 
@@ -192,6 +191,7 @@
 
     &.@{tns}picker-select-menu-item-disabled {
       color: @picker-select-menu-item-disabled-color;
+      cursor: @cursor-disabled;
     }
   }
 
