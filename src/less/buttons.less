@@ -4,8 +4,7 @@
 
 // Base styles
 // --------------------------------------------------
-
-.@{ns}btn {
+.btn() {
   display: inline-block;
   margin-bottom: 0; // For input.btn
   font-weight: @btn-font-weight;
@@ -60,6 +59,10 @@
       pointer-events: none; // Future-proof disabling of clicks on `<a>` elements
     }
   }
+}
+
+.@{ns}btn {
+  .btn;
 }
 
 // Circle Button

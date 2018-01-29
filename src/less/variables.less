@@ -2,6 +2,7 @@
 
 // NameSpace
 @ns: ~'`String("")`';
+@tns: rs-;
 // Ie stuffix
 @ieSuffix: ~"\9";
 // Control enable ie polyfill
@@ -55,6 +56,7 @@
 //## Font, line-height, and color for body text, headings, and more.
 
 @font-family-base: "Microsoft YaHei", "Hiragino Sans GB", STXihei, "Open Sans", sans-serif;
+@font-family-icon: "RSuiteIconFont";
 
 @font-size-base: 14px;
 @font-size-large: 16px;
@@ -284,6 +286,7 @@
 @dropdown-bg: #fff;
 //** Divider color for between dropdown items.
 @dropdown-divider-bg: #e5e5e5;
+@dropdown-shadow: 0 0 10px rgba(0, 0, 0, .06), 0 4px 4px rgba(0, 0, 0, .12);
 
 //** Dropdown link text color.
 @dropdown-link-color: @B900;
@@ -899,6 +902,30 @@
 
 @panel-danger-text: @state-error-text;
 @panel-danger-heading-bg: @state-error-bg;
+
+//== Picker
+@picker-bg: @dropdown-bg;
+@picker-shadow: @dropdown-shadow;
+//** Picker menu padding
+@picker-menu-padding: 12px;
+//** Dropdown item content vertical padding
+@picker-item-content-padding-vertical: 8px;
+//** Dropdown item content horizontal padding
+@picker-item-content-padding-horizontal: 12px;
+//** group title
+@picker-group-title-color: @B900;
+@picker-group-children-padding-left: 26px;
+@picker-group-select-menu-gap: 6px;
+@picker-group-select-menu-lin-color: @dropdown-divider-bg;
+@picker-select-menu-item-color: @B800;
+@picker-select-menu-item-hover-bg: @H050;
+@picker-select-menu-item-selected-bg: @H500;
+@picker-select-menu-item-selected-color: @B000;
+@picker-select-menu-item-disabled-color: @B400;
+@picker-selected-value-color: @H500;
+@picker-select-arrow-down: "\F0D7";
+@picker-item-transition:color .3s linear, background-color .3s linear;
+@picker-icon-transform-distance:30px;
 
 //== Breadcrumbs
 //
