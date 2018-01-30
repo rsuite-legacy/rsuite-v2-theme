@@ -30,9 +30,7 @@
   }
 }
 
-//# Dropdown toggle
-// ==============
-
+//## Dropdown toggle
 // The Same to Dropdown toggle
 .@{tns}picker-toggle {
   .btn;
@@ -134,7 +132,9 @@
   }
 }
 
-//Menu Items
+// Picker select
+// ----------------------
+// Menu Items
 .@{tns}picker-select-menu-items {
   // Set aside border-radius borders
   margin-bottom: @border-radius-base;
@@ -203,11 +203,12 @@
     transition: @picker-item-transition;
     text-decoration: none;
     max-width: @picker-content-max-width;
+    // Forcing a newline
     word-wrap: break-word;
     word-break: normal;
 
     &:hover,
-    &:focus {
+    &.@{tns}picker-select-menu-item-focus {
       text-decoration: none;
       background-color: @picker-select-menu-item-hover-bg;
     }
