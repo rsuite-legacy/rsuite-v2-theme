@@ -93,11 +93,43 @@
 
   // Searchbar
   .@{tns}picker-search-bar {
-    display: inline-block;
+    //display: inline-block;
     padding: @picker-menu-padding;
 
     .@{tns}picker-search-bar-input {
       .form-control;
+
+      min-width: @picker-content-min-width;
+    }
+  }
+
+  // Animation
+  animation-duration: .3s;
+  animation-timing-function: cubic-bezier(.23, 1, .32, 1);
+  animation-fill-mode: both;
+  animation-play-state: paused;
+
+  &.in {
+    animation-play-state: running;
+
+    &.@{tns}picker-placement-top-left,
+    &.@{tns}picker-placement-top-right {
+      animation-name: slideDownIn;
+    }
+
+    &.@{tns}picker-placement-left-top,
+    &.@{tns}picker-placement-left-bottom {
+      animation-name: slideRightIn;
+    }
+
+    &.@{tns}picker-placement-right-top,
+    &.@{tns}picker-placement-right-bottom {
+      animation-name: slideLeftIn;
+    }
+
+    &.@{tns}picker-placement-bottom-left,
+    &.@{tns}picker-placement-bottom-right {
+      animation-name: slideUpIn;
     }
   }
 }
@@ -167,10 +199,12 @@
     font-weight: normal;
     line-height: @line-height-base;
     color: @picker-select-menu-item-color;
-    white-space: nowrap; // prevent links from randomly breaking onto new lines
     cursor: pointer; //fixed link has not [href] style
     transition: @picker-item-transition;
     text-decoration: none;
+    max-width: @picker-content-max-width;
+    word-wrap: break-word;
+    word-break: normal;
 
     &:hover,
     &:focus {
