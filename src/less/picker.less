@@ -68,17 +68,18 @@
   transform: scale(0);
   background: inherit;
 
-  &::after {
-    //font-family: @font-family-icon !important;
-    //content: "✕";
-  }
+  // Setting "X" symbol
+  //&::after {
+  //  //font-family: @font-family-icon !important;
+  //  //content: "✕";
+  //}
 }
 
 // Picker toggle caret
 .@{tns}picker-toggle-caret {
   // Extend  Dropdown toggle caret style
   .dropdown-toggle-caret;
-  .set-dropdown-caret(~"@{tns}picker-select");
+  .set-dropdown-caret(~"@{tns}picker");
 }
 
 // Picker Menu
