@@ -6,86 +6,79 @@
 // ----------------------
 .@{tns}picker-select {
   display: inline-block;
+}
 
-  // Disabled
-  &.@{tns}picker-select-disabled {
+// Disabled
+&.@{tns}picker-select-disabled {
+  cursor: @cursor-disabled;
+  opacity: .3;
+
+  .@{tns}picker-toggle {
     cursor: @cursor-disabled;
-    opacity: .3;
 
-    .@{tns}picker-toggle {
-      cursor: @cursor-disabled;
+    &,
+    &:hover,
+    &:focus,
+    &:active,
+    &:hover:active {
+      background: none;
 
-      &,
-      &:hover,
-      &:focus,
-      &:active,
-      &:hover:active {
-        background: none;
-
-        &::after {
-          display: none;
-        }
+      &::after {
+        display: none;
       }
     }
   }
+}
 
-  // The Same to Dropdown toggle
-  .@{tns}picker-toggle {
-    .btn;
-    .btn-subtle;
-    .dropdown-toggle;
+//# Dropdown toggle
+// ==============
 
-    :not(.@{tns}picker-select-disabled).@{tns}picker-select-has-value&:hover .@{tns}picker-toggle-caret {
-      transform: translateX(@picker-icon-transform-distance);
-    }
+// The Same to Dropdown toggle
+.@{tns}picker-toggle {
+  .btn;
+  .btn-subtle;
+  .dropdown-toggle;
 
-    .@{tns}picker-select-has-value& .@{tns}picker-toggle-value {
-      color: @picker-selected-value-color;
-    }
+  //:not(.@{tns}picker-select-disabled).@{tns}picker-select-has-value &:hover .@{tns}picker-toggle-caret {
+  //  transform: translateX(@picker-icon-transform-distance);
+  //}
 
-    &:hover .@{tns}picker-toggle-clean {
-      transform: translateX(0);
-    }
+  // Has value highlight
+  .@{tns}picker-select-has-value & .@{tns}picker-toggle-value {
+    color: @picker-selected-value-color;
   }
 
-  .@{tns}picker-toggle-caret,
-  .@{tns}picker-toggle-clean {
-    transition: transform .2s ease-in-out;
+  &:hover .@{tns}picker-toggle-clean {
+    opacity: 1;
+    transform: scale(1);
   }
+}
 
-  .@{tns}picker-toggle-caret {
-    .dropdown-toggle-caret;
+// Picker clean button
+.@{tns}picker-toggle-clean {
+  .dropdown-toggle-caret;
 
-    &::before {
-      content: @dropdown-caret-content;
-    }
+  transition-duration: .2s;
+  transition-timing-function: ease-in-out;
+  transition-property: transform, opacity;
+  // Hidden "X" symbol
+  //text-indent: -12px;
+  //overflow: hidden;
+  opacity: 0;
+  transform: scale(0);
+  background: inherit;
 
-    .@{tns}picker-select-placement-left-bottom&::before,
-    .@{tns}picker-select-placement-left-top&::before {
-      content: @dropleft-caret-content;
-    }
-
-    .@{tns}picker-select-placement-right-bottom&::before,
-    .@{tns}picker-select-placement-right-top&::before {
-      content: @dropright-caret-content;
-    }
-
-    .@{tns}picker-select-placement-top-left&::before,
-    .@{tns}picker-select-placement-top-right&::before {
-      content: @dropup-caret-content;
-    }
-
-    .@{tns}picker-select-placement-bottom-left&::before,
-    .@{tns}picker-select-placement-bottom-right&::before {
-      content: @dropdown-caret-content;
-    }
+  &::after {
+    //font-family: @font-family-icon !important;
+    //content: "✕";
   }
+}
 
-  .@{tns}picker-toggle-clean {
-    .dropdown-toggle-caret;
-
-    transform: translateX(@picker-icon-transform-distance);
-  }
+// Picker toggle caret
+.@{tns}picker-toggle-caret {
+  // Extend  Dropdown toggle caret style
+  .dropdown-toggle-caret;
+  .set-dropdown-caret(~"@{tns}picker-select");
 }
 
 // Picker Menu

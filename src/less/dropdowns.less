@@ -14,25 +14,7 @@
     font-family: @dropdown-caret-font-family !important;
   }
 
-  .dropdown-placement-left-bottom &::before,
-  .dropdown-placement-left-top &::before {
-    content: @dropleft-caret-content;
-  }
-
-  .dropdown-placement-right-bottom &::before,
-  .dropdown-placement-right-top &::before {
-    content: @dropright-caret-content;
-  }
-
-  .dropdown-placement-top-left &::before,
-  .dropdown-placement-top-right &::before {
-    content: @dropup-caret-content;
-  }
-
-  .dropdown-placement-bottom-left &::before,
-  .dropdown-placement-bottom-right &::before {
-    content: @dropdown-caret-content;
-  }
+  .set-dropdown-caret(~"dropdown");
 }
 
 // The dropdown wrapper (div)

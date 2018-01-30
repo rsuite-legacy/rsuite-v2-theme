@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+.set-dropdown-caret(@prefix) {
+  .@{prefix}-placement-left-bottom &::before,
+  .@{prefix}-placement-left-top &::before {
+    content: @dropleft-caret-content;
+  }
+
+  .@{prefix}-placement-right-bottom &::before,
+  .@{prefix}-placement-right-top &::before {
+    content: @dropright-caret-content;
+  }
+
+  .@{prefix}-placement-top-left &::before,
+  .@{prefix}-placement-top-right &::before {
+    content: @dropup-caret-content;
+  }
+
+  .@{prefix}-placement-bottom-left &::before,
+  .@{prefix}-placement-bottom-right &::before {
+    content: @dropdown-caret-content;
+  }
+}
