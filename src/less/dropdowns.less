@@ -3,7 +3,7 @@
 // --------------------------------------------------
 
 // Dropdown arrow/caret
-.dropdown-toggle-caret {
+.dropdown-toggle-caret-common() {
   display: inline-block;
   margin-left: 2px;
   position: absolute;
@@ -13,7 +13,10 @@
   &::before {
     font-family: @dropdown-caret-font-family !important;
   }
+}
 
+.dropdown-toggle-caret {
+  .dropdown-toggle-caret-common;
   .set-dropdown-caret(~"dropdown");
 }
 
@@ -51,7 +54,7 @@
 .dropdown-toggle {
   position: relative;
   z-index: @zindex-dropdown;
-  padding-right: @padding-base-horizontal+@dropdown-caret-with+@dropdown-caret-padding;
+  padding-right: @dropdown-toggle-padding-right;
 }
 
 // Prevent the focus on the dropdown toggle when closing dropdowns

@@ -10,7 +10,8 @@
 
 // Disabled
 .@{tns}picker-check-disabled,
-.@{tns}picker-select-disabled {
+.@{tns}picker-select-disabled,
+.@{tns}picker-cascader-disabled {
   cursor: @cursor-disabled;
   opacity: .3;
 
@@ -39,8 +40,11 @@
   .dropdown-toggle;
 
   // Has value highlight
-  .@{tns}picker-select-has-value & .@{tns}picker-toggle-value {
-    color: @picker-selected-value-color;
+  .@{tns}picker-select-has-value &,
+  .@{tns}picker-cascader-has-value & {
+    .@{tns}picker-toggle-value {
+      color: @picker-selected-value-color;
+    }
   }
 
   &:hover .@{tns}picker-toggle-clean {
@@ -73,7 +77,7 @@
 // Picker toggle caret
 .@{tns}picker-toggle-caret {
   // Extend  Dropdown toggle caret style
-  .dropdown-toggle-caret;
+  .dropdown-toggle-caret-common;
   .set-dropdown-caret(~"@{tns}picker");
 }
 
@@ -326,5 +330,80 @@
         .checkbox-inner-active-shadow(@checkbox-checked-border-color);
       }
     }
+  }
+}
+
+// Cascader
+// ----------------------
+.@{tns}picker-cascader-menu-items > div {
+  .clearfix;
+}
+
+// Column menu
+.@{tns}picker-cascader-menu-items-column-menu {
+  float: left;
+  overflow-y: auto;
+  animation: .3s linear slideLeftIn;
+}
+
+// Menu Items
+.@{tns}picker-cascader-menu-items {
+  padding: @border-radius-base 0;
+
+  ul,
+  li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+}
+
+// Menu item
+.@{tns}picker-cascader-menu-item {
+  position: relative;
+  display: block;
+  padding: @picker-item-content-padding-vertical @picker-item-content-padding-horizontal;
+  max-width: @picker-content-max-width;
+  transition: @picker-item-transition;
+  cursor: pointer;
+  text-decoration: none;
+  color: @picker-select-item-color;
+
+  // Has children
+  .@{tns}picker-cascader-menu-items-has-children & {
+    padding-right: @dropdown-toggle-padding-right;
+  }
+
+  &:not(.@{tns}picker-cascader-menu-item-disabled):hover,
+  &:not(.@{tns}picker-cascader-menu-item-disabled):focus,
+  &.@{tns}picker-select-menu-item-focus {
+    .picker-item-hover;
+
+    text-decoration: none;
+  }
+
+  &.@{tns}picker-cascader-menu-item-active {
+    &,
+    &:hover,
+    &:focus,
+    &:hover:focus {
+      color: @picker-select-menu-item-selected-color;
+      background-color: @picker-select-menu-item-selected-bg;
+    }
+  }
+
+  &.@{tns}picker-cascader-menu-item-disabled {
+    color: @picker-menu-item-disabled-color;
+    text-decoration: none;
+    cursor: @cursor-disabled;
+  }
+}
+
+// Menu Items Caret
+.@{tns}picker-cascader-menu-items-caret {
+  .dropdown-toggle-caret-common;
+
+  &::before {
+    content: @dropright-caret-content;
   }
 }
