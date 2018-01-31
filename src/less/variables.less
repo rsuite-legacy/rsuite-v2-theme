@@ -904,11 +904,15 @@
 @panel-danger-heading-bg: @state-error-bg;
 
 //== Picker
+//** prefixs
+@select-picker-prefix: ~"picker-select";
+@check-picker-prefix: ~"picker-check";
+//** Picker background
 @picker-bg: @dropdown-bg;
 @picker-shadow: @dropdown-shadow;
-// Picker content width
-@picker-content-min-width:200px;
-@picker-content-max-width:300px;
+//** Picker content width
+@picker-content-min-width: 200px;
+@picker-content-max-width: 300px;
 //** Picker menu padding
 @picker-menu-padding: 12px;
 //** Dropdown item content vertical padding
@@ -920,17 +924,19 @@
 @picker-group-children-padding-left: 26px;
 @picker-group-select-menu-gap: 6px;
 @picker-group-select-menu-lin-color: @dropdown-divider-bg;
-@picker-select-menu-item-color: @B800;
-@picker-select-menu-item-hover-bg: @H050;
+@picker-item-transition: color .3s linear, background-color .3s linear;
+@picker-select-item-color: @B800;
+@picker-menu-item-hover-bg: @H050;
+// Select picker
 @picker-select-menu-item-selected-bg: @H500;
 @picker-select-menu-item-selected-color: @B000;
-@picker-select-menu-item-disabled-color: @B400;
+@picker-menu-item-disabled-color: @B400;
 @picker-selected-value-color: @H500;
 @picker-select-arrow-down: "\F0D7";
-@picker-item-transition:color .3s linear, background-color .3s linear;
-@picker-icon-transform-distance:30px;
-@select-picker-prefix:~"picker-select";
-@check-picker-prefix:~"picker-check";
+
+// Check Picker
+@picker-check-checkbox-gap: 10px;
+@picker-check-item-content-padding-left:@picker-item-content-padding-horizontal+@checkbox-width-height+@picker-check-checkbox-gap;
 
 //== Breadcrumbs
 //

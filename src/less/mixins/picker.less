@@ -33,7 +33,7 @@
     transition: @picker-item-transition;
 
     &:hover {
-      background-color: @picker-select-menu-item-hover-bg;
+      background-color: @picker-menu-item-hover-bg;
     }
 
     .@{tns}@{prefix}-menu-group-caret {
@@ -64,4 +64,9 @@
       display: none;
     }
   }
+}
+
+.picker-item-hover() {
+  color: @picker-select-item-color;
+  background-color: @picker-menu-item-hover-bg;
 }
