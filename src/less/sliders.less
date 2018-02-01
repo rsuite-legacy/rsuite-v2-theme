@@ -6,6 +6,11 @@
 
   .tooltip {
     display: none;
+
+    &.tooltip-top .tooltip-arrow {
+      // Fixed a pixel white line problem;
+      bottom: 1px;
+    }
   }
 }
 
@@ -63,6 +68,7 @@
         border: @slider-calibration-border-width solid @slider-calibration-border-color;
         margin-left: -4px;
         top: -1px;
+        transition: border-color .3s ease-in;
 
         // Vertical styles
         .@{ns}slider-vertical & {
@@ -80,6 +86,10 @@
           top: auto;
           bottom: -4px;
         }
+      }
+
+      &.slider-pass::before {
+        border-color: @slider-calibration-pass-border-color;
       }
     }
   }
@@ -116,29 +126,34 @@
 // Handle
 .@{ns}slider-handle {
   position: absolute;
-  width: @slider-handle-diameter;
-  height: @slider-handle-diameter;
-  border-radius: 50%;
-  border: @slider-handle-border-width solid @slider-handle-default-border-color;
-  background-color: @slider-handle-default-bg;
   top: -50%;
-  margin-left: -@slider-handle-diameter/2;
-  cursor: pointer;
-  transition-property: box-shadow, background-color, transform;
-  transition-timing-function: ease-in-out;
-  transition-duration: .3s;
 
-  &:hover {
+  &::before {
+    content: "";
+    position: absolute;
+    width: @slider-handle-diameter;
+    height: @slider-handle-diameter;
+    border-radius: 50%;
+    border: @slider-handle-border-width solid @slider-handle-default-border-color;
+    background-color: @slider-handle-default-bg;
+    margin-left: -@slider-handle-diameter/2;
+    cursor: pointer;
+    transition-property: box-shadow, background-color, transform;
+    transition-timing-function: ease-in-out;
+    transition-duration: .3s;
+  }
+
+  &:hover::before {
     box-shadow: @slider-handle-hover-box-shadow;
   }
 
-  .@{ns}slider-dragging & {
-    //background-color: @slider-handle-dragging-bg;
+  .@{ns}slider-dragging &::before,
+  .@{ns}slider-dragging &:hover::before {
     box-shadow: none;
     transform: scale(1.2);
   }
 
-  .@{ns}slider-vertical & {
+  .@{ns}slider-vertical &::before {
     left: (@slider-handle-diameter - @slider-bar-side-length)/2;
     margin-top: -@slider-handle-diameter/2;
   }
@@ -148,8 +163,12 @@
   display: block;
   opacity: 1;
   left: -13.5px;
-  top: -43px;
+  top: -38px;
   animation: .3s ease-in-out slideDownIn;
+
+  .@{ns}slider-vertical & {
+    top: -43px;
+  }
 }
 
 // Vertical
