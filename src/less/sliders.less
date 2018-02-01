@@ -1,0 +1,158 @@
+//
+// Slider
+// --------------------------------------------------
+.@{ns}slider {
+  position: relative;
+
+  .tooltip {
+    display: none;
+  }
+}
+
+// Disabled
+.slider-disabled {
+  opacity: .3;
+  cursor: not-allowed;
+}
+
+// Bar
+.@{ns}slider-bar {
+  height: @slider-bar-side-length;
+  border-radius: @slider-bar-side-length/2;
+  background-color: @slider-bar-default-bg;
+  cursor: pointer;
+
+  &:hover {
+    background-color: @slider-bar-hover-bg;
+  }
+
+  .@{ns}slider-vertical & {
+    height: 100%;
+    width: @slider-bar-side-length;
+  }
+}
+
+// Graduator
+.@{ns}slider-graduator {
+  display: table;
+  width: 100%;
+
+  ul,
+  li {
+    list-style: none;
+  }
+
+  > ul {
+    display: table-row;
+    width: 100%;
+
+    > li {
+      display: table-cell;
+      position: relative;
+
+      &:last-child::after,
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: @slider-calibration-diameter;
+        height: @slider-calibration-diameter;
+        border-radius: 50%;
+        background-color: @slider-calibration-bg;
+        box-sizing: border-box;
+        border: @slider-calibration-border-width solid @slider-calibration-border-color;
+        margin-left: -4px;
+        top: -1px;
+
+        // Vertical styles
+        .@{ns}slider-vertical & {
+          top: -4px;
+          margin-left: -1px;
+        }
+      }
+
+      &:last-child::after {
+        right: -4px;
+
+        // Vertical styles
+        .@{ns}slider-vertical & {
+          left: 0;
+          top: auto;
+          bottom: -4px;
+        }
+      }
+    }
+  }
+
+  // Vertical styles
+  .@{ns}slider-vertical & {
+    display: block;
+
+    > ul {
+      width: @slider-bar-side-length;
+
+      &,
+      & > li {
+        display: block;
+        padding: 0;
+      }
+    }
+  }
+}
+
+// Progress bar
+.@{ns}slider-progress-bar {
+  position: absolute;
+  height: @slider-bar-side-length;
+  border-radius: @slider-bar-side-length/2 0 0 @slider-bar-side-length/2;
+  background-color: @slider-progress-bar-bg;
+
+  .@{ns}slider-vertical & {
+    width: @slider-bar-side-length;
+    border-radius: @slider-bar-side-length/2 @slider-bar-side-length/2 0 0;
+  }
+}
+
+// Handle
+.@{ns}slider-handle {
+  position: absolute;
+  width: @slider-handle-diameter;
+  height: @slider-handle-diameter;
+  border-radius: 50%;
+  border: @slider-handle-border-width solid @slider-handle-default-border-color;
+  background-color: @slider-handle-default-bg;
+  top: -50%;
+  margin-left: -@slider-handle-diameter/2;
+  cursor: pointer;
+  transition-property: box-shadow, background-color, transform;
+  transition-timing-function: ease-in-out;
+  transition-duration: .3s;
+
+  &:hover {
+    box-shadow: @slider-handle-hover-box-shadow;
+  }
+
+  .@{ns}slider-dragging & {
+    //background-color: @slider-handle-dragging-bg;
+    box-shadow: none;
+    transform: scale(1.2);
+  }
+
+  .@{ns}slider-vertical & {
+    left: (@slider-handle-diameter - @slider-bar-side-length)/2;
+    margin-top: -@slider-handle-diameter/2;
+  }
+}
+
+.@{ns}slider-showtip .tooltip {
+  display: block;
+  opacity: 1;
+  left: -13.5px;
+  top: -43px;
+  animation: .3s ease-in-out slideDownIn;
+}
+
+// Vertical
+.@{ns}slider-vertical {
+  height: 100%;
+}
