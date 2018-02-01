@@ -116,10 +116,12 @@
   height: @slider-bar-side-length;
   border-radius: @slider-bar-side-length/2 0 0 @slider-bar-side-length/2;
   background-color: @slider-progress-bar-bg;
+  transition: width .1s linear;
 
   .@{ns}slider-vertical & {
     width: @slider-bar-side-length;
     border-radius: @slider-bar-side-length/2 @slider-bar-side-length/2 0 0;
+    transition-property: height;
   }
 }
 
@@ -127,6 +129,7 @@
 .@{ns}slider-handle {
   position: absolute;
   top: -50%;
+  transition: left .1s linear;
 
   &::before {
     content: "";
@@ -151,6 +154,10 @@
   .@{ns}slider-dragging &:hover::before {
     box-shadow: none;
     transform: scale(1.2);
+  }
+
+  .@{ns}slider-vertical & {
+    transition-property: top;
   }
 
   .@{ns}slider-vertical &::before {
