@@ -345,16 +345,29 @@
 @toggle-active-scale: 1.2;
 
 @toggle-md-height: 24px;
-@toggle-md-handle-gap: 4px;
+@toggle-md-handle-gap: 3px;
+@toggle-md-min-width: 44px;
 @toggle-md-inner-text-size: @font-size-small;
 @toggle-md-handle-diameter: @toggle-md-height - @toggle-md-handle-gap*2;
 @toggle-md-handle-bg: @B000;
 @toggle-md-inner-line-height-computed: @toggle-md-height;
 @toggle-md-inner-line-height: unit(@toggle-md-inner-line-height-computed/@toggle-md-inner-text-size);
-@toggle-md-inner-margin: @toggle-md-height/2;
+// The same to button
+@toggle-md-inner-margin: @padding-base-vertical;
 
+//# small size
 @toggle-sm-height: 12px;
+@toggle-sm-min-width: 26px;
 @toggle-sm-handle-gap: 2px;
+@toggle-sm-inner-margin: 6px;
+@toggle-sm-inner-font-size: @font-size-small;
+
+//# Large size
+@toggle-lg-height: 30px;
+@toggle-lg-min-width: 55px;
+@toggle-lg-handle-gap: 4px;
+@toggle-lg-inner-margin: @padding-small-horizontal;
+@toggle-lg-inner-font-size: @font-size-base;
 
 //-- Z-index master list
 //
