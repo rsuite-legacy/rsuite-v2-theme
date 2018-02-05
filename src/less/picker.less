@@ -246,7 +246,7 @@
     height: @checkbox-width-height;
   }
 
-  // 涟漪效果外框
+  // Ripple effect
   &::before {
     .checkbox-inner-wrap(@checkbox-checked-border-color);
 
@@ -262,7 +262,7 @@
     }
   }
 
-  //感知区域
+  // Sensing field
   &::after {
     top: -@checkbox-sense-width;
     right: -@checkbox-sense-width;
@@ -270,7 +270,7 @@
     left: -@checkbox-sense-width;
   }
 
-  //外框
+  // Frame
   .@{tns}picker-check-menu-item-inner::before {
     .checkbox-inner-wrap(@checkbox-default-border-color);
 
@@ -291,7 +291,7 @@
     }
   }
 
-  //对钩
+  // check mark
   .@{tns}picker-check-menu-item-inner::after {
     .opacity(0);
 
@@ -314,7 +314,7 @@
     }
   }
 
-  //聚焦
+  // :Focus
   &:focus {
     outline: none;
 

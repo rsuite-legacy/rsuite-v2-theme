@@ -337,10 +337,24 @@
 @dropdown-menu-xs-top: 21px;
 
 //== Toggle
+@toggle-default-bg: @B300;
 //Toggle checked background color
-@toggle-background-color: @H500;
+@toggle-checked-bg: @H500;
 //Disabled toggle checked background color
 @toggle-disabled-background-color: @H300;
+@toggle-active-scale: 1.2;
+
+@toggle-md-height: 24px;
+@toggle-md-handle-gap: 4px;
+@toggle-md-inner-text-size: @font-size-small;
+@toggle-md-handle-diameter: @toggle-md-height - @toggle-md-handle-gap*2;
+@toggle-md-handle-bg: @B000;
+@toggle-md-inner-line-height-computed: @toggle-md-height;
+@toggle-md-inner-line-height: unit(@toggle-md-inner-line-height-computed/@toggle-md-inner-text-size);
+@toggle-md-inner-margin: @toggle-md-height/2;
+
+@toggle-sm-height: 12px;
+@toggle-sm-handle-gap: 2px;
 
 //-- Z-index master list
 //

@@ -1,0 +1,10 @@
+.toggle-size-variant(@toogle-height,@toggle-inner-gap) {
+  @handle-diameter: @toogle-height - @toggle-inner-gap*2;
+
+  height: @toogle-height;
+
+  &::after {
+    width: @handle-diameter;
+    height: @handle-diameter;
+  }
+}
