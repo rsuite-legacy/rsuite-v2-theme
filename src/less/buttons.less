@@ -272,8 +272,12 @@
   .button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-base; @line-height-base; @btn-border-radius-small);
 }
 
-.@{ns}btn-xs {
+.btn-xs() {
   .button-size(@padding-xs-vertical; @padding-xs-horizontal; @font-size-small; @line-height-small; @btn-border-radius-small);
+}
+
+.@{ns}btn-xs {
+  .btn-xs;
 }
 
 // Block button

@@ -934,6 +934,7 @@
 //** prefixs
 @select-picker-prefix: ~"picker-select";
 @check-picker-prefix: ~"picker-check";
+@calendar-picker-prefix: ~"picker-calendar";
 //** Picker background
 @picker-bg: @dropdown-bg;
 @picker-shadow: @dropdown-shadow;
@@ -964,6 +965,30 @@
 // Check Picker
 @picker-check-checkbox-gap: 10px;
 @picker-check-item-content-padding-left: @picker-item-content-padding-horizontal+@checkbox-width-height+@picker-check-checkbox-gap;
+
+//== Picker Calendar
+@calendar-header-width: 246px;
+@calendar-picker-padding: 12px;
+@calendar-picker-view-margin-top: 6px;
+@calendar-header-title-margin: 4px;
+@calendar-table-cell-padding: 1px;
+@calendar-table-cell-content-font-size: @font-size-base;
+@calendar-table-cell-content-line-height: @line-height-small;
+@calendar-table-cell-content-padding: 5px;
+@calendar-table-cell-content-hover-bg: @H050;
+@calendar-table-cell-content-today-border-width: 1px;
+@calendar-table-cell-content-today-border-color: @H500;
+@calendar-table-cell-content-selected-color: @H500;
+@calendar-table-cell-content-selected-font-color: @B000;
+@calendar-table-cell-header-color: @B600;
+@calendar-month-dropdown-row-border-color: @B200;
+@calendar-dropdown-top: 40px; // @calendar-picker-padding + content-height + gap
+@calendar-time-dropdown-column-title-bg: @B050;
+@calendar-time-dropdown-column-title-font-color: @B600;
+@calendar-time-dropdown-column-cell-default-color: @B800;
+@calendar-time-dropdown-column-cell-active-color: @B000;
+@calendar-time-dropdown-column-cell-hover-bg: @H050;
+@calendar-time-dropdown-column-cell-active-bg: @H500;
 
 //== Slider
 //
