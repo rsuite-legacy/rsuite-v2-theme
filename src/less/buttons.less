@@ -268,8 +268,13 @@
   .button-size(@padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @btn-border-radius-large);
 }
 
-.@{ns}btn-sm {
+.btn-sm() {
   .button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-base; @line-height-base; @btn-border-radius-small);
+
+}
+
+.@{ns}btn-sm {
+  .btn-sm;
 }
 
 .btn-xs() {

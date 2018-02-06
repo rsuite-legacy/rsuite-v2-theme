@@ -7,8 +7,11 @@
 .@{cpns} {
   background-color: @picker-bg;
   padding-top: @calendar-picker-padding;
-  padding-bottom: @calendar-picker-padding;
   position: relative;
+}
+
+.@{tns}picker-date-inline {
+  height: 299px;
 }
 
 .@{cpns}-header {
@@ -68,11 +71,14 @@
   // Only Has month
   &-has-month:not(&-has-time) {
     margin: 0 auto;
+    padding-left: @calendar-picker-padding;
+    padding-right: @calendar-picker-padding;
   }
 
   &-has-month:not(&-has-time) &-month-toolbar {
     display: block;
     text-align: center;
+    width: 100%;
     .clearfix;
   }
 
@@ -82,6 +88,17 @@
 
   &-has-month:not(&-has-time) &-forward {
     float: right;
+  }
+
+  // Only Has time
+  &-has-time:not(&-has-month) {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  &-has-time:not(&-has-month) &-time-toolbar {
+    float: none;
+    display: inline-block;
   }
 
   // Has month && time
@@ -210,6 +227,11 @@
   width: 100%;
   background-color: @B000;
 
+  //@todo animation
+  .@{cpns}-show-time-dropdown & {
+    display: block;
+  }
+
   &-row {
     display: table;
     width: 100%;
@@ -251,6 +273,9 @@
     color: @B800;
     text-align: center;
     cursor: pointer;
+    transition-duration: .3s;
+    transition-timing-function: linear;
+    transition-property: background-color, color;
 
     &-active& {
       &,
@@ -267,7 +292,75 @@
     }
 
     &:hover {
+      color: @calendar-time-dropdown-column-cell-default-color;
       background-color: @calendar-time-dropdown-column-cell-hover-bg;
     }
+  }
+}
+
+// Toolbar
+.@{tns}picker-toolbar {
+  .clearfix;
+
+  margin-top: @calendar-picker-padding;
+  padding: @calendar-picker-padding;
+  border-top: 1px solid @B200;
+
+  &-ranges {
+    display: inline-block;
+    margin-left: -@padding-small-horizontal;
+    margin-top: 5px;
+  }
+
+  &-right {
+    float: right;
+  }
+
+  &-option {
+    .btn;
+    .btn-sm;
+    .btn-link-variant(@calendar-option-color);
+
+    padding-top: 0;
+    padding-bottom: 0;
+
+    &:not(:last-child) {
+      position: relative;
+
+      &::before {
+        content: "";
+        width: 1px;
+        height: 20px;
+        background-color: @B200;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
+  }
+
+  &-right-btn-ok {
+    .btn;
+    .btn-sm;
+    .button-primary-variant(@calendar-right-btn-ok-color; @calendar-right-btn-ok-bg);
+  }
+}
+
+// In picker menu
+.@{tns}picker-menu .@{cpns} {
+  width: 246px;
+
+  .@{cpns}-month-dropdown-cell-content,
+  .@{cpns}-table-cell-content {
+    width: @calendar-in-menu-content-side-length;
+    height: @calendar-in-menu-content-side-length;
+  }
+
+  .@{cpns}-month-dropdown-scroll {
+    height: 227px;
+  }
+
+  .@{cpns}-time-dropdown-column > ul {
+    height: 214px;
   }
 }
