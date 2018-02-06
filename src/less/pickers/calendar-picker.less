@@ -8,6 +8,7 @@
   background-color: @picker-bg;
   padding-top: @calendar-picker-padding;
   position: relative;
+  height: 266px;
 }
 
 .@{tns}picker-date-inline {
@@ -128,6 +129,12 @@
   padding: @calendar-table-cell-padding;
   text-align: center;
   vertical-align: middle;
+
+  &-disabled &-content {
+    background: none;
+    color: @calendar-table-cell-content-disabled-color;
+    cursor: not-allowed;
+  }
 }
 
 .@{cpns}-table-cell-content {
@@ -139,9 +146,7 @@
   }
 
   .@{cpns}-table-cell-selected & {
-    color: @calendar-table-cell-content-selected-font-color;
-    border-color: @calendar-table-cell-content-selected-color;
-    background-color: @calendar-table-cell-content-selected-color;
+    .picker-calendar-cell-content-selected;
   }
 }
 
@@ -173,7 +178,6 @@
   width: 100%;
   background-color: @B000;
 
-  //@todo animation
   .@{cpns}-show-month-dropdown & {
     display: block;
   }
@@ -196,6 +200,10 @@
     position: absolute;
     top: 35px;
     left: 0;
+
+    &-active {
+      color: @calendar-month-dropdown-year-active-color;
+    }
   }
 
   &-list {
@@ -216,8 +224,13 @@
   &-cell-content {
     .picker-calendar-cell-content;
   }
+
+  &-cell-active &-cell-content {
+    .picker-calendar-cell-content-selected;
+  }
 }
 
+// Calendar time dropdown
 .@{cpns}-time-dropdown {
   display: none;
   position: absolute;
@@ -227,7 +240,6 @@
   width: 100%;
   background-color: @B000;
 
-  //@todo animation
   .@{cpns}-show-time-dropdown & {
     display: block;
   }
@@ -241,16 +253,17 @@
     display: table-cell;
     width: 1%;
 
-    > ul {
-      height: 230px;
-      overflow-y: auto;
-    }
-
     > ul,
     > ul > li {
       list-style: none;
       margin: 0;
       padding: 0;
+    }
+
+    > ul {
+      height: 230px;
+      overflow-y: auto;
+      padding-bottom: 200px;
     }
   }
 
@@ -275,7 +288,7 @@
     cursor: pointer;
     transition-duration: .3s;
     transition-timing-function: linear;
-    transition-property: background-color, color;
+    transition-property: background-color;
 
     &-active& {
       &,
@@ -294,6 +307,21 @@
     &:hover {
       color: @calendar-time-dropdown-column-cell-default-color;
       background-color: @calendar-time-dropdown-column-cell-hover-bg;
+    }
+
+    &-disabled {
+      &,
+      &:hover,
+      &:focus {
+        color: @calendar-table-cell-content-disabled-color;
+        background: none;
+        cursor: not-allowed;
+      }
+    }
+
+    &-active&-disabled& {
+      opacity: .3;
+      cursor: not-allowed;
     }
   }
 }
@@ -362,5 +390,28 @@
 
   .@{cpns}-time-dropdown-column > ul {
     height: 214px;
+  }
+}
+
+// Picker date
+.@{tns}picker-date {
+  // let clean button cover caret
+  .@{tns}picker-toggle-clean {
+    width: 16px;
+  }
+
+  .@{tns}picker-toggle-caret::before {
+    content: @calendar-default-caret-content;
+  }
+
+  &-only-time {
+    // let clean button cover caret
+    .@{tns}picker-toggle-clean {
+      right: 10px;
+    }
+
+    .@{tns}picker-toggle-caret::before {
+      content: @calendar-only-time-caret-content;
+    }
   }
 }
