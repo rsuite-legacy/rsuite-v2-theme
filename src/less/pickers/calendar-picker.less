@@ -52,6 +52,12 @@
     margin: 0 @calendar-header-title-margin;
   }
 
+  &-error {
+    .btn-subtle-variant(@calendar-header-title-error-color);
+
+    color: @calendar-header-title-error-color;
+  }
+
   &-backward,
   &-forward {
     font-size: 0;
@@ -134,9 +140,23 @@
   vertical-align: middle;
 
   &-disabled &-content {
-    background: none;
-    color: @calendar-table-cell-content-disabled-color;
-    cursor: not-allowed;
+    &,
+    &:hover {
+      background: none;
+      color: @calendar-table-cell-content-disabled-color;
+      cursor: not-allowed;
+    }
+  }
+
+  &-disabled&-is-today&-selected &-content {
+    &:hover {
+      .picker-calendar-cell-content-selected;
+    }
+  }
+
+  &-disabled&-is-today &-content,
+  &-disabled&-selected &-content {
+    opacity: .3;
   }
 }
 
@@ -385,6 +405,17 @@
     .btn-sm;
     .button-primary-variant(@calendar-right-btn-ok-color; @calendar-right-btn-ok-bg);
   }
+
+  &-right-btn-ok&-btn-disabled {
+    opacity: .3;
+    cursor: not-allowed;
+
+    &,
+    &:hover,
+    &:hover:active {
+      background-color: @calendar-right-btn-ok-bg;
+    }
+  }
 }
 
 // In picker menu
@@ -450,6 +481,14 @@
 
   .@{cpns}-header-title-date {
     .picker-calendar-title-show;
+
+    &.@{cpns}-header-error {
+      color: @danger-color;
+
+      &:hover:active {
+        color: @B000;
+      }
+    }
   }
 }
 
@@ -457,5 +496,13 @@
 .@{cpns}-show-time-dropdown {
   .@{cpns}-header-title-time {
     .picker-calendar-title-show;
+
+    &.@{cpns}-header-error {
+      color: @danger-color;
+
+      &:hover:active {
+        color: @B000;
+      }
+    }
   }
 }
