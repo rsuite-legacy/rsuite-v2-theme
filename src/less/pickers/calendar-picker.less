@@ -17,6 +17,8 @@
 
 .@{cpns}-header {
   width: @calendar-header-width;
+  padding-left: @calendar-picker-padding;
+  padding-right: @calendar-picker-padding;
   .clearfix;
 
   // Month toolbar && Time toolbar
@@ -376,12 +378,18 @@
 
 // In picker menu
 .@{tns}picker-menu .@{cpns} {
-  width: 246px;
+  width: @calendar-header-width;
 
   .@{cpns}-month-dropdown-cell-content,
   .@{cpns}-table-cell-content {
     width: @calendar-in-menu-content-side-length;
     height: @calendar-in-menu-content-side-length;
+  }
+
+  .@{cpns}-table-cell-content {
+    padding-left: 0;
+    padding-right: 0;
+    display: inline-block;
   }
 
   .@{cpns}-month-dropdown-scroll {
@@ -390,6 +398,7 @@
 
   .@{cpns}-time-dropdown-column > ul {
     height: 214px;
+    padding-bottom: 184px;
   }
 }
 
