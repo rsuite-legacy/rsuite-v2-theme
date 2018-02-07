@@ -8,7 +8,8 @@
   background-color: @picker-bg;
   padding-top: @calendar-picker-padding;
   position: relative;
-  height: 266px;
+  height: 286px;
+  overflow: hidden;
 }
 
 .@{tns}picker-date-inline {
@@ -179,9 +180,14 @@
   padding-right: @calendar-picker-padding;
   width: 100%;
   background-color: @B000;
+  overflow: hidden;
 
   .@{cpns}-show-month-dropdown & {
     display: block;
+  }
+
+  .@{cpns}-show-month-dropdown &-content {
+    animation: .3s linear slideDown;
   }
 
   &-scroll {
@@ -241,9 +247,14 @@
   padding-right: @calendar-picker-padding;
   width: 100%;
   background-color: @B000;
+  overflow: hidden;
 
   .@{cpns}-show-time-dropdown & {
     display: block;
+  }
+
+  .@{cpns}-show-time-dropdown &-content {
+    animation: .3s linear slideDown;
   }
 
   &-row {
@@ -422,5 +433,29 @@
     .@{tns}picker-toggle-caret::before {
       content: @calendar-only-time-caret-content;
     }
+  }
+}
+
+// Show month dropdown
+.@{cpns}-show-month-dropdown {
+  .@{cpns}-header-month-toolbar {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .@{cpns}-header-backward,
+  .@{cpns}-header-forward {
+    display: none;
+  }
+
+  .@{cpns}-header-title-date {
+    .picker-calendar-title-show;
+  }
+}
+
+// Show time dropdown
+.@{cpns}-show-time-dropdown {
+  .@{cpns}-header-title-time {
+    .picker-calendar-title-show;
   }
 }
