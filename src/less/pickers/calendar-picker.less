@@ -139,11 +139,19 @@
   text-align: center;
   vertical-align: middle;
 
+  &-un-same-month &-content,
+  &-disabled &-content {
+    &,
+    &:hover {
+      color: @calendar-table-cell-content-disabled-color;
+    }
+  }
+
   &-disabled &-content {
     &,
     &:hover {
       background: none;
-      color: @calendar-table-cell-content-disabled-color;
+      text-decoration: line-through;
       cursor: not-allowed;
     }
   }
