@@ -20,6 +20,10 @@
       float: none;
     }
   }
+
+  .@{cpns}-month-dropdown {
+    z-index: @zindex-date-range-picker-calendar-dropdown;
+  }
 }
 
 // Header
@@ -46,11 +50,11 @@
     margin-top: 1px;
     height: 28px;
     position: absolute;
-    z-index: 0;
+    z-index: @zindex-date-range-picker-table-cell-content - 1;
   }
 
   .@{cpns}-table-cell-content {
-    z-index: 1;
+    z-index: @zindex-date-range-picker-table-cell-content;
     position: relative;
   }
 }
