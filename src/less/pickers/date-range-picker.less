@@ -1,0 +1,56 @@
+// Date range Picker
+// ----------------------
+
+// Date range Picker Name Space
+@drpns: ~"@{tns}@{date-range-picker-prefix}";
+
+.@{drpns}-menu {
+  .@{cpns} {
+    display: inline-block;
+
+    &:first-child {
+      border-right: @date-range-picker-inner-border;
+    }
+
+    &-header {
+      text-align: center;
+    }
+
+    &-header-month-toolbar {
+      float: none;
+    }
+  }
+}
+
+// Header
+.@{drpns}-header {
+  padding: @date-range-picker-header-padding-vertical @picker-menu-padding;
+  font-size: @date-range-picker-header-font-size;
+  line-height: @date-range-picker-header-line-height;
+  border-bottom: @date-range-picker-inner-border;
+}
+
+// Calendar group
+.@{drpns}-calendar-group {
+  height: 274px;
+}
+
+.@{cpns}-table-cell-in-range {
+  position: relative;
+
+  &::before {
+    content: "";
+    background-color: @H050;
+    display: block;
+    width: 100%;
+    margin-top: 1px;
+    height: 28px;
+    position: absolute;
+    z-index: 0;
+  }
+
+  .@{cpns}-table-cell-content {
+    z-index: 1;
+    position: relative;
+  }
+}

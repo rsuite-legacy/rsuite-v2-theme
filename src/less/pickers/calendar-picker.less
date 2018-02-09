@@ -58,6 +58,20 @@
     color: @calendar-header-title-error-color;
   }
 
+  &-btn-disabled {
+    &,
+    &:hover,
+    &:hover:focus {
+      cursor: not-allowed;
+      opacity: .3;
+      background: none;
+    }
+
+    &::after {
+      display: none !important;
+    }
+  }
+
   &-backward,
   &-forward {
     font-size: 0;

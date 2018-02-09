@@ -74,17 +74,6 @@
   cursor: pointer;
   z-index: 1;
 
-  // Sense area
-  &::after {
-    position: absolute;
-    display: block;
-    content: "";
-    top: -@picker-tree-node-expand-button-sense-width;
-    right: -@picker-tree-node-expand-button-sense-width;
-    bottom: -@picker-tree-node-expand-button-sense-width;
-    left: -@picker-tree-node-expand-button-sense-width;
-  }
-
   > .@{tpns}-view-node-expand-icon {
     display: inline-block;
     padding: @picker-tree-node-padding-vertical 0;
