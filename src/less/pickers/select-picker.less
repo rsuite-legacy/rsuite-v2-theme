@@ -23,7 +23,7 @@
   // Forcing a newline
   .break-word;
 
-  &:not(.@{tns}picker-check-menu-item-disabled):hover,
+  &:not(.@{tns}picker-select-menu-item-disabled):hover,
   &.@{tns}picker-select-menu-item-focus {
     .picker-item-hover;
 
@@ -38,6 +38,7 @@
   &.@{tns}picker-select-menu-item-disabled {
     color: @picker-menu-item-disabled-color;
     cursor: @cursor-disabled;
+    text-decoration: none;
   }
 
   .@{tns}picker-select-menu-group-children & {
