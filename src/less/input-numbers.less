@@ -1,0 +1,43 @@
+.input-number {
+  &-btn-group-vertical {
+    position: relative;
+    white-space: nowrap;
+    vertical-align: middle;
+    display: table-cell;
+    width: 20px;
+
+    & > .btn {
+      display: block;
+      float: none;
+      width: 100%;
+      max-width: 100%;
+      padding: 8px 10px;
+      position: relative;
+    }
+  }
+
+  &-touchspin-up,
+  &-touchspin-down {
+    border-radius: 0;
+    height: @number-input-height/2;
+    color: @number-input-button-color;
+  }
+
+  i {
+    position: absolute;
+    top: 0;
+    left: 5px;
+    font-size: 9px;
+  }
+
+  // Reset Input Number styling
+  // Reference https://stackoverflow.com/questions/26024771/styling-a-input-type-number#answer-40189766
+  input[type=number] {
+    appearance: textfield;
+
+    &::-webkit-inner-spin-button {
+      /* stylelint-disable */
+      -webkit-appearance: none;
+    }
+  }
+}
