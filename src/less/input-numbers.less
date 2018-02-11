@@ -13,6 +13,7 @@
       max-width: 100%;
       padding: 8px 10px;
       position: relative;
+      border: none;
     }
   }
 
@@ -20,14 +21,16 @@
   &-touchspin-down {
     border-radius: 0;
     height: @number-input-height/2;
+    line-height: @number-input-height/2;
     color: @number-input-button-color;
-  }
 
-  i {
-    position: absolute;
-    top: 0;
-    left: 5px;
-    font-size: 9px;
+    > .icon {
+      position: absolute;
+      top: 2px;
+      left: 0;
+      width: 100%;
+      font-size: 9px;
+    }
   }
 
   // Reset Input Number styling
