@@ -4,6 +4,17 @@
 // Date range Picker Name Space
 @drpns: ~"@{tns}@{date-range-picker-prefix}";
 
+.@{drpns} {
+  // let clean button cover caret
+  .@{tns}picker-toggle-clean {
+    width: 16px;
+  }
+
+  .@{tns}picker-toggle-caret::before {
+    content: @calendar-default-caret-content;
+  }
+}
+
 .@{drpns}-menu {
   .@{cpns} {
     display: inline-block;
