@@ -1,0 +1,31 @@
+.auto-complete-menu > div {
+  .picker-menu-items;
+
+  margin-top: @border-radius-base;
+}
+
+.auto-complete-item {
+  display: block;
+  padding: @picker-item-content-padding-vertical @picker-item-content-padding-horizontal;
+  clear: both;
+  font-weight: normal;
+  line-height: @line-height-base;
+  color: @picker-select-item-color;
+  cursor: pointer; //fixed link has not [href] style
+  transition: @picker-item-transition;
+  text-decoration: none;
+  max-width: @picker-content-max-width;
+  // Forcing a newline
+  .break-word;
+
+  &,
+  &:hover,
+  &:active,
+  &:focus {
+    text-decoration: none;
+  }
+
+  &:hover {
+    .picker-item-hover;
+  }
+}
