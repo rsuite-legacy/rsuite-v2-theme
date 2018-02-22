@@ -8,10 +8,6 @@
   display: none;
   overflow: hidden;
   position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
   z-index: @zindex-drawer;
   // Prevent Chrome on Windows from adding a focus outline. For details, see
   // https://github.com/twbs/bootstrap/pull/10951.
@@ -31,6 +27,8 @@
   // Scale up the drawers
   &.@{ns}drawer-left,
   &.@{ns}drawer-right {
+    top: 0;
+
     &.@{ns}drawer-lg {
       .drawer-content-width(@drawer-horizontal-lg);
     }
@@ -91,14 +89,18 @@
   &-right {
     .drawer-animation-setting(drawerMoveInRight, drawerMoveOutRight);
 
+    right: 0;
+
     .drawer-dialog {
-      height: 100%;
       right: 0;
+      height: 100%;
     }
   }
 
   &-left {
     .drawer-animation-setting(drawerMoveInLeft, drawerMoveOutLeft);
+
+    left: 0;
 
     .drawer-dialog {
       height: 100%;
