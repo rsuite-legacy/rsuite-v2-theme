@@ -23,26 +23,78 @@
 
   .@{ns}progress-trail {
     stroke: @progress-bar-bg;
+    transition: stroke-dashoffset .3s ease, stroke-dasharray .3s ease, stroke .3s;
   }
 
   .@{ns}progress-stroke {
     stroke: @progress-bar-fill-bg;
+    transition: stroke-dashoffset .3s ease, stroke-dasharray .3s ease, stroke .3s, stroke-width .06s ease .3s;
   }
 }
 
 .@{ns}progress-line {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+
+  // Setting status color
+  &-success {
+    color: @prgress-status-success-color !important;
+  }
+
+  &-success &-bg {
+    background-color: @prgress-status-success-color !important;;
+  }
+
+  &-fail {
+    color: @prgress-status-fail-color !important;;
+  }
+
+  &-fail &-bg {
+    background-color: @prgress-status-fail-color !important;;
+  }
+
+  &-outer,
+  .@{ns}progress-info {
+    display: table-cell;
+  }
+
+  .@{ns}progress-info {
+    width: 50px;
+    padding-left: @progress-element-gap;
+    text-align: right;
+  }
+
+  .@{ns}progress-icon-success,
+  .@{ns}progress-icon-fail {
+    display: inline-block;
+    font-family: @font-family-icon;
+  }
+
+  .@{ns}progress-icon-success {
+    &::before {
+      content: @icon-check-circle;
+    }
+  }
+
+  .@{ns}progress-icon-fail {
+    &::before {
+      content: @icon-close-circle;
+    }
+  }
+
   &-outer {
-    height: @progress-bar-height;
     border-radius: @progress-bar-height/2;
     overflow: hidden;
   }
 
   &-inner {
     background: @progress-bar-bg;
+    border-radius: @progress-bar-height/2;
   }
 
   &-bg {
-    color: @progress-bar-fill-bg;
+    background-color: @progress-bar-fill-bg;
     border-radius: @progress-bar-height/2;
     transition-timing-function: ease-in-out;
     transition-duration: .2s;
@@ -51,6 +103,6 @@
 
   &-inner,
   &-bg {
-    height: 100%;
+    height: @progress-bar-height;
   }
 }
