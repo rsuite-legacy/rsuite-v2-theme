@@ -7,6 +7,23 @@
   position: relative;
   font-size: 0;
 
+  // Setting status color
+  &-success &-info {
+    color: @prgress-status-success-color !important;
+  }
+
+  &-success .@{ns}progress-stroke {
+    stroke: @prgress-status-success-color !important;
+  }
+
+  &-fail &-info {
+    color: @prgress-status-fail-color !important;
+  }
+
+  &-fail .@{ns}progress-stroke {
+    stroke: @prgress-status-fail-color !important;
+  }
+
   .@{ns}progress-circle-info {
     position: absolute;
     margin: auto;
@@ -43,15 +60,15 @@
   }
 
   &-success &-bg {
-    background-color: @prgress-status-success-color !important;;
+    background-color: @prgress-status-success-color !important;
   }
 
   &-fail {
-    color: @prgress-status-fail-color !important;;
+    color: @prgress-status-fail-color !important;
   }
 
   &-fail &-bg {
-    background-color: @prgress-status-fail-color !important;;
+    background-color: @prgress-status-fail-color !important;
   }
 
   &-outer,
@@ -63,24 +80,6 @@
     width: 50px;
     padding-left: @progress-element-gap;
     text-align: right;
-  }
-
-  .@{ns}progress-icon-success,
-  .@{ns}progress-icon-fail {
-    display: inline-block;
-    font-family: @font-family-icon;
-  }
-
-  .@{ns}progress-icon-success {
-    &::before {
-      content: @icon-check-circle;
-    }
-  }
-
-  .@{ns}progress-icon-fail {
-    &::before {
-      content: @icon-close-circle;
-    }
   }
 
   &-outer {
@@ -104,5 +103,24 @@
   &-inner,
   &-bg {
     height: @progress-bar-height;
+  }
+}
+
+// Status icons styles
+.@{ns}progress-icon-success,
+.@{ns}progress-icon-fail {
+  display: inline-block;
+  font-family: @font-family-icon;
+}
+
+.@{ns}progress-icon-success {
+  &::before {
+    content: @icon-check-circle;
+  }
+}
+
+.@{ns}progress-icon-fail {
+  &::before {
+    content: @icon-close-circle;
   }
 }
