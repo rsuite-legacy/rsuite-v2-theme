@@ -206,6 +206,11 @@
     padding-left: @sidenav-default-width;
   }
 
+  // The same to the dorpdown item
+  .@{ns}dropdown-item > .@{ns}dropdown-item-content {
+    padding-right: @dropdown-item-content-padding-horizontal+ @dropdown-item-content-submenu-icon-angle-spacing + @dropdown-item-content-submenu-icon-angle-width;
+  }
+
   .@{ns}dropdown-toggle-caret {
     display: none;
   }
