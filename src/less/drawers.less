@@ -129,8 +129,7 @@
 }
 
 .drawer-open .drawer {
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: visible;
 }
 
 // Shell div to position the modal with bottom padding
@@ -215,6 +214,7 @@
   color: @drawer-close-btn-color;
   width: @line-height-computed;
   padding: 0 @padding-right;
+  background: none;
 
   &::before {
     content: @alert-close-button-content;
