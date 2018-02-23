@@ -1,22 +1,56 @@
 .@{ns}rsuite-progress {
   font-size: @progress-font-size;
   line-height: unit(@line-height-computed/@progress-font-size);
+}
 
-  .@{ns}rsuite-progress-line-path {
-    stroke: @progress-bar-color;
+.@{ns}progress-circle {
+  position: relative;
+  font-size: 0;
+
+  .@{ns}progress-circle-info {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    font-size: @progress-font-size;
+    line-height: unit(@line-height-computed/@progress-font-size);
+    height: @line-height-computed;
+    color: @progress-info-text-color;
   }
 
-  .@{ns}rsuite-progress-line-trail {
-    background: @progress-bar-bg;
+  .@{ns}progress-trail {
+    stroke: @progress-bar-bg;
+  }
+
+  .@{ns}progress-stroke {
+    stroke: @progress-bar-fill-bg;
   }
 }
 
-.@{ns}rsuite-progress-circle {
-  .@{ns}rsuite-progress-circle-path {
-    stroke: @progress-bar-color;
+.@{ns}progress-line {
+  &-outer {
+    height: @progress-bar-height;
+    border-radius: @progress-bar-height/2;
+    overflow: hidden;
   }
 
-  .@{ns}rsuite-progress-circle-trail {
+  &-inner {
     background: @progress-bar-bg;
+  }
+
+  &-bg {
+    color: @progress-bar-fill-bg;
+    border-radius: @progress-bar-height/2;
+    transition-timing-function: ease-in-out;
+    transition-duration: .2s;
+    transition-property: width, color;
+  }
+
+  &-inner,
+  &-bg {
+    height: 100%;
   }
 }
