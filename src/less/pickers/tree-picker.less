@@ -62,7 +62,7 @@
     }
   }
 
-  &:focus > .@{tpns}-view-node-label {
+  &:not(&-disabled):focus > .@{tpns}-view-node-label {
     background-color: @picker-tree-node-hover-bg;
   }
 }
@@ -83,17 +83,16 @@
     line-height: @picker-tree-node-line-height;
     transform: rotate(-90deg);
     transform-origin: 3.5px 16px;
-    transition: transform .3s linear;
-    transition-property: transform, margin-left;
+    margin-left: -2px;
 
     &::before {
       content: @picker-tree-arrow-down;
-      margin-left: -2px;
     }
 
     // expand children tree
     .@{tpns}-view-open > .@{tpns}-view-node & {
       transform: rotate(0deg);
+      margin-left: 0;
     }
   }
 }
