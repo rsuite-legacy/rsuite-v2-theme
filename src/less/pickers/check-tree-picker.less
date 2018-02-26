@@ -238,12 +238,22 @@
   }
 }
 
-.@{tns}picker-menu .@{ctpns}-view {
-  padding: 0 @picker-menu-padding @picker-menu-padding 0;
+.@{tns}picker-menu {
+  &.@{ctpns}-menu {
+    padding-top: @picker-menu-padding;
 
-  &-node > .@{ctpns}-view-checknode-label {
-    .ellipsis;
+    .@{tns}picker-search-bar {
+      padding-top: 0;
+    }
+  }
 
-    display: block;
+  .@{ctpns}-view {
+    padding: 0 @picker-menu-padding @picker-menu-padding 0;
+
+    &-node > .@{ctpns}-view-checknode-label {
+      .ellipsis;
+
+      display: block;
+    }
   }
 }

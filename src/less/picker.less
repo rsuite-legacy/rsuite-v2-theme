@@ -94,11 +94,11 @@
   background-color: @picker-bg;
   box-shadow: @picker-shadow;
   overflow: hidden;
+  padding-top: @border-radius-base;
 
   // Searchbar
   .@{tns}picker-search-bar {
-    //display: inline-block;
-    padding: @picker-menu-padding;
+    padding: (@picker-menu-padding - @border-radius-base) @picker-menu-padding @picker-menu-padding;
 
     .@{tns}picker-search-bar-input {
       .form-control;

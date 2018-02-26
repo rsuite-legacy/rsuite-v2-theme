@@ -106,12 +106,22 @@
   }
 }
 
-.@{tns}picker-menu .@{tpns}-view {
-  padding: 0 @picker-menu-padding @picker-menu-padding 0;
+.@{tns}picker-menu {
+  &.@{tpns}-menu {
+    padding-top: @picker-menu-padding;
 
-  &-node > .@{tpns}-view-node-label {
-    .ellipsis;
+    .@{tns}picker-search-bar {
+      padding-top: 0;
+    }
+  }
 
-    display: block;
+  .@{tpns}-view {
+    padding: 0 @picker-menu-padding @picker-menu-padding 0;
+
+    &-node > .@{tpns}-view-node-label {
+      .ellipsis;
+
+      display: block;
+    }
   }
 }
