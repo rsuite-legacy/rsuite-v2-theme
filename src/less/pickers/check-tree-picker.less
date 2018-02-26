@@ -20,14 +20,12 @@
   }
 
   > .@{ctpns}-view-checknode-label {
-    .ellipsis;
-
     margin: 0;
     //padding-left: 16px;
     padding: @picker-tree-node-padding-vertical @picker-tree-node-padding-horizontal;
     //text gap + checkbox space
     padding-left: @picker-tree-arrow-down-width+@picker-tree-arrow-down-gap+8px+26px;
-    display: block;
+    display: inline-block;
     cursor: pointer;
     transition-timing-function: linear;
     transition-duration: .3s;
@@ -66,54 +64,6 @@
   &:not(&-disabled):focus > .@{ctpns}-view-checknode-label {
     background-color: @picker-tree-node-hover-bg;
   }
-}
-
-// expand icon
-.@{ctpns}-view-node-expand-icon-wrapper {
-  display: inline-block;
-  position: absolute;
-  cursor: pointer;
-  z-index: 1;
-
-  > .@{ctpns}-view-node-expand-icon {
-    display: inline-block;
-    padding: @picker-tree-node-padding-vertical 0;
-    padding-right: @picker-tree-arrow-down-gap;
-    height: 36px;
-    font-size: @picker-tree-node-font-size;
-    line-height: @picker-tree-node-line-height;
-    transform: rotate(-90deg);
-    transform-origin: 3.5px 16px;
-    margin-left: -2px;
-    margin-top: 2px;
-
-    &::before {
-      content: @picker-tree-arrow-down;
-    }
-
-    // expand children tree
-    .@{ctpns}-view-open > .@{ctpns}-view-node & {
-      transform: rotate(0deg);
-      margin-left: 0;
-      margin-top: 0;
-    }
-  }
-}
-
-// node children
-.@{ctpns}-view-node-children {
-  > .@{ctpns}-view-children {
-    display: none;
-
-    // @todo animation
-    .@{ctpns}-view-open& {
-      display: block;
-    }
-  }
-}
-
-.@{tns}picker-menu .@{ctpns}-view {
-  padding: 0 @picker-menu-padding @picker-menu-padding 0;
 }
 
 // Checkbox
@@ -241,5 +191,59 @@
         .checkbox-inner-active-shadow(@checkbox-checked-border-color);
       }
     }
+  }
+}
+
+// expand icon
+.@{ctpns}-view-node-expand-icon-wrapper {
+  display: inline-block;
+  position: absolute;
+  cursor: pointer;
+  z-index: 1;
+
+  > .@{ctpns}-view-node-expand-icon {
+    display: inline-block;
+    padding: @picker-tree-node-padding-vertical 0;
+    padding-right: @picker-tree-arrow-down-gap;
+    height: 36px;
+    font-size: @picker-tree-node-font-size;
+    line-height: @picker-tree-node-line-height;
+    transform: rotate(-90deg);
+    transform-origin: 3.5px 16px;
+    margin-left: -2px;
+    margin-top: 2px;
+
+    &::before {
+      content: @picker-tree-arrow-down;
+    }
+
+    // expand children tree
+    .@{ctpns}-view-open > .@{ctpns}-view-node & {
+      transform: rotate(0deg);
+      margin-left: 0;
+      margin-top: 0;
+    }
+  }
+}
+
+// node children
+.@{ctpns}-view-node-children {
+  > .@{ctpns}-view-children {
+    display: none;
+
+    // @todo animation
+    .@{ctpns}-view-open& {
+      display: block;
+    }
+  }
+}
+
+.@{tns}picker-menu .@{ctpns}-view {
+  padding: 0 @picker-menu-padding @picker-menu-padding 0;
+
+  &-node > .@{ctpns}-view-checknode-label {
+    .ellipsis;
+
+    display: block;
   }
 }
