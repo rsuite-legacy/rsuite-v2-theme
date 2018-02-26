@@ -94,7 +94,12 @@
   background-color: @picker-bg;
   box-shadow: @picker-shadow;
   overflow: hidden;
-  padding-top: @border-radius-base;
+  
+  // Select picker menu & Check select picker menu always has 6px gap
+  &.@{tns}picker-select-menu,
+  &.@{tns}picker-check-menu {
+    padding-top: @border-radius-base;
+  }
 
   // Searchbar
   .@{tns}picker-search-bar {
