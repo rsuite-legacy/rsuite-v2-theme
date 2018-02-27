@@ -36,7 +36,7 @@
     height: @checkbox-width-height;
   }
 
-  // 涟漪效果外框
+  // Ripple effect area
   &::before {
     .checkbox-inner-wrap(@checkbox-checked-border-color);
 
@@ -52,7 +52,7 @@
     }
   }
 
-  //感知区域
+  // Sense area(Can be clicked)
   &::after {
     top: -@checkbox-sense-width;
     right: -@checkbox-sense-width;
@@ -60,7 +60,7 @@
     left: -@checkbox-sense-width;
   }
 
-  //外框
+  // Out border
   .@{ns}checkbox-inner::before {
     .checkbox-inner-wrap(@checkbox-default-border-color);
 
@@ -83,7 +83,7 @@
     }
   }
 
-  //对钩
+  // Check mark
   .@{ns}checkbox-inner::after {
     .opacity(0);
 
@@ -114,8 +114,8 @@
     }
   }
 
-  //聚焦
-  &:focus {
+  // Disabled checkbox can't focus
+  .@{ns}checkbox:not(.@{ns}checkbox-disabled) &:focus {
     outline: none;
 
     .@{ns}checkbox-inner::before {

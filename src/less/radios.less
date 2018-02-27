@@ -1,8 +1,8 @@
 .@{ns}radio-checker {
   padding-top: 10px;
   padding-bottom: 10px;
-  padding-left: @radio-sense-width*2+@radio-width-height;
-  min-height: @radio-sense-width*2+@radio-width-height;
+  padding-left: @radio-sense-width * 2 + @radio-width-height;
+  min-height: @radio-sense-width * 2 + @radio-width-height;
   line-height: 1;
 }
 
@@ -22,7 +22,7 @@
   &::after,
   .@{ns}radio-inner::before,
   .@{ns}radio-inner::after {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     top: 0;
@@ -39,6 +39,7 @@
   // 涟漪效果外框
   &::before {
     .radio-inner-wrapper(@radio-checked-border-color);
+
     transform: scale(1);
     opacity: .7;
     visibility: hidden;
@@ -62,6 +63,7 @@
   //边框
   .@{ns}radio-inner::before {
     .radio-inner-wrapper(@radio-default-border-color);
+
     transition: background .2s linear, border .2s linear, box-shadow .2s linear;
 
     .@{ns}radio-checked & {
@@ -87,27 +89,27 @@
     margin-top: (@radio-width-height - @radio-inner-width-height) / 2;
     margin-left: (@radio-width-height - @radio-inner-width-height) / 2;
     border-radius: @radio-border-radius;
-    .opacity(0);
+    opacity: 0;
     transform: scale(0);
-    transition: opacity .2s ease-in, transform .2s cubic-bezier(0.12, 0.4, 0.29, 1.46);
+    transition: opacity .2s ease-in, transform .2s cubic-bezier(.12, .4, .29, 1.46);
 
     .@{ns}radio-checked & {
       transform: scale(1);
-      .opacity(1);
+      opacity: 1;
     }
   }
 
-  //聚焦
-  &:focus {
+  //Disabled checkbox can't focus
+  .@{ns}radio:not(.@{ns}radio-disabled) &:focus {
     outline: none;
 
     .@{ns}radio-inner::before {
       .radio-inner-active-shadow(@radio-default-border-color);
 
-      @hover: ~':hover';
+      @hover: ~":hover";
+
       @{hover}& {
         .radio-inner-active-shadow(@radio-checked-border-color);
-
       }
 
       .@{ns}radio-checked & {

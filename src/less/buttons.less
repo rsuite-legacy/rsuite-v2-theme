@@ -4,63 +4,6 @@
 
 // Base styles
 // --------------------------------------------------
-.btn() {
-  display: inline-block;
-  margin-bottom: 0; // For input.btn
-  font-weight: @btn-font-weight;
-  text-align: center;
-  vertical-align: middle;
-  cursor: pointer;
-  outline: 0 !important;
-  white-space: nowrap;
-  // Reset border style in all browser
-  border: none;
-
-  .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @btn-border-radius-base);
-  .user-select(none);
-
-  &,
-  &:active,
-  &.active {
-    &:focus,
-    &.focus {
-      .tab-focus();
-    }
-  }
-
-  &:hover,
-  &:focus,
-  &.focus {
-    color: @btn-default-color;
-    text-decoration: none;
-  }
-
-  &:active,
-  &.btn-active {
-    outline: 0;
-    background-image: none;
-  }
-
-  &.disabled,
-  &[disabled],
-  .dropdown-disabled &,
-  fieldset[disabled] & {
-    cursor: @cursor-disabled;
-    .opacity(.3);
-
-    &::after {
-      display: none !important;
-    }
-  }
-
-  a& {
-    &.disabled,
-    fieldset[disabled] & {
-      pointer-events: none; // Future-proof disabling of clicks on `<a>` elements
-    }
-  }
-}
-
 .@{ns}btn {
   .btn;
 }
@@ -124,6 +67,7 @@
 // --------------------------------------------------
 
 // Default Button
+// Rewrite common button style
 .@{ns}btn-default {
   .button-ripple;
   .btn-icon-with-text(@btn-icon-with-text-bg);
@@ -206,35 +150,6 @@
 }
 
 // Subtle Button
-.btn-subtle() {
-  .button-ripple;
-  .btn-transition;
-  .btn-subtle-variant(@btn-subtle-hover-bg);
-
-  &:focus,
-  &.focus,
-  &:hover {
-    color: @btn-subtle-default-hover-color;
-  }
-
-  &:active,
-  &.@{ns}btn-active,
-  .@{ns}open > .@{ns}dropdown-toggle& {
-    color: @btn-subtle-active-default-color;
-    background-color: @btn-subtle-active-default-bg;
-    background-image: none;
-
-    &:hover,
-    &:focus,
-    &.focus {
-      color: @btn-subtle-active-default-color;
-      background-color: @btn-subtle-active-default-bg;
-    }
-  }
-
-  .generate-spectrum-subtle-btns();
-}
-
 .@{ns}btn-subtle {
   .btn-subtle;
 }
@@ -265,20 +180,11 @@
 // --------------------------------------------------
 
 .@{ns}btn-lg {
-  .button-size(@padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @btn-border-radius-large);
-}
-
-.btn-sm() {
-  .button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-base; @line-height-base; @btn-border-radius-small);
-
+  .btn-lg;
 }
 
 .@{ns}btn-sm {
   .btn-sm;
-}
-
-.btn-xs() {
-  .button-size(@padding-xs-vertical; @padding-xs-horizontal; @font-size-small; @line-height-small; @btn-border-radius-small);
 }
 
 .@{ns}btn-xs {

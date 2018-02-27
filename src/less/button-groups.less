@@ -339,6 +339,7 @@
 .@{ns}btn-group-link {
   .button-group-btn(@brand-primary, @brand-primary-hover);
 
+  // Rewrite disabled styles
   &.@{ns}btn-group {
     .@{ns}btn.disabled:hover {
       background-color: white;
@@ -353,29 +354,19 @@
 }
 
 .@{ns}btn-group-lg {
-  &.@{ns}btn-group .@{ns}btn:hover,
-  .@{ns}dropdown-toggle.@{ns}btn:hover {
-    padding-bottom: (@padding-large-vertical - 1);
-  }
-
-  &.@{ns}btn-group.@{ns}disabled .@{ns}btn:hover,
-  .@{ns}dropdown-toggle.disabled.btn:hover {
-    padding-bottom: @padding-large-vertical;
-  }
-
-  &.@{ns}btn-group.@{ns}open .@{ns}dropdown-toggle.@{ns}btn:hover {
-    padding-bottom: (@padding-large-vertical+1);
+  .@{ns}btn {
+    .btn-lg;
   }
 }
 
 .@{ns}btn-group-sm {
-  &.@{ns}btn-group.@{ns}open .@{ns}dropdown-toggle.@{ns}btn:hover {
-    padding-bottom: (@padding-small-vertical+1);
+  .@{ns}btn {
+    .btn-sm;
   }
 }
 
 .@{ns}btn-group-xs {
-  &.@{ns}btn-group.@{ns}open .@{ns}dropdown-toggle.@{ns}btn:hover {
-    padding-bottom: (@padding-xs-vertical+1);
+  .@{ns}btn {
+    .btn-xs;
   }
 }
