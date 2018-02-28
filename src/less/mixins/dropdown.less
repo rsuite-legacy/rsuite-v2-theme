@@ -1,4 +1,14 @@
-@charset "utf-8";
+.dropdown-toggle-caret-common() {
+  display: inline-block;
+  margin-left: 2px;
+  position: absolute;
+  top: @padding-base-vertical;
+  right: @padding-base-horizontal;
+
+  &::before {
+    font-family: @dropdown-caret-font-family !important;
+  }
+}
 
 .set-dropdown-caret(@prefix) {
   .@{prefix}-placement-left-bottom &::before,

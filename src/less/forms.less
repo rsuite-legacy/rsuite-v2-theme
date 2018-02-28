@@ -27,16 +27,12 @@ input[type="checkbox"]:focus {
 .form-control {
   display: block;
   width: 100%;
-  height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
-  padding: (@padding-base-input-vertical - @input-border-width) (@padding-base-input-horizontal - @input-border-width);
-  font-size: @font-size-base;
-  line-height: @line-height-base;
   color: @input-color;
   background-color: @input-bg;
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: @input-border-width solid @input-border;
-  border-radius: @input-border-radius; // Note: This has no effect on <select>s in some browsers, due to the limited stylability of <select>s in CSS.
   transition: @input-transition;
+  .input-base;
 
   // Placeholder
   &::placeholder {
@@ -57,22 +53,26 @@ input[type="checkbox"]:focus {
 
   // Reset height for `textarea`
   textarea& {
-    height: auto;
     resize: none;
+    // Set textarea valid value
+    min-width: 300px;
+    min-height: 76px;
+    max-width: 100%;
+    max-height: 200px;
   }
 }
 
 // Form control sizing
 .input-xs {
-  .input-size(@input-height-xs; @padding-xs-vertical; @padding-base-input-horizontal; @font-size-small; @line-height-base; @input-border-radius);
+  .input-xs;
 }
 
 .input-lg {
-  .input-size(@input-height-large; @padding-large-vertical; @padding-base-input-horizontal; @font-size-large; @line-height-large; @input-border-radius);
+  .input-lg;
 }
 
 .input-sm {
-  .input-size(@input-height-small; @padding-small-vertical; @padding-base-input-horizontal; @font-size-base; @line-height-base; @input-border-radius);
+  .input-sm;
 }
 
 // Form groups
@@ -181,17 +181,6 @@ input[type="checkbox"]:focus {
   line-height: 16.8px;
 }
 
-// Inline forms
-//
-// Make forms appear inline(-block) by adding the `.form-inline` class. Inline
-// forms begin stacked on extra small (mobile) devices and then go inline when
-// viewports reach <768px.
-//
-// Requires wrapping inputs and labels with `.form-group` for proper display of
-// default HTML form controls and our custom form controls (e.g., input groups).
-//
-// Heads up! This is mixin-ed into `.navbar-form` in navbars.less.
-
 .form-inline {
   > *,
   > .btn {
@@ -206,7 +195,6 @@ input[type="checkbox"]:focus {
 // labels on the left and inputs on the right.
 
 .form-horizontal {
-
   // Consistent vertical alignment of radios and checkboxes
   //
   // Labels also get some reset styles, but that is scoped to a media query below.
@@ -228,30 +216,5 @@ input[type="checkbox"]:focus {
   // Make form groups behave like rows
   .form-group {
     .make-row();
-  }
-
-  // Validation states
-  //
-  // Reposition the icon because it's now within a grid column and columns have
-  // `position: relative;` on them. Also accounts for the grid gutter padding.
-  .has-feedback .form-control-feedback {
-    right: floor((@grid-gutter-width / 2));
-  }
-
-  //adjust radio padding
-  .radio-list .radio-inline {
-    padding-top: 6px;
-
-    .radio {
-      padding-top: 4px;
-    }
-  }
-
-  .checkboxList .checkbox-inline {
-    padding-top: 6px;
-
-    .checkbox {
-      padding-top: 4px;
-    }
   }
 }

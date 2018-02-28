@@ -1,7 +1,11 @@
 // Check Picker
 // ----------------------
+
+// Check picker name space
+@ckpns: ~"@{tns}@{check-picker-prefix}";
+
 // Menu Items
-.@{tns}picker-check-menu-items {
+.@{ckpns}-menu-items {
   .picker-menu-items-reset;
   .picker-menu-group-common(@check-picker-prefix);
   .picker-menu-group-title(@check-picker-prefix);
@@ -9,7 +13,7 @@
 }
 
 // Menu item
-.@{tns}picker-check-menu-item {
+.@{ckpns}-menu-item {
   position: relative;
   display: block;
   padding: @picker-item-content-padding-vertical @picker-item-content-padding-horizontal @picker-item-content-padding-vertical @picker-check-item-content-padding-left;
@@ -22,19 +26,19 @@
   // Forcing a newline
   .break-word;
 
-  &:not(.@{tns}picker-check-menu-item-disabled):hover,
-  &.@{tns}picker-check-menu-item-focus {
+  &:not(&-disabled):hover,
+  &&-focus {
     .picker-item-hover;
   }
 
-  &.@{tns}picker-check-menu-item-disabled {
+  &&-disabled {
     color: @picker-menu-item-disabled-color;
     cursor: @cursor-disabled;
   }
 }
 
 // Checkbox
-.@{tns}picker-check-menu-item-wrapper {
+.@{ckpns}-menu-item-wrapper {
   position: absolute;
   width: @checkbox-width-height;
   height: @checkbox-width-height;
@@ -48,8 +52,8 @@
 
   &::before,
   &::after,
-  .@{tns}picker-check-menu-item-inner::before,
-  .@{tns}picker-check-menu-item-inner::after {
+  .@{ckpns}-menu-item-inner::before,
+  .@{ckpns}-menu-item-inner::after {
     content: "";
     position: absolute;
     left: 0;
@@ -58,8 +62,8 @@
   }
 
   &::before,
-  .@{tns}picker-check-menu-item-inner::before,
-  .@{tns}picker-check-menu-item-inner::after {
+  .@{ckpns}-menu-item-inner::before,
+  .@{ckpns}-menu-item-inner::after {
     width: @checkbox-width-height;
     height: @checkbox-width-height;
   }
@@ -73,7 +77,7 @@
     visibility: hidden;
     transition: transform .2s linear, opacity .2s linear;
 
-    .@{tns}picker-check-menu-item-active & {
+    .@{ckpns}-menu-item-active & {
       transform: scale(1.5);
       opacity: 0;
       visibility: visible;
@@ -89,34 +93,34 @@
   }
 
   // Frame
-  .@{tns}picker-check-menu-item-inner::before {
+  .@{ckpns}-menu-item-inner::before {
     .checkbox-inner-wrap(@checkbox-default-border-color);
 
     transition: background .2s linear, border .2s linear, box-shadow .2s linear;
 
-    .@{tns}picker-check-menu-item-active & {
+    .@{ckpns}-menu-item-active & {
       border-color: @checkbox-checked-border-color;
       background-color: @checkbox-checked-border-color;
     }
 
-    .@{tns}picker-check-menu-item-disabled:not(.@{tns}picker-check-menu-item-active) & {
+    .@{ckpns}-menu-item-disabled:not(.@{ckpns}-menu-item-active) & {
       border-color: @checkbox-disabled-color;
       background-color: @checkbox-disabled-color;
     }
 
-    .@{tns}picker-check-menu-item-disabled.@{tns}picker-check-menu-item-active & {
+    .@{ckpns}-menu-item-disabled.@{ckpns}-menu-item-active & {
       opacity: .3;
     }
   }
 
   // check mark
-  .@{tns}picker-check-menu-item-inner::after {
+  .@{ckpns}-menu-item-inner::after {
     .opacity(0);
 
     transform: rotate(45deg) scale(0);
     transition: opacity .2s ease-in, transform .2s cubic-bezier(.12, .4, .29, 1.46);
 
-    .@{tns}picker-check-menu-item-active & {
+    .@{ckpns}-menu-item-active & {
       border: solid @B000;
       width: 6px;
       height: 9px;
@@ -132,10 +136,11 @@
   &:focus {
     outline: none;
 
-    .@{tns}picker-check-menu-item-inner::before {
+    .@{ckpns}-menu-item-inner::before {
       .checkbox-inner-active-shadow(@checkbox-default-border-color);
 
       @hover: ~":hover";
+
       @{hover}& {
         .checkbox-inner-active-shadow(@checkbox-checked-border-color);
       }

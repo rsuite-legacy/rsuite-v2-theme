@@ -3,21 +3,21 @@
 // --------------------------------------------------
 
 .@{ns}popover {
+  // Our parent element can be arbitrary since popovers are by default inserted as a sibling of their target element.
+  // So reset our font and text properties to avoid inheriting weird values.
+  .reset-text();
+  .drop-shadow(0 1px 8px rgba(0, 0, 0, .12));
+
   position: absolute;
   top: 0;
   left: 0;
   z-index: @zindex-popover;
   display: none;
   padding: 12px;
-  // Our parent element can be arbitrary since popovers are by default inserted as a sibling of their target element.
-  // So reset our font and text properties to avoid inheriting weird values.
-  .reset-text();
   font-size: @font-size-base;
-
   background-color: @popover-bg;
   background-clip: padding-box;
   border-radius: @popover-border-radius;
-  .drop-shadow(0 1px 8px rgba(0, 0, 0, .12));
 
   .set-translate(@translateX:0,@translateY:0) {
     transform: translate(0, 0);
@@ -36,7 +36,7 @@
     border-width: @popover-arrow-outer-width;
 
     &,
-    &:after {
+    &::after {
       position: absolute;
       display: block;
       width: 0;
@@ -45,7 +45,7 @@
       border-style: solid;
     }
 
-    &:after {
+    &::after {
       border-width: @popover-arrow-width;
       content: "";
     }
@@ -75,7 +75,8 @@
       margin-left: -@popover-arrow-outer-width;
       border-bottom-width: 0;
       bottom: -@popover-arrow-outer-width;
-      &:after {
+
+      &::after {
         bottom: 1px;
         margin-left: -@popover-arrow-width;
         border-bottom-width: 0;
@@ -93,7 +94,8 @@
       left: -@popover-arrow-outer-width;
       margin-top: -@popover-arrow-outer-width;
       border-left-width: 0;
-      &:after {
+
+      &::after {
         left: 1px;
         bottom: -@popover-arrow-width;
         border-left-width: 0;
@@ -111,7 +113,8 @@
       margin-left: -@popover-arrow-outer-width;
       border-top-width: 0;
       top: -@popover-arrow-outer-width;
-      &:after {
+
+      &::after {
         top: 1px;
         margin-left: -@popover-arrow-width;
         border-top-width: 0;
@@ -129,7 +132,8 @@
       right: -@popover-arrow-outer-width;
       margin-top: -@popover-arrow-outer-width;
       border-right-width: 0;
-      &:after {
+
+      &::after {
         right: 1px;
         border-right-width: 0;
         border-left-color: @popover-arrow-color;

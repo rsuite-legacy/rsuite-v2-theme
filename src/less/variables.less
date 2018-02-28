@@ -353,11 +353,11 @@
 @toggle-md-height: 24px;
 @toggle-md-handle-gap: 3px;
 @toggle-md-min-width: 44px;
-@toggle-md-inner-text-size: @font-size-small;
+@toggle-md-inner-font-size: @font-size-small;
 @toggle-md-handle-diameter: @toggle-md-height - @toggle-md-handle-gap*2;
 @toggle-md-handle-bg: @B000;
 @toggle-md-inner-line-height-computed: @toggle-md-height;
-@toggle-md-inner-line-height: unit(@toggle-md-inner-line-height-computed/@toggle-md-inner-text-size);
+@toggle-md-inner-line-height: unit(@toggle-md-inner-line-height-computed/@toggle-md-inner-font-size);
 // The same to button
 @toggle-md-inner-margin: @padding-base-vertical;
 
@@ -1063,7 +1063,7 @@
 
 @breadcrumb-padding-vertical: 8px;
 @breadcrumb-padding-horizontal: 15px;
-@breadcrumb-separator-margin:4px;
+@breadcrumb-separator-margin: 4px;
 //** Breadcrumb text color
 @breadcrumb-color: @text-color;
 //** Text color of current page in the breadcrumb

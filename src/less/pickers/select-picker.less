@@ -1,7 +1,11 @@
 // Select Picker
 // ----------------------
+
+// Select picker name space
+@slns: ~"@{tns}@{select-picker-prefix}";
+
 // Menu Items
-.@{tns}picker-select-menu-items {
+.@{slns}-menu-items {
   .picker-menu-items-reset;
   .picker-menu-group-common(@select-picker-prefix);
   .picker-menu-group-title(@select-picker-prefix);
@@ -9,28 +13,28 @@
 }
 
 // Menu item
-.@{tns}picker-select-menu-item {
+.@{slns}-menu-item {
   .picker-select-item;
 
-  &:not(.@{tns}picker-select-menu-item-disabled):hover,
-  &.@{tns}picker-select-menu-item-focus {
+  &:not(&-disabled):hover,
+  &&-focus {
     .picker-item-hover;
 
     text-decoration: none;
   }
 
-  &.@{tns}picker-select-menu-item-active {
+  &&-active {
     color: @picker-select-menu-item-selected-color;
     background-color: @picker-select-menu-item-selected-bg;
   }
 
-  &.@{tns}picker-select-menu-item-disabled {
+  &&-disabled {
     color: @picker-menu-item-disabled-color;
     cursor: @cursor-disabled;
     text-decoration: none;
   }
 
-  .@{tns}picker-select-menu-group-children & {
+  .@{slns}-menu-group-children & {
     padding-left: @picker-group-children-padding-left;
   }
 }

@@ -5,22 +5,18 @@
   position: relative;
   display: inline-block;
   box-sizing: border-box;
-  height: @toggle-md-height;
-  min-width: @toggle-md-min-width;
   vertical-align: middle;
-  border-radius: @toggle-md-height/2;
   background-color: @toggle-default-bg;
   cursor: pointer;
   transition: all .3s linear;
   transition-property: background-color, width;
   user-select: none;
 
+  // Default size is middle.
+  .btn-toggle(md);
+
   .@{ns}toggle-inner {
     color: @toggle-md-handle-bg;
-    font-size: 12px;
-    line-height: @toggle-md-inner-line-height;
-    margin-left: @toggle-md-height;
-    margin-right: @toggle-md-inner-margin;
     display: block;
     transition: margin .3s linear;
   }
@@ -30,50 +26,31 @@
     opacity: .3;
   }
 
-  &:active::after {
-    width: @toggle-md-handle-diameter * @toggle-active-scale;
-  }
-
   &::after {
-    content: " ";
+    content: "";
     cursor: pointer;
     position: absolute;
-    width: @toggle-md-handle-diameter;
-    height: @toggle-md-handle-diameter;
-    left: @toggle-md-handle-gap;
-    top: @toggle-md-handle-gap;
-    border-radius: @toggle-md-handle-diameter/2;
     background-color: @toggle-md-handle-bg;
-    //transition: all .36s cubic-bezier(.78, .14, .15, .86);
     transition: all .3s linear;
     transition-property: left, margin-left, width;
   }
 
   &-checked {
     background-color: @toggle-checked-bg;
-
-    .toggle-inner {
-      margin-left: @toggle-md-inner-margin;
-      margin-right: @toggle-md-height;
-    }
-  }
-
-  &-checked::after {
-    left: 100%;
-    margin-left: -(@toggle-md-handle-diameter + @toggle-md-handle-gap);
-  }
-
-  &-checked:active::after {
-    margin-left: -(@toggle-md-handle-diameter * @toggle-active-scale + @toggle-md-handle-gap);
   }
 }
 
 // small
 .@{ns}btn-toggle-sm {
-  .toggle-size-variant(@toggle-sm-height, @toggle-sm-min-width, @toggle-sm-handle-gap, @toggle-sm-inner-margin, @toggle-sm-inner-font-size);
+  .btn-toggle(sm);
+}
+
+// middle
+.@{ns}btn-toggle-md {
+  .btn-toggle(md);
 }
 
 // large
 .@{ns}btn-toggle-lg {
-  .toggle-size-variant(@toggle-lg-height, @toggle-lg-min-width, @toggle-lg-handle-gap, @toggle-lg-inner-margin, @toggle-lg-inner-font-size);
+  .btn-toggle(lg);
 }

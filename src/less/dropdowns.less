@@ -2,19 +2,6 @@
 // Dropdown menus
 // --------------------------------------------------
 
-// Dropdown arrow/caret
-.dropdown-toggle-caret-common() {
-  display: inline-block;
-  margin-left: 2px;
-  position: absolute;
-  top: @padding-base-vertical;
-  right: @padding-base-horizontal;
-
-  &::before {
-    font-family: @dropdown-caret-font-family !important;
-  }
-}
-
 .dropdown-toggle-caret {
   .dropdown-toggle-caret-common;
   .set-dropdown-caret(~"dropdown");
@@ -25,6 +12,7 @@
   position: relative;
   display: inline-block;
 
+  // Dropdown button style
   .btn {
     > .icon {
       margin-right: 6px;
@@ -35,7 +23,6 @@
     }
   }
 
-  //both-ends
   &.both-ends .btn {
     .clearfix;
 
@@ -45,21 +32,12 @@
       float: right;
     }
   }
-
-  &.btn-group-default.btn-group .dropdown-toggle.btn:hover {
-    border-bottom-color: darken(@btn-default-bg, 5%);
-  }
 }
 
 .dropdown-toggle {
   position: relative;
   z-index: @zindex-dropdown;
   padding-right: @dropdown-toggle-padding-right;
-}
-
-// Prevent the focus on the dropdown toggle when closing dropdowns
-.dropdown-toggle:focus {
-  outline: 0;
 }
 
 // The dropdown menu (ul)
@@ -82,15 +60,6 @@
   animation-play-state: paused;
   padding: @border-radius-base 0;
 
-  // Aligns the dropdown menu to right
-  //
-  // Deprecated as of 3.1.0 in favor of `.dropdown-menu-[dir]`
-  &.pull-right {
-    right: 0;
-    left: auto;
-  }
-
-  // Dividers (basically an hr) within the dropdown
   .dropdown-item-divider {
     .nav-divider(@dropdown-divider-bg);
   }

@@ -3,7 +3,7 @@
   overflow: hidden;
 }
 
-// Container that the modal scrolls within
+// Container that the drawer scrolls within
 .@{ns}drawer {
   display: none;
   overflow: hidden;
@@ -13,10 +13,9 @@
   // https://github.com/twbs/bootstrap/pull/10951.
   outline: 0;
 
-  // When fading in the modal, animate it to slide down
+  // When fading in the drawer, animate it to slide down
   &.fade .drawer-dialog {
-    .drawer-animation(cubic-bezier(0.4, 0, 1, 1)); //Fast out
-    // IE hack
+    .drawer-animation(cubic-bezier(.4, 0, 1, 1)); //Fast out
     .ie-display-none;
   }
 
@@ -24,7 +23,7 @@
     .drawer-animation(ease-in-out);
   }
 
-  // Scale up the drawers
+  // Drawer sizes
   &.@{ns}drawer-left,
   &.@{ns}drawer-right {
     top: 0;
@@ -87,9 +86,8 @@
 
   // Drawer directions
   &-right {
-    .drawer-animation-setting(drawerMoveInRight, drawerMoveOutRight);
-
     right: 0;
+    .drawer-animation-setting(drawerMoveInRight, drawerMoveOutRight);
 
     .drawer-dialog {
       right: 0;
@@ -98,9 +96,8 @@
   }
 
   &-left {
-    .drawer-animation-setting(drawerMoveInLeft, drawerMoveOutLeft);
-
     left: 0;
+    .drawer-animation-setting(drawerMoveInLeft, drawerMoveOutLeft);
 
     .drawer-dialog {
       height: 100%;
@@ -128,17 +125,16 @@
   }
 }
 
+// Make sure drawer can be show in Safari.
 .drawer-open .drawer {
   overflow: visible;
 }
 
-// Shell div to position the modal with bottom padding
 .drawer-dialog {
   position: fixed;
   z-index: @zindex-drawer;
 }
 
-// Actual modal
 .drawer-content {
   position: absolute;
   background-color: @drawer-content-bg;
@@ -148,7 +144,6 @@
   box-shadow: @drawer-box-shadow;
 }
 
-// Drawer background
 .drawer-backdrop {
   position: fixed;
   top: 0;
@@ -157,13 +152,14 @@
   left: 0;
   z-index: @zindex-drawer-background;
   background-color: @drawer-backdrop-bg;
+
   // Fade for backdrop
   &.fade {
-    .opacity(0);
+    opacity: 0;
   }
 
   &.in {
-    .opacity(@drawer-backdrop-opacity);
+    opacity: @drawer-backdrop-opacity;
   }
 }
 
