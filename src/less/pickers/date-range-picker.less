@@ -18,6 +18,11 @@
 .@{drpns}-menu {
   .@{clpns} {
     display: inline-block;
+    width: 250px;
+
+    &-header {
+      width: 100%;
+    }
 
     &:first-child {
       border-right: @date-range-picker-inner-border;
@@ -58,8 +63,8 @@
     background-color: @H050;
     display: block;
     width: 100%;
-    margin-top: 1px;
-    height: 28px;
+    margin-top: 3px;
+    height: 24px;
     position: absolute;
     z-index: @zindex-date-range-picker-table-cell-content - 1;
   }
