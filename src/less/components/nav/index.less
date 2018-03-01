@@ -14,13 +14,13 @@
     padding: 6px 0;
     box-sizing: border-box;
     height: auto;
-    lline-height: 14px;
+    line-height: 14px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 
     &::before {
-      content: '';
+      content: "";
       display: block;
       position: absolute;
       width: 1px;
@@ -28,17 +28,22 @@
       top: 0;
       background: @B200;
     }
+
     &:hover {
       text-decoration: none;
     }
+
     &.scroll-bar-left::before {
       left: 0;
     }
+
     &.scroll-bar-right::before {
       right: 0;
     }
+
     &.active {
       color: @H500;
+
       &::before {
         width: 2px;
         background: @H500;

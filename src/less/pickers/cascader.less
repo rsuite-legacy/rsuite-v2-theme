@@ -1,17 +1,21 @@
 // Cascader
 // ----------------------
-.@{tns}picker-cascader-menu-items > div {
+
+// Cascader Picker Name Space
+@cspns: ~"@{tns}@{cascader-picker-prefix}";
+
+.@{cspns}-menu-items > div {
   .clearfix;
 }
 
 // Column menu
-.@{tns}picker-cascader-menu-items-column-menu {
+.@{cspns}-menu-items-column-menu {
   float: left;
   overflow-y: auto;
 }
 
 // Menu Items
-.@{tns}picker-cascader-menu-items {
+.@{cspns}-menu-items {
   padding: @border-radius-base 0;
 
   ul,
@@ -23,7 +27,7 @@
 }
 
 // Menu item
-.@{tns}picker-cascader-menu-item {
+.@{cspns}-menu-item {
   position: relative;
   display: block;
   padding: @picker-item-content-padding-vertical @picker-item-content-padding-horizontal;
@@ -34,20 +38,20 @@
   color: @picker-select-item-color;
 
   // Has children
-  .@{tns}picker-cascader-menu-items-has-children & {
+  &s-has-children & {
     padding-right: @dropdown-toggle-padding-right;
   }
 
-  &:not(.@{tns}picker-cascader-menu-item-disabled):hover,
-  &:not(.@{tns}picker-cascader-menu-item-disabled):focus,
+  &:not(&-disabled):hover,
+  &:not(&-disabled):focus,
   &.@{tns}picker-select-menu-item-focus {
     .picker-item-hover;
 
     text-decoration: none;
   }
 
-  &.@{tns}picker-cascader-menu-item-focus,
-  &.@{tns}picker-cascader-menu-item-active {
+  &&-focus,
+  &&-active {
     &,
     &:hover,
     &:focus,
@@ -57,15 +61,14 @@
     }
   }
 
-  &.@{tns}picker-cascader-menu-item-disabled {
+  &&-disabled {
     color: @picker-menu-item-disabled-color;
     text-decoration: none;
     cursor: @cursor-disabled;
   }
 }
 
-// Menu Items Caret
-.@{tns}picker-cascader-menu-items-caret {
+.@{cspns}-menu-items-caret {
   .dropdown-toggle-caret-common;
 
   &::before {

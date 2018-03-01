@@ -2,9 +2,9 @@
 // ----------------------
 
 // Calendar Picker Name Space
-@cpns: ~"@{tns}@{calendar-picker-prefix}";
+@clpns: ~"@{tns}@{calendar-picker-prefix}";
 
-.@{cpns} {
+.@{clpns} {
   background-color: @picker-bg;
   padding-top: @calendar-picker-padding;
   position: relative;
@@ -15,12 +15,12 @@
 .@{tns}picker-date-inline {
   height: 299px;
 
-  .@{cpns} {
+  .@{clpns} {
     height: 286px;
   }
 }
 
-.@{cpns}-header {
+.@{clpns}-header {
   width: @calendar-header-width;
   padding-left: @calendar-picker-padding;
   padding-right: @calendar-picker-padding;
@@ -135,22 +135,22 @@
   }
 }
 
-.@{cpns}-view {
+.@{clpns}-view {
   margin-top: @calendar-picker-view-margin-top;
   padding-left: @calendar-picker-padding;
   padding-right: @calendar-picker-padding;
 }
 
 // Calendar Table
-.@{cpns}-table {
+.@{clpns}-table {
   display: table;
 }
 
-.@{cpns}-table-row {
+.@{clpns}-table-row {
   display: table-row;
 }
 
-.@{cpns}-table-cell {
+.@{clpns}-table-cell {
   display: table-cell;
   width: 1%;
   padding: @calendar-table-cell-padding;
@@ -186,22 +186,22 @@
   }
 }
 
-.@{cpns}-table-cell-content {
+.@{clpns}-table-cell-content {
   .picker-calendar-cell-content;
 
-  .@{cpns}-table-cell-is-today & {
+  .@{clpns}-table-cell-is-today & {
     border: @calendar-table-cell-content-today-border-width solid @calendar-table-cell-content-today-border-color;
     padding: @calendar-table-cell-content-padding - @calendar-table-cell-content-today-border-width;
   }
 
-  .@{cpns}-table-cell-selected & {
+  .@{clpns}-table-cell-selected & {
     .picker-calendar-cell-content-selected;
   }
 }
 
 // Table header row
-.@{cpns}-table-header-row {
-  .@{cpns}-table-cell-content {
+.@{clpns}-table-header-row {
+  .@{clpns}-table-cell-content {
     color: @calendar-table-cell-header-color;
 
     &,
@@ -215,7 +215,7 @@
 }
 
 // Calendar month dropdown
-.@{cpns}-month-dropdown {
+.@{clpns}-month-dropdown {
   display: none;
   position: absolute;
   top: @calendar-dropdown-top;
@@ -228,11 +228,11 @@
   background-color: @B000;
   overflow: hidden;
 
-  .@{cpns}-show-month-dropdown & {
+  .@{clpns}-show-month-dropdown & {
     display: block;
   }
 
-  .@{cpns}-show-month-dropdown &-content {
+  .@{clpns}-show-month-dropdown &-content {
     animation: .3s linear slideDown;
   }
 
@@ -285,7 +285,7 @@
 }
 
 // Calendar time dropdown
-.@{cpns}-time-dropdown {
+.@{clpns}-time-dropdown {
   display: none;
   position: absolute;
   top: @calendar-dropdown-top;
@@ -295,11 +295,11 @@
   background-color: @B000;
   overflow: hidden;
 
-  .@{cpns}-show-time-dropdown & {
+  .@{clpns}-show-time-dropdown & {
     display: block;
   }
 
-  .@{cpns}-show-time-dropdown &-content {
+  .@{clpns}-show-time-dropdown &-content {
     animation: .3s linear slideDown;
   }
 
@@ -445,26 +445,26 @@
 }
 
 // In picker menu
-.@{tns}picker-menu .@{cpns} {
+.@{tns}picker-menu .@{clpns} {
   width: @calendar-header-width;
 
-  .@{cpns}-month-dropdown-cell-content,
-  .@{cpns}-table-cell-content {
+  .@{clpns}-month-dropdown-cell-content,
+  .@{clpns}-table-cell-content {
     width: @calendar-in-menu-content-side-length;
     height: @calendar-in-menu-content-side-length;
   }
 
-  .@{cpns}-table-cell-content {
+  .@{clpns}-table-cell-content {
     padding-left: 0;
     padding-right: 0;
     display: inline-block;
   }
 
-  .@{cpns}-month-dropdown-scroll {
+  .@{clpns}-month-dropdown-scroll {
     height: 227px;
   }
 
-  .@{cpns}-time-dropdown-column > ul {
+  .@{clpns}-time-dropdown-column > ul {
     height: 214px;
     padding-bottom: 184px;
   }
@@ -494,21 +494,21 @@
 }
 
 // Show month dropdown
-.@{cpns}-show-month-dropdown {
-  .@{cpns}-header-month-toolbar {
+.@{clpns}-show-month-dropdown {
+  .@{clpns}-header-month-toolbar {
     padding-left: 24px;
     padding-right: 24px;
   }
 
-  .@{cpns}-header-backward,
-  .@{cpns}-header-forward {
+  .@{clpns}-header-backward,
+  .@{clpns}-header-forward {
     display: none;
   }
 
-  .@{cpns}-header-title-date {
+  .@{clpns}-header-title-date {
     .picker-calendar-title-show;
 
-    &.@{cpns}-header-error {
+    &.@{clpns}-header-error {
       color: @danger-color;
 
       &:hover:active {
@@ -519,11 +519,11 @@
 }
 
 // Show time dropdown
-.@{cpns}-show-time-dropdown {
-  .@{cpns}-header-title-time {
+.@{clpns}-show-time-dropdown {
+  .@{clpns}-header-title-time {
     .picker-calendar-title-show;
 
-    &.@{cpns}-header-error {
+    &.@{clpns}-header-error {
       color: @danger-color;
 
       &:hover:active {
