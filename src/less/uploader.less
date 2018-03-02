@@ -5,8 +5,6 @@
 @uplns: ~"@{tns}uploader";
 
 .@{uplns} {
-  display: inline-block;
-
   &-trigger {
     input[type="file"] {
       position: absolute !important;
@@ -21,39 +19,6 @@
 }
 
 .@{uplns}-text {
-  .@{uplns}-trigger-btn {
-    .btn;
-    .button-ripple;
-
-    color: @btn-default-color;
-    background: @btn-default-bg;
-
-    &:focus,
-    &.focus {
-      color: @btn-default-color;
-      background-color: @btn-default-focus-bg;
-    }
-
-    &:hover {
-      color: @btn-default-hover-color;
-      background-color: @btn-default-hover-bg;
-    }
-
-    &:active,
-    &.@{ns}btn-active {
-      color: @btn-default-color;
-      background-color: @btn-default-active-bg;
-      background-image: none;
-
-      &:hover,
-      &:focus,
-      &.focus {
-        color: @btn-default-color;
-        background-color: @btn-default-active-bg;
-      }
-    }
-  }
-
   .@{uplns}-file-items {
     margin-top: @uploader-file-list-margin-top;
     //@todo: remove
@@ -176,6 +141,8 @@
 }
 
 .@{uplns}-picture {
+  display: inline-block;
+
   .@{uplns}-trigger-btn {
     .btn;
     .button-ripple;
@@ -225,6 +192,20 @@
           }
         }
       }
+    }
+
+    &-status {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: @uploader-picture-side-length;
+      height: @uploader-picture-side-length;
+      line-height: @uploader-picture-side-length;
+      text-align: center;
+      z-index: @zindex-uploader-picture-error-wrapper;
+      background-color: rgba(255, 255, 255, .8);
+      cursor: default;
+      color: @danger-color;
     }
 
     &-icon-wrapper {
@@ -277,6 +258,7 @@
       top: 0;
       left: 0;
       z-index: @zindex-uploader-picture-loading-wrapper;
+      text-align: center;
 
       .@{uplns}-file-item-icon {
         .set-side-length(@loader-default-diameter);
@@ -287,4 +269,44 @@
       }
     }
   }
+}
+
+.@{uplns}-text,
+.@{uplns}-picture-text {
+  .@{uplns}-trigger-btn {
+    .btn;
+    .button-ripple;
+
+    color: @btn-default-color;
+    background: @btn-default-bg;
+
+    &:focus,
+    &.focus {
+      color: @btn-default-color;
+      background-color: @btn-default-focus-bg;
+    }
+
+    &:hover {
+      color: @btn-default-hover-color;
+      background-color: @btn-default-hover-bg;
+    }
+
+    &:active,
+    &.@{ns}btn-active {
+      color: @btn-default-color;
+      background-color: @btn-default-active-bg;
+      background-image: none;
+
+      &:hover,
+      &:focus,
+      &.focus {
+        color: @btn-default-color;
+        background-color: @btn-default-active-bg;
+      }
+    }
+  }
+}
+
+.@{uplns}-picture-text {
+
 }
