@@ -11,26 +11,7 @@
     display: inline-block;
     float: left;
 
-    &::before,
-    &::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      display: block;
-      border-radius: 50%;
-    }
-
-    &::before {
-      border: @loader-spin-ring-wide solid @loader-spin-ring-color;
-    }
-
-    &::after {
-      border-width: @loader-spin-ring-wide;
-      border-style: solid;
-      border-color: @loader-spin-ring-active-color transparent transparent;
-      animation: loaderSpin @loader-duration-normal infinite linear;
-    }
+    .loader-spin;
   }
 
   //Loader spin

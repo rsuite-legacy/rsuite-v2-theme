@@ -70,6 +70,14 @@
       top: @padding-base-vertical;
       left: @padding-base-horizontal;
       width: @line-height-computed;
+      text-align: center;
+    }
+
+    &-icon-loading {
+      .@{uplns}-file-item-icon {
+        .set-side-length(@loader-default-diameter);
+        .loader-spin;
+      }
     }
 
     &-icon {
@@ -144,12 +152,14 @@
     }
 
     &-progress {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      left: 0;
+
       &-bar {
-        position: absolute;
-        bottom: 0;
         height: 2px;
         background-color: @H500;
-        margin-bottom: -1 * @padding-base-vertical;
         transition: width .3s ease-in-out;
       }
     }
