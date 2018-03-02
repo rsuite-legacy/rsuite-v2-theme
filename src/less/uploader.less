@@ -5,6 +5,8 @@
 @uplns: ~"@{tns}uploader";
 
 .@{uplns} {
+  display: inline-block;
+
   &-trigger {
     input[type="file"] {
       position: absolute !important;
@@ -169,6 +171,120 @@
     .@{uplns}-file-item-content,
     .@{uplns}-file-item-title {
       color: @danger-color;
+    }
+  }
+}
+
+.@{uplns}-picture {
+  .@{uplns}-trigger-btn {
+    .btn;
+    .button-ripple;
+    .btn-subtle;
+
+    width: @uploader-picture-side-length;
+    height: @uploader-picture-side-length;
+    margin: 0;
+    padding: 0;
+    border: 2px dotted @uploader-picture-border-color;
+    border-radius: @border-radius-base;
+    margin-top: @uploader-picture-item-gap;
+  }
+
+  .@{uplns}-trigger,
+  .@{uplns}-file-items {
+    float: left;
+  }
+
+  .@{uplns}-file-item {
+    width: @uploader-picture-side-length;
+    height: @uploader-picture-side-length;
+    overflow: hidden;
+    background-color: @uploader-picture-background-color;
+    border-radius: @border-radius-base;
+    position: relative;
+    float: left;
+    margin-top: @uploader-picture-item-gap;
+    margin-right: @uploader-picture-item-gap;
+
+    &-preview {
+      position: relative;
+      display: table-cell;
+      height: @uploader-picture-side-length;
+      vertical-align: middle;
+      text-align: center;
+      z-index: @zindex-uploader-picture-preview;
+
+      > img {
+        width: 100%;
+        height: auto;
+
+        @supports (object-fit: cover) {
+          & {
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+
+    &-icon-wrapper {
+      display: none;
+    }
+
+    &-btn-remove {
+      color: @uploader-light-font-color;
+      cursor: pointer;
+      position: absolute;
+      top: 3px;
+      right: 3px;
+      width: @uploader-picture-remove-button-radius;
+      height: @uploader-picture-remove-button-radius;
+      line-height: @uploader-picture-remove-button-radius;
+      text-align: center;
+      background-color: rgba(255, 255, 255, .8);
+      border-radius: 50%;
+      visibility: hidden;
+      opacity: 0;
+      transition: .2s opacity;
+      z-index: @zindex-uploader-picture-remove-button;
+
+      &:hover,
+      &:focus {
+        text-decoration: none;
+      }
+
+      &::before {
+        content: @default-close-btn-content;
+      }
+
+      [aria-hidden] {
+        display: none;
+      }
+    }
+
+    &:hover .@{uplns}-file-item-btn-remove {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    &-icon-loading {
+      display: block;
+      width: @uploader-picture-side-length;
+      height: @uploader-picture-side-length;
+      line-height: @uploader-picture-side-length;
+      background-color: rgba(255, 255, 255, .8);
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: @zindex-uploader-picture-loading-wrapper;
+
+      .@{uplns}-file-item-icon {
+        .set-side-length(@loader-default-diameter);
+        .loader-spin;
+
+        display: inline-block;
+        position: relative;
+      }
     }
   }
 }
