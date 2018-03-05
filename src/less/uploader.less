@@ -13,7 +13,11 @@
 
     &-disabled {
       opacity: .3;
-      cursor: not-allowed;
+      //cursor: not-allowed;
+
+      .@{uplns}-trigger-btn {
+        cursor: not-allowed !important;
+      }
     }
   }
 
@@ -170,6 +174,15 @@
     margin-top: @uploader-picture-item-gap;
   }
 
+  .@{uplns}-trigger.@{uplns}-trigger-disabled .@{uplns}-trigger-btn {
+    color: @btn-subtle-color !important;
+    background-color: transparent !important;
+
+    &::after {
+      display: none;
+    }
+  }
+
   .@{uplns}-trigger,
   .@{uplns}-file-items {
     float: left;
@@ -280,10 +293,17 @@
 .@{uplns}-picture-text {
   .@{uplns}-trigger-btn {
     .btn;
-    .button-ripple;
 
     color: @btn-default-color;
     background: @btn-default-bg;
+  }
+
+  .@{uplns}-trigger-disabled .@{uplns}-trigger-btn {
+    cursor: not-allowed;
+  }
+
+  .@{uplns}-trigger:not(.@{uplns}-trigger-disabled) .@{uplns}-trigger-btn {
+    .button-ripple;
 
     &:focus,
     &.focus {
