@@ -84,6 +84,11 @@ input[type="checkbox"]:focus {
   margin-bottom: @form-group-margin-bottom;
 }
 
+// Form groups
+.control-label {
+  margin-bottom: @control-label-margin-bottom;
+}
+
 // Checkboxes and radios
 //
 // Indent the labels to position radios/checkboxes as hanging controls.
@@ -175,10 +180,15 @@ input[type="checkbox"]:focus {
 .help-block {
   display: block; // account for any element using help-block
   margin: 5px 0;
-  color: lighten(@text-color, 25%); // lighten the text some for contrast
+  color: @help-block-color; // lighten the text some for contrast
   //Sometimes help info is more than one line，so height can't set a fixed value
   min-height: 16.8px;
   line-height: 16.8px;
+
+  &-tooltip {
+    display: inline-block;
+    margin-left: @help-block-inline-gap;
+  }
 }
 
 .form-inline {
@@ -212,9 +222,54 @@ input[type="checkbox"]:focus {
   .checkbox {
     min-height: (@line-height-computed + (@padding-base-vertical + 1));
   }
+}
 
-  // Make form groups behave like rows
+// Form Layout
+.form {
+  .form-control {
+    width: @form-control-width;
+    display: inline-block;
+  }
+
+  // Used to provide relation for error message
   .form-group {
-    .make-row();
+    position: relative;
+  }
+}
+
+// Error
+.error-message {
+  position: absolute;
+  left: -1px;
+  bottom: -1*(@error-message-height + 3px);
+  padding: @error-message-padding-vertical @error-message-padding-horizontal;
+  background-color: @error-message-background-color;
+  border: 1px solid @error-message-border-color;
+  border-radius: @border-radius-base;
+  filter: ~"drop-shadow(0 0 6px rgba(0,0,0,.1))";
+  z-index: @zindex-error-message;
+  color: @error-message-font-color;
+  display: none;
+
+  &-show {
+    display: block;
+    animation: .5s linear shake;
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 0 6px 6px;
+    left: 10px;
+    margin-top: -10px;
+    border-bottom-color: @error-message-border-color;
+  }
+
+  &::after {
+    margin-top: -9px;
+    border-bottom-color: @error-message-background-color;
   }
 }

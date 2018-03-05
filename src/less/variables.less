@@ -276,6 +276,17 @@
 //** Disabled cursor for form controls and buttons.
 @cursor-disabled: not-allowed;
 
+//== Form Layout
+@form-control-width: 300px;
+@help-block-color: @B600;
+@help-block-inline-gap: 10px;
+@error-message-padding-vertical: 4px;
+@error-message-padding-horizontal: 8px;
+@error-message-background-color: @B000;
+@error-message-border-color: @B200;
+@error-message-height: @error-message-padding-vertical*2 + @line-height-computed;
+@error-message-font-color: @danger-color;
+
 //== Number input
 //
 //##
@@ -403,6 +414,7 @@
 @zindex-uploader-picture-loading-wrapper: 2;
 @zindex-uploader-picture-error-wrapper: 3;
 @zindex-uploader-picture-remove-button: 4;
+@zindex-error-message: 11;
 
 //== Media queries breakpoints
 //
