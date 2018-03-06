@@ -76,15 +76,6 @@ input[type="checkbox"]:focus {
 }
 
 // Form groups
-//
-// Designed to help with the organization and spacing of vertical forms. For
-// horizontal forms, use the predefined grid classes.
-
-.form-group {
-  margin-bottom: @form-group-margin-bottom;
-}
-
-// Form groups
 .control-label {
   margin-bottom: @control-label-margin-bottom;
 }
@@ -179,11 +170,12 @@ input[type="checkbox"]:focus {
 
 .help-block {
   display: block; // account for any element using help-block
-  margin: 5px 0;
+  padding: 4px 0 0;
   color: @help-block-color; // lighten the text some for contrast
   //Sometimes help info is more than one line，so height can't set a fixed value
-  min-height: 16.8px;
-  line-height: 16.8px;
+  min-height: @line-height-computed;
+  line-height: @line-height-base;
+  font-size: @font-size-base;
 
   &-tooltip {
     display: inline-block;
@@ -199,12 +191,116 @@ input[type="checkbox"]:focus {
   }
 }
 
+//== Form Layout
+
+// Form groups
+.form-group {
+  &:not(:last-child) {
+    margin-bottom: @form-group-margin-bottom;
+  }
+
+  .form-control {
+    width: @form-control-width;
+    display: inline-block;
+  }
+
+  // Used to provide relation for error message
+  .form-control-wrapper {
+    position: relative;
+  }
+
+  // Error
+  .error-message {
+    position: absolute;
+    left: -1px;
+    bottom: -1*(@error-message-height + 3px);
+    padding: @error-message-padding-vertical @error-message-padding-horizontal;
+    background-color: @error-message-background-color;
+    border: 1px solid @error-message-border-color;
+    border-radius: @border-radius-base;
+    filter: ~"drop-shadow(0 0 6px rgba(0,0,0,.1))";
+    z-index: @zindex-error-message;
+    color: @error-message-font-color;
+    display: none;
+
+    &-show {
+      display: block;
+      animation: .3s ease-in-out shake;
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      border-color: transparent;
+      border-style: solid;
+      border-width: 0 6px 6px;
+      left: 10px;
+      margin-top: -10px;
+      border-bottom-color: @error-message-border-color;
+    }
+
+    &::after {
+      margin-top: -9px;
+      border-bottom-color: @error-message-background-color;
+    }
+  }
+}
+
+.form-vertical .form-group {
+  .control-label {
+    display: block;
+  }
+
+  .form-control-wrapper {
+    display: inline-block;
+  }
+}
+
 // Horizontal forms
 //
 // Horizontal forms are built on grid classes and allow you to create forms with
 // labels on the left and inputs on the right.
 
 .form-horizontal {
+  .form-group {
+    .clearfix;
+
+    .form-control-wrapper,
+    .control-label {
+      float: left;
+    }
+
+    .form-control-wrapper + .help-block {
+      clear: both;
+    }
+
+    // Help block
+    .form-control-wrapper + .help-block:not(.help-block-tooltip) {
+      margin-left: @control-label-width + @control-label-margin-right;
+    }
+
+    .form-control-wrapper + .help-block.help-block-tooltip {
+      padding: @padding-base-vertical 0;
+    }
+
+    .control-label {
+      display: inline-block;
+      //Sometimes help info is more than one line，so height can't set a fixed value
+      min-height: @line-height-computed;
+      line-height: @line-height-base;
+      font-size: @font-size-base;
+      padding: @padding-base-vertical 0;
+      width: @control-label-width;
+      margin-right: @control-label-margin-right;
+      text-align: right;
+    }
+
+    .btn-toolbar {
+      padding-left: @control-label-width + @control-label-margin-right;
+    }
+  }
+
   // Consistent vertical alignment of radios and checkboxes
   //
   // Labels also get some reset styles, but that is scoped to a media query below.
@@ -221,55 +317,5 @@ input[type="checkbox"]:focus {
   .radio,
   .checkbox {
     min-height: (@line-height-computed + (@padding-base-vertical + 1));
-  }
-}
-
-// Form Layout
-.form {
-  .form-control {
-    width: @form-control-width;
-    display: inline-block;
-  }
-
-  // Used to provide relation for error message
-  .form-group {
-    position: relative;
-  }
-}
-
-// Error
-.error-message {
-  position: absolute;
-  left: -1px;
-  bottom: -1*(@error-message-height + 3px);
-  padding: @error-message-padding-vertical @error-message-padding-horizontal;
-  background-color: @error-message-background-color;
-  border: 1px solid @error-message-border-color;
-  border-radius: @border-radius-base;
-  filter: ~"drop-shadow(0 0 6px rgba(0,0,0,.1))";
-  z-index: @zindex-error-message;
-  color: @error-message-font-color;
-  display: none;
-
-  &-show {
-    display: block;
-    animation: .5s linear shake;
-  }
-
-  &::before,
-  &::after {
-    content: "";
-    position: absolute;
-    border-color: transparent;
-    border-style: solid;
-    border-width: 0 6px 6px;
-    left: 10px;
-    margin-top: -10px;
-    border-bottom-color: @error-message-border-color;
-  }
-
-  &::after {
-    margin-top: -9px;
-    border-bottom-color: @error-message-background-color;
   }
 }
