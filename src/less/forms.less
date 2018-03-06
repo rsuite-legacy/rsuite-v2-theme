@@ -170,7 +170,6 @@ input[type="checkbox"]:focus {
 
 .help-block {
   display: block; // account for any element using help-block
-  padding: 4px 0 0;
   color: @help-block-color; // lighten the text some for contrast
   //Sometimes help info is more than one line，so height can't set a fixed value
   min-height: @line-height-computed;
@@ -188,6 +187,7 @@ input[type="checkbox"]:focus {
   > .btn {
     margin-right: @base-unit-px;
     margin-bottom: @base-unit-px;
+    vertical-align: middle;
   }
 }
 
@@ -195,7 +195,7 @@ input[type="checkbox"]:focus {
 
 // Form groups
 .form-group {
-  &:not(:last-child) {
+  .form:not(.form-inline) &:not(:last-child) {
     margin-bottom: @form-group-margin-bottom;
   }
 
@@ -222,6 +222,7 @@ input[type="checkbox"]:focus {
     z-index: @zindex-error-message;
     color: @error-message-font-color;
     display: none;
+    white-space: nowrap;
 
     &-show {
       display: block;
@@ -247,9 +248,14 @@ input[type="checkbox"]:focus {
   }
 }
 
+// Vertical forms
 .form-vertical .form-group {
   .control-label {
     display: block;
+  }
+
+  .help-block:not(.help-block-tooltip) {
+    padding-top: 4px;
   }
 
   .form-control-wrapper {
@@ -317,5 +323,20 @@ input[type="checkbox"]:focus {
   .radio,
   .checkbox {
     min-height: (@line-height-computed + (@padding-base-vertical + 1));
+  }
+}
+
+// Inline
+.form-inline .form-group {
+  display: inline-block;
+
+  .form-control-wrapper {
+    display: inline-block;
+    margin-left: @form-control-margin-left;
+  }
+
+  // Form control wrapper behind Screen only dom no need margin left.
+  .sr-only + .form-control-wrapper {
+    margin-left: 0;
   }
 }
