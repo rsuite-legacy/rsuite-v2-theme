@@ -209,11 +209,17 @@ input[type="checkbox"]:focus {
     position: relative;
   }
 
+  .form-control-message-wrapper {
+    position: absolute;
+    left: 0;
+    bottom: -1px; // Error message width form-control has 1px gap
+  }
+
   // Error
   .error-message {
     position: absolute;
-    left: -1px;
-    bottom: -1*(@error-message-height + 3px);
+    left: 0;
+    top: 0;
     padding: @error-message-padding-vertical @error-message-padding-horizontal;
     background-color: @error-message-background-color;
     border: 1px solid @error-message-border-color;
@@ -224,26 +230,33 @@ input[type="checkbox"]:focus {
     display: none;
     white-space: nowrap;
 
+    // Used to provide relation for error message
+    &-wrapper {
+      position: absolute;
+    }
+
     &-show {
       display: block;
       animation: .3s ease-in-out shake;
     }
 
-    &::before,
-    &::after {
-      content: "";
-      position: absolute;
-      border-color: transparent;
-      border-style: solid;
-      border-width: 0 6px 6px;
-      left: 10px;
-      margin-top: -10px;
-      border-bottom-color: @error-message-border-color;
-    }
+    &-arrow {
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        border-color: transparent;
+        border-style: solid;
+        border-width: 0 6px 6px;
+        left: 10px;
+        margin-top: -10px;
+        border-bottom-color: @error-message-border-color;
+      }
 
-    &::after {
-      margin-top: -9px;
-      border-bottom-color: @error-message-background-color;
+      &::after {
+        margin-top: -9px;
+        border-bottom-color: @error-message-background-color;
+      }
     }
   }
 }
@@ -305,24 +318,6 @@ input[type="checkbox"]:focus {
     .btn-toolbar {
       padding-left: @control-label-width + @control-label-margin-right;
     }
-  }
-
-  // Consistent vertical alignment of radios and checkboxes
-  //
-  // Labels also get some reset styles, but that is scoped to a media query below.
-  .radio,
-  .checkbox,
-  .radio-inline,
-  .checkbox-inline {
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-top: (@padding-base-vertical + 1); // Default padding plus a border
-  }
-  // Account for padding we're adding to ensure the alignment and of help text
-  // and other content below items
-  .radio,
-  .checkbox {
-    min-height: (@line-height-computed + (@padding-base-vertical + 1));
   }
 }
 
