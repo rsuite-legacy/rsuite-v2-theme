@@ -47,6 +47,11 @@
     position: relative;
     padding-left: 36px;
     padding-right: 30px;
+    transition: .3s linear background-color;
+
+    &:hover {
+      background-color: @uploader-item-hover-background-color;
+    }
 
     &-icon-wrapper {
       position: absolute;
@@ -342,6 +347,11 @@
     border: 1px solid @uploader-picture-text-border-color;
     border-radius: @border-radius-base;
     overflow: hidden;
+    transition: .3s linear background-color;
+
+    &:hover {
+      background-color: @uploader-item-hover-background-color;
+    }
 
     &-icon-wrapper {
       display: none;
