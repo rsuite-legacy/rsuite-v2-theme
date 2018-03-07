@@ -14,7 +14,7 @@
 
   &[disabled] {
     &,
-    .form-control,
+    .input,
     .input-group-addon,
     .input-group-btn {
       background-color: @input-bg-disabled;
@@ -33,14 +33,14 @@
     }
 
     .input-group-addon,
-    .form-control,
+    .input,
     .input-group-btn {
       border: none;
       border-radius: 0;
     }
   }
 
-  .form-control {
+  .input {
     // Ensure that the input is always above the *appended* addon button for
     // proper border colors.
     position: relative;
@@ -58,12 +58,12 @@
     }
   }
 
-  input.form-control ~ .input-group-addon {
+  input.input~ .input-group-addon {
     border-left: none;
   }
 
   //FIXED: The icon between two input has 1px border.
-  input.form-control ~ .input-group-addon:not(:last-child) {
+  input.input ~ .input-group-addon:not(:last-child) {
     border-right: 0;
   }
 
@@ -71,7 +71,7 @@
     width: 100%;
     border-radius: 0;
 
-    input.form-control,
+    input.input,
     .input-group-btn {
       display: block;
       width: 100%;
@@ -112,18 +112,18 @@
       padding: 11px 13px 8px 13px;
     }
 
-    .input-group-btn ~ input.form-control,
-    .input-group-addon ~ input.form-control {
+    .input-group-btn ~ input.input,
+    .input-group-addon ~ input.input {
       padding-left: 36px;
       padding-right: 12px;
     }
 
-    input.form-control ~ .input-group-addon {
+    input.input ~ .input-group-addon {
       left: inherit;
       right: 0;
     }
 
-    input.form-control ~ .input-group-btn {
+    input.input ~ .input-group-btn {
       left: inherit;
       right: @input-border-width;
     }
@@ -135,7 +135,7 @@
 // Remix the default form control sizing classes into new ones for easier
 // manipulation.
 
-.input-group-lg > .form-control,
+.input-group-lg > .input,
 .input-group.input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn {
   .input-lg();
@@ -143,7 +143,7 @@
   border-radius: 0;
 }
 
-.input-group-sm > .form-control,
+.input-group-sm > .input,
 .input-group.input-group-sm > .input-group-addon,
 .input-group-sm > .input-group-btn {
   .input-sm();
@@ -151,7 +151,7 @@
   border-radius: 0;
 }
 
-.input-group-xs > .form-control,
+.input-group-xs > .input,
 .input-group.input-group-xs > .input-group-addon,
 .input-group-xs > .input-group-btn {
   .input-xs();
@@ -172,7 +172,7 @@
 // -------------------------
 .input-group-addon,
 .input-group-btn,
-.input-group .form-control {
+.input-group .input {
   display: table-cell;
 
   &:not(:first-child):not(:last-child) {
