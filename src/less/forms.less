@@ -25,31 +25,7 @@ input[type="checkbox"]:focus {
 
 // Common form controls
 .input {
-  display: block;
-  width: 100%;
-  color: @input-color;
-  background-color: @input-bg;
-  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
-  border: @input-border-width solid @input-border;
-  transition: @input-transition;
-  .input-base;
-
-  // Placeholder
-  &::placeholder {
-    color: @input-color-placeholder;
-  }
-
-  &:focus,
-  &:hover {
-    border-color: @input-border-focus;
-    outline: 0;
-  }
-
-  &[disabled] {
-    background-color: @input-bg-disabled;
-    color: @input-color-disabled;
-    cursor: @cursor-disabled;
-  }
+  .default-input;
 
   // Reset height for `textarea`
   textarea& {
@@ -200,13 +176,17 @@ input[type="checkbox"]:focus {
   }
 
   .input {
-    width: @form-control-width;
     display: inline-block;
   }
+}
 
-  // Used to provide relation for error message
-  .form-control-wrapper {
-    position: relative;
+// Used to provide relation for error message
+.form-control-wrapper {
+  position: relative;
+
+  > .input-number,
+  > .input {
+    width: @form-control-width;
   }
 
   // Error

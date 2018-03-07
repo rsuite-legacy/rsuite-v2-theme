@@ -1,8 +1,31 @@
-// Form control sizing
-//
-// Relative text size, padding, and border-radii changes for form controls. For
-// horizontal sizing, wrap controls in the predefined grid classes. `<select>`
-// element gets special love because it's special, and that's a fact!
+.default-input() {
+  display: block;
+  width: 100%;
+  color: @input-color;
+  background-color: @input-bg;
+  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+  border: @input-border-width solid @input-border;
+  transition: @input-transition;
+  .input-base;
+
+  // Placeholder
+  &::placeholder {
+    color: @input-color-placeholder;
+  }
+
+  &:focus,
+  &:hover {
+    border-color: @input-border-focus;
+    outline: 0;
+  }
+
+  &[disabled] {
+    background-color: @input-bg-disabled;
+    color: @input-color-disabled;
+    cursor: @cursor-disabled;
+  }
+}
+
 .input-size(@input-height; @padding-vertical; @padding-horizontal; @font-size; @line-height; @border-radius) {
   height: @input-height;
   padding: (@padding-vertical - @input-border-width) (@padding-horizontal - @input-border-width);
