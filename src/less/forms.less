@@ -209,17 +209,9 @@ input[type="checkbox"]:focus {
     position: relative;
   }
 
-  .form-control-message-wrapper {
-    position: absolute;
-    left: 0;
-    bottom: -1px; // Error message width form-control has 1px gap
-  }
-
   // Error
   .error-message {
     position: absolute;
-    left: 0;
-    top: 0;
     padding: @error-message-padding-vertical @error-message-padding-horizontal;
     background-color: @error-message-background-color;
     border: 1px solid @error-message-border-color;
@@ -247,15 +239,165 @@ input[type="checkbox"]:focus {
         position: absolute;
         border-color: transparent;
         border-style: solid;
-        border-width: 0 6px 6px;
-        left: 10px;
-        margin-top: -10px;
-        border-bottom-color: @error-message-border-color;
+      }
+    }
+
+    // Placement
+    // == Bottom Left && Bottom Right && Top Left && Top Right
+    &-placement-bottom-left,
+    &-placement-bottom-right {
+      bottom: -1px; // Error message width form-control has 1px gap
+
+      .error-message {
+        top: 0;
       }
 
-      &::after {
-        margin-top: -9px;
-        border-bottom-color: @error-message-background-color;
+      .error-message-arrow {
+        &::before,
+        &::after {
+          border-width: 0 @error-message-triangle-width @error-message-triangle-width;
+          border-bottom-color: @error-message-border-color;
+          top: -1 * @error-message-triangle-width;
+        }
+
+        &::after {
+          top: -1*(@error-message-triangle-width - 1);
+          border-bottom-color: @error-message-background-color;
+        }
+      }
+    }
+
+    &-placement-top-left,
+    &-placement-top-right {
+      top: -1px; // Error message width form-control has 1px gap
+
+      .error-message {
+        bottom: 0;
+      }
+
+      .error-message-arrow {
+        &::before,
+        &::after {
+          border-width: @error-message-triangle-width @error-message-triangle-width 0;
+          border-top-color: @error-message-border-color;
+          bottom: -1*@error-message-triangle-width;
+        }
+
+        &::after {
+          bottom: -1*(@error-message-triangle-width - 1);
+          border-top-color: @error-message-background-color;
+        }
+      }
+    }
+
+    &-placement-bottom-left,
+    &-placement-top-left {
+      left: 0;
+
+      .error-message {
+        left: 0;
+      }
+
+      .error-message-arrow {
+        &::before,
+        &::after {
+          left: @error-message-triangle-gap;
+        }
+      }
+    }
+
+    &-placement-bottom-right,
+    &-placement-top-right {
+      right: 0;
+
+      .error-message {
+        right: 0;
+      }
+
+      .error-message-arrow {
+        &::before,
+        &::after {
+          right: @error-message-triangle-gap;
+        }
+      }
+    }
+
+    // == Left Top && Left Bottom Right && Top && Right Bottom
+    &-placement-left-top,
+    &-placement-left-bottom {
+      left: -1px;
+
+      .error-message {
+        right: 0;
+      }
+
+      .error-message-arrow {
+        &::before,
+        &::after {
+          border-width: @error-message-triangle-width 0 @error-message-triangle-width @error-message-triangle-width;
+          border-left-color: @error-message-border-color;
+          right: -1*@error-message-triangle-width;
+        }
+
+        &::after {
+          right: -1*(@error-message-triangle-width - 1);
+          border-left-color: @error-message-background-color;
+        }
+      }
+    }
+
+    &-placement-left-top,
+    &-placement-right-top {
+      bottom: 0;
+
+      .error-message {
+        bottom: 0;
+      }
+
+      .error-message-arrow {
+        &::before,
+        &::after {
+          bottom: @error-message-triangle-vertical;
+        }
+      }
+    }
+
+    &-placement-left-bottom,
+    &-placement-right-bottom {
+      top: 0;
+
+      .error-message {
+        top: 0;
+      }
+
+      .error-message-arrow {
+        &::before,
+        &::after {
+          top: @error-message-triangle-vertical;
+        }
+      }
+    }
+
+    &-placement-right-top,
+    &-placement-right-bottom {
+      right: -1px;
+
+      .error-message {
+        left: 0;
+      }
+
+      .error-message-arrow {
+        &::before,
+        &::after {
+          border-width: @error-message-triangle-width @error-message-triangle-width @error-message-triangle-width 0;
+          border-right-color: @error-message-border-color;
+          left: -1*@error-message-triangle-width;
+        }
+
+        &::after {
+          left: -1*(@error-message-triangle-width - 1);
+          border-right-color: @error-message-background-color;
+        }
       }
     }
   }
