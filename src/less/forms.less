@@ -209,7 +209,8 @@ input[type="checkbox"]:focus {
 
     &-show {
       display: block;
-      animation: .3s ease-in-out shake;
+      animation-duration: .3s;
+      animation-timing-function: ease-in-out;
     }
 
     &-arrow {
@@ -230,6 +231,10 @@ input[type="checkbox"]:focus {
 
       .error-message {
         top: 0;
+
+        &-show {
+          animation-name: slideUpIn;
+        }
       }
 
       .error-message-arrow {
@@ -253,6 +258,10 @@ input[type="checkbox"]:focus {
 
       .error-message {
         bottom: 0;
+
+        &-show {
+          animation-name: slideDownIn;
+        }
       }
 
       .error-message-arrow {
@@ -309,6 +318,10 @@ input[type="checkbox"]:focus {
 
       .error-message {
         right: 0;
+
+        &-show {
+          animation-name: slideRightIn;
+        }
       }
 
       .error-message-arrow {
@@ -322,6 +335,33 @@ input[type="checkbox"]:focus {
         &::after {
           right: -1*(@error-message-triangle-width - 1);
           border-left-color: @error-message-background-color;
+        }
+      }
+    }
+
+    &-placement-right-top,
+    &-placement-right-bottom {
+      right: -1px;
+
+      .error-message {
+        left: 0;
+
+        &-show {
+          animation-name: slideLeftIn;
+        }
+      }
+
+      .error-message-arrow {
+        &::before,
+        &::after {
+          border-width: @error-message-triangle-width @error-message-triangle-width @error-message-triangle-width 0;
+          border-right-color: @error-message-border-color;
+          left: -1*@error-message-triangle-width;
+        }
+
+        &::after {
+          left: -1*(@error-message-triangle-width - 1);
+          border-right-color: @error-message-background-color;
         }
       }
     }
@@ -354,29 +394,6 @@ input[type="checkbox"]:focus {
         &::before,
         &::after {
           top: @error-message-triangle-vertical;
-        }
-      }
-    }
-
-    &-placement-right-top,
-    &-placement-right-bottom {
-      right: -1px;
-
-      .error-message {
-        left: 0;
-      }
-
-      .error-message-arrow {
-        &::before,
-        &::after {
-          border-width: @error-message-triangle-width @error-message-triangle-width @error-message-triangle-width 0;
-          border-right-color: @error-message-border-color;
-          left: -1*@error-message-triangle-width;
-        }
-
-        &::after {
-          left: -1*(@error-message-triangle-width - 1);
-          border-right-color: @error-message-background-color;
         }
       }
     }
