@@ -81,15 +81,14 @@
     }
   }
 
-  &-loading-wrapper {
+  &-loader-wrapper {
     position: absolute;
     height: 100%;
     width: 100%;
-    background: rgba(45, 45, 45, .5);
-    color: #fff;
+    background-color: rgba(255, 255, 255, .9);
   }
 
-  &-loading {
+  &-loader {
     width: 100%;
     text-align: center;
     top: 50%;
@@ -97,8 +96,14 @@
     margin-top: -20px;
     line-height: 40px;
 
-    .icon {
-      margin: 0 10px;
+    &-icon {
+      .set-side-length(@loader-default-diameter);
+      .loader-spin;
+
+      display: inline-block;
+      position: relative;
+      vertical-align: middle;
+      margin-right: @loader-content-spin-spacing-horizontal;
     }
   }
 
