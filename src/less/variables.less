@@ -138,7 +138,29 @@
 
 //== Tables
 //
-
+@table-border-color: @B100;
+@table-head-background: @B000;
+@table-head-font-color: @B600;
+@table-body-background: @B000;
+@table-body-hover-background: @H050;
+@table-resize-mouse-color: @H500;
+@table-sort-icon-color: @H500;
+@table-sort-icon-unsort: "\f0dc";
+@table-sort-icon-desc: "\f0dd";
+@table-sort-icon-asc: "\f0de";
+@table-header-content-padding-vertical: 10px;
+@table-body-content-padding-vertical: 13px;
+@table-content-padding-horizontal: 10px;
+@table-scrollbar-handle-background: @B400;
+@table-scrollbar-pressed-handle-background: @B500;
+@table-scrollbar-background: @B200;
+@table-scrollbar-pressed-background: @B300;
+@table-scrollbar-timing-duration: .1s;
+@table-scrollbar-width: 10px;
+@table-scrollbar-handle-width: 8px;
+@table-scrollbar-handle-gap: (@table-scrollbar-width - @table-scrollbar-handle-width)/2;
+@table-column-resize-spanner-width: 3px;
+@table-header-sort-wrapper-margin-left:5px;
 
 //== Buttons
 //
@@ -401,11 +423,20 @@
 @zindex-popover: 1060;
 @zindex-tooltip: 1070;
 @zindex-notification: 1080;
+//#==== Uploader
 @zindex-uploader-picture-preview: 1;
 @zindex-uploader-picture-loading-wrapper: 2;
 @zindex-uploader-picture-error-wrapper: 3;
 @zindex-uploader-picture-remove-button: 4;
+//#==== Form
 @zindex-error-message: 5;
+//#==== Table
+@zindex-table-body-row-wrapper: 0;
+@zindex-table-header-row-wrapper: 2;
+@zindex-table-column-resize-spanner: 3;
+@zindex-table-cell-group-fixed: 4;
+@zindex-table-row-cell-group-shadow: 5;
+@zindex-table-mouse-area: 6;
 
 //== Media queries breakpoints
 //

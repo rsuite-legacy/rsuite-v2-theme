@@ -1,0 +1,324 @@
+//
+// Table
+// --------------------------------------------------
+
+// Table Content
+.@{tns}table {
+  position: relative;
+  overflow: hidden;
+
+  &-column-resizing {
+    cursor: ew-resize;
+    user-select: none;
+  }
+
+  &-row {
+    overflow: hidden;
+    position: absolute;
+    height: 36px;
+    width: 100%;
+    top: 0;
+    border-bottom: 1px solid @table-border-color;
+  }
+
+  &-row:hover &-cell-group {
+    background: @table-body-background;
+  }
+
+  &-row:hover &-cell {
+    background: @table-body-background;
+  }
+
+  &-row-header {
+    color: @table-head-font-color;
+    background: @table-head-background;
+  }
+
+  &-row-header &-cell {
+    background: @table-head-background;
+  }
+
+  &-row-header &-cell-group-shadow {
+    z-index: @zindex-table-row-cell-group-shadow;
+    box-shadow: none;
+  }
+
+  &-hover &-row:hover &-cell-group,
+  &-hover &-row:hover &-cell {
+    background: @table-body-hover-background;
+  }
+
+  &-hover &-row-header:hover &-cell-group,
+  &-hover &-row-header:hover &-cell {
+    background: @table-head-background;
+  }
+
+  &-header-row-wrapper {
+    z-index: @zindex-table-header-row-wrapper;
+    position: relative;
+  }
+
+  &-body-row-wrapper {
+    position: relative;
+    overflow: hidden;
+    z-index: @zindex-table-body-row-wrapper;
+  }
+
+  &-body-info {
+    width: 100%;
+    text-align: center;
+    top: 50%;
+    position: absolute;
+    margin-top: -20px;
+    line-height: 40px;
+
+    .icon {
+      margin: 0 10px;
+    }
+
+    &-wheel-area {
+      width: 100%;
+    }
+  }
+
+  &-loading-wrapper {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: rgba(45, 45, 45, .5);
+    color: #fff;
+  }
+
+  &-loading {
+    width: 100%;
+    text-align: center;
+    top: 50%;
+    position: absolute;
+    margin-top: -20px;
+    line-height: 40px;
+
+    .icon {
+      margin: 0 10px;
+    }
+  }
+
+  &-cell {
+    height: 36px;
+    border-style: solid;
+    border-width: 0;
+    border-color: @table-border-color;
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    white-space: normal;
+    background: @table-body-background;
+
+    &.first {
+      border-left-width: 0;
+    }
+
+    &-wrap1 {
+      display: table;
+    }
+
+    &-wrap2 {
+      display: table-row;
+    }
+
+    &-wrap3 {
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    &-content {
+      padding: @table-body-content-padding-vertical @table-content-padding-horizontal;
+
+      .ellipsis;
+    }
+
+    &-header &-content {
+      padding: @table-header-content-padding-vertical @table-content-padding-horizontal;
+    }
+
+    &-header {
+      &-sort-wrapper {
+        cursor: pointer;
+        margin-left: @table-header-sort-wrapper-margin-left;
+        display: inline-block;
+      }
+
+      &-icon-sort {
+        width: 10px;
+        height: 10px;
+        color: @table-sort-icon-color;
+      }
+
+      &-icon-sort::after {
+        content: @table-sort-icon-unsort;
+        font-style: normal;
+        font-family: @font-family-icon;
+      }
+
+      &-icon-sort-asc::after {
+        content: @table-sort-icon-asc;
+        color: @H500;
+      }
+
+      &-icon-sort-desc::after {
+        content: @table-sort-icon-desc;
+        color: @H500;
+      }
+    }
+  }
+
+  &-cell-header-sortable &-cell-content {
+    cursor: pointer;
+  }
+
+  .column-resize-spanner() {
+    height: 36px;
+    width: @table-column-resize-spanner-width;
+    z-index: @zindex-table-column-resize-spanner;
+    position: absolute;
+    cursor: ew-resize !important;
+    outline: none;
+    border-radius: 6px;
+  }
+
+  &-column-resize-spanner {
+    .column-resize-spanner;
+
+    &:hover {
+      background-color: @table-resize-mouse-color;
+    }
+  }
+
+  &-cell-group {
+    &-fixed {
+      position: absolute;
+      z-index: @zindex-table-cell-group-fixed;
+      background: @table-body-background;
+    }
+
+    &-shadow {
+      box-shadow: 3px 0 5px rgba(9, 9, 9, .08);
+    }
+  }
+
+  &-mouse-area {
+    display: none;
+    background: @table-resize-mouse-color;
+    left: -1px;
+    top: 0;
+    position: absolute;
+    width: 1px;
+    z-index: @zindex-table-mouse-area;
+
+    > span {
+      .column-resize-spanner;
+
+      background-color: @table-resize-mouse-color;
+      position: absolute;
+      left: -1*(@table-column-resize-spanner-width/2);
+    }
+  }
+
+  &-word-wrap &-cell-content {
+    white-space: unset;
+    word-break: break-all;
+  }
+}
+
+// Tree Table
+.@{tns}table-treetable .@{tns}table-row {
+  position: relative;
+}
+
+.@{tns}table-treetable .@{tns}table-row-children {
+  display: none;
+}
+
+.@{tns}table-row-open > .@{tns}table-row-children {
+  display: block;
+}
+
+.@{tns}table-row-open > .@{tns}table-row .@{tns}table-cell-expand-icon::before {
+  content: "-";
+}
+
+.@{tns}table-cell-expand-icon {
+  width: 10px;
+  cursor: pointer;
+  outline: none;
+
+  &::before {
+    content: "+";
+    font-style: normal;
+  }
+}
+
+// Scroll bar
+.@{tns}table-scrollbar {
+  background: @table-scrollbar-background;
+  position: absolute;
+  transition-duration: @table-scrollbar-timing-duration;
+  transition-property: background, transform;
+
+  &-hide {
+    display: none;
+  }
+
+  &-handle {
+    position: absolute;
+    background-color: @table-scrollbar-handle-background;
+    border-radius: 4px;
+  }
+
+  &-pressed {
+    z-index: 1;
+  }
+
+  &-pressed &-handle {
+    background-color: @table-scrollbar-pressed-handle-background;
+  }
+
+  &-horizontal {
+    width: 100%;
+    height: @table-scrollbar-width;
+    bottom: 0;
+  }
+
+  &-horizontal &-handle {
+    height: @table-scrollbar-handle-width;
+    left: 0;
+    top: @table-scrollbar-handle-gap;
+  }
+
+  &-pressed&-horizontal:hover,
+  &-horizontal:hover {
+    transform-origin: center bottom;
+    transform: scaleY(1.2);
+  }
+
+  &-vertical {
+    top: 0;
+    right: 0;
+    width: @table-scrollbar-width;
+    // Reserve scroll bar position.
+    bottom: @table-scrollbar-width;
+    background-color: fade(@table-scrollbar-background, 40);
+  }
+
+  &-vertical &-handle {
+    min-height: 20px;
+    width: @table-scrollbar-handle-width;
+    top: 0;
+    left: @table-scrollbar-handle-gap;
+  }
+
+  &-pressed&-vertical:hover,
+  &-vertical:hover {
+    transform-origin: right center;
+    transform: scaleX(1.2);
+  }
+}
