@@ -14,13 +14,9 @@
   .@{notification-ns}-notice-wrapper:not(.@{notification-ns}-fade-leave-active) + .@{notification-ns}-notice-wrapper {
     margin-top: 10px;
   }
-}
-
-.@{notification-ns}.rsuite-alert {
-  left: 50%;
 
   // Alert wrapper
-  .@{notification-ns}-notice-wrapper {
+  &-notice-wrapper {
     display: block;
     text-align: center;
     width: 100%;
@@ -33,7 +29,7 @@
   }
 
   // Alert content
-  .@{notification-ns}-notice-content {
+  &-notice-content {
     text-align: left;
     padding: @alert-padding;
     border-radius: @alert-border-radius;
@@ -50,7 +46,7 @@
   }
 
   // Alert close button
-  .@{notification-ns}-notice-close {
+  &-notice-close {
     position: absolute;
     top: 0;
     right: 0;
@@ -66,15 +62,20 @@
   }
 
   // Animations
-  .@{notification-ns}-fade-enter-active {
+  &-fade-enter-active {
     animation: alertMoverIn .3s linear forwards;
   }
 
-  .@{notification-ns}-fade-leave-active {
+  &-fade-leave-active {
     animation: alertMoveOut .3s linear forwards;
     // IE hack
     .ie-display-none;
   }
+}
+
+// Center content
+.@{notification-ns}.rsuite-alert {
+  left: 50%;
 }
 
 // Alternate styles

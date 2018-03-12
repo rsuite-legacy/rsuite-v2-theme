@@ -12,6 +12,7 @@
   > .@{ns}btn {
     position: relative;
     float: left;
+
     // Bring the "active" button to the front
     &:hover,
     &:focus,
@@ -23,12 +24,13 @@
 }
 
 .@{ns}btn-group {
+  //** Buttons in the button group have no border radius
   :not(:first-child):not(:last-child),
-  > .dropdown:not(:first-child):not(:last-child) > .dropdown-toggle > .btn {
+  > .@{ns}dropdown:not(:first-child):not(:last-child) > .@{ns}dropdown-toggle > .@{ns}btn {
     border-radius: 0;
   }
 
-  //** Horizontal Button remove radius
+  //** Horizontal Button remove border radius
   &:not(.@{ns}btn-group-vertical) > .@{ns}btn:first-child,
   &:not(.@{ns}btn-group-vertical) > .@{ns}dropdown:first-child > .@{ns}dropdown-toggle > .@{ns}btn {
     .border-right-radius(0);
@@ -109,22 +111,22 @@
 //
 // Remix the default button sizing classes into new ones for easier manipulation.
 
-.@{ns}btn-group-xs > .btn {
+.@{ns}btn-group-xs > .@{ns}btn {
   &:extend(.btn-xs);
 }
 
-.@{ns}btn-group-sm > .btn {
+.@{ns}btn-group-sm > .@{ns}btn {
   &:extend(.btn-sm);
 }
 
-.@{ns}btn-group-lg > .btn {
+.@{ns}btn-group-lg > .@{ns}btn {
   &:extend(.btn-lg);
 }
 
 // Split button dropdowns
 // ----------------------
-.@{ns}btn-group.open {
-  .dropdown-toggle.btn {
+.@{ns}btn-group.@{ns}open {
+  .@{ns}dropdown-toggle.@{ns}btn {
     z-index: (@zindex-dropdown+10);
 
     &,
@@ -139,7 +141,7 @@
       padding-bottom: (@padding-base-vertical+1);
     }
 
-    &.btn-lg {
+    &.@{ns}btn-lg {
       &,
       &:active,
       &:focus,
@@ -148,7 +150,7 @@
       }
     }
 
-    &.btn-sm {
+    &.@{ns}btn-sm {
       &,
       &:active,
       &:focus,
@@ -157,23 +159,23 @@
       }
     }
 
-    &.btn-xs {
+    &.@{ns}btn-xs {
       &,
       &:active,
       &:focus,
       &:hover {
-        padding-bottom: (@padding-xs-vertical+1);
+        padding-bottom: (@padding-extra-small-vertical+1);
       }
     }
   }
 
-  .dropdown-menu {
+  .@{ns}dropdown-menu {
     z-index: (@zindex-dropdown+5);
   }
 }
 
-.@{ns}btn-group.open.dropup {
-  .dropdown-toggle.btn {
+.@{ns}btn-group.@{ns}open.@{ns}dropup {
+  .@{ns}dropdown-toggle.@{ns}btn {
     z-index: (@zindex-dropdown+10);
 
     &,
@@ -200,7 +202,7 @@
       }
     }
 
-    &.btn-sm {
+    &.@{ns}btn-sm {
       &,
       &:active,
       &:focus,
@@ -210,32 +212,32 @@
       }
     }
 
-    &.btn-xs {
+    &.@{ns}btn-xs {
       &,
       &:active,
       &:focus,
       &:hover {
-        padding-top: (@padding-xs-vertical+1);
-        padding-bottom: @padding-xs-vertical;
+        padding-top: (@padding-extra-small-vertical+1);
+        padding-bottom: @padding-extra-small-vertical;
       }
     }
   }
 }
 
 // Give the line between buttons some depth
-.@{ns}btn-group > .btn + .dropdown-toggle {
+.@{ns}btn-group > .@{ns}btn + .@{ns}dropdown-toggle {
   padding-left: 8px;
   padding-right: 8px;
 }
 
-.@{ns}btn-group > .btn-lg + .dropdown-toggle {
+.@{ns}btn-group > .@{ns}btn-lg + .@{ns}dropdown-toggle {
   padding-left: 12px;
   padding-right: 12px;
 }
 
 // The clickable button for toggling the menu
 // Remove the gradient and set the same inset shadow as the :active state
-.@{ns}btn-group.open .dropdown-toggle {
+.@{ns}btn-group.open .@{ns}dropdown-toggle {
   box-shadow: none;
 
   // Show no shadow for `.btn-link` since it has no other button styles.
@@ -245,7 +247,7 @@
 }
 
 // Reposition the caret
-.@{ns}btn .caret {
+.@{ns}btn .@{ns}caret {
   margin-left: 0;
 }
 
@@ -253,9 +255,9 @@
 // ----------------------
 
 .@{ns}btn-group-vertical {
-  > .btn,
-  > .btn-group,
-  > .btn-group > .btn {
+  > .@{ns}btn,
+  > .@{ns}btn-group,
+  > .@{ns}btn-group > .@{ns}btn {
     display: block;
     float: none;
     width: 100%;
@@ -263,18 +265,18 @@
   }
 
   // Clear floats so dropdown menus can be properly placed
-  > .btn-group {
+  > .@{ns}btn-group {
     &:extend(.clearfix all);
 
-    > .btn {
+    > .@{ns}btn {
       float: none;
     }
   }
 
-  > .btn + .btn,
-  > .btn + .btn-group,
-  > .btn-group + .btn,
-  > .btn-group + .btn-group {
+  > .@{ns}btn + .@{ns}btn,
+  > .@{ns}btn + .@{ns}btn-group,
+  > .@{ns}btn-group + .@{ns}btn,
+  > .@{ns}btn-group + .@{ns}btn-group {
     margin-top: -1px;
     margin-left: 0;
   }
@@ -305,33 +307,8 @@
   }
 }
 
-// Checkbox and radio options
-//
-// In order to support the browser's form validation feedback, powered by the
-// `required` attribute, we have to "hide" the inputs via `clip`. We cannot use
-// `display: none;` or `visibility: hidden;` as that also hides the popover.
-// Simply visually hiding the inputs via `opacity` would leave them clickable in
-// certain cases which is prevented by using `clip` and `pointer-events`.
-// This way, we ensure a DOM element is visible to position the popover from.
-//
-// See https://github.com/twbs/bootstrap/pull/12794 and
-// https://github.com/twbs/bootstrap/pull/14559 for more information.
-
-[data-toggle="buttons"] {
-  > .btn,
-  > .btn-group > .btn {
-    input[type="radio"],
-    input[type="checkbox"] {
-      position: absolute;
-      clip: rect(0, 0, 0, 0);
-      pointer-events: none;
-    }
-  }
-}
-
 //suite-button-group
 //------------------
-
 .@{ns}btn-group-primary {
   .button-group-btn(@brand-primary, @brand-primary-hover);
 }
@@ -346,13 +323,14 @@
       color: @brand-primary;
     }
 
-    .btn-link:focus,
-    .btn-link:hover {
+    .@{ns}btn-link:focus,
+    .@{ns}btn-link:hover {
       color: white;
     }
   }
 }
 
+// Reset button size in button group.
 .@{ns}btn-group-lg {
   .@{ns}btn {
     .btn-lg;

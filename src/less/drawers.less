@@ -14,12 +14,12 @@
   outline: 0;
 
   // When fading in the drawer, animate it to slide down
-  &.fade .drawer-dialog {
+  &.@{ns}fade .@{ns}drawer-dialog {
     .drawer-animation(cubic-bezier(.4, 0, 1, 1)); //Fast out
     .ie-display-none;
   }
 
-  &.in .drawer-dialog {
+  &.@{ns}in .@{ns}drawer-dialog {
     .drawer-animation(ease-in-out);
   }
 
@@ -65,7 +65,7 @@
   }
 
   // Full page
-  &.drawer-full {
+  &.@{ns}drawer-full {
     @max-width: ~"calc(100% - @{drawer-full-size-margin})";
     @max-height: @max-width;
 
@@ -73,7 +73,7 @@
     &.@{ns}drawer-bottom {
       .drawer-content-height(@max-height);
 
-      .drawer-content {
+      .@{ns}drawer-content {
         height: 100%;
       }
     }
@@ -89,7 +89,7 @@
     right: 0;
     .drawer-animation-setting(drawerMoveInRight, drawerMoveOutRight);
 
-    .drawer-dialog {
+    .@{ns}drawer-dialog {
       right: 0;
       height: 100%;
     }
@@ -99,7 +99,7 @@
     left: 0;
     .drawer-animation-setting(drawerMoveInLeft, drawerMoveOutLeft);
 
-    .drawer-dialog {
+    .@{ns}drawer-dialog {
       height: 100%;
       left: 0;
     }
@@ -108,7 +108,7 @@
   &-top {
     .drawer-animation-setting(drawerMoveInTop, drawerMoveOutTop);
 
-    .drawer-dialog {
+    .@{ns}drawer-dialog {
       width: 100%;
       top: 0;
     }
@@ -117,7 +117,7 @@
   &-bottom {
     .drawer-animation-setting(drawerMoveInBottom, drawerMoveOutBottom);
 
-    .drawer-dialog {
+    .@{ns}drawer-dialog {
       width: 100%;
       height: 200px;
       bottom: 0;
@@ -126,16 +126,16 @@
 }
 
 // Make sure drawer can be show in Safari.
-.drawer-open .drawer {
+.@{ns}drawer-open .@{ns}drawer {
   overflow: visible;
 }
 
-.drawer-dialog {
+.@{ns}drawer-dialog {
   position: fixed;
   z-index: @zindex-drawer;
 }
 
-.drawer-content {
+.@{ns}drawer-content {
   position: absolute;
   background-color: @drawer-content-bg;
   outline: 0;
@@ -144,7 +144,7 @@
   box-shadow: @drawer-box-shadow;
 }
 
-.drawer-backdrop {
+.@{ns}drawer-backdrop {
   position: fixed;
   top: 0;
   right: 0;
@@ -154,17 +154,17 @@
   background-color: @drawer-backdrop-bg;
 
   // Fade for backdrop
-  &.fade {
+  &.@{ns}fade {
     opacity: 0;
   }
 
-  &.in {
+  &.@{ns}in {
     opacity: @drawer-backdrop-opacity;
   }
 }
 
 // Drawer body
-.drawer-body {
+.@{ns}drawer-body {
   position: relative;
   margin: @drawer-body-margin @drawer-content-spacing;
   // Javascript handle height
@@ -172,7 +172,7 @@
 }
 
 // Measure scrollbar width for padding body during modal show/hide
-.drawer-scrollbar-measure {
+.@{ns}drawer-scrollbar-measure {
   position: absolute;
   top: -9999px;
   width: 50px;
@@ -222,7 +222,7 @@
 }
 
 // Title text within header
-.@{ns}drawer-header .title {
+.@{ns}drawer-header .@{ns}title {
   margin: 0;
   color: @text-primary-color;
   font-size: @modal-title-font-size;
@@ -238,16 +238,16 @@
   margin: 0 @drawer-content-spacing @drawer-content-spacing;
 
   // Properly space out buttons
-  .btn + .btn {
+  .@{ns}btn + .@{ns}btn {
     margin-left: 10px;
     margin-bottom: 0; // account for input[type="submit"] which gets the bottom margin like all other inputs
   }
   // but override that for button groups
-  .btn-group .btn + .btn {
+  .@{ns}btn-group .@{ns}btn + .@{ns}btn {
     margin-left: -1px;
   }
   // and override it for block buttons as well
-  .btn-block + .btn-block {
+  .@{ns}btn-block + .@{ns}btn-block {
     margin-left: 0;
   }
 }
