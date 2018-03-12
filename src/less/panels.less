@@ -2,161 +2,65 @@
 // Panels
 // --------------------------------------------------
 
-// Base class
-.panel {
-  margin-bottom: @line-height-computed;
-  background-color: @panel-bg;
-  border: 1px solid transparent;
-  border-radius: @panel-border-radius;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
-}
+.@{ns}panel {
+  border-radius: @border-radius-base;
+  box-shadow: black;
 
-// Panel contents
-.panel-body {
-  padding: @panel-body-padding;
-  &:extend(.clearfix all);
-}
-
-// Optional heading
-.panel-heading {
-  padding: @panel-heading-padding;
-  border-bottom: 1px solid transparent;
-  .border-top-radius((@panel-border-radius - 1));
-
-  > .dropdown .dropdown-toggle {
-    color: inherit;
+  &-heading,
+  &-body {
+    padding: @panel-padding;
   }
-}
 
-// Within heading, strip any `h*` tag of its default margins for spacing.
-.panel-title {
-  margin-top: 0;
-  margin-bottom: 0;
-  font-size: ceil((@font-size-base * 1.125));
-  color: inherit;
+  &-title {
+    font-size: @panel-title-font-size;
+    line-height: unit(@line-height-computed/@panel-title-font-size);
+    margin: 0;
 
-  > a,
-  > small,
-  > .small,
-  > small > a,
-  > .small > a {
-    color: inherit;
-  }
-}
+    a {
+      color: @B900;
 
-// Optional footer (stays gray in every modifier class)
-.panel-footer {
-  padding: @panel-footer-padding;
-  background-color: @panel-footer-bg;
-  border-top: 1px solid @panel-inner-border;
-  .border-bottom-radius((@panel-border-radius - 1));
-}
-
-// List groups in panels
-//
-// By default, space out list group content from panel headings to account for
-// any kind of custom content between the two.
-.panel {
-  > .list-group,
-  > .panel-collapse > .list-group {
-    margin-bottom: 0;
-
-    .list-group-item {
-      border-width: 1px 0;
-      border-radius: 0;
-    }
-
-    // Add border top radius for first one
-    &:first-child {
-      .list-group-item:first-child {
-        border-top: 0;
-        .border-top-radius((@panel-border-radius - 1));
-      }
-    }
-
-    // Add border bottom radius for last one
-    &:last-child {
-      .list-group-item:last-child {
-        border-bottom: 0;
-        .border-bottom-radius((@panel-border-radius - 1));
+      &:hover,
+      &:focus,
+      &:active {
+        text-decoration: none;
       }
     }
   }
 
-  > .panel-heading + .panel-collapse > .list-group {
-    .list-group-item:first-child {
-      .border-top-radius(0);
-    }
+  // Adjust the padding value when the head and body are combined.
+  &-heading + &-collapse &-body,
+  &-heading + &-body {
+    padding-top: 10px;
+    padding-bottom: 30px;
   }
-}
 
-// Collapse space between when there's no additional content.
-.panel-heading + .list-group {
-  .list-group-item:first-child {
-    border-top-width: 0;
+  // The first panel and the last panel in a panel group need set border-radius.
+  &-group {
+    border-radius: @border-radius-base;
+    overflow: hidden;
   }
-}
 
-.list-group + .panel-footer {
-  border-top-width: 0;
-}
+  // Draw a split line for panel
+  &-group & + & {
+    position: relative;
 
-// Collapsable panels (aka, accordion)
-//
-// Wrap a series of panels in `.panel-group` to turn them into an accordion with
-// the help of our collapse JavaScript plugin.
-
-.panel-group {
-  margin-bottom: @line-height-computed;
-
-  // Tighten up margin so it's only between panels
-  .panel {
-    margin-bottom: 0;
-    border-radius: @panel-border-radius;
-
-    + .panel {
-      margin-top: 5px;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      border-top: 1px solid @panel-split-line-color;
+      left: @panel-padding;
+      right: @panel-padding;
     }
   }
 
-  .panel-heading {
-    border-bottom: 0;
+  // Group panel heading hover background
+  &-group &-heading {
+    cursor: pointer;
+    transition: .3s linear background-color;
 
-    + .panel-collapse > .panel-body,
-    + .panel-collapse > .list-group {
-      border-top: 1px solid @panel-inner-border;
+    &:hover {
+      background-color: @panel-group-panel-heading-hover-background;
     }
   }
-
-  .panel-footer {
-    border-top: 0;
-    + .panel-collapse .panel-body {
-      border-bottom: 1px solid @panel-inner-border;
-    }
-  }
-}
-
-// Contextual variations
-.panel-default {
-  .panel-variant(@panel-default-text; @panel-default-heading-bg);
-}
-
-.panel-primary {
-  .panel-variant(@panel-primary-text; @panel-primary-heading-bg);
-}
-
-.panel-success {
-  .panel-variant(@panel-success-text; @panel-success-heading-bg);
-}
-
-.panel-info {
-  .panel-variant(@panel-info-text; @panel-info-heading-bg);
-}
-
-.panel-warning {
-  .panel-variant(@panel-warning-text; @panel-warning-heading-bg);
-}
-
-.panel-danger {
-  .panel-variant(@panel-danger-text; @panel-danger-heading-bg);
 }
