@@ -24,8 +24,11 @@
   }
 
   &&-active {
-    color: @picker-select-menu-item-selected-color;
-    background-color: @picker-select-menu-item-selected-bg;
+    &,
+    &:hover {
+      color: @picker-select-menu-item-selected-color;
+      background-color: @picker-select-menu-item-selected-bg;
+    }
   }
 
   &&-disabled {

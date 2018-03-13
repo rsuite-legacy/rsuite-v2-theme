@@ -11,13 +11,17 @@
     padding: @panel-padding;
   }
 
+  &-heading {
+    color: @panel-heading-color;
+  }
+
   &-title {
     font-size: @panel-title-font-size;
     line-height: unit(@line-height-computed/@panel-title-font-size);
     margin: 0;
 
     a {
-      color: @B900;
+      color: @panel-heading-color;
 
       &:hover,
       &:focus,
@@ -54,13 +58,29 @@
     }
   }
 
-  // Group panel heading hover background
-  &-group &-heading {
+  // Accordion group panel heading hover background
+  &-group-accordion &-heading {
     cursor: pointer;
-    transition: .3s linear background-color;
+    transition: @panel-accodion-transition;
+    transition-property: background-color, border-radius;
+    position: relative;
+
+    &::before {
+      position: absolute;
+      font-family: @font-family-icon;
+      content: @panel-heading-accordion-icon-content;
+      top: @panel-padding;
+      right: @panel-padding;
+      transition: @panel-accodion-transition;
+      transition-property: transform;
+    }
 
     &:hover {
       background-color: @panel-group-panel-heading-hover-background;
     }
+  }
+
+  &-in &-heading::before {
+    transform: rotate(180deg);
   }
 }
