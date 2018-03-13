@@ -14,12 +14,12 @@
   outline: 0;
 
   // When fading in the drawer, animate it to slide down
-  &.@{ns}fade .@{ns}drawer-dialog {
+  &.fade .@{ns}drawer-dialog {
     .drawer-animation(cubic-bezier(.4, 0, 1, 1)); //Fast out
     .ie-display-none;
   }
 
-  &.@{ns}in .@{ns}drawer-dialog {
+  &.in .@{ns}drawer-dialog {
     .drawer-animation(ease-in-out);
   }
 
@@ -154,11 +154,11 @@
   background-color: @drawer-backdrop-bg;
 
   // Fade for backdrop
-  &.@{ns}fade {
+  &.fade {
     opacity: 0;
   }
 
-  &.@{ns}in {
+  &.in {
     opacity: @drawer-backdrop-opacity;
   }
 }

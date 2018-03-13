@@ -15,17 +15,6 @@
   // Default size is middle.
   .btn-toggle(md);
 
-  .@{ns}toggle-inner {
-    color: @toggle-md-handle-bg;
-    display: block;
-    transition: margin .3s linear;
-  }
-
-  &.@{ns}disabled {
-    cursor: not-allowed;
-    opacity: .3;
-  }
-
   &::after {
     content: "";
     cursor: pointer;
@@ -33,6 +22,17 @@
     background-color: @toggle-md-handle-bg;
     transition: all .3s linear;
     transition-property: left, margin-left, width;
+  }
+
+  &-inner {
+    color: @toggle-md-handle-bg;
+    display: block;
+    transition: margin .3s linear;
+  }
+
+  &-disabled {
+    cursor: not-allowed;
+    opacity: .3;
   }
 
   &-checked {

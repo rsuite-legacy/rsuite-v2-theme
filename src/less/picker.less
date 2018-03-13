@@ -4,22 +4,22 @@
 
 // Common styles
 // ----------------------
-.@{tns}picker-select {
+.@{ns}picker-select {
   display: inline-block;
 }
 
 // Disabled
-.@{tns}picker-checktree-disabled,
-.@{tns}picker-daterange-disabled,
-.@{tns}picker-tree-disabled,
-.@{tns}picker-date-disabled,
-.@{tns}picker-check-disabled,
-.@{tns}picker-select-disabled,
-.@{tns}picker-cascader-disabled {
+.@{ns}picker-checktree-disabled,
+.@{ns}picker-daterange-disabled,
+.@{ns}picker-tree-disabled,
+.@{ns}picker-date-disabled,
+.@{ns}picker-check-disabled,
+.@{ns}picker-select-disabled,
+.@{ns}picker-cascader-disabled {
   cursor: @cursor-disabled;
   opacity: .3;
 
-  .@{tns}picker-toggle {
+  .@{ns}picker-toggle {
     cursor: @cursor-disabled;
 
     &,
@@ -38,28 +38,29 @@
 
 //## Dropdown toggle
 // The Same to Dropdown toggle
-.@{tns}picker-toggle {
+.@{ns}picker-toggle {
   .btn;
   .btn-subtle;
   .dropdown-toggle;
 
   // Has value highlight
-  .@{tns}picker-select-has-value &,
-  .@{tns}picker-cascader-has-value & {
-    .@{tns}picker-toggle-value {
+  .@{ns}picker-select-has-value &,
+  .@{ns}picker-cascader-has-value & {
+    .@{ns}picker-toggle-value {
       color: @picker-selected-value-color;
     }
   }
 
-  &:hover .@{tns}picker-toggle-clean {
+  &:hover .@{ns}picker-toggle-clean {
     opacity: 1;
     transform: scale(1);
   }
 }
 
 // Picker clean button
-.@{tns}picker-toggle-clean {
-  .dropdown-toggle-caret;
+.@{ns}picker-toggle-clean {
+  .dropdown-toggle-caret-common;
+  .set-dropdown-caret(~"dropdown");
 
   transition-duration: .2s;
   transition-timing-function: ease-in-out;
@@ -79,14 +80,14 @@
 }
 
 // Picker toggle caret
-.@{tns}picker-toggle-caret {
+.@{ns}picker-toggle-caret {
   // Extend  Dropdown toggle caret style
   .dropdown-toggle-caret-common;
-  .set-dropdown-caret(~"@{tns}picker");
+  .set-dropdown-caret(~"@{ns}picker");
 }
 
 // Picker Menu
-.@{tns}picker-menu {
+.@{ns}picker-menu {
   position: absolute;
   text-align: left;
   z-index: @zindex-dropdown;
@@ -96,16 +97,16 @@
   overflow: hidden;
 
   // Select picker menu & Check select picker menu always has 6px gap
-  &.@{tns}picker-select-menu,
-  &.@{tns}picker-check-menu {
+  &.@{ns}picker-select-menu,
+  &.@{ns}picker-check-menu {
     padding-top: @border-radius-base;
   }
 
   // Searchbar
-  .@{tns}picker-search-bar {
+  .@{ns}picker-search-bar {
     padding: (@picker-menu-padding - @border-radius-base) @picker-menu-padding @picker-menu-padding;
 
-    .@{tns}picker-search-bar-input {
+    .@{ns}picker-search-bar-input {
       .default-input;
 
       min-width: @picker-content-min-width;
@@ -121,23 +122,23 @@
   &.in {
     animation-play-state: running;
 
-    &.@{tns}picker-placement-top-left,
-    &.@{tns}picker-placement-top-right {
+    &.@{ns}picker-placement-top-left,
+    &.@{ns}picker-placement-top-right {
       animation-name: slideDownIn;
     }
 
-    &.@{tns}picker-placement-left-top,
-    &.@{tns}picker-placement-left-bottom {
+    &.@{ns}picker-placement-left-top,
+    &.@{ns}picker-placement-left-bottom {
       animation-name: slideRightIn;
     }
 
-    &.@{tns}picker-placement-right-top,
-    &.@{tns}picker-placement-right-bottom {
+    &.@{ns}picker-placement-right-top,
+    &.@{ns}picker-placement-right-bottom {
       animation-name: slideLeftIn;
     }
 
-    &.@{tns}picker-placement-bottom-left,
-    &.@{tns}picker-placement-bottom-right {
+    &.@{ns}picker-placement-bottom-left,
+    &.@{ns}picker-placement-bottom-right {
       animation-name: slideUpIn;
     }
   }

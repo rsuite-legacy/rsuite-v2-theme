@@ -31,3 +31,14 @@
     content: @dropdown-caret-content;
   }
 }
+
+.dropdown-toggle() {
+  position: relative;
+  z-index: @zindex-dropdown;
+  padding-right: @dropdown-toggle-padding-right;
+
+  // Custom title toggle need reset padding right
+  &-custom-title {
+    padding-right: 0;
+  }
+}

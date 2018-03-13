@@ -2,15 +2,15 @@
 // ----------------------
 
 // Date range Picker Name Space
-@drpns: ~"@{tns}@{date-range-picker-prefix}";
+@drpns: ~"@{ns}@{date-range-picker-prefix}";
 
 .@{drpns} {
   // let clean button cover caret
-  .@{tns}picker-toggle-clean {
+  .@{ns}picker-toggle-clean {
     width: 16px;
   }
 
-  .@{tns}picker-toggle-caret::before {
+  .@{ns}picker-toggle-caret::before {
     content: @calendar-default-caret-content;
   }
 }
@@ -40,7 +40,7 @@
     z-index: @zindex-date-range-picker-calendar-dropdown;
   }
 
-  .@{tns}picker-toolbar {
+  .@{ns}picker-toolbar {
     margin-top: 4px;
   }
 }

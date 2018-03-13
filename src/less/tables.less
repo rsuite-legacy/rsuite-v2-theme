@@ -3,7 +3,7 @@
 // --------------------------------------------------
 
 // Table Content
-.@{tns}table {
+.@{ns}table {
   position: relative;
   overflow: hidden;
 
@@ -225,28 +225,28 @@
 }
 
 // Tree Table
-.@{tns}table-treetable .@{tns}table-row {
+.@{ns}table-treetable .@{ns}table-row {
   position: relative;
 }
 
-.@{tns}table-treetable .@{tns}table-row-children {
+.@{ns}table-treetable .@{ns}table-row-children {
   display: none;
 }
 
-.@{tns}table-row-open > .@{tns}table-row-children {
+.@{ns}table-row-open > .@{ns}table-row-children {
   display: block;
 }
 
-.@{tns}table-row-has-children > .@{tns}table-row .@{tns}table-cell-group .@{tns}table-cell:first-child {
+.@{ns}table-row-has-children > .@{ns}table-row .@{ns}table-cell-group .@{ns}table-cell:first-child {
   padding-left: 20px;
 }
 
-.@{tns}table-row-open > .@{tns}table-row .@{tns}table-cell-expand-icon::before {
+.@{ns}table-row-open > .@{ns}table-row .@{ns}table-cell-expand-icon::before {
   font-family: @font-family-icon;
   content: @icon-table-shrink-content;
 }
 
-.@{tns}table-cell-expand-wrapper {
+.@{ns}table-cell-expand-wrapper {
   position: absolute;
   left: 10px;
   display: inline-block;
@@ -262,7 +262,7 @@
   }
 }
 
-.@{tns}table-cell-expand-icon {
+.@{ns}table-cell-expand-icon {
   width: 10px;
   cursor: pointer;
   outline: none;
@@ -275,7 +275,7 @@
 }
 
 // Scroll bar
-.@{tns}table-scrollbar {
+.@{ns}table-scrollbar {
   background: @table-scrollbar-background;
   position: absolute;
   transition-duration: @table-scrollbar-timing-duration;

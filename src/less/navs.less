@@ -41,7 +41,7 @@
       color: @nav-item-font-default-color;
       transition: @nav-item-transition;
 
-      > .icon {
+      > .@{ns}icon {
         margin-right: @nav-item-icon-spacing;
       }
     }
@@ -60,7 +60,7 @@
   }
 
   // Active
-  .dropdown .dropdown-menu-active ~ .dropdown-toggle,
+  .@{ns}dropdown .@{ns}dropdown-menu-active ~ .@{ns}dropdown-toggle,
   .@{ns}nav-item-active > .@{ns}nav-item-content {
     position: relative;
     z-index: 1;
@@ -87,7 +87,7 @@
         width: 1%;
       }
 
-      .dropdown .dropdown-toggle {
+      .@{ns}dropdown .@{ns}dropdown-toggle {
         width: 100%;
         text-align: left;
       }
@@ -150,7 +150,9 @@
   // Ripple
   .@{ns}nav-default &-item-content,
   .@{ns}nav-tabs &-item-content {
-    .button-ripple(@nav-item-transition);
+    .button-ripple;
+
+    transition: @nav-item-transition;
   }
 }
 
@@ -159,7 +161,7 @@
 
 // Default Nav
 .@{ns}nav-default {
-  .@{ns}nav-item:not(.nav-item-active):not(.@{ns}nav-item-disabled) > .@{ns}nav-item-content {
+  .@{ns}nav-item:not(.@{ns}nav-item-active):not(.@{ns}nav-item-disabled) > .@{ns}nav-item-content {
     border-radius: @nav-item-border-radius;
 
     &:hover,
@@ -355,17 +357,6 @@
   height: @nav-bar-height;
 }
 
-.@{ns}navbar-brand {
-  display: inline-block;
-
-  a&,
-  a&:hover,
-  a&:focus,
-  a&:active {
-    text-decoration: none;
-  }
-}
-
 // Common
 .@{ns}navbar-nav {
   float: left;
@@ -382,24 +373,24 @@
   }
 
   // Reset border-radius
-  .@{ns}nav-item:not(.nav-item-active):not(.nav-item-disabled) > .@{ns}nav-item-content,
-  .dropdown > .dropdown-toggle {
+  .@{ns}nav-item:not(.@{ns}nav-item-active):not(.@{ns}nav-item-disabled) > .@{ns}nav-item-content,
+  .@{ns}dropdown > .@{ns}dropdown-toggle {
     border-radius: 0;
   }
 
   // DropDown
-  .dropdown > .dropdown-toggle {
+  .@{ns}dropdown > .@{ns}dropdown-toggle {
     padding: @nav-bar-padding-vertical @nav-bar-padding-horizontal;
     padding-right: @nav-bar-padding-horizontal+@dropdown-caret-with+@dropdown-caret-padding;
     height: @nav-bar-height;
   }
 
-  .dropdown-toggle-caret {
+  .@{ns}dropdown-toggle-caret {
     top: @nav-bar-padding-vertical;
     right: @nav-bar-padding-horizontal;
   }
 
-  .dropdown.dropdown-open > .dropdown-menu {
+  .@{ns}dropdown.@{ns}dropdown-open > .@{ns}dropdown-menu {
     top: @nav-bar-padding-vertical * 2 + @line-height-computed;
   }
 }
@@ -410,11 +401,11 @@
 
   //font-color
   &,
-  & .navbar-header a {
+  & .@{ns}navbar-header a {
     color: @nav-bar-default-font-color;
   }
 
-  .dropdown .dropdown-toggle,
+  .@{ns}dropdown .@{ns}dropdown-toggle,
   .@{ns}nav-item > .@{ns}nav-item-content {
     .reset-font-color(@nav-bar-default-font-color);
   }
@@ -426,19 +417,19 @@
 
   //font-color
   &,
-  & .navbar-header a {
+  & .@{ns}navbar-header a {
     color: @nav-bar-inverse-font-color;
   }
 
-  .dropdown .dropdown-menu-active ~ .dropdown-toggle,
-  .dropdown .dropdown-toggle,
+  .@{ns}dropdown .@{ns}dropdown-menu-active ~ .@{ns}dropdown-toggle,
+  .@{ns}dropdown .@{ns}dropdown-toggle,
   .@{ns}nav-item-active > .@{ns}nav-item-content,
   .@{ns}nav-item > .@{ns}nav-item-content {
     .reset-font-color(@nav-bar-inverse-font-color);
   }
 
   .@{ns}nav-item-active > .@{ns}nav-item-content,
-  .dropdown .dropdown-menu-active ~ .dropdown-toggle {
+  .@{ns}dropdown .@{ns}dropdown-menu-active ~ .@{ns}dropdown-toggle {
     &,
     &:hover,
     &:focus,
@@ -447,8 +438,8 @@
     }
   }
 
-  .navbar-nav .nav-item > .nav-item-content,
-  .navbar-nav .dropdown .dropdown-toggle {
+  .@{ns}navbar-nav .@{ns}nav-item > .@{ns}nav-item-content,
+  .@{ns}navbar-nav .@{ns}dropdown .@{ns}dropdown-toggle {
     &:hover,
     &:focus {
       background-color: @nav-bar-inverse-hover-bg;
@@ -466,23 +457,23 @@
 
   //font-color
   &,
-  & .navbar-header a {
+  & .@{ns}navbar-header a {
     color: @nav-bar-subtle-font-color;
   }
 
-  .dropdown .dropdown-toggle,
+  .@{ns}dropdown .@{ns}dropdown-toggle,
   .@{ns}nav-item > .@{ns}nav-item-content {
     .reset-font-color(@nav-bar-subtle-font-color);
   }
 
   // Active
   .@{ns}nav-item-active > .@{ns}nav-item-content,
-  .dropdown .dropdown-menu-active ~ .dropdown-toggle {
+  .@{ns}dropdown .@{ns}dropdown-menu-active ~ .@{ns}dropdown-toggle {
     .reset-font-color(@nav-bar-subtle-font-active-color);
   }
 
-  .navbar-nav .nav-item > .nav-item-content,
-  .navbar-nav .dropdown .dropdown-toggle {
+  .@{ns}navbar-nav .@{ns}nav-item > .@{ns}nav-item-content,
+  .@{ns}navbar-nav .@{ns}dropdown .@{ns}dropdown-toggle {
     &:hover,
     &:focus {
       background-color: @nav-bar-subtle-hover-bg;

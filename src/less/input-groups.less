@@ -4,7 +4,7 @@
 
 // Base styles
 // -------------------------
-.input-group {
+.@{ns}input-group {
   position: relative; // For dropdowns
   display: table;
   border-radius: @input-border-radius;
@@ -24,23 +24,23 @@
   }
 
   // Reset border
-  &:not(.input-group-inside) {
+  &:not(.@{ns}input-group-inside) {
     border: 1px solid @input-border;
 
     &:hover,
-    &.input-group-focus {
+    &.@{ns}input-group-focus {
       border-color: @input-border-focus;
     }
 
-    .input-group-addon,
-    .input,
-    .input-group-btn {
+    .@{ns}input-group-addon,
+    .@{ns}input,
+    .@{ns}input-group-btn {
       border: none;
       border-radius: 0;
     }
   }
 
-  .input {
+  .@{ns}input {
     // Ensure that the input is always above the *appended* addon button for
     // proper border colors.
     position: relative;
@@ -58,34 +58,34 @@
     }
   }
 
-  input.input~ .input-group-addon {
+  input.@{ns}input ~ .@{ns}input-group-addon {
     border-left: none;
   }
 
   //FIXED: The icon between two input has 1px border.
-  input.input ~ .input-group-addon:not(:last-child) {
+  input.@{ns}input ~ .@{ns}input-group-addon:not(:last-child) {
     border-right: 0;
   }
 
-  &.input-group-inside {
+  &.@{ns}input-group-inside {
     width: 100%;
     border-radius: 0;
 
-    input.input,
-    .input-group-btn {
+    input.@{ns}input,
+    .@{ns}input-group-btn {
       display: block;
       width: 100%;
       padding-right: 36px;
     }
 
-    .input-group-btn,
-    .input-group-addon {
+    .@{ns}input-group-btn,
+    .@{ns}input-group-addon {
       position: absolute;
       z-index: @zindex-input-group-icon;
       width: auto;
     }
 
-    .input-group-btn {
+    .@{ns}input-group-btn {
       .btn-subtle;
 
       color: @input-color;
@@ -104,7 +104,7 @@
       }
     }
 
-    .input-group-addon {
+    .@{ns}input-group-addon {
       left: 0;
       top: 0;
       background: none;
@@ -112,18 +112,18 @@
       padding: 11px 13px 8px 13px;
     }
 
-    .input-group-btn ~ input.input,
-    .input-group-addon ~ input.input {
+    .@{ns}input-group-btn ~ input.@{ns}input,
+    .@{ns}input-group-addon ~ input.@{ns}input {
       padding-left: 36px;
       padding-right: 12px;
     }
 
-    input.input ~ .input-group-addon {
+    input.@{ns}input ~ .@{ns}input-group-addon {
       left: inherit;
       right: 0;
     }
 
-    input.input ~ .input-group-btn {
+    input.@{ns}input ~ .@{ns}input-group-btn {
       left: inherit;
       right: @input-border-width;
     }
@@ -135,44 +135,44 @@
 // Remix the default form control sizing classes into new ones for easier
 // manipulation.
 
-.input-group-lg > .input,
-.input-group.input-group-lg > .input-group-addon,
-.input-group-lg > .input-group-btn {
+.@{ns}input-group-lg > .@{ns}input,
+.@{ns}input-group.@{ns}input-group-lg > .@{ns}input-group-addon,
+.@{ns}input-group-lg > .@{ns}input-group-btn {
   .input-lg();
 
   border-radius: 0;
 }
 
-.input-group-sm > .input,
-.input-group.input-group-sm > .input-group-addon,
-.input-group-sm > .input-group-btn {
+.@{ns}input-group-sm > .@{ns}input,
+.@{ns}input-group.@{ns}input-group-sm > .@{ns}input-group-addon,
+.@{ns}input-group-sm > .@{ns}input-group-btn {
   .input-sm();
 
   border-radius: 0;
 }
 
-.input-group-xs > .input,
-.input-group.input-group-xs > .input-group-addon,
-.input-group-xs > .input-group-btn {
+.@{ns}input-group-xs > .@{ns}input,
+.@{ns}input-group.input-group-xs > .@{ns}input-group-addon,
+.@{ns}input-group-xs > .@{ns}input-group-btn {
   .input-xs();
 
   border-radius: 0;
 }
 
-.input-group-lg > .input-group-addon > .icon {
+.@{ns}input-group-lg > .@{ns}input-group-addon > .@{ns}icon {
   line-height: @line-height-large;
 }
 
-.input-group-sm > .input-group-addon > .icon,
-.input-group-xs > .input-group-addon > .icon {
+.@{ns}input-group-sm > .@{ns}input-group-addon > .@{ns}icon,
+.@{ns}input-group-xs > .@{ns}input-group-addon > .@{ns}icon {
   line-height: @line-height-small;
 }
 
 // Display as table-cell
 // -------------------------
-.input-group-addon,
-.input-group-btn,
-.input-group .input {
+.@{ns}input-group-addon,
+.@{ns}input-group-btn,
+.@{ns}input-group .@{ns}input {
   display: table-cell;
 
   &:not(:first-child):not(:last-child) {
@@ -181,8 +181,8 @@
 }
 
 // Addon and addon wrapper for buttons
-.input-group-addon,
-.input-group-btn {
+.@{ns}input-group-addon,
+.@{ns}input-group-btn {
   width: 1%;
   white-space: nowrap;
   vertical-align: middle; // Match the inputs
@@ -191,7 +191,7 @@
 
 // Text input groups
 // -------------------------
-.input-group-addon {
+.@{ns}input-group-addon {
   padding: @padding-base-vertical @padding-base-horizontal;
   font-size: @font-size-base;
   font-weight: normal;
@@ -203,19 +203,19 @@
   border-radius: @input-border-radius;
 
   // Sizing
-  &.input-sm {
+  &.@{ns}input-sm {
     padding: @padding-small-vertical @padding-small-horizontal;
     font-size: @font-size-small;
     border-radius: @input-border-radius;
   }
 
-  &.input-xs {
+  &.@{ns}input-xs {
     padding: @padding-extra-small-horizontal @padding-extra-small-horizontal;
     font-size: @font-size-small;
     border-radius: @input-border-radius;
   }
 
-  &.input-lg {
+  &.@{ns}input-lg {
     padding: @padding-large-vertical @padding-large-horizontal;
     font-size: @font-size-large;
     border-radius: @input-border-radius;
@@ -230,7 +230,7 @@
 
 // Button input groups
 // -------------------------
-.input-group-btn {
+.@{ns}input-group-btn {
   position: relative;
   // Jankily prevent input button groups from wrapping with `white-space` and
   // `font-size` in combination with `inline-block` on buttons.
@@ -240,10 +240,10 @@
 
   // Negative margin for spacing, position for bringing hovered/focused/actived
   // element above the siblings.
-  > .btn {
+  > .@{ns}btn {
     position: relative;
 
-    + .btn {
+    + .@{ns}btn {
       margin-left: -1px;
     }
     // Bring the "active" button to the front
@@ -256,16 +256,16 @@
 
   // Negative margin to only have a 1px border between the two
   &:first-child {
-    > .btn,
-    > .btn-group {
+    > .@{ns}btn,
+    > .@{ns}btn-group {
       margin-right: -1px;
       border-right: medium none;
     }
   }
 
   &:last-child {
-    > .btn,
-    > .btn-group {
+    > .@{ns}btn,
+    > .@{ns}btn-group {
       z-index: 2;
       margin-left: -1px;
     }

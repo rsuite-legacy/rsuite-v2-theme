@@ -2,7 +2,7 @@
 // ----------------------
 
 // Calendar Picker Name Space
-@clpns: ~"@{tns}@{calendar-picker-prefix}";
+@clpns: ~"@{ns}@{calendar-picker-prefix}";
 
 .@{clpns} {
   background-color: @picker-bg;
@@ -12,7 +12,7 @@
   overflow: hidden;
 }
 
-.@{tns}picker-date-inline {
+.@{ns}picker-date-inline {
   height: 299px;
 
   .@{clpns} {
@@ -386,7 +386,7 @@
 }
 
 // Toolbar
-.@{tns}picker-toolbar {
+.@{ns}picker-toolbar {
   .clearfix;
 
   margin-top: @calendar-picker-padding;
@@ -445,7 +445,7 @@
 }
 
 // In picker menu
-.@{tns}picker-menu .@{clpns} {
+.@{ns}picker-menu .@{clpns} {
   width: @calendar-header-width;
 
   .@{clpns}-month-dropdown-cell-content,
@@ -471,23 +471,23 @@
 }
 
 // Picker date
-.@{tns}picker-date {
+.@{ns}picker-date {
   // let clean button cover caret
-  .@{tns}picker-toggle-clean {
+  .@{ns}picker-toggle-clean {
     width: 16px;
   }
 
-  .@{tns}picker-toggle-caret::before {
+  .@{ns}picker-toggle-caret::before {
     content: @calendar-default-caret-content;
   }
 
   &-only-time {
     // let clean button cover caret
-    .@{tns}picker-toggle-clean {
+    .@{ns}picker-toggle-clean {
       right: 10px;
     }
 
-    .@{tns}picker-toggle-caret::before {
+    .@{ns}picker-toggle-caret::before {
       content: @calendar-only-time-caret-content;
     }
   }

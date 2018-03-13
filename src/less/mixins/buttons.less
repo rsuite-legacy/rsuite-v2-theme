@@ -31,14 +31,14 @@
   }
 
   &:active,
-  &.btn-active {
+  &.@{ns}btn-active {
     outline: 0;
     background-image: none;
   }
 
-  &.disabled,
+  &.@{ns}btn-disabled,
   &[disabled],
-  .dropdown-disabled &,
+  .@{ns}dropdown-disabled &,
   fieldset[disabled] & {
     cursor: @cursor-disabled;
     .opacity(.3);
@@ -49,7 +49,7 @@
   }
 
   a& {
-    &.disabled,
+    &.@{ns}btn-disabled,
     fieldset[disabled] & {
       pointer-events: none; // Future-proof disabling of clicks on `<a>` elements
     }
@@ -63,7 +63,7 @@
   .btn-subtle-variant(@btn-subtle-hover-bg);
 
   &:focus,
-  &.focus,
+  &.@{ns}btn-focus,
   &:hover {
     color: @btn-subtle-default-hover-color;
   }
@@ -97,7 +97,7 @@
   .btn-icon-with-text(@background-dark);
 
   &:focus,
-  &.focus {
+  &.@{ns}btn-focus {
     color: @color;
     background-color: @background-dark;
     .btn-icon-with-text(@background-darker);
@@ -107,7 +107,7 @@
     color: @color;
   }
 
-  &:not(.disabled):hover {
+  &:not(.@{ns}btn-disabled):hover {
     background-color: @background-dark;
     .btn-icon-with-text(@background-darker);
   }
@@ -156,7 +156,7 @@
 
   &,
   &:active,
-  &.active,
+  &.@{ns}btn-active,
   &[disabled],
   fieldset[disabled] & {
     background-color: transparent;
@@ -205,7 +205,7 @@
   background-color: transparent;
 
   &:focus,
-  &.focus,
+  &.@{ns}btn-focus,
   &:hover {
     color: @btn-subtle-hover-color;
     background: @color;
@@ -253,7 +253,7 @@
   background-color: transparent;
 
   &:focus,
-  &.focus {
+  &.@{ns}btn-focus {
     color: @color-dark;
     border-color: @color-border-dark;
   }
@@ -272,7 +272,7 @@
 
     &:hover,
     &:focus,
-    &.focus {
+    &.@{ns}btn-focus {
       color: @color-darker;
       border-color: @color-border-darker;
     }
@@ -354,22 +354,22 @@
     height: @icon-side-length;
     position: relative;
 
-    &.btn-icon-with-text {
-      &.btn-icon-placement-left {
+    &.@{ns}btn-icon-with-text {
+      &.@{ns}btn-icon-placement-left {
         padding-left: @icon-side-length + @padding-vertical;
       }
 
-      &.btn-icon-placement-right {
+      &.@{ns}btn-icon-placement-right {
         padding-right: @icon-side-length + @padding-vertical;
 
-        > .icon {
+        > .@{ns}icon {
           left: auto;
           right: 0;
         }
       }
     }
 
-    > .icon {
+    > .@{ns}icon {
       position: absolute;
       top: 0;
       left: 0;
@@ -405,12 +405,11 @@
 }
 
 // Button ripple
-.button-ripple(@transition:@ripple-transition) when (@button-ripple = true) {
+.button-ripple(@prefix:~"@{ns}btn-",@transition:@ripple-transition) when (@button-ripple = true) {
   overflow: hidden;
   position: relative;
-  transition: @transition;
 
-  &:not(.@{ns}disabled) {
+  &:not(.@{prefix}disabled) {
     &::after {
       content: "";
       display: block;
@@ -438,7 +437,7 @@
 
 // Icon Button with text
 .btn-icon-with-text(@bg) {
-  &.btn-icon.btn-icon-with-text > .icon {
+  &.@{ns}btn-icon.@{ns}btn-icon-with-text > .@{ns}icon {
     background: @bg;
   }
 }

@@ -2,7 +2,6 @@
 // Modals
 // --------------------------------------------------
 
-
 // Kill the scroll on the body
 .@{ns}modal-open {
   overflow: hidden;
@@ -24,23 +23,23 @@
   outline: 0;
 
   // Scale up the modal
-  &.@{ns}modal-lg {
+  &-lg {
     .content-width(@modal-lg);
   }
 
-  &.@{ns}modal-md {
+  &-md {
     .content-width(@modal-md);
   }
 
-  &.@{ns}modal-sm {
+  &-sm {
     .content-width(@modal-sm);
   }
 
-  &.@{ns}modal-xs {
+  &-xs {
     .content-width(@modal-xs);
   }
 
-  &.@{ns}modal-full {
+  &-full {
     @modal-full-size-margin-value: unit(@modal-full-size-margin);
     .content-width(~"calc(100% - `@{modal-full-size-margin-value} * 2`px)");
 
@@ -171,16 +170,16 @@
   &:extend(.clearfix all); // clear it in case folks use .pull-* classes on buttons
 
   // Properly space out buttons
-  .btn + .btn {
+  .@{ns}btn + .@{ns}btn {
     margin-left: 10px;
     margin-bottom: 0; // account for input[type="submit"] which gets the bottom margin like all other inputs
   }
   // but override that for button groups
-  .btn-group .btn + .btn {
+  .@{ns}btn-group .@{ns}btn + .@{ns}btn {
     margin-left: -1px;
   }
   // and override it for block buttons as well
-  .btn-block + .btn-block {
+  .@{ns}btn-block + .@{ns}btn-block {
     margin-left: 0;
   }
 }

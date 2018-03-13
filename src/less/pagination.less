@@ -1,7 +1,7 @@
 //
 // Pagination (multiple pages)
 // --------------------------------------------------
-.pagination {
+.@{ns}pagination {
   display: inline-block;
   padding-left: 0;
   margin-bottom: 0;
@@ -14,7 +14,8 @@
     }
 
     &:not(.@{ns}pagination-btn-disabled) > a {
-      .button-ripple(@pagination-transition);
+      transition: @pagination-transition;
+      .button-ripple;
     }
 
     > a {
@@ -50,7 +51,7 @@
     }
   }
 
-  > .@{ns}pagination-btn-disabled {
+  &-btn-disabled {
     > a {
       &,
       &:hover,
@@ -76,11 +77,11 @@
   // Pagination Sizes
   // --------------------------------------------------
 
-  &.@{ns}pagination-lg > li > a {
+  &-lg > li > a {
     .btn-lg;
   }
 
-  &.@{ns}pagination-sm > li > a {
+  &-sm > li > a {
     .btn-sm;
   }
 }

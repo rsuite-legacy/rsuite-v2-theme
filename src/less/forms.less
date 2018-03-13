@@ -24,7 +24,7 @@ input[type="checkbox"]:focus {
 }
 
 // Common form controls
-.input {
+.@{ns}input {
   .default-input;
 
   // Reset height for `textarea`
@@ -39,20 +39,20 @@ input[type="checkbox"]:focus {
 }
 
 // Form control sizing
-.input-xs {
+.@{ns}input-xs {
   .input-xs;
 }
 
-.input-lg {
+.@{ns}input-lg {
   .input-lg;
 }
 
-.input-sm {
+.@{ns}input-sm {
   .input-sm;
 }
 
 // Form groups
-.control-label {
+.@{ns}control-label {
   margin-bottom: @control-label-margin-bottom;
 }
 
@@ -60,13 +60,13 @@ input[type="checkbox"]:focus {
 //
 // Indent the labels to position radios/checkboxes as hanging controls.
 
-.radio,
-.checkbox {
+.@{ns}radio,
+.@{ns}checkbox {
   position: relative;
   display: block;
 
   // These classes are used on elements with <label> descendants
-  &.disabled,
+  &-disabled,
   fieldset[disabled] & {
     label {
       cursor: @cursor-disabled;
@@ -81,23 +81,23 @@ input[type="checkbox"]:focus {
   }
 }
 
-.checkbox label:hover .checkbox-inner::before {
+.@{ns}checkbox label:hover .@{ns}checkbox-inner::before {
   border-color: @checkbox-checked-border-color;
 }
 
-.radio label:hover .radio-inner::before {
+.@{ns}radio label:hover .@{ns}radio-inner::before {
   border-color: @radio-checked-border-color;
 }
 
-.checkbox.checkbox-disabled label,
-.radio.radio-disabled label {
+.@{ns}checkbox.@{ns}checkbox-disabled label,
+.@{ns}radio.@{ns}radio-disabled label {
   cursor: not-allowed;
 }
 
-.radio input[type="radio"],
-.radio-inline input[type="radio"],
-.checkbox input[type="checkbox"],
-.checkbox-inline input[type="checkbox"] {
+.@{ns}radio input[type="radio"],
+.@{ns}radio-inline input[type="radio"],
+.@{ns}checkbox input[type="checkbox"],
+.@{ns}checkbox-inline input[type="checkbox"] {
   position: absolute;
   top: 0;
   left: 0;
@@ -105,38 +105,34 @@ input[type="checkbox"]:focus {
 }
 
 // Radios and checkboxes on same line
-.radio-inline,
-.checkbox-inline {
+.@{ns}radio-inline,
+.@{ns}checkbox-inline {
   position: relative;
   display: inline-block;
   margin-bottom: 0;
   vertical-align: middle;
   font-weight: normal;
   cursor: pointer;
+}
 
-  &.disabled,
+.@{ns}radio-inline {
+  &.@{ns}radio-disabled,
   fieldset[disabled] & {
     cursor: @cursor-disabled;
   }
 }
 
-.radio-inline + .radio-inline,
-.checkbox-inline + .checkbox-inline {
-  margin-top: 0;
-  margin-left: 10px; // space out consecutive inline controls
+.@{ns}checkbox-inline {
+  &.@{ns}checkbox-disabled,
+  fieldset[disabled] & {
+    cursor: @cursor-disabled;
+  }
 }
 
-// Form control error states
-.has-error {
-  //.form-control-validation(@state-danger-text; @state-danger-text; @state-danger-bg);
-
-  .help-block.error {
-    color: @state-error-text;
-    animation-name: shake;
-    animation-duration: .5s;
-    animation-fill-mode: both;
-    animation-timing-function: ease-in-out;
-  }
+.@{ns}radio-inline + .@{ns}radio-inline,
+.@{ns}checkbox-inline + .@{ns}checkbox-inline {
+  margin-top: 0;
+  margin-left: 10px; // space out consecutive inline controls
 }
 
 // Help text
@@ -144,7 +140,7 @@ input[type="checkbox"]:focus {
 // Apply to any element you wish to create light text for placement immediately
 // below a form control. Use for general help, formatting, or instructional text.
 
-.help-block {
+.@{ns}help-block {
   display: block; // account for any element using help-block
   color: @help-block-color; // lighten the text some for contrast
   //Sometimes help info is more than one line，so height can't set a fixed value
@@ -158,9 +154,9 @@ input[type="checkbox"]:focus {
   }
 }
 
-.form-inline {
+.@{ns}form-inline {
   > *,
-  > .btn {
+  > .@{ns}btn {
     margin-right: @base-unit-px;
     margin-bottom: @base-unit-px;
     vertical-align: middle;
@@ -170,27 +166,27 @@ input[type="checkbox"]:focus {
 //== Form Layout
 
 // Form groups
-.form-group {
-  .form:not(.form-inline) &:not(:last-child) {
+.@{ns}form-group {
+  .@{ns}form:not(.@{ns}form-inline) &:not(:last-child) {
     margin-bottom: @form-group-margin-bottom;
   }
 
-  .input {
+  .@{ns}input {
     display: inline-block;
   }
 }
 
-.form-control-wrapper {
+.@{ns}form-control-wrapper {
   // Used to provide relation for error message
   position: relative;
 
-  > .input-number,
-  > .input {
+  > .@{ns}input-number,
+  > .@{ns}input {
     width: @form-control-width;
   }
 
   // Error
-  .error-message {
+  .@{ns}error-message {
     position: absolute;
     padding: @error-message-padding-vertical @error-message-padding-horizontal;
     background-color: @error-message-background-color;
@@ -229,7 +225,7 @@ input[type="checkbox"]:focus {
     &-placement-bottom-right {
       bottom: -1px; // Error message width form-control has 1px gap
 
-      .error-message {
+      .@{ns}error-message {
         top: 0;
 
         &-show {
@@ -237,7 +233,7 @@ input[type="checkbox"]:focus {
         }
       }
 
-      .error-message-arrow {
+      .@{ns}error-message-arrow {
         &::before,
         &::after {
           border-width: 0 @error-message-triangle-width @error-message-triangle-width;
@@ -256,7 +252,7 @@ input[type="checkbox"]:focus {
     &-placement-top-right {
       top: -1px; // Error message width form-control has 1px gap
 
-      .error-message {
+      .@{ns}error-message {
         bottom: 0;
 
         &-show {
@@ -264,7 +260,7 @@ input[type="checkbox"]:focus {
         }
       }
 
-      .error-message-arrow {
+      .@{ns}error-message-arrow {
         &::before,
         &::after {
           border-width: @error-message-triangle-width @error-message-triangle-width 0;
@@ -283,11 +279,11 @@ input[type="checkbox"]:focus {
     &-placement-top-left {
       left: 0;
 
-      .error-message {
+      .@{ns}error-message {
         left: 0;
       }
 
-      .error-message-arrow {
+      .@{ns}error-message-arrow {
         &::before,
         &::after {
           left: @error-message-triangle-gap;
@@ -299,11 +295,11 @@ input[type="checkbox"]:focus {
     &-placement-top-right {
       right: 0;
 
-      .error-message {
+      .@{ns}error-message {
         right: 0;
       }
 
-      .error-message-arrow {
+      .@{ns}error-message-arrow {
         &::before,
         &::after {
           right: @error-message-triangle-gap;
@@ -316,7 +312,7 @@ input[type="checkbox"]:focus {
     &-placement-left-bottom {
       left: -1px;
 
-      .error-message {
+      .@{ns}error-message {
         right: 0;
 
         &-show {
@@ -324,7 +320,7 @@ input[type="checkbox"]:focus {
         }
       }
 
-      .error-message-arrow {
+      .@{ns}error-message-arrow {
         &::before,
         &::after {
           border-width: @error-message-triangle-width 0 @error-message-triangle-width @error-message-triangle-width;
@@ -343,7 +339,7 @@ input[type="checkbox"]:focus {
     &-placement-right-bottom {
       right: -1px;
 
-      .error-message {
+      .@{ns}error-message {
         left: 0;
 
         &-show {
@@ -351,7 +347,7 @@ input[type="checkbox"]:focus {
         }
       }
 
-      .error-message-arrow {
+      .@{ns}error-message-arrow {
         &::before,
         &::after {
           border-width: @error-message-triangle-width @error-message-triangle-width @error-message-triangle-width 0;
@@ -370,11 +366,11 @@ input[type="checkbox"]:focus {
     &-placement-right-top {
       bottom: 0;
 
-      .error-message {
+      .@{ns}error-message {
         bottom: 0;
       }
 
-      .error-message-arrow {
+      .@{ns}error-message-arrow {
         &::before,
         &::after {
           bottom: @error-message-triangle-vertical;
@@ -386,11 +382,11 @@ input[type="checkbox"]:focus {
     &-placement-right-bottom {
       top: 0;
 
-      .error-message {
+      .@{ns}error-message {
         top: 0;
       }
 
-      .error-message-arrow {
+      .@{ns}error-message-arrow {
         &::before,
         &::after {
           top: @error-message-triangle-vertical;
@@ -401,16 +397,16 @@ input[type="checkbox"]:focus {
 }
 
 // Vertical forms
-.form-vertical .form-group {
-  .control-label {
+.@{ns}form-vertical .@{ns}form-group {
+  .@{ns}control-label {
     display: block;
   }
 
-  .help-block:not(.help-block-tooltip) {
+  .@{ns}help-block:not(.help-block-tooltip) {
     padding-top: 4px;
   }
 
-  .form-control-wrapper {
+  .@{ns}form-control-wrapper {
     display: inline-block;
   }
 }
@@ -420,29 +416,29 @@ input[type="checkbox"]:focus {
 // Horizontal forms are built on grid classes and allow you to create forms with
 // labels on the left and inputs on the right.
 
-.form-horizontal {
-  .form-group {
+.@{ns}form-horizontal {
+  .@{ns}form-group {
     .clearfix;
 
-    .form-control-wrapper,
-    .control-label {
+    .@{ns}form-control-wrapper,
+    .@{ns}control-label {
       float: left;
     }
 
-    .form-control-wrapper + .help-block {
+    .@{ns}form-control-wrapper + .@{ns}help-block {
       clear: both;
     }
 
     // Help block
-    .form-control-wrapper + .help-block:not(.help-block-tooltip) {
+    .@{ns}form-control-wrapper + .@{ns}help-block:not(.@{ns}help-block-tooltip) {
       margin-left: @control-label-width + @control-label-margin-right;
     }
 
-    .form-control-wrapper + .help-block.help-block-tooltip {
+    .@{ns}form-control-wrapper + .@{ns}help-block.@{ns}help-block-tooltip {
       padding: @padding-base-vertical 0;
     }
 
-    .control-label {
+    .@{ns}control-label {
       display: inline-block;
       //Sometimes help info is more than one line，so height can't set a fixed value
       min-height: @line-height-computed;
@@ -454,23 +450,23 @@ input[type="checkbox"]:focus {
       text-align: right;
     }
 
-    .btn-toolbar {
+    .@{ns}btn-toolbar {
       padding-left: @control-label-width + @control-label-margin-right;
     }
   }
 }
 
 // Inline
-.form-inline .form-group {
+.@{ns}form-inline .@{ns}form-group {
   display: inline-block;
 
-  .form-control-wrapper {
+  .@{ns}form-control-wrapper {
     display: inline-block;
     margin-left: @form-control-margin-left;
   }
 
   // Form control wrapper behind Screen only dom no need margin left.
-  .sr-only + .form-control-wrapper {
+  .@{ns}sr-only + .@{ns}form-control-wrapper {
     margin-left: 0;
   }
 }

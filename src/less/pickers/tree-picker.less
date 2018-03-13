@@ -2,7 +2,7 @@
 // ----------------------
 
 // tree picker name space
-@tpns: ~"@{tns}@{tree-picker-prefix}";
+@tpns: ~"@{ns}@{tree-picker-prefix}";
 
 .@{tpns}-view {
   background-color: @picker-tree-bg;
@@ -82,6 +82,8 @@
     transform-origin: 3.5px 16px;
     margin-left: -2px;
     margin-top: 2px;
+    font-family: @font-family-icon;
+    font-style: normal;
 
     &::before {
       content: @picker-tree-arrow-down;
@@ -108,11 +110,11 @@
   }
 }
 
-.@{tns}picker-menu {
+.@{ns}picker-menu {
   &.@{tpns}-menu {
     padding-top: @picker-menu-padding;
 
-    .@{tns}picker-search-bar {
+    .@{ns}picker-search-bar {
       padding-top: 0;
     }
   }

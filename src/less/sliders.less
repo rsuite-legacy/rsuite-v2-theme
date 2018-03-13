@@ -4,23 +4,23 @@
 .@{ns}slider {
   position: relative;
 
-  .tooltip {
+  &-tooltip {
     display: none;
 
-    &.tooltip-top .tooltip-arrow {
+    &.@{ns}tooltip-placement-top .@{ns}tooltip-arrow {
       // Fixed a pixel white line problem;
       bottom: 1px;
     }
   }
-}
 
-.slider-disabled {
-  opacity: .3;
-  cursor: not-allowed;
-
-  .slider-bar,
-  .slider-handle::before {
+  &-disabled {
+    opacity: .3;
     cursor: not-allowed;
+
+    .@{ns}slider-bar,
+    .@{ns}slider-handle::before {
+      cursor: not-allowed;
+    }
   }
 }
 
@@ -92,11 +92,11 @@
         }
       }
 
-      &.slider-pass::before {
+      &.@{ns}slider-pass::before {
         border-color: @slider-calibration-pass-border-color;
       }
 
-      &.slider-active::before {
+      &.@{ns}slider-active::before {
         visibility: hidden;
       }
     }
@@ -160,14 +160,14 @@
     box-shadow: none;
     transform: scale(1.2);
   }
-  
+
   .@{ns}slider-vertical &::before {
     left: (@slider-handle-diameter - @slider-bar-side-length)/2;
     margin-top: -@slider-handle-diameter/2;
   }
 }
 
-.@{ns}slider-showtip .tooltip {
+.@{ns}slider-showtip .@{ns}tooltip {
   display: block;
   opacity: 1;
   left: -13.5px;

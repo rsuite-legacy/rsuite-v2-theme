@@ -1,9 +1,7 @@
 @import "commonly-variables";
 
 // Name space
-@ns: ~'`String("")`';
-// Temp name space
-@tns: rs-;
+@ns: rs-;
 // Ie stuffix
 @ieSuffix: ~"\9";
 // Control enable ie polyfill
@@ -57,7 +55,7 @@
 //## Font, line-height, and color for body text, headings, and more.
 
 @font-family-base: "Microsoft YaHei", "Hiragino Sans GB", STXihei, "Open Sans", sans-serif;
-@font-family-icon: "RSuiteIconFont";
+@font-family-icon: "rsuite-icon-font";
 
 @font-size-base: 14px;
 @font-size-large: 16px;
@@ -99,7 +97,7 @@
 @icon-font-path: "./fonts";
 @icon-font-size-base: @font-size-base;
 @icon-line-height-base: 1;
-@icon-css-prefix: icon;
+@icon-css-prefix: ~"@{ns}icon";
 @icon-border-color: #eee;
 @icon-inverse: #fff;
 @icon-li-width: (30em / 14);
@@ -359,7 +357,7 @@
 //** Deprecated `@dropdown-caret-color`
 @dropdown-caret-color: #000;
 //** Dropdown Caret Font Family
-@dropdown-caret-font-family: "RSuiteIconFont";
+@dropdown-caret-font-family: @font-family-icon;
 //** DropLeft Caret Content
 @dropleft-caret-content: "\F104";
 //** DropRight Caret Content
@@ -371,7 +369,6 @@
 
 //** dropDownMenu的偏移量
 @dropdown-max-height: 280px;
-@dropdown-menu-top: 35px;
 @dropdown-menu-lg-top: 40px;
 @dropdown-menu-sm-top: 27px;
 @dropdown-menu-xs-top: 21px;
@@ -841,7 +838,7 @@
 //== Alert
 //
 //##
-@notification-ns: ~"@{ns}rsuite-notification";
+@notification-ns: ~"rsuite-notification";
 @alert-padding: 20px;
 @alert-border-radius: @border-radius-base;
 @alert-max-width: 400px;

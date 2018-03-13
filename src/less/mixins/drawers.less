@@ -17,11 +17,11 @@
 }
 
 .drawer-animation-setting(@move-in-animation-name,@move-out-animation-name) {
-  &.fade .drawer-dialog {
+  &.fade .@{ns}drawer-dialog {
     animation-name: @move-out-animation-name;
   }
 
-  &.in .drawer-dialog {
+  &.in .@{ns}drawer-dialog {
     animation-name: @move-in-animation-name;
   }
 }
