@@ -1,0 +1,17 @@
+//
+// Time lines
+// --------------------------------------------------
+
+.@{ns}tag {
+  display: inline-block;
+  padding: @padding-extra-small-vertical @padding-extra-small-horizontal;
+  background-color: @tag-default-background;
+  color: @tag-default-color;
+  border-radius: @border-radius-base;
+}
+
+.@{ns}tag + .@{ns}tag {
+  margin-left: @tag-gap;
+}
+
+.generate-spectrum-tags;
