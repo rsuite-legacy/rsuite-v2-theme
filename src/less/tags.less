@@ -8,6 +8,24 @@
   background-color: @tag-default-background;
   color: @tag-default-color;
   border-radius: @border-radius-base;
+
+  &-closeable {
+    padding-right: 32px;
+    position: relative;
+  }
+
+  &-icon-close {
+    position: absolute;
+    top: @padding-extra-small-vertical;
+    right: @padding-extra-small-horizontal;
+    font-style: normal;
+    font-family: @font-family-icon;
+    cursor: pointer;
+
+    &::after {
+      content: @default-close-btn-content;
+    }
+  }
 }
 
 .@{ns}tag + .@{ns}tag {
