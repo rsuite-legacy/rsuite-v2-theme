@@ -94,7 +94,12 @@ h6,
 // -------------------------
 
 p {
-  margin: 0 0 @padding-base-vertical;
+  margin: 0;
+
+  // Multiple <p/> need set margin
+  & + p {
+    margin-top: @padding-base-vertical;
+  }
 }
 
 .lead {
