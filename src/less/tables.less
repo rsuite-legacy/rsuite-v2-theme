@@ -21,6 +21,17 @@
     border-bottom: 1px solid @table-border-color;
   }
 
+  &-row-expanded {
+    position: absolute;
+    height: 46px;
+    bottom: 0;
+    width: 100%;
+    z-index: 4;
+    border-top: 1px solid @table-border-color;
+    padding: 10px;
+    background: @table-body-background;
+  }
+
   &-row:hover &-cell-group {
     background: @table-body-background;
   }
@@ -43,6 +54,7 @@
     box-shadow: none;
   }
 
+  &-hover &-row:not(&-row-header):hover,
   &-hover &-row:hover &-cell-group,
   &-hover &-row:hover &-cell {
     background: @table-body-hover-background;
@@ -79,6 +91,10 @@
     &-wheel-area {
       width: 100%;
     }
+  }
+
+  &-body-wheel-area {
+    width: 100%;
   }
 
   &-loader-wrapper {
