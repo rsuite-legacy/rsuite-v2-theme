@@ -66,8 +66,7 @@ input[type="checkbox"]:focus {
   display: block;
 
   // These classes are used on elements with <label> descendants
-  &-disabled,
-  fieldset[disabled] & {
+  &-disabled {
     label {
       cursor: @cursor-disabled;
     }
@@ -116,15 +115,13 @@ input[type="checkbox"]:focus {
 }
 
 .@{ns}radio-inline {
-  &.@{ns}radio-disabled,
-  fieldset[disabled] & {
+  &.@{ns}radio-disabled {
     cursor: @cursor-disabled;
   }
 }
 
 .@{ns}checkbox-inline {
-  &.@{ns}checkbox-disabled,
-  fieldset[disabled] & {
+  &.@{ns}checkbox-disabled {
     cursor: @cursor-disabled;
   }
 }

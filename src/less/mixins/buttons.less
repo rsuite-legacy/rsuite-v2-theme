@@ -11,7 +11,7 @@
   // Reset border style in all browser
   border: none;
 
-  .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @btn-border-radius-base);
+  .btn-md;
   .user-select(none);
 
   &,
@@ -38,8 +38,7 @@
 
   &.@{ns}btn-disabled,
   &[disabled],
-  .@{ns}dropdown-disabled &,
-  fieldset[disabled] & {
+  .@{ns}dropdown-disabled & {
     cursor: @cursor-disabled;
     .opacity(.3);
 
@@ -49,8 +48,7 @@
   }
 
   a& {
-    &.@{ns}btn-disabled,
-    fieldset[disabled] & {
+    &.@{ns}btn-disabled {
       pointer-events: none; // Future-proof disabling of clicks on `<a>` elements
     }
   }
@@ -136,7 +134,6 @@
 
   &.@{ns}btn-disabled,
   &[disabled],
-  fieldset[disabled] &,
   .@{ns}dropdown-disabled & {
     &:hover,
     &:focus,
@@ -157,8 +154,7 @@
   &,
   &:active,
   &.@{ns}btn-active,
-  &[disabled],
-  fieldset[disabled] & {
+  &[disabled] {
     background-color: transparent;
   }
 
@@ -187,8 +183,7 @@
     }
   }
 
-  &[disabled],
-  fieldset[disabled] & {
+  &[disabled] {
     &:hover,
     &:focus {
       color: @color;
@@ -228,7 +223,6 @@
 
   &.@{ns}btn-disabled,
   &[disabled],
-  fieldset[disabled] &,
   .@{ns}dropdown-disabled & {
     &,
     &:hover,
@@ -280,7 +274,6 @@
 
   &.@{ns}btn-disabled,
   &[disabled],
-  fieldset[disabled] &,
   .@{ns}dropdown-disabled & {
     &:hover,
     &:focus,

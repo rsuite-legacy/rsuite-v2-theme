@@ -11,12 +11,17 @@
 
   // Multiple notification should have spacing
   // Hiding notification haven't spacing.
-  .@{notification-ns}-notice-wrapper:not(.@{notification-ns}-fade-leave-active) + .@{notification-ns}-notice-wrapper {
+  &-notice-wrapper:not(.@{notification-ns}-fade-leave-active) + .@{notification-ns}-notice-wrapper {
     margin-top: 10px;
   }
 
+  // Center content
+  &&-alert {
+    left: 50%;
+  }
+
   // Alert wrapper
-  .rsuite-alert &-notice-wrapper {
+  &-alert &-notice-wrapper {
     display: block;
     text-align: center;
     width: 100%;
@@ -29,7 +34,7 @@
   }
 
   // Alert content
-  &-notice-content {
+  &-alert &-notice-content {
     text-align: left;
     padding: @alert-padding;
     border-radius: @alert-border-radius;
@@ -46,7 +51,7 @@
   }
 
   // Alert close button
-  &-notice-close {
+  &-alert &-notice-close {
     position: absolute;
     top: 0;
     right: 0;
@@ -71,11 +76,6 @@
     // IE hack
     .ie-display-none;
   }
-}
-
-// Center content
-.@{notification-ns}.rsuite-alert {
-  left: 50%;
 }
 
 // Alternate styles

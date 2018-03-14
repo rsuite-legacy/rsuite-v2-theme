@@ -4,52 +4,52 @@
 
 // Base styles
 // -------------------------
-.@{notification-ns}.rsuite-notify {
-  .@{notification-ns}-notice {
+.@{notification-ns} {
+  &-notify &-notice {
     position: relative;
   }
 
   // Notification content
-  .@{notification-ns}-notice-content {
+  &-notify &-notice-content {
     background: @notify-default-bg;
     box-shadow: @notify-box-shadow;
     padding: @notify-padding;
     border-radius: @notify-border-radius;
     max-width: @notify-max-width;
+  }
 
-    // Title
-    .title {
-      .ellipsis;
+  // Title
+  &-notify &-title {
+    .ellipsis;
 
-      color: @notify-title-font-color;
-      font-size: @notify-title-font-size;
-      line-height: unit(@notify-title-icon-size/@notify-title-font-size);
+    color: @notify-title-font-color;
+    font-size: @notify-title-font-size;
+    line-height: unit(@notify-title-icon-size/@notify-title-font-size);
 
-      > p {
-        margin: 0;
-      }
-
-      .@{ns}icon {
-        font-size: @notify-title-icon-size;
-        width: @notify-title-icon-size;
-        line-height: 1;
-        margin-right: @notify-title-icon-margin;
-      }
-
-      // Has title and description need to ajust distance
-      & + .description {
-        margin-top: @notify-title-description-gap;
-      }
+    > p {
+      margin: 0;
     }
 
-    // Description
-    .description {
-      color: @notify-description-color;
+    .@{ns}icon {
+      font-size: @notify-title-icon-size;
+      width: @notify-title-icon-size;
+      line-height: 1;
+      margin-right: @notify-title-icon-margin;
     }
   }
 
+  // Description
+  &-notify &-description {
+    color: @notify-description-color;
+  }
+
+  // Has title and description need to ajust distance
+  &-notify &-title + &-description {
+    margin-top: @notify-title-description-gap;
+  }
+
   // Notification close button
-  .@{notification-ns}-notice-close {
+  &-notify &-notice-close {
     position: absolute;
     top: 0;
     right: 0;
@@ -66,28 +66,28 @@
   }
 
   // Animations
-  .@{notification-ns}-fade-enter-active,
-  .@{notification-ns}-fade-leave-active {
+  &-notify &-fade-enter-active,
+  &-notify &-fade-leave-active {
     animation-duration: .3s;
     animation-timing-function: linear;
     animation-fill-mode: forwards;
   }
 
-  &.rsuite-bottom-left,
-  &.rsuite-top-left {
+  &-notify &-bottom-left,
+  &-notify &-top-left {
     .@{notification-ns}-fade-enter-active {
       animation-name: notificationMoveInLeft;
     }
   }
 
-  &.rsuite-bottom-right,
-  &.rsuite-top-right {
+  &-notify &-bottom-right,
+  &-notify &-top-right {
     .@{notification-ns}-fade-enter-active {
       animation-name: notificationMoveInRight;
     }
   }
 
-  .@{notification-ns}-fade-leave-active {
+  &-notify &-fade-leave-active {
     animation-name: notificationMoveOut;
     // IE hack
     .ie-display-none;
