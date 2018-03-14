@@ -19,7 +19,7 @@
     }
 
     > a {
-      .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @btn-border-radius-base);
+      .btn-sm;
       .user-select(none);
       .btn-transition;
       .btn-subtle-variant(@pagination-hover-bg);
@@ -79,6 +79,10 @@
 
   &-lg > li > a {
     .btn-lg;
+  }
+
+  &-md > li > a {
+    .btn-md;
   }
 
   &-sm > li > a {

@@ -54,6 +54,14 @@
     box-shadow: none;
   }
 
+  // Added transition for hover
+  &-row,
+  &-cell-group,
+  &-cell {
+    transition: .3s linear;
+    transition-property: background-color;
+  }
+
   &-hover &-row:not(&-row-header):hover,
   &-hover &-row:hover &-cell-group,
   &-hover &-row:hover &-cell {
