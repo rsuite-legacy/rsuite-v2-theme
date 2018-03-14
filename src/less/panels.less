@@ -6,6 +6,11 @@
   border-radius: @border-radius-base;
   box-shadow: black;
 
+  &-bordered,
+  &-group-bordered {
+    border: @panel-border;
+  }
+
   &-heading,
   &-body {
     padding: @panel-padding;
@@ -44,6 +49,11 @@
     overflow: hidden;
   }
 
+  // Panel in Panel group haven't border.
+  &-group & {
+    border: none;
+  }
+
   // Draw a split line for panel
   &-group & + & {
     position: relative;
@@ -58,8 +68,8 @@
     }
   }
 
-  // Accordion group panel heading hover background
-  &-group-accordion &-heading {
+  // Collapsible panel heading hover background
+  &-collapsible &-heading {
     cursor: pointer;
     transition: @panel-accodion-transition;
     transition-property: background-color, border-radius;
@@ -73,10 +83,6 @@
       right: @panel-padding;
       transition: @panel-accodion-transition;
       transition-property: transform;
-    }
-
-    &:hover {
-      background-color: @panel-group-panel-heading-hover-background;
     }
   }
 
