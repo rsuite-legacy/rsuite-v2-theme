@@ -28,6 +28,7 @@
     }
 
     &.@{ns}nav-item-disabled {
+      cursor: not-allowed;
       opacity: .3;
     }
 
@@ -164,7 +165,7 @@
   .@{ns}nav-item > .@{ns}nav-item-content {
     border-radius: @nav-item-border-radius;
   }
-  
+
   .@{ns}nav-item:not(.@{ns}nav-item-active):not(.@{ns}nav-item-disabled) > .@{ns}nav-item-content {
     &:hover,
     &:focus {
