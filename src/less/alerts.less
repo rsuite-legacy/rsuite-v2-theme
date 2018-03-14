@@ -11,7 +11,7 @@
 
   // Multiple notification should have spacing
   // Hiding notification haven't spacing.
-  &-notice-wrapper:not(.@{notification-ns}-fade-leave-active) + .@{notification-ns}-notice-wrapper {
+  &-notice-wrapper:not(.@{notification-ns}-fade-exited) + .@{notification-ns}-notice-wrapper {
     margin-top: 10px;
   }
 
@@ -67,11 +67,24 @@
   }
 
   // Animations
-  &-fade-enter-active {
+  &-alert &-fade-exited,
+  &-alert &-fade-entering {
+    opacity: 0;
+  }
+
+  // The same to @keyframe alertMoveOut  100%.
+  &-alert &-fade-exited {
+    transform-origin: 0% 0%;
+    transform: scaleY(.8);
+    max-height: 0;
+    overflow: hidden;
+  }
+
+  &-alert &-fade-entered {
     animation: alertMoverIn .3s linear forwards;
   }
 
-  &-fade-leave-active {
+  &-alert &-fade-leave-active {
     animation: alertMoveOut .3s linear forwards;
     // IE hack
     .ie-display-none;

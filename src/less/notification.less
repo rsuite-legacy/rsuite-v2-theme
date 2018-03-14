@@ -66,23 +66,36 @@
   }
 
   // Animations
-  &-notify &-fade-enter-active,
+  &-notify &-fade-entered,
   &-notify &-fade-leave-active {
     animation-duration: .3s;
     animation-timing-function: linear;
     animation-fill-mode: forwards;
   }
 
-  &-notify &-bottom-left,
-  &-notify &-top-left {
-    .@{notification-ns}-fade-enter-active {
+  &-notify &-fade-exited,
+  &-notify &-fade-entering {
+    opacity: 0;
+  }
+
+  // The same to @keyframe notificationMoveOut  100%.
+  &-notify &-fade-exited {
+    transform-origin: 0% 0%;
+    transform: scaleY(.8);
+    max-height: 0;
+    overflow: hidden;
+  }
+
+  &-bottom-left,
+  &-top-left {
+    .@{notification-ns}-fade-entered {
       animation-name: notificationMoveInLeft;
     }
   }
 
-  &-notify &-bottom-right,
-  &-notify &-top-right {
-    .@{notification-ns}-fade-enter-active {
+  &-bottom-right,
+  &-top-right {
+    .@{notification-ns}-fade-entered {
       animation-name: notificationMoveInRight;
     }
   }
