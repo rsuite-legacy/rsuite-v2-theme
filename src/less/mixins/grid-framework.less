@@ -4,7 +4,7 @@
 // any value of `@grid-columns`.
 
 .make-grid-columns() {
-  // Common styles for all sizes of grid columns, widths 1-12
+  // Common styles for all sizes of grid columns, widths 1- `@grid-columns`
   .col(@index) { // initial
     @item: ~".@{ns}col-xs-@{index}, .@{ns}col-sm-@{index}, .@{ns}col-md-@{index}, .@{ns}col-lg-@{index}";
     .col((@index + 1), @item);
