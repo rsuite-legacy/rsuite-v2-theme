@@ -1,6 +1,7 @@
 // Common styles for all sizes of grid columns.
 .calc-flex-box-item(@index) when (@index > 0) {
   .@{ns}flex-box-gird-item-@{index} {
+    // Provide positioning for child elements.
     position: relative;
     display: block;
     // To prevent the collapse when column is empty.
