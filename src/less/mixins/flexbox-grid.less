@@ -11,7 +11,7 @@
 }
 
 // Loop to generate flex grid.
-.loop-flex-box-items(@index) when (@index >= 0) {
+.loop-flex-box-items(@index) when (@index > 0) {
   // Generate columns styles.
   .calc-flex-box-item(@index);
   .loop-flex-box-items((@index - 1));
