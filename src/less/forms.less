@@ -173,6 +173,17 @@ input[type="checkbox"]:focus {
   }
 }
 
+// Full container.
+.@{ns}form-fluid .@{ns}form-control-wrapper {
+  width: 100%;
+
+  > .@{ns}input-number,
+  > .@{ns}input {
+    width: 100%;
+  }
+}
+
+// Fixed width.
 .@{ns}form-control-wrapper {
   // Used to provide relation for error message
   position: relative;
