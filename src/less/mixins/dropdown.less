@@ -36,9 +36,13 @@
   position: relative;
   z-index: @zindex-dropdown;
   padding-right: @dropdown-toggle-padding-right;
+  // Fixed: Content is not centered when customizing renderTitle.
+  display: inline-block;
+  // Clear white space.
+  font-size: @font-size-base;
 
-  // Custom title toggle need reset padding right
+  // Custom title toggle need reset padding right.
   &-custom-title {
-    padding-right: 0;
+    padding: 0 !important;
   }
 }
