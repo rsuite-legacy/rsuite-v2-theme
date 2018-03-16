@@ -78,7 +78,8 @@
     padding-top: @sidenav-item-height;
 
     // Set  the ripple effect of items.
-    &-item-content {
+    &-item:not(.@{ns}dropdown-item-submenu) > .@{ns}dropdown-item-content,
+    &-item-submenu > .@{ns}dropdown-item-content > .@{ns}dropdown-menu-toggle {
       .button-ripple;
     }
 
