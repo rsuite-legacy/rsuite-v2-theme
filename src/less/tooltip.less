@@ -12,9 +12,14 @@
   z-index: @zindex-tooltip;
   display: block;
   font-size: @font-size-small;
+  opacity: 0;
+
+  &.in {
+    opacity: 1;
+  }
 
   &.fade {
-    transition: transform .15s ease-out .15s;
+    transition: opacity .15s ease-out .15s, transform .15s ease-out .15s;
   }
 
   // Wrapper for the tooltip content

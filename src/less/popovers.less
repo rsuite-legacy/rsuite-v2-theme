@@ -18,13 +18,10 @@
   background-color: @popover-bg;
   background-clip: padding-box;
   border-radius: @popover-border-radius;
+  opacity: 0;
 
-  .set-translate(@translateX:0,@translateY:0) {
-    transform: translate(0, 0);
-
-    &.in {
-      transform: translate(@translateX, @translateY);
-    }
+  &.in {
+    opacity: 1;
   }
 
   &.fade {
