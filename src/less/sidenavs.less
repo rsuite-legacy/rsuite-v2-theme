@@ -58,8 +58,8 @@
   }
 
   // Reset border-radius
-  .@{ns}nav-item:not(.@{ns}nav-item-active):not(.@{ns}nav-item-disabled) > .@{ns}nav-item-content,
-  .@{ns}dropdown .dropdown-toggle {
+  .@{ns}nav-item:not(.@{ns}nav-item-disabled) > .@{ns}nav-item-content,
+  .@{ns}dropdown .@{ns}dropdown-toggle {
     border-radius: 0;
   }
 }
@@ -69,13 +69,23 @@
   width: @sidenav-collapse-in-width;
 
   //Nav item content
-  .@{ns}nav-item:not(.@{ns}nav-item-active):not(.@{ns}nav-item-disabled) > .nav-item-content {
+  .@{ns}nav-item > .@{ns}nav-item-content {
     border-radius: 0;
   }
 
   //Dropdown style rewrite
   .@{ns}dropdown {
     padding-top: @sidenav-item-height;
+
+    // Set  the ripple effect of items.
+    &-item-content {
+      .button-ripple;
+    }
+
+    // Remove the ripple effect of disabled items.
+    &-item-disabled &-item-content::after {
+      display: none;
+    }
 
     .@{ns}dropdown-menu-active ~ .@{ns}dropdown-toggle,
     > .@{ns}dropdown-toggle {
