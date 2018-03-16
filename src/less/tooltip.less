@@ -7,19 +7,14 @@
   // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
   // So reset our font and text properties to avoid inheriting weird values.
   .reset-text(@font-family-base, @line-height-small);
-  .opacity(0);
 
   position: absolute;
   z-index: @zindex-tooltip;
   display: block;
   font-size: @font-size-small;
 
-  &.in {
-    .opacity(@tooltip-opacity);
-  }
-
   &.fade {
-    transition: opacity .15s ease-out .15s, transform .15s ease-out .15s;
+    transition: transform .15s ease-out .15s;
   }
 
   // Wrapper for the tooltip content
