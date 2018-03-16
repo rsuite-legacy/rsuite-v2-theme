@@ -30,3 +30,9 @@
   flex: auto; // The same to `flex: 1 1 auto`
 }
 
+.@{ns}sidebar {
+  &-collapse {
+    transition: @sidenav-collapse-transition-config;
+    transition-property: flex, width;
+  }
+}
