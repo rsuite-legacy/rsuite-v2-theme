@@ -1,0 +1,32 @@
+.@{ns}divider {
+  &-vertical {
+    display: inline-block;
+    height: 1em;
+    width: 1px;
+    vertical-align: middle;
+    margin: 0 @divider-default-vertical-margin;
+    background-color: @divider-border-color;
+  }
+
+  &-horizontal {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: @divider-default-horizontal-margin 0;
+
+    &::before,
+    &::after {
+      content: "";
+      flex: 1 1 auto;
+      border-top: 1px solid @divider-border-color;
+    }
+  }
+
+  &-horizontal&-with-text {
+    margin: @divider-with-text-horizontal-margin 0;
+  }
+
+  &-inner-text {
+    padding: 0 @divider-text-space;
+  }
+}
