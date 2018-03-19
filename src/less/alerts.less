@@ -11,6 +11,11 @@
   // Make sure the mouse can penetrate through the gap area.
   pointer-events: none;
 
+  &-notice {
+    // Recovery mouse event.
+    pointer-events: auto;
+  }
+
   // Multiple notification should have spacing
   // Hiding notification haven't spacing.
   &-notice-wrapper:not(.@{notification-ns}-fade-exited) + .@{notification-ns}-notice-wrapper {
