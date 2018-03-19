@@ -65,18 +65,9 @@
   transition-duration: .2s;
   transition-timing-function: ease-in-out;
   transition-property: transform, opacity;
-  // Hidden "X" symbol
-  //text-indent: -12px;
-  //overflow: hidden;
   opacity: 0;
   transform: scale(0);
   background: inherit;
-
-  // Setting "X" symbol
-  //&::after {
-  //  //font-family: @font-family-icon !important;
-  //  //content: "✕";
-  //}
 }
 
 // Picker toggle caret
@@ -104,12 +95,32 @@
 
   // Searchbar
   .@{ns}picker-search-bar {
+    position: relative;
     padding: (@picker-menu-padding - @border-radius-base) @picker-menu-padding @picker-menu-padding;
 
     .@{ns}picker-search-bar-input {
       .default-input;
 
       min-width: @picker-content-min-width;
+      padding-right: @picker-search-bar-icon-width + (@padding-base-input-horizontal - @input-border-width)*2;
+    }
+
+    &::after {
+      content: @picker-search-bar-icon-content;
+      font-family: @font-family-icon;
+      font-style: normal;
+      position: absolute;
+      width: @picker-search-bar-icon-width;
+      color: @B400;
+      font-size: @font-size-base;
+      line-height: unit(@line-height-computed/@font-size-base);
+      top: @picker-menu-padding - @border-radius-base + @padding-base-input-vertical;
+      right: @picker-menu-padding + @padding-base-input-horizontal;
+
+      .@{tpns}-menu&,
+      .@{ctpns}-menu& {
+        top: (@padding-base-input-vertical - @input-border-width);
+      }
     }
   }
 
