@@ -8,6 +8,8 @@
 .@{notification-ns} {
   position: fixed;
   z-index: @zindex-notification;
+  // Make sure the mouse can penetrate through the gap area.
+  pointer-events: none;
 
   // Multiple notification should have spacing
   // Hiding notification haven't spacing.
