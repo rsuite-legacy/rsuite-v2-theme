@@ -103,6 +103,12 @@ input[type="checkbox"]:focus {
   z-index: @zindex-input;
 }
 
+// Disabled text styles.
+.@{ns}radio-disabled > .@{ns}radio-checker > label,
+.@{ns}checkbox-disabled > .@{ns}checkbox-checker > label {
+  color: @input-color-disabled;
+}
+
 // Radios and checkboxes on same line
 .@{ns}radio-inline,
 .@{ns}checkbox-inline {

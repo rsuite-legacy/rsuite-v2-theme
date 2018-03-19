@@ -37,7 +37,7 @@
     height: @radio-width-height;
   }
 
-  // 涟漪效果外框
+  // Ripple effect area.
   &::before {
     .radio-inner-wrapper(@radio-checked-border-color);
 
@@ -53,7 +53,7 @@
     }
   }
 
-  //感知区域
+  // Sense area(Can be clicked).
   &::after {
     top: -@radio-sense-width;
     right: -@radio-sense-width;
@@ -61,7 +61,7 @@
     left: -@radio-sense-width;
   }
 
-  //边框
+  // Out border.
   .@{ns}radio-inner::before {
     .radio-inner-wrapper(@radio-default-border-color);
 
@@ -82,7 +82,7 @@
     }
   }
 
-  //实心圆
+  // Solid circle.
   .@{ns}radio-inner::after {
     width: @radio-inner-width-height;
     height: @radio-inner-width-height;
@@ -119,4 +119,3 @@
     }
   }
 }
-
