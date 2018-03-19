@@ -30,6 +30,11 @@
     &.@{ns}nav-item-disabled {
       cursor: not-allowed;
       opacity: .3;
+
+      // Repair the cursor style is not the right questions.
+      > .@{ns}nav-item-content {
+        cursor: not-allowed;
+      }
     }
 
     // Nav item content
@@ -150,9 +155,9 @@
   }
 
   // Ripple
-  .@{ns}nav-default &-item-content,
-  .@{ns}nav-tabs &-item-content {
-    .button-ripple;
+  .@{ns}nav-default &-item,
+  .@{ns}nav-tabs &-item {
+    .button-ripple(~"@{ns}nav-item-");
 
     transition: @nav-item-transition;
   }
