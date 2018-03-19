@@ -1,8 +1,3 @@
-// Kill the scroll on the body
-.@{ns}drawer-open {
-  overflow: hidden;
-}
-
 // Container that the drawer scrolls within
 .@{ns}drawer {
   display: none;
@@ -12,6 +7,11 @@
   // Prevent Chrome on Windows from adding a focus outline. For details, see
   // https://github.com/twbs/bootstrap/pull/10951.
   outline: 0;
+
+  // Kill the scroll on the body
+  &-open&-has-backdrop {
+    overflow: hidden;
+  }
 
   // When fading in the drawer, animate it to slide down
   &.fade &-dialog {
