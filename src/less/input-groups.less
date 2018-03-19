@@ -14,9 +14,9 @@
 
   &[disabled] {
     &,
-    .input,
-    .input-group-addon,
-    .input-group-btn {
+    .@{ns}input,
+    .@{ns}input-group-addon,
+    .@{ns}input-group-btn {
       background-color: @input-bg-disabled;
       color: @input-color-disabled;
       cursor: @cursor-disabled;
@@ -27,8 +27,8 @@
   &:not(.@{ns}input-group-inside) {
     border: 1px solid @input-border;
 
-    &:hover,
-    &.@{ns}input-group-focus {
+    &:not([disabled]):hover,
+    &:not([disabled]).@{ns}input-group-focus {
       border-color: @input-border-focus;
     }
 
