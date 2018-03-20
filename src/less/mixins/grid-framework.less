@@ -102,19 +102,19 @@
 }
 
 .make-hidden {
-  @media (max-width: @screen-xs-max) {
+  @media (max-width: @screen-phone-max) {
     .hidden(xs);
   }
 
-  @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+  @media (min-width: @screen-tablet) and (max-width: @screen-tablet-max) {
     .hidden(sm);
   }
 
-  @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+  @media (min-width: @screen-desktop) and (max-width: @screen-desktop-max) {
     .hidden(md);
   }
 
-  @media (min-width: @screen-lg-min) {
+  @media (min-width: @screen-lg-desktop) {
     .hidden(lg);
   }
 }
