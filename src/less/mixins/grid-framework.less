@@ -94,3 +94,27 @@
   .loop-grid-columns(@grid-columns, @class, push);
   .loop-grid-columns(@grid-columns, @class, offset);
 }
+
+.hidden(@class) {
+  .@{ns}hidden-@{class} {
+    display: none;
+  }
+}
+
+.make-hidden {
+  @media (max-width: @screen-xs-max) {
+    .hidden(xs);
+  }
+
+  @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+    .hidden(sm);
+  }
+
+  @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+    .hidden(md);
+  }
+
+  @media (min-width: @screen-lg-min) {
+    .hidden(lg);
+  }
+}

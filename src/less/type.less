@@ -162,6 +162,11 @@ mark,
   text-transform: capitalize;
 }
 
+// Ellipsis
+.text-ellipsis {
+  .ellipsis;
+}
+
 // Contextual colors
 .text-muted {
   color: @text-muted;
@@ -185,32 +190,6 @@ mark,
 
 .text-danger {
   .text-emphasis-variant(@state-error-text);
-}
-
-// Contextual backgrounds
-// For now we'll leave these alongside the text classes until v4 when we can
-// safely shift things around (per SemVer rules).
-.bg-primary {
-  // Given the contrast here, this is the only class to have its color inverted
-  // automatically.
-  color: #fff;
-  .bg-variant(@brand-primary);
-}
-
-.bg-success {
-  .bg-variant(@state-success-bg);
-}
-
-.bg-info {
-  .bg-variant(@state-info-bg);
-}
-
-.bg-warning {
-  .bg-variant(@state-warning-bg);
-}
-
-.bg-danger {
-  .bg-variant(@state-error-bg);
 }
 
 // Page header
