@@ -60,6 +60,18 @@
   .btn-transition;
   .btn-subtle-variant(@btn-subtle-hover-bg);
 
+  &.@{ns}btn-disabled,
+  &[disabled],
+  .@{ns}dropdown-disabled & {
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      // Reset Opacity;
+      opacity: 1;
+    }
+  }
+
   &:focus,
   &.@{ns}btn-focus,
   &:hover {
@@ -291,6 +303,13 @@
 
   &.@{ns}btn-@{name} {
     .button-primary-variant(@btn-primary-color, @backgroud-color);
+
+    // Defalut button spectrum button need set opacity.
+    &.@{ns}btn-default.@{ns}btn-disabled,
+    &.@{ns}btn-default[disabled],
+    .@{ns}dropdown-disabled &.@{ns}btn-default {
+      opacity: .3;
+    }
   }
 }
 

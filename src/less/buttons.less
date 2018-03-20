@@ -75,6 +75,20 @@
   color: @btn-default-color;
   background: @btn-default-bg;
 
+  &.@{ns}btn-disabled,
+  &[disabled],
+  .@{ns}dropdown-disabled & {
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      // Reset Opacity;
+      opacity: 1;
+      color: @B400;
+      background-color: @B050;
+    }
+  }
+
   &,
   & > .@{ns}icon {
     .btn-transition();
@@ -111,16 +125,6 @@
       background-color: @btn-default-active-bg;
 
       .btn-icon-with-text(@btn-icon-with-text-active-bg);
-    }
-  }
-
-  &.@{ns}btn-disabled,
-  &[disabled],
-  .@{ns}dropdown-disabled & {
-    &:hover,
-    &:focus,
-    &.focus {
-      background: none;
     }
   }
 
