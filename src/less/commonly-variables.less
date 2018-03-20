@@ -5,9 +5,12 @@
 // Variables
 // --------------------------------------------------
 
+//** NameSpace
+@ns: rs-;
+
 //== Colors
-//
-//## Gray and brand colors for use across Bootstrap.
+
+//** Gray levels.
 @B000: #fff;
 @B050: #f7f7fa;
 @B100: #f2f2f5;
@@ -20,7 +23,7 @@
 @B800: #575757;
 @B900: #272c36;
 
-//## Pallet
+//** Pallet
 @base-color: #00bcd4;
 @H050: color(~`palette("@{base-color}", 50)`);
 @H100: color(~`palette("@{base-color}", 100)`);
@@ -33,7 +36,7 @@
 @H800: color(~`palette("@{base-color}", 800)`);
 @H900: color(~`palette("@{base-color}", 900)`);
 
-//## spectrum
+//** spectrum
 @red: #f44336;
 @orange: #ff9800;
 @yellow: #ffca28;
@@ -43,11 +46,18 @@
 @violet: #673ab7;
 @spectrum: red, orange, yellow, green, cyan, blue, violet;
 
-@primary-color: @H500;
-@primary-bg-color: @H050;
-@primary-border-color: @H300;
+//** Sub colors.
+@success-color: #4caf50;
+@success-light-color: #edfae1;
 
-//** NameSpace
+@info-color: #2196f3;
+@info-light-color: #e9f5fe;
+
+@warning-color: #ffb300;
+@warning-light-color: #fff9e6;
+
+@error-color: #f44336;
+@error-light-color: #fde9ef;
 
 //** Global textual link color.
 @link-color: @H500;

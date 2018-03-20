@@ -310,17 +310,17 @@
 //suite-button-group
 //------------------
 .@{ns}btn-group-primary {
-  .button-group-btn(@brand-primary, @brand-primary-hover);
+  .button-group-btn(@H500, @H050);
 }
 
 .@{ns}btn-group-link {
-  .button-group-btn(@brand-primary, @brand-primary-hover);
+  .button-group-btn(@H500, @H050);
 
   // Rewrite disabled styles
   &.@{ns}btn-group {
     .@{ns}btn.disabled:hover {
       background-color: white;
-      color: @brand-primary;
+      color: @H050;
     }
 
     .@{ns}btn-link:focus,
