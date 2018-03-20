@@ -165,17 +165,11 @@
 .@{ns}steps-horizontal {
   display: flex;
   justify-content: space-between;
-  .ie-display-table;
-  .ie-width-full;
 
   .@{ns}steps-item {
     flex-grow: 1;
     flex-shrink: 1;
     min-height: @steps-icon-diameter;
-    .ie-display-table-cell;
-    // To ensure that the width of each item is evenly distributed
-    .ie-max-width-1px;
-    .ie-vertical-align-top;
 
     // The last node is self-adaptive width.
     &:last-child {

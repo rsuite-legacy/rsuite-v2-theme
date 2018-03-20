@@ -92,8 +92,6 @@
     font-size: @message-close-btn-size;
     line-height: 1;
     outline: none !important;
-    // IE polyfill
-    .ie-border-style(none);
 
     &::before {
       content: @message-close-btn-content;
@@ -113,8 +111,6 @@
 
   &.@{ns}message-hiding {
     animation: messageMoveOut .3s linear forwards;
-    // IE hack
-    .ie-display-none;
   }
 }
 
