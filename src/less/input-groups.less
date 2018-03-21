@@ -27,8 +27,8 @@
   &:not(.@{ns}input-group-inside) {
     border: 1px solid @input-border;
 
-    &:not([disabled]):hover,
-    &:not([disabled]).@{ns}input-group-focus {
+    &:not(.@{ns}input-group-disabled):hover,
+    &:not(.@{ns}input-group-disabled).@{ns}input-group-focus {
       border-color: @input-border-focus;
     }
 
