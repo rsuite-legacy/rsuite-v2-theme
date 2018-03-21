@@ -212,7 +212,9 @@
   background: none;
 
   &::before {
-    content: @alert-close-button-content;
+    .icon-font;
+
+    content: @default-close-btn-content;
   }
 
   [aria-hidden] {
