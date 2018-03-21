@@ -11,7 +11,6 @@
       float: none;
       width: 100%;
       max-width: 100%;
-      padding: 8px 10px;
       position: relative;
       border: none;
     }
@@ -19,15 +18,29 @@
 
   &-touchspin-up,
   &-touchspin-down {
+    position: relative;
     border-radius: 0;
-    height: @number-input-height/2;
-    line-height: @number-input-height/2;
-    color: @number-input-button-color;
     padding: 0;
+    color: @number-input-button-color;
+    // Default sie.
+    .input-touchspin(base);
+
+    //sizes
+    .@{ns}input-group-lg & {
+      .input-touchspin(large);
+    }
+
+    .@{ns}input-group-sm & {
+      .input-touchspin(small);
+    }
+
+    .@{ns}input-group-xs & {
+      .input-touchspin(extra-small);
+    }
 
     > .@{ns}icon {
       position: absolute;
-      top: 2px;
+      top: 0;
       left: 0;
       width: 100%;
       font-size: @number-input-touchspin-font-size;
