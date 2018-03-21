@@ -238,6 +238,10 @@
     min-height: @small-steps-icon-diameter;
   }
 
+  &.@{ns}steps-horizontal .@{ns}steps-item:not(:first-child) {
+    padding-left: @small-steps-icon-space-width + @steps-icon-spacing;
+  }
+
   &.@{ns}steps-vertical .@{ns}steps-item-tail {
     left: @small-steps-icon-diameter/2;
   }
