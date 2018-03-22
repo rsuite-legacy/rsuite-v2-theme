@@ -115,6 +115,10 @@
 
       > .@{ns}dropdown-menu-toggle .@{ns}icon {
         right: @dropdown-item-content-padding-horizontal;
+
+        &::before {
+          content: @dropright-caret-content;
+        }
       }
     }
   }
@@ -125,6 +129,10 @@
 
       > .@{ns}dropdown-menu-toggle .@{ns}icon {
         left: @dropdown-item-content-padding-horizontal;
+
+        &::before {
+          content: @dropleft-caret-content;
+        }
       }
     }
   }
