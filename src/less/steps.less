@@ -32,33 +32,38 @@
     border-color: @steps-default-color;
     border-radius: 50%;
 
+    .@{ns}steps-item-status-finish &,
+    .@{ns}steps-item-status-error & {
+      .@{ns}steps-item-icon {
+        position: relative;
+
+        &::before {
+          .icon-font;
+
+          width: @steps-icon-diameter - 2px;
+          height: @steps-icon-diameter - 2px;
+          font-size: @steps-icon-size-default-font-size;
+          // Minus 2px border width;
+          line-height: unit(( @steps-icon-diameter - 2px)/12);
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+      }
+    }
+
     .@{ns}steps-item-status-finish & {
       border-color: @steps-icon-finish-color;
       color: @steps-bg;
 
       // Finish status show check mark.
       .@{ns}steps-item-icon {
-        position: relative;
-
         &::before {
-          width: @steps-icon-diameter/2;
-          height: @steps-icon-diameter/4;
-          border-bottom: 1px solid @steps-icon-finish-color;
-          border-left: 1px solid @steps-icon-finish-color;
-          content: "";
-          display: block;
-          position: absolute;
-          transform: rotate(-45deg);
-          top: 7px;
-          left: 6px;
+          content: @check-mark-content;
+          color: @steps-icon-finish-color;
         }
       }
-    }
-
-    .@{ns}steps-item-status-process & {
-      border-color: @steps-icon-process-bg;
-      background: @steps-icon-process-bg;
-      color: @steps-bg;
     }
 
     .@{ns}steps-item-status-error & {
@@ -67,27 +72,17 @@
 
       // Error status show X mark.
       .@{ns}steps-item-icon {
-        position: relative;
-
-        &::before,
-        &::after {
-          width: @steps-icon-diameter/2;
-          height: 1px;
-          background-color: @steps-error-color;
-          position: absolute;
-          content: "";
-          top: 13px;
-          left: 6.5px;
-        }
-
         &::before {
-          transform: rotate(45deg);
-        }
-
-        &::after {
-          transform: rotate(-45deg);
+          content: @x-mark-content;
+          color: @steps-icon-error-color;
         }
       }
+    }
+
+    .@{ns}steps-item-status-process & {
+      border-color: @steps-icon-process-bg;
+      background: @steps-icon-process-bg;
+      color: @steps-bg;
     }
   }
 
@@ -269,19 +264,10 @@
   }
 
   // Finish status show check mark.
-  .@{ns}steps-item-status-finish .@{ns}steps-item-icon-wrapper:not(.@{ns}steps-item-custom-icon) .@{ns}steps-item-icon::before {
-    width: @small-steps-icon-diameter/2;
-    height: @small-steps-icon-diameter/4;
-  }
-
-  // Error status show X mark.
-  .@{ns}steps-item-status-error .@{ns}steps-item-icon-wrapper:not(.@{ns}steps-item-custom-icon) .@{ns}steps-item-icon {
-    &::before,
-    &::after {
-      width: @small-steps-icon-diameter/2;
-      // There is hard code!!!!
-      top: 10.5px;
-      left: 4.7px;
-    }
+  .@{ns}steps-item-status-finish .@{ns}steps-item-icon-wrapper:not(.@{ns}steps-item-custom-icon) .@{ns}steps-item-icon::before,
+  .@{ns}steps-item-status-error .@{ns}steps-item-icon-wrapper:not(.@{ns}steps-item-custom-icon) .@{ns}steps-item-icon::before {
+    width: @small-steps-icon-diameter - 2px;
+    height: @small-steps-icon-diameter - 2px;
+    line-height: unit(( @small-steps-icon-diameter - 2px)/12);
   }
 }

@@ -66,6 +66,11 @@
 //** Close button content
 @default-close-btn-content: "\F00D";
 
+//** Check mark
+@check-mark-content: "\F00C";
+//** X mark
+@x-mark-content: "\F00D";
+
 //== Iconography
 //
 //## Specify custom location and filename of the included Glyphicons icon font. Useful for those including Bootstrap via Bower.
@@ -575,13 +580,15 @@
 
 @steps-bg: @B000;
 @steps-icon-diameter: 30px;
+@steps-icon-size-default-font-size: 12px;
 @steps-default-color: @B600;
-@steps-icon-finish-color: @H500;
 @steps-tail-default-color: @B400;
 @steps-icon-process-bg: @H500;
 @steps-icon-process-color: @B000;
 @steps-content-process-color: @B800;
 @steps-error-color: @error-color;
+@steps-icon-finish-color: @H500;
+@steps-icon-error-color: @steps-error-color;
 @steps-icon-spacing: 10px;
 @steps-item-spacing: 10px;
 // This space place the steps-icon
@@ -880,8 +887,8 @@
 @progress-element-gap: 12px;
 @progress-status-success-color: @success-color;
 @progress-status-fail-color: @error-color;
-@progress-status-success-icon-content: "\F00C";
-@progress-status-fail-icon-content: "\F00D";
+@progress-status-success-icon-content: @check-mark-content;
+@progress-status-fail-icon-content: @x-mark-content;
 //== Uploader
 //
 //##
