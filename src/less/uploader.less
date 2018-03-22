@@ -92,6 +92,8 @@
         content: @uploader-file-item-icon-content;
         font-style: normal;
         color: @B800;
+        font-size: @uploader-file-item-icon-font-size;
+        line-height: unit(@line-height-computed/@uploader-file-item-icon-font-size);
       }
     }
 
@@ -134,7 +136,9 @@
 
     &-btn-remove {
       position: absolute;
-      top: @padding-base-vertical;
+      font-size: 12px;
+      // (36px -  font-size)/2
+      top: 12px;
       right: @padding-base-horizontal;
       color: @uploader-light-font-color;
       cursor: pointer;
@@ -499,6 +503,11 @@
     .@{uplns}-file-item-status {
       display: block;
       color: @error-color;
+
+      a,
+      a:hover {
+        text-decoration: none;
+      }
     }
   }
 }
