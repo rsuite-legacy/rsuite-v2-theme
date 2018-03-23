@@ -71,8 +71,7 @@
     width: 100%;
     border-radius: 0;
 
-    input.@{ns}input,
-    .@{ns}input-group-btn {
+    input.@{ns}input {
       display: block;
       width: 100%;
       padding-right: 36px;
@@ -92,7 +91,7 @@
       position: absolute;
       left: @input-border-width;
       top: @input-border-width;
-      padding: 11px 13px 9px 13px;
+      .reset-input-group-btn-size(base);
 
       // reset border radius
       &:first-child {
@@ -135,28 +134,63 @@
 // Remix the default form control sizing classes into new ones for easier
 // manipulation.
 
-.@{ns}input-group-lg > .@{ns}input,
-.@{ns}input-group.@{ns}input-group-lg > .@{ns}input-group-addon,
-.@{ns}input-group-lg > .@{ns}input-group-btn {
+//Reset Input size
+.@{ns}input-group-lg > .@{ns}input {
   .input-lg();
-
-  border-radius: 0;
 }
 
-.@{ns}input-group-sm > .@{ns}input,
-.@{ns}input-group.@{ns}input-group-sm > .@{ns}input-group-addon,
-.@{ns}input-group-sm > .@{ns}input-group-btn {
+.@{ns}input-group-md > .@{ns}input {
+  .input-md();
+}
+
+.@{ns}input-group-sm > .@{ns}input {
   .input-sm();
-
-  border-radius: 0;
 }
 
-.@{ns}input-group-xs > .@{ns}input,
-.@{ns}input-group.@{ns}input-group-xs > .@{ns}input-group-addon,
-.@{ns}input-group-xs > .@{ns}input-group-btn {
+.@{ns}input-group-xs > .@{ns}input {
   .input-xs();
+}
 
-  border-radius: 0;
+// Reset input group addon size.
+.@{ns}input-group.@{ns}input-group-lg > .@{ns}input-group-addon {
+  .input-lg();
+  .reset-input-group-addon-size(large);
+}
+
+.@{ns}input-group.@{ns}input-group-md > .@{ns}input-group-addon {
+  .input-base();
+  .reset-input-group-addon-size(base);
+}
+
+.@{ns}input-group.@{ns}input-group-sm > .@{ns}input-group-addon {
+  .input-sm();
+  .reset-input-group-addon-size(small);
+}
+
+.@{ns}input-group.@{ns}input-group-xs > .@{ns}input-group-addon {
+  .input-xs();
+  .reset-input-group-addon-size(extra-small);
+}
+
+// Reset input group button size.
+.@{ns}input-group-inside.@{ns}input-group-lg > .@{ns}input-group-btn {
+  .input-lg();
+  .reset-input-group-btn-size(large);
+}
+
+.@{ns}input-group-inside.@{ns}input-group-md > .@{ns}input-group-btn {
+  .input-md();
+  .reset-input-group-btn-size(base);
+}
+
+.@{ns}input-group-inside.@{ns}input-group-sm > .@{ns}input-group-btn {
+  .input-sm();
+  .reset-input-group-btn-size(small);
+}
+
+.@{ns}input-group-inside.@{ns}input-group-xs > .@{ns}input-group-btn {
+  .input-xs();
+  .reset-input-group-btn-size(extra-small);
 }
 
 .@{ns}input-group-lg > .@{ns}input-group-addon > .@{ns}icon {

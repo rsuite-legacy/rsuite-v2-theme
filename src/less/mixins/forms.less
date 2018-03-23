@@ -42,16 +42,8 @@
   }
 }
 
-.input-xs() {
-  .input-size(@input-height-extra-small; @padding-extra-small-vertical; @padding-base-input-horizontal; @font-size-small; @line-height-base; @input-border-radius);
-}
-
 .input-lg() {
   .input-size(@input-height-large; @padding-large-vertical; @padding-base-input-horizontal; @font-size-large; @line-height-large; @input-border-radius);
-}
-
-.input-base() {
-  .input-md;
 }
 
 .input-md() {
@@ -60,4 +52,34 @@
 
 .input-sm() {
   .input-size(@input-height-small; @padding-small-vertical; @padding-base-input-horizontal; @font-size-base; @line-height-base; @input-border-radius);
+}
+
+.input-xs() {
+  .input-size(@input-height-extra-small; @padding-extra-small-vertical; @padding-base-input-horizontal; @font-size-small; @line-height-base; @input-border-radius);
+}
+
+.input-base() {
+  .input-md;
+}
+
+.reset-input-group-addon-size(@size-name) {
+  @padding-horizontal-name: ~"padding-@{size-name}-horizontal";
+
+  @width: @@padding-horizontal-name * 2 - @input-border-width*2 + @font-size-base;
+  @padding-horizontal: (@width - @font-size-base)/2;
+
+  width: @width;
+  padding-left: @padding-horizontal;
+  padding-right: @padding-horizontal;
+  border-radius: 0 @border-radius-base @border-radius-base 0;
+}
+
+.reset-input-group-btn-size(@size-name) {
+  @height: ~"input-height-@{size-name}";
+  @vertical: ~"padding-@{size-name}-vertical";
+  @horizontal: ~"padding-@{size-name}-horizontal";
+
+  height: @@height - @input-border-width*2;
+  padding: (@@vertical - @input-border-width) (@@horizontal - @input-border-width);
+  border-radius: 0 @border-radius-base @border-radius-base 0;
 }
