@@ -51,13 +51,15 @@
 }
 
 .icon-size(@size) {
+  @font-size: @size * @icon-font-size-base;
+
   &,
   &.@{icon-css-prefix} {
-    height: @size * @icon-font-size-base;
-    font-size: @size * @icon-font-size-base;
+    height: @font-size;
+    font-size: @font-size;
 
     > svg {
-      height: @size * @icon-font-size-base;
+      height: @font-size;
     }
   }
 }
