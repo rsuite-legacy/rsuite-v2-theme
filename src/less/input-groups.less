@@ -135,20 +135,51 @@
 // manipulation.
 
 //Reset Input size
-.@{ns}input-group-lg > .@{ns}input {
-  .input-lg();
+.@{ns}input-group-lg {
+  > .@{ns}input {
+    .input-lg();
+  }
+
+  .reset-input-group-children-size(large);
+
+  &.@{ns}input-group:not(.@{ns}input-group-inside) > .@{ns}input-group-addon {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
 }
 
-.@{ns}input-group-md > .@{ns}input {
-  .input-md();
+.@{ns}input-group-md {
+  > .@{ns}input {
+    .input-md();
+  }
+
+  .reset-input-group-children-size(base);
+
+  &.@{ns}input-group:not(.@{ns}input-group-inside) > .@{ns}input-group-addon {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
 }
 
-.@{ns}input-group-sm > .@{ns}input {
-  .input-sm();
+.@{ns}input-group-sm {
+  > .@{ns}input {
+    .input-sm();
+  }
+
+  .reset-input-group-children-size(small);
+
+  &.@{ns}input-group:not(.@{ns}input-group-inside) > .@{ns}input-group-addon {
+    padding-top: 3px;
+    padding-bottom: 3px;
+  }
 }
 
-.@{ns}input-group-xs > .@{ns}input {
-  .input-xs();
+.@{ns}input-group-xs {
+  > .@{ns}input {
+    .input-xs();
+  }
+
+  .reset-input-group-children-size(extra-small);
 }
 
 // Reset input group addon size.

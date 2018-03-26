@@ -83,3 +83,24 @@
   padding: (@@vertical - @input-border-width) (@@horizontal - @input-border-width);
   border-radius: 0 @border-radius-base @border-radius-base 0;
 }
+
+.reset-input-group-children-size(@size-name) {
+  @height: ~"input-height-@{size-name}";
+  @useable-height: @@height - @input-border-width*2;
+  @vertical: ~"padding-@{size-name}-vertical";
+
+  &.@{ns}input-group:not(.@{ns}input-group-inside) {
+    > .@{ns}input {
+      height: @useable-height;
+    }
+
+    > .@{ns}input-group-addon {
+      height: @useable-height;
+
+      > .@{ns}icon {
+        font-size: inherit;
+        line-height: inherit;
+      }
+    }
+  }
+}
