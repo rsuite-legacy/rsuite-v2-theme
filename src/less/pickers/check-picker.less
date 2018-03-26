@@ -35,6 +35,10 @@
     color: @picker-menu-item-disabled-color;
     cursor: @cursor-disabled;
   }
+
+  .@{ckpns}-menu-group-children & {
+    padding-left: @picker-check-item-content-padding-left + 14px;
+  }
 }
 
 // Checkbox
@@ -46,6 +50,10 @@
   // Checkbox align with searchInput.
   left: @picker-menu-padding;
   top: @checkbox-sense-width;
+
+  .@{ckpns}-menu-group-children & {
+    left: @picker-menu-padding + 14px;
+  }
 
   [type="checkbox"] {
     display: none;
