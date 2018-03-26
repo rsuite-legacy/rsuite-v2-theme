@@ -6,6 +6,7 @@
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: @input-border-width solid @input-border;
   transition: @input-transition;
+  border-radius: @border-radius-base;
   .input-base;
 
   // Placeholder
@@ -35,7 +36,6 @@
   padding: (@padding-vertical - @input-border-width) (@padding-horizontal - @input-border-width);
   font-size: @font-size;
   line-height: @line-height;
-  border-radius: @border-radius;
 
   textarea& {
     height: auto;
@@ -71,7 +71,6 @@
   width: @width;
   padding-left: @padding-horizontal;
   padding-right: @padding-horizontal;
-  border-radius: 0 @border-radius-base @border-radius-base 0;
 }
 
 .reset-input-group-btn-size(@size-name) {
