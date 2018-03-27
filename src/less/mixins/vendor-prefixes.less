@@ -66,9 +66,9 @@
 
 //dorp-shadow
 .drop-shadow(@shadow) {
-  //-webkit-filter: drop-shadow(@shadow);
-  //filter: drop-shadow(@shadow);
-  .filter(drop-shadow(@shadow))
+  .filter(drop-shadow(@shadow));
+  // IE don't support `drop-shadow`,replace it with `box-shadow`.
+  .ie-box-shadow(@shadow);
 }
 
 // Box sizing
