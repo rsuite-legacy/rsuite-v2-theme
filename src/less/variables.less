@@ -309,7 +309,7 @@
 //** Active dropdown menu item text color.
 @dropdown-link-active-color: @H500;
 //** Active dropdown menu item background color.
-@dropdown-link-active-bg: @H050;
+@dropdown-link-active-bg: fade(@H050, 50);
 
 //** Disabled dropdown menu item background color.
 @dropdown-link-disabled-color: @B200;
@@ -987,7 +987,7 @@
 @picker-select-item-color: @B800;
 @picker-menu-item-hover-bg: @H050;
 // Select picker
-@picker-select-menu-item-selected-bg: @H050;
+@picker-select-menu-item-selected-bg: fade(@H050, 50);
 @picker-select-menu-item-selected-color: @H500;
 @picker-menu-item-disabled-color: @B400;
 @picker-selected-value-color: @H500;
@@ -1005,8 +1005,8 @@
 @picker-tree-node-padding-vertical: @padding-base-vertical;
 @picker-tree-node-padding-horizontal: @padding-base-horizontal;
 @picker-tree-node-font-size: @font-size-base;
-@picker-tree-node-active-color: @H500;
-@picker-tree-node-active-bg: @H050;
+@picker-tree-node-active-color: @picker-select-menu-item-selected-color;
+@picker-tree-node-active-bg: @picker-select-menu-item-selected-bg;
 @picker-tree-node-line-height: @line-height-base;
 @picker-tree-node-height: @line-height-computed + @picker-tree-node-padding-vertical*2;
 @picker-tree-arrow-down-width: 8px;
