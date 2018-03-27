@@ -210,6 +210,8 @@
   width: @line-height-computed;
   padding: 0 @padding-right;
   background: none;
+  // Remove border in IE.
+  .ie-border-style(none);
 
   &::before {
     .icon-font;
