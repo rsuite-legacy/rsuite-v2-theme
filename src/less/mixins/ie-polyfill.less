@@ -1,3 +1,7 @@
-.ie-width(@width) when (@ie-polyfill = true) {
-  width: ~"@{width}@{ie-suffix}";
+.ie-width(@value) when (@ie-polyfill = true) {
+  width: ~"@{value}@{ie-suffix}";
+}
+
+.ie-display(@value) when (@ie-polyfill = true) {
+  display: ~"@{value}@{ie-suffix}";
 }
