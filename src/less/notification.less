@@ -5,6 +5,8 @@
 // Base styles
 // -------------------------
 .@{notification-ns} {
+  .ie-text-align(right);
+
   &-notify &-notice {
     position: relative;
   }
@@ -27,6 +29,7 @@
   // Title
   &-notify &-title {
     .ellipsis;
+    .ie-text-align(left);
 
     color: @notify-title-font-color;
     font-size: @notify-title-font-size;

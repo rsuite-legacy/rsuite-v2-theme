@@ -13,3 +13,7 @@
 .ie-border-style(@value) when (@ie-polyfill = true) {
   border-style: ~"@{value}@{ie-suffix}";
 }
+
+.ie-text-align(@value) when (@ie-polyfill = true) {
+  text-align: ~"@{value}@{ie-suffix}";
+}
