@@ -17,6 +17,12 @@
   .@{ns}btn {
     > .@{ns}icon {
       margin-right: 6px;
+      width: 14px;
+      height: 14px;
+
+      &::before {
+        vertical-align: middle;
+      }
     }
 
     > .@{ns}dropdown-toggle-caret {
@@ -80,6 +86,10 @@
       line-height: @line-height-base;
       text-align: center;
       margin-right: 6px;
+
+      &::before {
+        vertical-align: middle;
+      }
     }
   }
 }
