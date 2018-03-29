@@ -21,12 +21,40 @@
 //** border base color.
 @border-base-color: @B300;
 
-//== common
+//== Common
 //
 //## base unit
 @base-unit-px: 18px;
 //## inline gap
 @inline-gap: 8px;
+
+//== All icon content sets.
+//** Close button content
+@default-close-btn-content: @icon-close;
+//** Check mark
+@check-mark-content: @icon-check;
+//** X mark
+@x-mark-content: @icon-close;
+//** Table expand
+@table-expand-content: @icon-caret-right;
+//** Table shrink
+@table-shrink-content: @icon-caret-down;
+//** DropLeft Caret Content
+@drop-left-caret-content: @icon-arrow-left-line;
+//** DropRight Caret Content
+@drop-right-caret-content: @icon-arrow-right-line;
+//** Dropup Caret Content
+@dropup-caret-content: @icon-arrow-up-line;
+//** Dropdown Caret Content
+@dropdown-caret-content: @icon-arrow-down-line;
+//** Uploder
+@uploader-file-item-icon-content: @icon-attachment;
+@uploader-file-item-retry-icon-content: @icon-reload;
+//** Picker
+@picker-search-bar-icon-content: @icon-search;
+//** Calendar
+@calendar-default-caret-content: @icon-calendar;
+@calendar-only-time-caret-content: @icon-clock-o;
 
 //== Typography
 //
@@ -63,14 +91,6 @@
 
 //** Box shadows
 @default-box-shadow: 0 4px 4px rgba(0, 0, 0, .12), 0 0 10px rgba(0, 0, 0, .06);
-
-//** Close button content
-@default-close-btn-content: "\F00D";
-
-//** Check mark
-@check-mark-content: "\F00C";
-//** X mark
-@x-mark-content: "\F00D";
 
 //== Iconography
 //
@@ -131,8 +151,7 @@
 @table-scrollbar-handle-gap: (@table-scrollbar-width - @table-scrollbar-handle-width)/2;
 @table-column-resize-spanner-width: 3px;
 @table-header-sort-wrapper-margin-left: 5px;
-@icon-table-expand-content: "\F0DA";
-@icon-table-shrink-content: "\F0D7";
+
 @icon-table-sense-width: 10px;
 @table-expand-icon-color: @B600;
 
@@ -331,14 +350,6 @@
 @dropdown-caret-color: #000;
 //** Dropdown Caret Font Family
 @dropdown-caret-font-family: @font-family-icon;
-//** DropLeft Caret Content
-@dropleft-caret-content: "\EA0A";
-//** DropRight Caret Content
-@dropright-caret-content: "\EA0C";
-//** Dropup Caret Content
-@dropup-caret-content: "\EA0E";
-//** Dropdown Caret Content
-@dropdown-caret-content: "\EA08";
 
 //** dropDownMenu的偏移量
 @dropdown-max-height: 280px;
@@ -897,9 +908,7 @@
 //
 //##
 @uploader-file-list-margin-top: 10px;
-@uploader-file-item-icon-content: "\EA10";
 @uploader-file-item-icon-font-size: 16px;
-@uploader-file-item-retry-icon-content: "\EA1F";
 @uploader-default-font-color: @B800;
 @uploader-light-font-color: @B600;
 @uploader-item-hover-background-color: @B050;
@@ -970,7 +979,6 @@
 //** Picker content width
 @picker-content-min-width: 200px;
 @picker-content-max-width: 300px;
-@picker-search-bar-icon-content: "\F002";
 @picker-search-bar-icon-width: @font-size-base;
 //** Picker menu padding
 @picker-menu-padding: 12px;
@@ -1043,8 +1051,6 @@
 @calendar-right-btn-ok-bg: @btn-primary-bg;
 @calendar-option-color: @H500;
 @calendar-in-menu-content-side-length: 30px;
-@calendar-default-caret-content: "\F073";
-@calendar-only-time-caret-content: "\F017";
 
 //== DateRange Picker
 @date-range-picker-header-padding-horizontal: 12px;
