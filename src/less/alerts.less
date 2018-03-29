@@ -47,13 +47,20 @@
     border-radius: @alert-border-radius;
     box-shadow: @alert-box-shadow;
     max-width: @alert-max-width;
+    padding-left: @alert-padding + 24px;
+    position: relative;
 
     p {
       margin-bottom: 0;
     }
 
     .@{ns}icon {
+      position: absolute;
+      top: @alert-padding;
+      left: @alert-padding;
       margin-right: 10px;
+      font-size: @font-size-base;
+      line-height: @line-height-base;
     }
   }
 

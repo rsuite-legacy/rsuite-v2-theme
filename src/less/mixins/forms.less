@@ -77,10 +77,18 @@
   @height: ~"input-height-@{size-name}";
   @vertical: ~"padding-@{size-name}-vertical";
   @horizontal: ~"padding-@{size-name}-horizontal";
+  @font-size: ~"font-size-@{size-name}";
 
   height: @@height - @input-border-width*2;
   padding: (@@vertical - @input-border-width) (@@horizontal - @input-border-width);
   border-radius: 0 @border-radius-base @border-radius-base 0;
+
+  > .@{ns}icon {
+    // Make sure icon vertical align center.
+    vertical-align: middle;
+    // Extend font-size from parent.
+    font-size: inherit;
+  }
 }
 
 .reset-input-group-children-size(@size-name) {
