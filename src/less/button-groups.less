@@ -304,6 +304,50 @@
   > .@{ns}btn-group .@{ns}dropdown-menu {
     left: auto;
   }
+
+  > .@{ns}btn-ghost {
+    border-left-width: 0;
+    border-right-width: 0;
+    position: relative;
+
+    .btn-ghost-hack-variant(@btn-ghost-border-color);
+
+    &::before,
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: @btn-ghost-border-width;
+      background-color: @btn-ghost-border-color;
+      top: -1 * @btn-ghost-border-width;
+      bottom: -1 * @btn-ghost-border-width;
+      .btn-transition(color-and-border);
+    }
+
+    &::before {
+      left: 0;
+    }
+
+    &::after {
+      right: -1px;
+    }
+  }
+
+  > .@{ns}btn-ghost:first-child {
+    border-left-width: @btn-ghost-border-width;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  > .@{ns}btn-ghost:last-child {
+    border-right-width: @btn-ghost-border-width;
+
+    &::after {
+      display: none;
+    }
+  }
 }
 
 //suite-button-group
