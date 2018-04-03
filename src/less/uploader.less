@@ -257,6 +257,10 @@
       > span {
         white-space: nowrap;
       }
+
+      > a:hover {
+        text-decoration: none;
+      }
     }
 
     &-icon-wrapper {
@@ -419,6 +423,8 @@
       }
 
       .@{uplns}-file-item-title {
+        .ellipsis;
+
         color: @uploader-default-font-color;
 
         &:hover,
