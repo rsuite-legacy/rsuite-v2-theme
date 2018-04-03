@@ -188,6 +188,7 @@
 
 .@{uplns}-picture {
   display: inline-block;
+  .clearfix;
 
   .@{uplns}-trigger-btn {
     .btn;
@@ -213,8 +214,12 @@
   }
 
   .@{uplns}-trigger,
-  .@{uplns}-file-items {
+  .@{uplns}-file-item {
     float: left;
+  }
+
+  .@{uplns}-file-items {
+    display: inline;
   }
 
   .@{uplns}-file-item {
@@ -224,7 +229,6 @@
     background-color: @uploader-picture-background-color;
     border-radius: @border-radius-base;
     position: relative;
-    float: left;
     margin-top: @uploader-picture-item-gap;
     margin-right: @uploader-picture-item-gap;
 
