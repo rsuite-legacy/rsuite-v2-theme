@@ -176,7 +176,11 @@
 
   .@{ns}dropdown-item > .@{ns}dropdown-item-content,
   .@{ns}dropdown-item-submenu > .@{ns}dropdown-item-content > .@{ns}dropdown-menu-toggle {
-    padding: @sidenav-padding-vertical @sidenav-padding-horizonal @sidenav-padding-vertical @sidenav-level1-retract;
+    padding: @sidenav-childrn-padding-vertical @sidenav-padding-horizonal @sidenav-childrn-padding-vertical @sidenav-level1-retract;
+  }
+
+  .@{ns}dropdown-item > .@{ns}dropdown-item-content > .@{ns}dropdown-menu-toggle > .@{ns}icon {
+    top: @sidenav-childrn-padding-vertical;
   }
 
   // Level3
