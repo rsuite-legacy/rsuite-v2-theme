@@ -23,6 +23,11 @@
 
   &-spin + &-content {
     margin-left: @loader-content-spin-spacing-horizontal;
+
+    //Extra small size loader spacing is smaller.
+    .@{ns}loader-xs & {
+      margin-left: @loader-content-spin-spacing-horizontal-xs;
+    }
   }
 
   // Backdrop
