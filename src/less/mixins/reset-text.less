@@ -16,3 +16,12 @@
   word-spacing: normal;
   word-wrap: normal;
 }
+
+.reset-link-text-decoration(@text-decoration:none) {
+  &,
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: @text-decoration;
+  }
+}
