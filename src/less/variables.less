@@ -44,9 +44,9 @@
 //** DropRight Caret Content
 @drop-right-caret-content: @icon-arrow-right-line;
 //** Dropup Caret Content
-@dropup-caret-content: @icon-arrow-down-line;
+@dropup-caret-content: @icon-arrow-up-line;
 //** Dropdown Caret Content
-@dropdown-caret-content: @icon-arrow-up-line;
+@dropdown-caret-content: @icon-arrow-down-line;
 //** Uploder
 @uploader-file-item-icon-content: @icon-attachment;
 @uploader-file-item-retry-icon-content: @icon-reload;
@@ -55,6 +55,12 @@
 //** Calendar
 @calendar-default-caret-content: @icon-calendar;
 @calendar-only-time-caret-content: @icon-clock-o;
+//** Progress
+@progress-status-success-icon-content: @check-mark-content;
+@progress-status-fail-icon-content: @x-mark-content;
+//** Panel
+@panel-heading-accordion-icon-content: @dropdown-caret-content;
+@panel-heading-accordion-in-icon-content: @dropup-caret-content;
 
 //== Typography
 //
@@ -527,7 +533,7 @@
 @nav-bar-height: @nav-bar-padding-vertical * 2 + @line-height-computed;
 //** Default
 @nav-bar-default-bg: @B050;
-@nav-bar-default-font-color: B800;
+@nav-bar-default-font-color: @B800;
 
 //** Inverse
 @nav-bar-inverse-font-color: @B000;
@@ -904,8 +910,6 @@
 @progress-element-gap: 12px;
 @progress-status-success-color: @success-color;
 @progress-status-fail-color: @error-color;
-@progress-status-success-icon-content: @check-mark-content;
-@progress-status-fail-icon-content: @x-mark-content;
 //== Uploader
 //
 //##
@@ -932,8 +936,6 @@
 @panel-split-line-color: @B200;
 @panel-group-panel-heading-hover-background: @B050;
 @panel-heading-color: @B900;
-@panel-heading-accordion-icon-content: @dropup-caret-content;
-@panel-heading-accordion-in-icon-content: @dropdown-caret-content;
 @panel-accodion-transition: .3s linear;
 @panel-border: 1px solid @B200;
 
