@@ -112,16 +112,20 @@
     }
 
     .@{ns}input-group-btn ~ .@{ns}auto-complete > input.@{ns}input,
-    .@{ns}input-group-addon ~ .@{ns}auto-complete > input.@{ns}input {
+    .@{ns}input-group-addon ~ .@{ns}auto-complete > input.@{ns}input,
+    .@{ns}input-group-btn ~ input.@{ns}input,
+    .@{ns}input-group-addon ~ input.@{ns}input {
       padding-left: 36px;
       padding-right: 12px;
     }
 
+    input.@{ns}input ~ .@{ns}input-group-btn,
     .@{ns}auto-complete ~ .@{ns}input-group-addon {
       left: inherit;
       right: 0;
     }
 
+    input.@{ns}input ~ .@{ns}input-group-btn,
     .@{ns}auto-complete ~ .@{ns}input-group-btn {
       left: inherit;
       right: @input-border-width;
