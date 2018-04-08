@@ -73,7 +73,7 @@
   padding-right: @padding-horizontal;
 }
 
-.reset-input-group-btn-size(@size-name) {
+.reset-inside-input-group-btn-size(@size-name) {
   @height: ~"input-height-@{size-name}";
   @vertical: ~"padding-@{size-name}-vertical";
   @horizontal: ~"padding-@{size-name}-horizontal";
@@ -84,10 +84,13 @@
   border-radius: 0 @border-radius-base @border-radius-base 0;
 
   > .@{ns}icon {
-    // Make sure icon vertical align center.
-    vertical-align: middle;
     // Extend font-size from parent.
     font-size: inherit;
+
+    &::before {
+      // Make sure icon vertical align center.
+      vertical-align: middle;
+    }
   }
 }
 
@@ -106,7 +109,6 @@
 
       > .@{ns}icon {
         font-size: inherit;
-        line-height: inherit;
       }
     }
   }

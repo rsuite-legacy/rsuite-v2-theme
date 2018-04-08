@@ -91,7 +91,7 @@
       position: absolute;
       left: @input-border-width;
       top: @input-border-width;
-      .reset-input-group-btn-size(base);
+      .reset-inside-input-group-btn-size(base);
 
       // reset border radius
       &:first-child {
@@ -206,22 +206,22 @@
 // Reset input group button size.
 .@{ns}input-group-inside.@{ns}input-group-lg > .@{ns}input-group-btn {
   .input-lg();
-  .reset-input-group-btn-size(large);
+  .reset-inside-input-group-btn-size(large);
 }
 
 .@{ns}input-group-inside.@{ns}input-group-md > .@{ns}input-group-btn {
   .input-md();
-  .reset-input-group-btn-size(base);
+  .reset-inside-input-group-btn-size(base);
 }
 
 .@{ns}input-group-inside.@{ns}input-group-sm > .@{ns}input-group-btn {
   .input-sm();
-  .reset-input-group-btn-size(small);
+  .reset-inside-input-group-btn-size(small);
 }
 
 .@{ns}input-group-inside.@{ns}input-group-xs > .@{ns}input-group-btn {
   .input-xs();
-  .reset-input-group-btn-size(extra-small);
+  .reset-inside-input-group-btn-size(extra-small);
 }
 
 .@{ns}input-group-lg > .@{ns}input-group-addon > .@{ns}icon {
@@ -299,7 +299,7 @@
   position: relative;
   // Jankily prevent input button groups from wrapping with `white-space` and
   // `font-size` in combination with `inline-block` on buttons.
-  font-size: 0;
+  //font-size: 0;
   white-space: nowrap;
   border-radius: 0;
 
