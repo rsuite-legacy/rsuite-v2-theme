@@ -266,7 +266,7 @@
 // Alternate Sidenavs
 // --------------------------------------------------
 
-//** Default sidenav
+//** Default Sidenav
 .@{ns}sidenav-default {
   background-color: @sidenav-deafult-bg;
 }
@@ -279,7 +279,7 @@
 
     &:hover,
     &:focus {
-      background-color: transparent;
+      background-color: @sidenav-deafult-hover-bg;
       color: @sidenav-deafult-hover-font-color;
     }
 
@@ -313,7 +313,7 @@
   }
 }
 
-//** Inverse sidenav
+//** Inverse Sidenav
 .@{ns}sidenav-inverse {
   background-color: @sidenav-inverse-bg;
 
@@ -409,6 +409,7 @@
   }
 }
 
+//** Subtle Sidenav
 .@{ns}sidenav-subtle {
   background-color: @sidenav-subtle-bg;
 
@@ -434,7 +435,7 @@
 
     &:hover,
     &:focus {
-      background-color: transparent;
+      background-color: @sidenav-subtle-hover-bg;
       color: @sidenav-deafult-hover-font-color;
     }
 
