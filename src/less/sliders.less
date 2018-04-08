@@ -22,6 +22,32 @@
       cursor: not-allowed;
     }
   }
+
+  &-graduated:not(&-vertical) {
+    //White space for mark
+    margin-bottom: @line-height-computed + @slider-mark-margin-top;
+  }
+}
+
+// Mark
+.@{ns}slider-mark {
+  position: absolute;
+  top: @slider-bar-side-length + @slider-mark-margin-top;
+  left: -2px;
+
+  &-content {
+    margin-left: -50%;
+  }
+}
+
+.@{ns}slider-last-mark {
+  left: auto;
+  right: -2px;
+
+  .@{ns}slider-mark-content {
+    margin-left: auto;
+    margin-right: -50%;
+  }
 }
 
 // Bar
@@ -183,4 +209,19 @@
 // Vertical
 .@{ns}slider-vertical {
   height: 100%;
+
+  // Reset all setting
+  .@{ns}slider-mark {
+    top: -8px;
+    left: @slider-bar-side-length + @slider-mark-margin-top;
+
+    &-content {
+      margin-left: auto;
+    }
+  }
+
+  .@{ns}slider-last-mark {
+    top: auto;
+    bottom: -8px;
+  }
 }
