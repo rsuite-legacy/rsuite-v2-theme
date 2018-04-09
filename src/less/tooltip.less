@@ -51,6 +51,9 @@
 
   .@{ns}tooltip-arrow {
     bottom: 0;
+    // FIXED: The problem of the  1 pixel white border in Edge browser .
+    .edge-position(bottom, 1px);
+
     margin-left: -@tooltip-arrow-width;
     border-width: @tooltip-arrow-width @tooltip-arrow-width 0;
     border-top-color: @tooltip-arrow-color;
@@ -65,6 +68,9 @@
 
   .@{ns}tooltip-arrow {
     top: 0;
+    // FIXED: The problem of the  1 pixel white border in Edge browser .
+    .edge-position(top, 1px);
+
     margin-left: -@tooltip-arrow-width;
     border-width: 0 @tooltip-arrow-width @tooltip-arrow-width;
     border-bottom-color: @tooltip-arrow-color;
@@ -79,6 +85,9 @@
 
   .@{ns}tooltip-arrow {
     left: 0;
+    // FIXED: The problem of the  1 pixel white border in Edge browser .
+    .edge-position(left, 1px);
+
     margin-top: -@tooltip-arrow-width;
     border-width: @tooltip-arrow-width @tooltip-arrow-width @tooltip-arrow-width 0;
     border-right-color: @tooltip-arrow-color;
@@ -93,6 +102,9 @@
 
   .@{ns}tooltip-arrow {
     right: 0;
+    // FIXED: The problem of the  1 pixel white border in Edge browser .
+    .edge-position(right, 1px);
+
     margin-top: -@tooltip-arrow-width;
     border-width: @tooltip-arrow-width 0 @tooltip-arrow-width @tooltip-arrow-width;
     border-left-color: @tooltip-arrow-color;

@@ -17,3 +17,35 @@
 .ie-text-align(@value) when (@ie-polyfill = true) {
   text-align: ~"@{value}@{ie-suffix}";
 }
+
+.edge-position(top,@value) {
+  @supports (-ms-ime-align:auto) {
+    & {
+      top: @value;
+    }
+  }
+}
+
+.edge-position(bottom,@value) {
+  @supports (-ms-ime-align:auto) {
+    & {
+      bottom: @value;
+    }
+  }
+}
+
+.edge-position(left,@value) {
+  @supports (-ms-ime-align:auto) {
+    & {
+      left: @value;
+    }
+  }
+}
+
+.edge-position(right,@value) {
+  @supports (-ms-ime-align:auto) {
+    & {
+      right: @value;
+    }
+  }
+}
