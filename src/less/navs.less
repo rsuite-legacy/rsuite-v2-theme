@@ -414,6 +414,16 @@
   .@{ns}nav-item > .@{ns}nav-item-content {
     .reset-font-color(@nav-bar-default-font-color);
   }
+
+  .@{ns}nav-item-active > .@{ns}nav-item-content,
+  .@{ns}dropdown .@{ns}dropdown-menu-active ~ .@{ns}dropdown-toggle {
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: @nav-bar-default-active-bg;
+    }
+  }
 }
 
 // Inverse Navbar
@@ -471,13 +481,7 @@
     .reset-font-color(@nav-bar-subtle-font-color);
   }
 
-  // Active
-  .@{ns}nav-item-active > .@{ns}nav-item-content,
-  .@{ns}dropdown .@{ns}dropdown-menu-active ~ .@{ns}dropdown-toggle {
-    .reset-font-color(@nav-bar-subtle-font-active-color);
-  }
-
-  .@{ns}navbar-nav .@{ns}nav-item > .@{ns}nav-item-content,
+  .@{ns}navbar-nav .@{ns}nav-item:not(.@{ns}nav-item-active) > .@{ns}nav-item-content,
   .@{ns}navbar-nav .@{ns}dropdown .@{ns}dropdown-toggle {
     &:hover,
     &:focus {
@@ -489,5 +493,12 @@
       background-color: @nav-bar-subtle-active-bg;
       color: @nav-bar-subtle-active-font-color;
     }
+  }
+
+  // Active
+  .@{ns}navbar-nav .@{ns}nav-item-active > .@{ns}nav-item-content,
+  .@{ns}navbar-nav .@{ns}dropdown .@{ns}dropdown-menu-active ~ .@{ns}dropdown-toggle {
+    background-color: @nav-bar-subtle-active-bg;
+    .reset-font-color(@nav-bar-subtle-font-active-color);
   }
 }
