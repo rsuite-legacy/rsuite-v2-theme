@@ -1,5 +1,12 @@
 .ie-width(@value) when (@ie-polyfill = true) {
   width: ~"@{value}@{ie-suffix}";
+
+  // IE 11
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    & {
+      width: @value;
+    }
+  }
 }
 
 .ie-display(@value) when (@ie-polyfill = true) {
