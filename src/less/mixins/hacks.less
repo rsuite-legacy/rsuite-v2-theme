@@ -1,3 +1,6 @@
+//
+// IE
+// -----------
 .ie-width(@value) when (@ie-polyfill = true) {
   width: ~"@{value}@{ie-suffix}";
 
@@ -25,6 +28,13 @@
   text-align: ~"@{value}@{ie-suffix}";
 }
 
+.ie-float(@value) when (@ie-polyfill = true) {
+  float: ~"@{value}@{ie-suffix}";
+}
+
+//
+// Edge
+// -----------
 .edge-position(top,@value) {
   @supports (-ms-ime-align:auto) {
     & {

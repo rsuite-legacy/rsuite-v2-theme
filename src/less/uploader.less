@@ -55,8 +55,6 @@
 .@{uplns}-text {
   .@{uplns}-file-items {
     margin-top: @uploader-file-list-margin-top;
-    //@todo: remove
-    //max-width: 300px;
   }
 
   .@{uplns}-file-item {
@@ -132,6 +130,7 @@
     &-status {
       flex-basis: 1px;
       flex-shrink: 0;
+      .ie-float(right);
     }
 
     &-btn-remove {
