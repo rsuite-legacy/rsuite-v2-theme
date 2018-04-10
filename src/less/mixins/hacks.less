@@ -32,6 +32,10 @@
   float: ~"@{value}@{ie-suffix}";
 }
 
+.ie-vertical-align(@vertical-align) when (@ie-polyfill = true) {
+  vertical-align: ~"@{vertical-align}@{ie-suffix}";
+}
+
 //
 // Edge
 // -----------
