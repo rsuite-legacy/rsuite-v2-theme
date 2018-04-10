@@ -47,6 +47,18 @@
     }
   }
 
+  &-touchspin-up {
+    border-top-right-radius: @border-radius-base;
+  }
+
+  &-touchspin-down {
+    border-bottom-right-radius: @border-radius-base;
+  }
+
+  > .@{ns}input {
+    .border-left-radius(@border-radius-base) !important;
+  }
+
   // Reset Input Number styling
   // Reference https://stackoverflow.com/questions/26024771/styling-a-input-type-number#answer-40189766
   input[type=number] {
