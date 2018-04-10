@@ -20,7 +20,6 @@
 
     > a {
       .btn-sm;
-      .user-select(none);
       .btn-transition;
       .btn-subtle-variant(@pagination-hover-bg);
 
@@ -29,6 +28,7 @@
       text-decoration: none;
       cursor: pointer;
       transition: @pagination-transition;
+      user-select: none;
 
       &:focus,
       &.focus,
