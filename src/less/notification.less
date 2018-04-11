@@ -50,6 +50,8 @@
   // Description
   &-notify &-description {
     color: @notify-description-color;
+    // Hack display:contents to make sure width adaptive content.
+    .ie-display(table);
   }
 
   // Has title and description need to ajust distance
