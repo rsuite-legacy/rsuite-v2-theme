@@ -41,6 +41,41 @@
 }
 
 //
+// IE 11
+// ---------------------
+.ie11-position(top,@value) {
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    & {
+      top: @value;
+    }
+  }
+}
+
+.ie11-position(bottom,@value) {
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    & {
+      bottom: @value;
+    }
+  }
+}
+
+.ie11-position(left,@value) {
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    & {
+      left: @value;
+    }
+  }
+}
+
+.ie11-position(right,@value) {
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    & {
+      right: @value;
+    }
+  }
+}
+
+//
 // Edge
 // -----------
 .edge-position(top,@value) {
