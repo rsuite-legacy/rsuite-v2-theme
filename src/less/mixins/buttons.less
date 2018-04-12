@@ -54,11 +54,31 @@
   }
 }
 
+// When browser don't support `pointer-events`,need reset button styles.
+.btn-loading-reset(@color,@background-color:transparent) {
+  &.@{ns}btn-loading {
+    &:hover,
+    &:not(.@{ns}btn-disabled):hover,
+    &:focus,
+    &:active,
+    &:hover:active {
+      color: @color;
+      background-color: @background-color;
+
+      // Remove ripple.
+      &::after {
+        display: none;
+      }
+    }
+  }
+}
+
 // Subtle  button style
 .btn-subtle() {
   .button-ripple;
   .btn-transition;
   .btn-subtle-variant(@btn-subtle-hover-bg);
+  .btn-loading-reset(@btn-subtle-color);
 
   &.@{ns}btn-disabled,
   &[disabled],
@@ -105,6 +125,8 @@
   color: @color;
   background-color: @background;
   .btn-icon-with-text(@background-dark);
+
+  .btn-loading-reset(@color, @background);
 
   &:focus,
   &.@{ns}btn-focus {
@@ -163,6 +185,8 @@
   font-weight: normal;
   border-radius: 0;
 
+  .btn-loading-reset(@color);
+
   &,
   &:active,
   &.@{ns}btn-active,
@@ -211,6 +235,8 @@
   color: @btn-subtle-color;
   background-color: transparent;
 
+  .btn-loading-reset(@btn-subtle-color);
+
   &:focus,
   &.@{ns}btn-focus,
   &:hover {
@@ -257,6 +283,8 @@
   color: @color;
   border: 1px solid @border-color;
   background-color: transparent;
+
+  .btn-loading-reset(@color);
 
   &:focus,
   &.@{ns}btn-focus {

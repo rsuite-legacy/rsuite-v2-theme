@@ -18,6 +18,7 @@
 .@{ns}btn-loading {
   color: transparent !important;
   position: relative;
+  cursor: default;
   pointer-events: none;
 
   > .@{ns}btn-spin {
@@ -76,6 +77,8 @@
   color: @btn-default-color;
   background: @btn-default-bg;
 
+  .btn-loading-reset(@btn-default-color, @btn-default-bg);
+
   &,
   & > .@{ns}icon {
     .btn-transition();
@@ -121,7 +124,7 @@
     &,
     &:hover,
     &:focus,
-    &:active
+    &:active,
     &:active:focus {
       // Reset Opacity;
       opacity: 1;
@@ -138,6 +141,8 @@
   .button-ripple;
   .button-primary-variant(@btn-primary-color; @btn-primary-bg);
 
+  .btn-loading-reset(@btn-primary-color; @btn-primary-bg);
+
   &,
   & > .@{ns}icon {
     .btn-transition();
@@ -150,6 +155,7 @@
 .@{ns}btn-link {
   .btn-transition(color);
   .btn-link-variant(@btn-link-color);
+  .btn-loading-reset(@btn-link-color);
 
   .generate-spectrum-link-btns();
 }
