@@ -187,3 +187,12 @@
     }
   }
 }
+
+// Safari
+.safari-display(@value) {
+  @media not all and (min-resolution: .001dpcm) {
+    & {
+      display: @value;
+    }
+  }
+}
