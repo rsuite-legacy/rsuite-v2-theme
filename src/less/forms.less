@@ -378,22 +378,6 @@ input[type="checkbox"]:focus {
 
     &-placement-left-top,
     &-placement-right-top {
-      bottom: 0;
-
-      .@{ns}error-message {
-        bottom: 0;
-      }
-
-      .@{ns}error-message-arrow {
-        &::before,
-        &::after {
-          bottom: @error-message-triangle-vertical;
-        }
-      }
-    }
-
-    &-placement-left-bottom,
-    &-placement-right-bottom {
       top: 0;
 
       .@{ns}error-message {
@@ -404,6 +388,22 @@ input[type="checkbox"]:focus {
         &::before,
         &::after {
           top: @error-message-triangle-vertical;
+        }
+      }
+    }
+
+    &-placement-left-bottom,
+    &-placement-right-bottom {
+      bottom: 0;
+
+      .@{ns}error-message {
+        bottom: 0;
+      }
+
+      .@{ns}error-message-arrow {
+        &::before,
+        &::after {
+          bottom: @error-message-triangle-vertical;
         }
       }
     }
