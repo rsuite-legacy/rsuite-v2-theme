@@ -33,6 +33,68 @@
 
 .ie-text-align(@value) when (@ie-polyfill = true) {
   text-align: ~"@{value}@{ie-suffix}";
+
+  // IE 11
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    & {
+      text-align: ~"@{value}@{ie-suffix}";
+    }
+  }
+}
+
+.ie-position(@value) when (@ie-polyfill = true) {
+  position: ~"@{value}@{ie-suffix}";
+
+  // IE 11
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    & {
+      position: ~"@{value}@{ie-suffix}";
+    }
+  }
+}
+
+.ie-z-index(@value) when (@ie-polyfill = true) {
+  z-index: ~"@{value}@{ie-suffix}";
+
+  // IE 11
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    & {
+      z-index: ~"@{value}@{ie-suffix}";
+    }
+  }
+}
+
+.ie-top(@value) when (@ie-polyfill = true) {
+  top: ~"@{value}@{ie-suffix}";
+
+  // IE 11
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    & {
+      top: ~"@{value}@{ie-suffix}";
+    }
+  }
+}
+
+.ie-left(@value) when (@ie-polyfill = true) {
+  left: ~"@{value}@{ie-suffix}";
+
+  // IE 11
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    & {
+      left: ~"@{value}@{ie-suffix}";
+    }
+  }
+}
+
+.ie-transform(@value) when (@ie-polyfill = true) {
+  transform: ~"@{value}@{ie-suffix}";
+
+  // IE 11
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    & {
+      transform: ~"@{value}@{ie-suffix}";
+    }
+  }
 }
 
 .ie-float(@value) when (@ie-polyfill = true) {
