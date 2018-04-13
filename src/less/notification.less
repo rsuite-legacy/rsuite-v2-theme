@@ -81,8 +81,15 @@
   &-notify &-fade-entered,
   &-notify &-fade-leave-active {
     animation-duration: .3s;
-    animation-timing-function: linear;
     animation-fill-mode: forwards;
+  }
+
+  &-notify &-fade-entered {
+    animation-timing-function: cubic-bezier(.68, -.55, .27, 1.55);
+  }
+
+  &-notify &-fade-leave-active {
+    animation-timing-function: cubic-bezier(.4, 0, 1, 1);
   }
 
   &-notify &-fade-exited,

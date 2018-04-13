@@ -20,12 +20,13 @@
   border-radius: @popover-border-radius;
   opacity: 0;
 
-  &.in {
-    opacity: 1;
+  &.fade {
+    transition: opacity .1s linear, transform .1s ease-out;
   }
 
-  &.fade {
-    transition: opacity .15s ease-out .15s, transform .15s ease-out .15s;
+  &.in {
+    opacity: 1;
+    transition: opacity .15s linear .2s, transform .15s ease-in .2s;
   }
 
   // .arrow is outer, .arrow:after is inner
