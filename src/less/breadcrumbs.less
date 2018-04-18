@@ -2,38 +2,28 @@
 // Breadcrumbs
 // --------------------------------------------------
 
-.breadcrumb {
-    padding: @breadcrumb-padding-vertical @breadcrumb-padding-horizontal;
-    margin-bottom: @line-height-computed;
-    list-style: none;
-    background-color: @breadcrumb-bg;
-    border-radius: @border-radius-base;
+.@{ns}breadcrumb {
+  padding: @breadcrumb-padding-vertical @breadcrumb-padding-horizontal;
+  margin-bottom: @line-height-computed;
+  list-style: none;
 
-    > li {
-        display: inline-block;
+  // All breadcrumb display value need set to inline-block
+  > li {
+    display: inline-block;
+  }
 
-        + li:before {
-            font-family: @breadcrumb-separator-font;
-            content: "\00a0@{breadcrumb-separator}\00a0"; // Unicode space added since inline-block means non-collapsing white-space
-            padding: 0 1px;
-            color: @breadcrumb-color;
-            float: left;
-        }
-    }
+  // If breadcrumbs has a ci
+  &-item > a {
+    cursor: pointer;
+    transition: color .3s linear;
+  }
 
-    > .active {
-        color: @breadcrumb-active-color;
-    }
+  // Separator has gap with text
+  &-separator {
+    margin: 0 @breadcrumb-separator-margin;
+  }
 
-    > .highlight, > .active-highlight {
-        display: block;
-        font-size: @font-size-large;
-        color: @breadcrumb-active-color;
-        padding-top: @base-unit-px;
-
-        &:before {
-            content: "";
-            padding: 0;
-        }
-    }
+  &-item-active {
+    color: @breadcrumb-active-color;
+  }
 }

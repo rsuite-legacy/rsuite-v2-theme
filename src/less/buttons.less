@@ -4,228 +4,222 @@
 
 // Base styles
 // --------------------------------------------------
+.@{ns}btn {
+  .btn;
+}
 
-.btn {
-    display: inline-block;
-    margin-bottom: 0; // For input.btn
-    font-weight: @btn-font-weight;
-    text-align: center;
-    vertical-align: middle;
-    touch-action: manipulation;
-    cursor: pointer;
-    outline: 0 !important;
-    background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
-    border: @btn-border-size solid transparent;
-    white-space: nowrap;
-    .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @btn-border-radius-base);
-    .user-select(none);
+// Circle Button
+.@{ns}btn-icon-circle {
+  border-radius: 50% !important;
+  width: @padding-base-vertical*2 + @line-height-computed;
+}
 
-    &,
-    &:active,
-    &.active {
-        &:focus,
-        &.focus {
-            .tab-focus();
-        }
+// Button Loading state
+.@{ns}btn-loading {
+  color: transparent !important;
+  position: relative;
+  cursor: default;
+  pointer-events: none;
+
+  > .@{ns}btn-spin {
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      width: @btn-loading-spin-default-diameter;
+      height: @btn-loading-spin-default-diameter;
+      margin: auto;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      border-radius: 50%;
+
+      .@{ns}btn-xs& {
+        width: @btn-loading-spin-xs-diameter;
+        height: @btn-loading-spin-xs-diameter;
+      }
     }
 
-    &:hover,
-    &:focus,
-    &.focus {
-        color: @btn-default-color;
-        text-decoration: none;
+    &::before {
+      border: @btn-loading-spin-ring-wide solid @btn-loading-spin-ring-color;
+
+      .@{ns}btn-primary& {
+        opacity: .3;
+      }
     }
 
-    &:active,
-    &.active {
-        outline: 0;
-        background-image: none;
-        //.box-shadow(inset 0 3px 5px rgba(0, 0, 0, .125));
-    }
+    &::after {
+      border-width: @btn-loading-spin-ring-wide;
+      border-color: @btn-spin-light-color transparent transparent;
+      border-style: solid;
+      animation: buttonSpin .6s infinite linear;
 
-    &.disabled,
-    &[disabled],
-    fieldset[disabled] & {
-        cursor: @cursor-disabled;
-        .opacity(.65);
-        //.box-shadow(none);
-
-        &:after {
-            display: none;
-        }
+      .@{ns}btn-default&,
+      .@{ns}btn-link&,
+      .@{ns}btn-subtle&,
+      .@{ns}btn-ghost& {
+        border-top-color: @btn-spin-light-invert-color;
+      }
     }
-
-    a& {
-        &.disabled,
-        fieldset[disabled] & {
-            pointer-events: none; // Future-proof disabling of clicks on `<a>` elements
-        }
-    }
+  }
 }
 
 // Alternate buttons
 // --------------------------------------------------
 
-.btn-default {
-    .button-ripple;
-    //这里没有使用 .button-variant 因为要遵循规范
-    //http://pagurian.com/design/widgets/character&icon_button.html
-    color: @btn-default-color;
-    background-color: @btn-default-bg;
-    border-color: @btn-default-border;
+// Default Button
+// Rewrite common button style
+.@{ns}btn-default {
+  .button-ripple;
+  .btn-icon-with-text(@btn-icon-with-text-bg);
 
+  color: @btn-default-color;
+  background: @btn-default-bg;
+
+  .btn-loading-reset(@btn-default-color, @btn-default-bg);
+
+  &,
+  & > .@{ns}icon {
+    .btn-transition();
+  }
+
+  &:focus,
+  &.focus {
+    color: @btn-default-color;
+    background-color: @btn-default-focus-bg;
+
+    .btn-icon-with-text(@btn-icon-with-text-focus-bg);
+  }
+
+  &:hover {
+    color: @btn-default-hover-color;
+    background-color: @btn-default-hover-bg;
+
+    .btn-icon-with-text(@btn-icon-with-text-hover-bg);
+  }
+
+  &:active,
+  &.@{ns}btn-active,
+  .@{ns}open > .@{ns}dropdown-toggle& {
+    color: @btn-default-color;
+    background-color: @btn-default-active-bg;
+    background-image: none;
+
+    .btn-icon-with-text(@btn-icon-with-text-active-bg);
+
+    &:hover,
     &:focus,
     &.focus {
-        color: @btn-default-color;
-        background-color: @btn-default-focus-bg;
-        border-color: @btn-default-focus-bg;
+      color: @btn-default-color;
+      background-color: @btn-default-active-bg;
+
+      .btn-icon-with-text(@btn-icon-with-text-active-bg);
     }
-    &:hover {
-        color: @btn-default-color;
-        background-color: @btn-default-hover-bg;
-        border-color: @btn-default-hover-bg;
-    }
+  }
+
+  &.@{ns}btn-disabled,
+  &[disabled],
+  .@{ns}dropdown-disabled & {
+    &,
+    &:hover,
+    &:focus,
     &:active,
-    &.active,
-    .open > .dropdown-toggle& {
-        color: @btn-default-color;
-        background-color: @btn-default-active-bg;
-        border-color: @btn-default-active-bg;
-
-        &:hover {
-            color: @btn-default-color;
-            background-color: @btn-default-hover-bg;
-            border-color: @btn-default-hover-bg;
-        }
-
-        &:focus,
-        &.focus {
-            color: @btn-default-color;
-            background-color: @btn-default-focus-bg;
-            border-color: @btn-default-focus-bg;
-        }
+    &:active:focus {
+      // Reset Opacity;
+      opacity: 1;
+      color: @B400;
+      background-color: @B050;
     }
-    &:active,
-    &.active,
-    .open > .dropdown-toggle& {
-        background-image: none;
-    }
-    &.disabled,
-    &[disabled],
-    fieldset[disabled] & {
-        &:hover,
-        &:focus,
-        &.focus {
-            background-color: @btn-default-disabled-bg;
-            border-color: @btn-default-disabled-bg;
-        }
-    }
+  }
 
-    .badge {
-        color: @btn-default-bg;
-        background-color: @btn-default-color;
-    }
+  .generate-spectrum-primary-btns();
 }
 
-.btn-primary {
-    .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
-}
+// Primary Button
+.@{ns}btn-primary {
+  .button-ripple;
+  .button-primary-variant(@btn-primary-color; @btn-primary-bg);
 
-// Success appears as green
-.btn-success {
-    .button-variant(@btn-success-color; @btn-success-bg; @btn-success-border);
-}
+  .btn-loading-reset(@btn-primary-color; @btn-primary-bg);
 
-// Info appears as blue-green
-.btn-info {
-    .button-variant(@btn-info-color; @btn-info-bg; @btn-info-border);
-}
+  &,
+  & > .@{ns}icon {
+    .btn-transition();
+  }
 
-// Warning appears as orange
-.btn-warning {
-    .button-variant(@btn-warning-color; @btn-warning-bg; @btn-warning-border);
-}
-
-// Danger and error appear as red
-.btn-danger {
-    .button-variant(@btn-danger-color; @btn-danger-bg; @btn-danger-border);
+  .generate-spectrum-primary-btns();
 }
 
 // Link buttons
-// -------------------------
+.@{ns}btn-link {
+  .btn-transition(color);
+  .btn-link-variant(@btn-link-color);
+  .btn-loading-reset(@btn-link-color);
 
-// Make a button look and behave like a link
-.btn-link {
-    color: @link-color;
-    font-weight: normal;
-    border-radius: 0;
+  .generate-spectrum-link-btns();
+}
 
-    &,
-    &:active,
-    &.active,
-    &[disabled],
-    fieldset[disabled] & {
-        background-color: transparent;
-        //.box-shadow(none);
-    }
-    &,
-    &:hover,
-    &:focus,
-    &:active {
-        border-color: transparent;
-    }
+// Subtle Button
+.@{ns}btn-subtle {
+  .btn-subtle;
+}
 
-    &:hover,
-    &:focus {
-        color: @link-hover-color;
-        text-decoration: @link-hover-decoration;
-        background-color: transparent;
-    }
-    &[disabled],
-    fieldset[disabled] & {
-        &:hover,
-        &:focus {
-            color: @btn-link-disabled-color;
-            text-decoration: none;
-        }
-    }
+// Ghost Button
+.@{ns}btn-ghost {
+  .btn-transition(color-and-border);
+  .btn-ghost-variant(@btn-ghost-color, @btn-ghost-border-color);
+
+  .generate-spectrum-ghost-btns();
+}
+
+// Icon Button
+// Icon Button text size increase 2 px
+.@{ns}btn-icon:not(.@{ns}btn-icon-with-text) {
+  .icon {
+    font-size: @font-size-large;
+    line-height: @line-height-large;
+  }
+
+  &.btn-xs {
+    font-size: @font-size-base;
+    line-height: @line-height-base;
+  }
 }
 
 // Button Sizes
 // --------------------------------------------------
 
-.btn-lg {
-    // line-height: ensure even-numbered height of button next to large input
-    .button-size(@padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @btn-border-radius-large);
+.@{ns}btn-lg {
+  .btn-lg;
 }
 
-.btn-sm {
-    // line-height: ensure proper height of button next to small input
-    .button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @btn-border-radius-small);
+.@{ns}btn-sm {
+  .btn-sm;
 }
 
-.btn-xs {
-    .button-size(@padding-xs-vertical; @padding-xs-horizontal; @font-size-small; @line-height-small; @btn-border-radius-small);
+.@{ns}btn-xs {
+  .btn-xs;
 }
 
 // Block button
 // --------------------------------------------------
 
-.btn-block {
-    display: block;
-    width: 100%;
+.@{ns}btn-block {
+  display: block;
+  width: 100%;
 }
 
 // Vertically space out multiple block buttons
-.btn-block + .btn-block {
-    margin-top: 5px;
+.@{ns}btn-block + .@{ns}btn-block {
+  margin-top: 5px;
 }
 
 // Specificity overrides
 input[type="submit"],
 input[type="reset"],
 input[type="button"] {
-    &.btn-block {
-        width: 100%;
-    }
+  &.@{ns}btn-block {
+    width: 100%;
+  }
 }

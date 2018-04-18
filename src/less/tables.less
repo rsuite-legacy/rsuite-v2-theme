@@ -1,234 +1,372 @@
 //
-// Tables
+// Table
 // --------------------------------------------------
 
+// Table Content
+.@{ns}table {
+  position: relative;
+  overflow: hidden;
 
-table {
-  background-color: @table-bg;
-}
-caption {
-  padding-top: @table-cell-padding;
-  padding-bottom: @table-cell-padding;
-  color: @text-muted;
-  text-align: left;
-}
-th {
-  text-align: left;
-}
-
-
-// Baseline styles
-
-.table {
-  width: 100%;
-  max-width: 100%;
-  margin-bottom: @line-height-computed;
-  // Cells
-  > thead,
-  > tbody,
-  > tfoot {
-    > tr {
-      > th,
-      > td {
-        padding: @table-cell-padding;
-        line-height: @line-height-base;
-        vertical-align: top;
-        border-top: 1px solid @table-border-color;
-      }
-    }
-  }
-  // Bottom align for column headings
-  > thead > tr > th {
-    vertical-align: bottom;
-    border-bottom: 2px solid @table-border-color;
-  }
-  // Remove top border from thead by default
-  > caption + thead,
-  > colgroup + thead,
-  > thead:first-child {
-    > tr:first-child {
-      > th,
-      > td {
-        border-top: 0;
-      }
-    }
-  }
-  // Account for multiple tbody instances
-  > tbody + tbody {
-    border-top: 2px solid @table-border-color;
+  &-column-resizing {
+    cursor: ew-resize;
+    user-select: none;
   }
 
-  // Nesting
-  .table {
-    background-color: @body-bg;
-  }
-}
-
-
-// Condensed table w/ half padding
-
-.table-condensed {
-  > thead,
-  > tbody,
-  > tfoot {
-    > tr {
-      > th,
-      > td {
-        padding: @table-condensed-cell-padding;
-      }
-    }
-  }
-}
-
-
-// Bordered version
-//
-// Add borders all around the table and between all the columns.
-
-.table-bordered {
-  border: 1px solid @table-border-color;
-  > thead,
-  > tbody,
-  > tfoot {
-    > tr {
-      > th,
-      > td {
-        border: 1px solid @table-border-color;
-      }
-    }
-  }
-  > thead > tr {
-    > th,
-    > td {
-      border-bottom-width: 2px;
-    }
-  }
-}
-
-
-// Zebra-striping
-//
-// Default zebra-stripe styles (alternating gray and transparent backgrounds)
-
-.table-striped {
-  > tbody > tr:nth-of-type(odd) {
-    background-color: @table-bg-accent;
-  }
-}
-
-
-// Hover effect
-//
-// Placed here since it has to come after the potential zebra striping
-
-.table-hover {
-  > tbody > tr:hover {
-    background-color: @table-bg-hover;
-  }
-}
-
-
-// Table cell sizing
-//
-// Reset default table behavior
-
-table col[class*="col-"] {
-  position: static; // Prevent border hiding in Firefox and IE9-11 (see https://github.com/twbs/bootstrap/issues/11623)
-  float: none;
-  display: table-column;
-}
-table {
-  td,
-  th {
-    &[class*="col-"] {
-      position: static; // Prevent border hiding in Firefox and IE9-11 (see https://github.com/twbs/bootstrap/issues/11623)
-      float: none;
-      display: table-cell;
-    }
-  }
-}
-
-
-// Table backgrounds
-//
-// Exact selectors below required to override `.table-striped` and prevent
-// inheritance to nested tables.
-
-// Generate the contextual variants
-.table-row-variant(active; @table-bg-active);
-.table-row-variant(success; @state-success-bg);
-.table-row-variant(info; @state-info-bg);
-.table-row-variant(warning; @state-warning-bg);
-.table-row-variant(danger; @state-danger-bg);
-
-
-// Responsive tables
-//
-// Wrap your tables in `.table-responsive` and we'll make them mobile friendly
-// by enabling horizontal scrolling. Only applies <768px. Everything above that
-// will display normally.
-
-.table-responsive {
-  overflow-x: auto;
-  min-height: 0.01%; // Workaround for IE9 bug (see https://github.com/twbs/bootstrap/issues/14837)
-
-  @media screen and (max-width: @screen-xs-max) {
+  &-row {
+    overflow: hidden;
+    position: absolute;
+    height: 36px;
     width: 100%;
-    margin-bottom: (@line-height-computed * 0.75);
-    overflow-y: hidden;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
-    border: 1px solid @table-border-color;
+    top: 0;
+    border-bottom: 1px solid @table-border-color;
+  }
 
-    // Tighten up spacing
-    > .table {
-      margin-bottom: 0;
+  &-row-expanded {
+    position: absolute;
+    height: 46px;
+    bottom: 0;
+    width: 100%;
+    z-index: 4;
+    border-top: 1px solid @table-border-color;
+    padding: 10px;
+    background: @table-body-background;
+  }
 
-      // Ensure the content doesn't wrap
-      > thead,
-      > tbody,
-      > tfoot {
-        > tr {
-          > th,
-          > td {
-            white-space: nowrap;
-          }
-        }
-      }
+  &-row:hover &-cell-group {
+    background: @table-body-background;
+  }
+
+  &-row:hover &-cell {
+    background: @table-body-background;
+  }
+
+  &-row-header {
+    color: @table-head-font-color;
+    background: @table-head-background;
+  }
+
+  &-row-header &-cell {
+    background: @table-head-background;
+  }
+
+  &-row-header &-cell-group-shadow {
+    z-index: @zindex-table-row-cell-group-shadow;
+    box-shadow: none;
+  }
+
+  // Added transition for hover
+  &-row,
+  &-cell-group,
+  &-cell {
+    transition: .3s linear;
+    transition-property: background-color;
+  }
+
+  &-hover &-row:not(&-row-header):hover,
+  &-hover &-row:hover &-cell-group,
+  &-hover &-row:hover &-cell {
+    background: @table-body-hover-background;
+  }
+
+  &-hover &-row-header:hover &-cell-group,
+  &-hover &-row-header:hover &-cell {
+    background: @table-head-background;
+  }
+
+  &-header-row-wrapper {
+    z-index: @zindex-table-header-row-wrapper;
+    position: relative;
+  }
+
+  &-body-row-wrapper {
+    position: relative;
+    overflow: hidden;
+    z-index: @zindex-table-body-row-wrapper;
+  }
+
+  &-body-info {
+    width: 100%;
+    text-align: center;
+    top: 50%;
+    position: absolute;
+    margin-top: -20px;
+    line-height: 40px;
+
+    .icon {
+      margin: 0 10px;
     }
 
-    // Special overrides for the bordered tables
-    > .table-bordered {
-      border: 0;
-
-      // Nuke the appropriate borders so that the parent can handle them
-      > thead,
-      > tbody,
-      > tfoot {
-        > tr {
-          > th:first-child,
-          > td:first-child {
-            border-left: 0;
-          }
-          > th:last-child,
-          > td:last-child {
-            border-right: 0;
-          }
-        }
-      }
-
-      // Only nuke the last row's bottom-border in `tbody` and `tfoot` since
-      // chances are there will be only one `tr` in a `thead` and that would
-      // remove the border altogether.
-      > tbody,
-      > tfoot {
-        > tr:last-child {
-          > th,
-          > td {
-            border-bottom: 0;
-          }
-        }
-      }
-
+    &-wheel-area {
+      width: 100%;
     }
+  }
+
+  &-body-wheel-area {
+    width: 100%;
+  }
+
+  &-loader-wrapper {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, .9);
+  }
+
+  &-loader {
+    width: 100%;
+    text-align: center;
+    top: 50%;
+    position: absolute;
+    margin-top: -20px;
+    line-height: 40px;
+
+    &-icon {
+      .set-side-length(@loader-default-diameter);
+      .loader-spin;
+
+      display: inline-block;
+      position: relative;
+      margin-right: @loader-content-spin-spacing-horizontal;
+      // Make sure loader vertical-align center
+      padding-top: 3px;
+    }
+  }
+
+  &-cell {
+    height: 36px;
+    border-style: solid;
+    border-width: 0;
+    border-color: @table-border-color;
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    white-space: normal;
+    background: @table-body-background;
+
+    &.first {
+      border-left-width: 0;
+    }
+
+    &-wrap1 {
+      display: table;
+    }
+
+    &-wrap2 {
+      display: table-row;
+    }
+
+    &-wrap3 {
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    &-content {
+      padding: @table-body-content-padding-vertical @table-content-padding-horizontal;
+
+      .ellipsis;
+    }
+
+    &-header &-content {
+      padding: @table-header-content-padding-vertical @table-content-padding-horizontal;
+      font-size: @table-header-font-size;
+      line-height: @table-header-line-small;
+    }
+
+    &-header {
+      &-sort-wrapper {
+        cursor: pointer;
+        margin-left: @table-header-sort-wrapper-margin-left;
+        display: inline-block;
+      }
+
+      &-icon-sort {
+        width: 10px;
+        height: 10px;
+        color: @table-sort-icon-color;
+        font-size: @table-header-font-size;
+        line-height: @table-header-line-small;
+      }
+
+      &-icon-sort::after {
+        content: @table-sort-icon-unsort;
+        font-style: normal;
+        font-family: @font-family-icon;
+      }
+
+      &-icon-sort-asc::after {
+        content: @table-sort-icon-asc;
+        color: @H500;
+      }
+
+      &-icon-sort-desc::after {
+        content: @table-sort-icon-desc;
+        color: @H500;
+      }
+    }
+  }
+
+  &-cell-header-sortable &-cell-content {
+    cursor: pointer;
+  }
+
+  &-column-resize-spanner {
+    .column-resize-spanner;
+
+    &:hover {
+      background-color: @table-resize-mouse-color;
+    }
+  }
+
+  &-cell-group {
+    &-fixed {
+      position: absolute;
+      z-index: @zindex-table-cell-group-fixed;
+      background: @table-body-background;
+    }
+
+    &-shadow {
+      box-shadow: 3px 0 5px rgba(9, 9, 9, .08);
+    }
+  }
+
+  &-mouse-area {
+    display: none;
+    background: @table-resize-mouse-color;
+    left: -1px;
+    top: 0;
+    position: absolute;
+    width: 1px;
+    z-index: @zindex-table-mouse-area;
+
+    > span {
+      .column-resize-spanner;
+
+      background-color: @table-resize-mouse-color;
+      position: absolute;
+      left: -1*(@table-column-resize-spanner-width/2);
+    }
+  }
+
+  &-word-wrap &-cell-content {
+    white-space: normal;
+    word-break: break-all;
+  }
+}
+
+// Tree Table
+.@{ns}table-treetable .@{ns}table-row {
+  position: relative;
+}
+
+.@{ns}table-treetable .@{ns}table-row-children {
+  display: none;
+}
+
+.@{ns}table-row-open > .@{ns}table-row-children {
+  display: block;
+}
+
+.@{ns}table-row-has-children > .@{ns}table-row .@{ns}table-cell-group .@{ns}table-cell:first-child {
+  padding-left: 20px;
+}
+
+.@{ns}table-row-open > .@{ns}table-row .@{ns}table-cell-expand-icon::before {
+  font-family: @font-family-icon;
+  content: @table-shrink-content;
+}
+
+.@{ns}table-cell-expand-wrapper {
+  position: absolute;
+  left: 10px;
+  display: inline-block;
+  cursor: pointer;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: -1*@icon-table-sense-width;
+    right: -1*@icon-table-sense-width;
+    top: -1*@icon-table-sense-width;
+    bottom: -1*@icon-table-sense-width;
+  }
+}
+
+.@{ns}table-cell-expand-icon {
+  width: 10px;
+  cursor: pointer;
+  outline: none;
+  color: @table-expand-icon-color;
+
+  &::before {
+    font-family: @font-family-icon;
+    content: @table-expand-content;
+    font-style: normal;
+  }
+}
+
+// Scroll bar
+.@{ns}table-scrollbar {
+  background: @table-scrollbar-background;
+  position: absolute;
+  transition-duration: @table-scrollbar-timing-duration;
+  transition-property: background, transform;
+  opacity: .6;
+
+  &-hide {
+    display: none;
+  }
+
+  &-handle {
+    position: absolute;
+    background-color: @table-scrollbar-handle-background;
+    border-radius: 4px;
+  }
+
+  &-pressed {
+    z-index: 1;
+  }
+
+  &-pressed &-handle {
+    background-color: @table-scrollbar-pressed-handle-background;
+  }
+
+  &-horizontal {
+    width: 100%;
+    height: @table-scrollbar-width;
+    bottom: 0;
+  }
+
+  &-horizontal &-handle {
+    height: @table-scrollbar-handle-width;
+    left: 0;
+    top: @table-scrollbar-handle-gap;
+  }
+
+  &-pressed&-horizontal:hover,
+  &-horizontal:hover {
+    transform-origin: center bottom;
+    transform: scaleY(1.2);
+  }
+
+  &-vertical {
+    top: 0;
+    right: 0;
+    width: @table-scrollbar-width;
+    // Reserve scroll bar position.
+    bottom: @table-scrollbar-width;
+    background-color: fade(@table-scrollbar-background, 40);
+  }
+
+  &-vertical &-handle {
+    min-height: 20px;
+    width: @table-scrollbar-handle-width;
+    top: 0;
+    left: @table-scrollbar-handle-gap;
+  }
+
+  &-pressed&-vertical:hover,
+  &-vertical:hover {
+    transform-origin: right center;
+    transform: scaleX(1.2);
   }
 }

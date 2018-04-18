@@ -4,267 +4,501 @@
 
 // Base class
 // --------------------------------------------------
+.@{ns}nav {
+  position: relative;
 
-.nav {
-    margin-bottom: 0;
-    padding-left: 0; // Override default ul/ol
+  > ul {
     list-style: none;
-    &:extend(.clearfix all);
+    margin: 0;
+    padding: 0;
+  }
 
-    > li {
-        position: relative;
-        display: block;
+  // Nav item
+  &-item {
+    //:hover :focus :active
+    &:not(.@{ns}nav-item-disabled) > .@{ns}nav-item-content {
+      &:hover,
+      &:focus {
+        color: @nav-item-hover-font-color;
+      }
 
-        &.nav-dropdown {
-            cursor: pointer;
-        }
-
-        > a {
-            position: relative;
-            display: block;
-            padding: @nav-link-padding;
-            //fixed the bug that navs btn click will shake
-            .button-ripple(@transition:inherit);
-
-            &:hover,
-            &:focus {
-                text-decoration: none;
-                background-color: @nav-link-hover-bg;
-            }
-        }
-
-        // Disabled state sets text to gray and nukes hover/tab effects
-        &.disabled > a {
-            color: @nav-disabled-link-color;
-
-            &:hover,
-            &:focus {
-                color: @nav-disabled-link-hover-color;
-                text-decoration: none;
-                background-color: transparent;
-                cursor: @cursor-disabled;
-            }
-        }
+      &:active {
+        color: @nav-item-click-font-color;
+      }
     }
 
-    // Open dropdowns
-    .open > a {
-        &,
-        &:hover,
-        &:focus {
-            //background-color: @nav-link-hover-bg;
-            //border-color: @link-color;
-            .nav-tabs-a-active;
-        }
-    }
+    &.@{ns}nav-item-disabled {
+      cursor: not-allowed;
 
-    // Nav dividers (deprecated with v3.0.1)
-    //
-    // This should have been removed in v3 with the dropping of `.nav-list`, but
-    // we missed it. We don't currently support this anywhere, but in the interest
-    // of maintaining backward compatibility in case you use it, it's deprecated.
-    .nav-divider {
-        .nav-divider();
-    }
-
-    // Prevent IE8 from misplacing imgs
-    //
-    // See https://github.com/h5bp/html5-boilerplate/issues/984#issuecomment-3985989
-    > li > a > img {
-        max-width: none;
-    }
-
-    .disabled:after {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
+      > .@{ns}nav-item-content {
+        // Repair the cursor style is not the right questions.
         cursor: not-allowed;
-    }
-}
-
-// Tabs
-// -------------------------
-
-// Give the tabs something to sit on
-.nav-tabs {
-    border-bottom: 1px solid @nav-tabs-border-color;
-    > li {
-        float: left;
-        // Make the list-items overlay the bottom border
-        margin-bottom: -1px;
-
-        // Actual tabs (as links)
-        > a {
-            margin-right: 2px;
-            line-height: @line-height-base;
-            border: 1px solid transparent;
-            border-radius: @border-radius-base @border-radius-base 0 0;
-            transition: background-color .0s linear, border .0s linear;
-
-            &:hover {
-                border-color: @nav-tabs-link-hover-border-color @nav-tabs-link-hover-border-color @nav-tabs-border-color;
-            }
-        }
-
-        // Active state, and its :hover to override normal :hover
-        &.active > a {
-            &,
-            &:hover,
-            &:focus {
-                .nav-tabs-a-active;
-                cursor: default;
-            }
-        }
-    }
-    // pulling this in mainly for less shorthand
-    &.nav-justified {
-        .nav-justified();
-        .nav-tabs-justified();
-    }
-}
-
-// Pills
-// -------------------------
-.nav-pills {
-    &.nav .open {
-        > a {
-            padding: (@nav-link-padding-top - 1) (@nav-link-padding-left - 1);
-            border-top: 1px solid @nav-tabs-border-color;
-        }
+        color: @B400;
+      }
     }
 
-    > li {
-        float: left;
+    // Nav item content
+    > .@{ns}nav-item-content {
+      padding: @nav-item-padding-vertical @nav-item-padding-horizontal;
+      font-size: @nav-item-font-size;
+      line-height: @nav-item-line-height;
+      display: block;
+      cursor: pointer;
+      color: @nav-item-font-default-color;
+      transition: @nav-item-transition;
 
-        // Links rendered as pills
-        > a {
-            //&.dropdown-toggle {
-            //    border-top: 2px solid white;
-            //    padding-top: (@nav-link-padding-top - 2);
-            //}
-            border-radius: @nav-pills-border-radius;
-        }
-        + li {
-            margin-left: 2px;
-        }
+      > .@{ns}icon {
+        margin-right: @nav-item-icon-spacing;
+      }
     }
-}
 
-// Stacked pills
-.nav-stacked {
-    > li {
+    // reset link style
+    > a.@{ns}nav-item-content:hover,
+    > a.@{ns}nav-item-content:active,
+    > a.@{ns}nav-item-content:focus {
+      text-decoration: none;
+    }
+  }
+
+  // Rest dropdown height
+  .@{ns}dropdown > .@{ns}dropdown-toggle {
+    height: @nav-base-height;
+  }
+
+  // Active
+  .@{ns}dropdown .@{ns}dropdown-menu-active ~ .@{ns}dropdown-toggle,
+  .@{ns}nav-item-active > .@{ns}nav-item-content {
+    position: relative;
+    z-index: 1;
+
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      color: @nav-item-active-font-color;
+      background: transparent;
+    }
+  }
+
+  // Orientation
+  &.@{ns}nav-horizontal {
+    .clearfix;
+
+    // Justified
+    &.@{ns}nav-justified {
+      .@{ns}nav-item,
+      .@{ns}dropdown {
         float: none;
-        + li {
-            margin-top: 2px;
-            margin-left: 0; // no need for this gap between nav items
-        }
+        display: table-cell;
+        width: 1%;
+      }
+
+      .@{ns}dropdown .@{ns}dropdown-toggle {
+        width: 100%;
+        text-align: left;
+      }
     }
+
+    .@{ns}dropdown,
+    .@{ns}nav-item {
+      float: left;
+    }
+
+    // margin space
+    ul > .@{ns}dropdown:not(:first-child),
+    ul > .@{ns}nav-item:not(:first-child) {
+      margin-left: @nav-item-spacing;
+    }
+
+    // Waterline
+    .@{ns}nav-waterline {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+
+      //** Reversed
+      .@{ns}nav-reversed& {
+        bottom: auto;
+      }
+    }
+  }
+
+  &.@{ns}nav-vertical {
+    // margin space
+    ul > .@{ns}dropdown:not(:first-child),
+    ul > .@{ns}nav-item:not(:first-child) {
+      margin-top: @nav-item-spacing;
+    }
+
+    .@{ns}dropdown {
+      width: 100%;
+
+      > .@{ns}dropdown-toggle {
+        width: 100%;
+        text-align: left;
+        z-index: 0;
+      }
+    }
+
+    // Waterline
+    .@{ns}nav-waterline {
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+
+      .@{ns}nav-reversed& {
+        right: auto;
+      }
+    }
+  }
+
+  // Ripple
+  .@{ns}nav-default &-item,
+  .@{ns}nav-tabs &-item {
+    .button-ripple(~"@{ns}nav-item-");
+
+    transition: @nav-item-transition;
+  }
 }
 
-// Nav variations
+// Alternate Navs
 // --------------------------------------------------
 
-// Justified nav links
-// -------------------------
+// Default Nav
+.@{ns}nav-default {
+  .@{ns}nav-item > .@{ns}nav-item-content {
+    border-radius: @nav-item-border-radius;
+  }
 
-.nav-justified {
-    width: 100%;
+  .@{ns}nav-item:not(.@{ns}nav-item-active):not(.@{ns}nav-item-disabled) > .@{ns}nav-item-content {
+    &:hover,
+    &:focus {
+      background: @nav-item-default-hover-bg;
+    }
 
-    > li {
-        float: none;
-        > a {
-            text-align: center;
-            margin-bottom: 5px;
+    &:active {
+      background: @nav-item-click-bg;
+    }
+  }
+}
+
+// Tab Nav
+.@{ns}nav-tabs {
+  //Default style
+  .@{ns}nav-item > .@{ns}nav-item-content {
+    background-color: @nav-tab-default-bg;
+  }
+
+  //:hover :active :focus
+  .@{ns}nav-item:not(.@{ns}nav-item-active):not(.@{ns}nav-item-disabled) > .@{ns}nav-item-content {
+    &:hover,
+    &:focus {
+      background: @nav-item-default-hover-bg;
+    }
+
+    &:active {
+      background: @nav-item-click-bg;
+    }
+  }
+
+  //** Active
+  .@{ns}nav-item.@{ns}nav-item-active > .@{ns}nav-item-content {
+    @padding-vertical: @nav-item-padding-vertical - @nav-tab-waterline-width;
+    @padding-horizontal: @nav-item-padding-horizontal - @nav-tab-waterline-width;
+
+    padding: @padding-vertical @padding-horizontal;
+  }
+
+  // Horizontal
+  &.@{ns}nav-horizontal {
+    //Nav content
+    .@{ns}nav-item > .@{ns}nav-item-content {
+      border-radius: @nav-item-border-radius @nav-item-border-radius 0 0;
+
+      .@{ns}nav-reversed& {
+        border-radius: 0 0 @nav-item-border-radius @nav-item-border-radius;
+      }
+    }
+
+    //** Waterline
+    .@{ns}nav-waterline {
+      border-top: @nav-tab-waterline;
+    }
+
+    //** Active
+    .@{ns}nav-item.@{ns}nav-item-active > .@{ns}nav-item-content {
+      border: @nav-tab-waterline-width solid @nav-tab-waterline-color;
+      border-bottom-color: @nav-tab-default-bg;
+
+      // Reversed
+      .@{ns}nav-reversed& {
+        border-bottom-color: @nav-tab-waterline-color;
+        border-top-color: @nav-tab-default-bg;
+      }
+    }
+  }
+
+  // Vertical
+  &.@{ns}nav-vertical {
+    //Nav content
+    .@{ns}dropdown > .@{ns}dropdown-toggle,
+    .@{ns}nav-item > .@{ns}nav-item-content {
+      border-radius: @nav-item-border-radius 0 0 @nav-item-border-radius;
+
+      .@{ns}nav-reversed& {
+        border-radius: 0 @nav-item-border-radius @nav-item-border-radius 0;
+      }
+    }
+
+    //** Waterline
+    .@{ns}nav-waterline {
+      width: @nav-tab-waterline-width;
+      background: @nav-tab-waterline-color;
+    }
+
+    //** Active
+    .@{ns}nav-item.@{ns}nav-item-active > .@{ns}nav-item-content {
+      border: @nav-tab-waterline-width solid @nav-tab-waterline-color;
+      border-right-color: @nav-tab-default-bg;
+
+      // Reversed
+      .@{ns}nav-reversed& {
+        border-left-color: @nav-tab-default-bg;
+        border-right-color: @nav-tab-waterline-color;
+      }
+    }
+  }
+}
+
+// Subtle Nav
+.@{ns}nav-subtle {
+  // Horizontal
+  &.@{ns}nav-horizontal {
+    //Waterline
+    .@{ns}nav-waterline {
+      border-top: @nav-subtle-default-waterline;
+    }
+    // Active item
+    .@{ns}nav-item {
+      > .@{ns}nav-item-content {
+        position: relative;
+
+        &::before {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          right: 50%;
+          height: @nav-subtle-waterline-width;
+          background-color: @nav-subtle-waterline-active-color;
+          transition-property: left, right;
+          transition-duration: .3s;
+          transition-timing-function: ease-out;
+
+          // Reversed
+          .@{ns}nav-reversed& {
+            bottom: auto;
+            top: 0;
+          }
         }
+      }
+
+      &.@{ns}nav-item-active > .@{ns}nav-item-content::before {
+        left: 0;
+        right: 0;
+      }
+    }
+  }
+
+  // Horizontal
+  &.@{ns}nav-vertical {
+    //Waterline
+    .@{ns}nav-waterline {
+      width: @nav-subtle-waterline-width;
+      background: @nav-subtle-waterline-default-color;
     }
 
-    > .dropdown .dropdown-menu {
-        top: auto;
-        left: auto;
-    }
+    // Active item
+    .@{ns}nav-item {
+      > .@{ns}nav-item-content {
+        position: relative;
 
-    @media (min-width: @screen-sm-min) {
-        > li {
-            display: table-cell;
-            width: 1%;
-            > a {
-                margin-bottom: 0;
-            }
+        &::before {
+          content: "";
+          position: absolute;
+          right: 0;
+          top: 50%;
+          bottom: 50%;
+          width: @nav-subtle-waterline-width;
+          background-color: @nav-subtle-waterline-active-color;
+          transition-property: top, bottom;
+          transition-duration: .3s;
+          transition-timing-function: ease-out;
+
+          // Reversed
+          .@{ns}nav-reversed& {
+            right: auto;
+            left: 0;
+          }
         }
+      }
+
+      &.@{ns}nav-item-active > .@{ns}nav-item-content::before {
+        top: 0;
+        bottom: 0;
+      }
     }
+  }
 }
 
-// Move borders to anchors instead of bottom of list
-//
-// Mixin for adding on top the shared `.nav-justified` styles for our tabs
-.nav-tabs-justified {
-    border-bottom: 0;
+// NavBar
+// --------------------------------------------------
 
-    > li > a {
-        // Override margin from .nav-tabs
-        margin-right: 0;
-        border-radius: @border-radius-base;
-    }
-
-    > .active > a,
-    > .active > a:hover,
-    > .active > a:focus {
-        //border: 1px solid @nav-tabs-justified-link-border-color;
-    }
-
-    @media (min-width: @screen-sm-min) {
-        > li > a {
-            border-bottom: 1px solid @nav-tabs-justified-link-border-color;
-            border-radius: @border-radius-base @border-radius-base 0 0;
-        }
-
-        > .active > a,
-        > .active > a:hover,
-        > .active > a:focus {
-            border-bottom-color: @nav-tabs-justified-active-link-border-color;
-        }
-    }
+.@{ns}navbar {
+  .clearfix;
 }
 
-// Tabbable tabs
-// -------------------------
+.@{ns}navbar-header {
+  float: left;
+  display: inline-block;
+  height: @nav-bar-height;
+}
 
-// Hide tabbable panes to start, show them when `.active`
-.tab-content {
-    > .tab-pane {
-        display: none;
+// Common
+.@{ns}navbar-nav {
+  float: left;
+
+  &.@{ns}navbar-right {
+    float: right;
+  }
+
+  // Nav item content
+  .@{ns}nav-item > .@{ns}nav-item-content {
+    // Reset padding
+    padding: @nav-bar-padding-vertical @nav-bar-padding-horizontal;
+    height: @nav-bar-height;
+  }
+
+  // Reset border-radius
+  .@{ns}nav-item:not(.@{ns}nav-item-disabled) > .@{ns}nav-item-content,
+  .@{ns}dropdown > .@{ns}dropdown-toggle {
+    border-radius: 0;
+  }
+
+  // DropDown
+  .@{ns}dropdown > .@{ns}dropdown-toggle {
+    padding: @nav-bar-padding-vertical @nav-bar-padding-horizontal;
+    padding-right: @nav-bar-padding-horizontal+@dropdown-caret-with+@dropdown-caret-padding;
+    height: @nav-bar-height;
+  }
+
+  .@{ns}dropdown-toggle-caret {
+    top: @nav-bar-padding-vertical;
+    right: @nav-bar-padding-horizontal;
+  }
+}
+
+// Default Navbar
+.@{ns}navbar.@{ns}navbar-default {
+  background-color: @nav-bar-default-bg;
+
+  //font-color
+  &,
+  & .@{ns}navbar-header a {
+    color: @nav-bar-default-font-color;
+  }
+
+  .@{ns}dropdown .@{ns}dropdown-toggle,
+  .@{ns}nav-item > .@{ns}nav-item-content {
+    .reset-font-color(@nav-bar-default-font-color);
+  }
+
+  .@{ns}nav-item-active > .@{ns}nav-item-content,
+  .@{ns}dropdown .@{ns}dropdown-menu-active ~ .@{ns}dropdown-toggle {
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: @nav-bar-default-active-bg;
     }
-    > .active {
-        display: block;
+  }
+}
+
+// Inverse Navbar
+.@{ns}navbar.@{ns}navbar-inverse {
+  background-color: @nav-bar-inverse-bg;
+
+  //font-color
+  &,
+  & .@{ns}navbar-header a {
+    color: @nav-bar-inverse-font-color;
+  }
+
+  .@{ns}dropdown .@{ns}dropdown-menu-active ~ .@{ns}dropdown-toggle,
+  .@{ns}dropdown .@{ns}dropdown-toggle,
+  .@{ns}nav-item-active > .@{ns}nav-item-content,
+  .@{ns}nav-item > .@{ns}nav-item-content {
+    .reset-font-color(@nav-bar-inverse-font-color);
+  }
+
+  .@{ns}nav-item-active > .@{ns}nav-item-content,
+  .@{ns}dropdown .@{ns}dropdown-menu-active ~ .@{ns}dropdown-toggle {
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: @nav-bar-inverse-active-bg;
     }
+  }
+
+  .@{ns}navbar-nav .@{ns}nav-item > .@{ns}nav-item-content,
+  .@{ns}navbar-nav .@{ns}dropdown .@{ns}dropdown-toggle {
+    &:hover,
+    &:focus {
+      background-color: @nav-bar-inverse-hover-bg;
+    }
+
+    &:active {
+      background-color: @nav-bar-inverse-active-bg;
+    }
+  }
 }
 
-// Dropdowns
-// -------------------------
+// Subtle Navbar
+.@{ns}navbar.@{ns}navbar-subtle {
+  background-color: @nav-bar-subtle-bg;
 
-// Specific dropdowns
-.nav-tabs .dropdown-menu {
-    // make dropdown border overlap tab border
-    margin-top: -1px;
-    // Remove the top rounded corners here since there is a hard edge above the menu
-    .border-top-radius(0);
-    // rest top
-    top: inherit;
-}
+  //font-color
+  &,
+  & .@{ns}navbar-header a {
+    color: @nav-bar-subtle-font-color;
+  }
 
-//Fix dropdown offset
-.nav-pills .dropdown-menu {
-    top: @nav-pills-drop-down-menu-top;
-}
+  .@{ns}dropdown .@{ns}dropdown-toggle,
+  .@{ns}nav-item > .@{ns}nav-item-content {
+    .reset-font-color(@nav-bar-subtle-font-color);
+  }
 
-.nav-tabs-a-active() {
-    color: @nav-tabs-active-link-hover-color;
-    background-color: @nav-tabs-active-link-hover-bg;
-    border: 1px solid @nav-tabs-active-link-hover-border-color;
-    padding-top: (@nav-link-padding-top - 1);
-    border-bottom-color: transparent;
-    border-top: 2px solid @nav-tabs-active-top-border-color;
+  .@{ns}navbar-nav .@{ns}nav-item:not(.@{ns}nav-item-active) > .@{ns}nav-item-content,
+  .@{ns}navbar-nav .@{ns}dropdown .@{ns}dropdown-toggle {
+    &:hover,
+    &:focus {
+      background-color: @nav-bar-subtle-hover-bg;
+      color: @nav-bar-subtle-hover-font-color;
+    }
+
+    &:active {
+      background-color: @nav-bar-subtle-active-bg;
+      color: @nav-bar-subtle-active-font-color;
+    }
+  }
+
+  // Active
+  .@{ns}navbar-nav .@{ns}nav-item-active > .@{ns}nav-item-content,
+  .@{ns}navbar-nav .@{ns}dropdown .@{ns}dropdown-menu-active ~ .@{ns}dropdown-toggle {
+    background-color: @nav-bar-subtle-active-bg;
+    .reset-font-color(@nav-bar-subtle-font-active-color);
+  }
 }

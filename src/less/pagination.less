@@ -1,96 +1,95 @@
 //
 // Pagination (multiple pages)
 // --------------------------------------------------
-.pagination {
-    display: inline-block;
-    padding-left: 0;
-    margin: @line-height-computed 0;
-    border-radius: @border-radius-base;
+.@{ns}pagination {
+  display: inline-block;
+  padding-left: 0;
+  margin-bottom: 0;
 
-    > li {
-        display: inline; // Remove list-style and block-level defaults
-        > a,
-        > span {
-            position: relative;
-            float: left; // Collapse white-space
-            padding: @padding-base-vertical @padding-base-horizontal;
-            line-height: @line-height-base;
-            text-decoration: none;
-            color: @pagination-color;
-            background-color: @pagination-bg;
-            border: 1px solid @pagination-border;
-            margin-left: -1px;
-            .button-ripple;
-            transition: border .0s linear;
-        }
-        &:first-child {
-            > a,
-            > span {
-                margin-left: 0;
-                .border-left-radius(@border-radius-base);
-            }
-        }
-        &:last-child {
-            > a,
-            > span {
-                .border-right-radius(@border-radius-base);
-            }
-        }
+  > li {
+    display: inline; // Remove list-style and block-level defaults
+
+    &.@{ns}pagination-btn-active > a {
+      .pagination-active(@pagination-active-color);
     }
 
-    > li > a,
-    > li > span {
+    &:not(.@{ns}pagination-btn-disabled) > a {
+      transition: @pagination-transition;
+      .button-ripple;
+    }
+
+    > a {
+      .btn-sm;
+      .btn-transition;
+      .btn-subtle-variant(@pagination-hover-bg);
+
+      position: relative;
+      float: left; // Collapse white-space
+      text-decoration: none;
+      cursor: pointer;
+      transition: @pagination-transition;
+      user-select: none;
+
+      &:focus,
+      &.focus,
+      &:hover {
+        color: @pagination-hover-color;
+      }
+
+      &:active {
+        color: @pagination-hover-color;
+        background-color: @pagination-active-bg;
+        background-image: none;
+
         &:hover,
-        &:focus {
-            z-index: 2;
-            color: @pagination-hover-color;
-            background-color: @pagination-hover-bg;
-            border-color: @pagination-hover-border;
-            padding-bottom: (@padding-base-vertical - 1);
-            border-bottom: 2px solid @border-primary-color;
+        &:focus,
+        &.focus {
+          color: @btn-subtle-active-default-color;
+          background-color: @pagination-active-bg;
         }
+      }
     }
+  }
 
-    > .active > a,
-    > .active > span {
-        &,
+  & > &-btn-disabled {
+    > a {
+      &,
+      &:hover,
+      &:active,
+      &:focus {
+        opacity: .3;
+        cursor: @cursor-disabled;
+        background: transparent;
+      }
+
+      &:active {
         &:hover,
-        &:focus {
-            z-index: 3;
-            color: @pagination-active-color;
-            background-color: @pagination-active-bg;
-            border-color: @pagination-active-border;
-            cursor: default;
-            padding-bottom: (@padding-base-vertical - 1);
-            border-bottom: 2px solid @border-primary-color;
+        &:focus,
+        &.focus {
+          opacity: .3;
+          cursor: @cursor-disabled;
+          background: transparent;
         }
+      }
     }
+  }
 
-    > .disabled {
-        > span,
-        > span:hover,
-        > span:focus,
-        > a,
-        > a:hover,
-        > a:focus {
-            color: @pagination-disabled-color;
-            background-color: @pagination-disabled-bg;
-            border-color: @pagination-disabled-border;
-            cursor: @cursor-disabled;
-            .opacity(0.65);
-        }
-    }
-}
+  // Pagination Sizes
+  // --------------------------------------------------
 
-// Sizing
-// --------------------------------------------------
+  &-lg > li > a {
+    .btn-lg;
+  }
 
-// Large
-.pagination-lg {
-    .pagination-size(@padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @border-radius-large);
-}
+  &-md > li > a {
+    .btn-md;
+  }
 
-// Small
-.pagination-sm {
-    .pagination-size(@padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius-small);
+  &-sm > li > a {
+    .btn-sm;
+  }
+
+  &-xs > li > a {
+    .btn-xs;
+  }
 }

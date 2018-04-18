@@ -1,6 +1,6 @@
 {
   "name": "rsuite-theme",
-  "version": "2.0.20",
+  "version": "3.0.0-next.7",
   "description": "The suite theme for pagurian",
   "main": "main.js",
   "bin": {
@@ -11,10 +11,10 @@
     "url": "https://github.com/rsuite/rsuite-theme.git"
   },
   "scripts": {
-    "test": "npm run prepublish && rm -rf dist/test/ && node test.js",
-    "build": "rm -rf lib && babel src/script --out-dir lib && babel src/bin --out-dir bin",
-    "prepublish": "grunt && npm run build",
-    "example": "npm run prepublish && node build-site-theme.js && grunt exampleSite"
+    "test": "npm run prepublish && rm -rf dist/test/ && rm -rf coverage && jest --silent --coverage && npm run coveralls",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "build": "babel src/script --out-dir lib && babel src/bin --out-dir bin",
+    "prepublish": "gulp && npm run build"
   },
   "keywords": [
     "css",
@@ -39,23 +39,36 @@
     "commander": "^2.9.0",
     "fs-extra": "^0.30.0",
     "glob": "^7.0.6",
-    "less": "^2.7.1",
-    "q": "^1.4.1"
+    "less": "^2.7.1"
   },
   "devDependencies": {
+    "autoprefixer": "^7.2.1",
     "babel-cli": "^6.14.0",
-    "babel-preset-es2015": "^6.14.0",
-    "grunt": "^1.0.1",
-    "grunt-autoprefixer": "^3.0.4",
-    "grunt-cli": "^1.2.0",
-    "grunt-compile-handlebars": "^2.0.2",
-    "grunt-contrib-clean": "^1.0.0",
-    "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-csslint": "^1.0.0",
-    "grunt-contrib-cssmin": "^1.0.1",
-    "grunt-contrib-less": "^1.3.0",
-    "grunt-csscomb": "^3.1.0",
-    "hbook": "^1.2.27",
-    "time-grunt": "^1.3.0"
-  }
+    "babel-plugin-transform-object-set-prototype-of-to-assign": "^6.22.0",
+    "babel-preset-env": "^1.6.1",
+    "coveralls": "^3.0.0",
+    "cssnano": "^3.10.0",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-less": "^3.3.2",
+    "gulp-postcss": "^7.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^2.6.1",
+    "jest": "^21.2.1",
+    "stylelint": "^8.4.0",
+    "stylelint-config-standard": "^18.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "ie >= 9"
+  ],
+  "files": [
+    "bin",
+    "lib",
+    "LICENSE",
+    "main.js",
+    "README.md",
+    "rsuite-theme.js"
+  ]
 }

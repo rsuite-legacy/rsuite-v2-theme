@@ -1,13 +1,11 @@
 //*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
 //
-// 1. Set default font family to sans-serif.
 // 2. Prevent iOS and IE text size adjust after device orientation change,
 //    without disabling user zoom.
 //
 
 html {
-  font-family: sans-serif; // 1
   -ms-text-size-adjust: 100%; // 2
   -webkit-text-size-adjust: 100%; // 2
 }
@@ -18,10 +16,10 @@ html {
 
 body {
   margin: 0;
-  
+
   // Optimize for the retina screen
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 // HTML5 display definitions
@@ -226,18 +224,6 @@ pre {
   overflow: auto;
 }
 
-//
-// Address odd `em`-unit font size rendering in all browsers.
-//
-
-code,
-kbd,
-pre,
-samp {
-  font-family: monospace, monospace;
-  font-size: 1em;
-}
-
 // Forms
 // ==========================================================================
 
@@ -381,16 +367,6 @@ input[type="search"]::-webkit-search-decoration {
 }
 
 //
-// Define consistent border, margin, and padding.
-//
-
-fieldset {
-  border: 1px solid #c0c0c0;
-  margin: 0 2px;
-  padding: 0.35em 0.625em 0.75em;
-}
-
-//
 // 1. Correct `color` not being inherited in IE 8/9/10/11.
 // 2. Remove padding so people aren't caught out if they zero out fieldsets.
 //
@@ -439,4 +415,15 @@ th {
 //
 [tabindex="-1"] {
   outline: none;
+}
+
+//
+// Remove Default button Style
+//
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+input[type="file"]::-webkit-file-upload-button,
+button {
+  border-width: 0;
 }
